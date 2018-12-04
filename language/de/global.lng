@@ -1,0 +1,257 @@
+//global
+CLOSE=Schließen
+SAVE=Speichern
+SUBMIT=Absenden
+RESET=Zurücksetzen
+SAVETIME=Speicherstand
+DAY=Tag
+COMMODITY=Ware
+COMMODITIES=Waren
+PLANT=Produktionsanlage
+PLANTS=Produktionsanlagen
+SETTINGS=Einstellungen
+STOCK=Lagerbestand
+STOCKS=Lagerbestände
+PRICES=Verkaufspreise
+MONDAY=Montag
+TUESDAY=Dienstag
+WEDNESDAY=Mittwoch
+THURSDAY=Donnerstag
+FRIDAY=Freitag
+SATURDAY=Samstag
+SUNDAY=Sonntag
+
+//install.tpl
+CHANGE_BUTTON=Ändern
+CHOOSE_LANGUAGE_LABEL=Sprache wählen
+CHOOSE_LANGUAGE=Ändern
+CONFIG_SAVED=Konfiguration erfolgreich gespeichert.
+CONTINUE=zur Übersicht wechseln
+DESCRIPTON=Auf dieser Webseite für Dedicated Server und lokale Spielstände von Farming Simulator 19 können Spieler, Fahrzeuge, Lagerbestände und Produktionsanlagen angezeigt werden. Fehlende Rohstoffe sowie volle Produktlager werden kenntlich gemacht.
+START_INSTALL=Installation starten
+HEAD_API=Giants Web API
+DESCR_API=Abruf der Serverdaten und des Spielstands über die Web  API von Giants.<br>Seit Farming Simulator 19 ist nur noch ein eingeschränkter Zugriff auf den Spielstand möglich, da viele Informationen in zusätzlichen Dateien gespeichert werden, auf die über die Web API nicht zugegriffen werden kann.  
+HEAD_FTP=FTP Server
+DESCR_FTP=Per FTP ist ein uneingeschränkter Zugriff auf die Serverdaten und den Spielstand möglich.<br>Jedoch muss neben der Dedicated Server Software von Giants auch FTP Server installiert sein, damit die Spielstandsdaten abgerufen werden können. 
+HEAD_LOCAL=Lokaler Spielstand
+DESCR_LOCAL=Wie beim FTP-Server ist auch hier ein uneingeschränkter Zugriff auf den Spielstand möglich.
+INSTALL_TITLE=Installation
+DEDICATED=Dedicaded Server
+LOCAL=lokaler Spielstand
+DS_LABEL1=Server IP-Adresse
+DS_PLACEHOLDE1=IP-Adresse
+DS_HELP_BLOCK1=IP-Adresse des Farming Simulator 19 Dedicated Servers.
+DS_LABEL2=Server-Port
+DS_PLACEHOLDE2=Port
+DS_HELP_BLOCK2=Port der Web-API, nicht der Port für den Spiel-Client.
+DS_LABEL3=Server-Code
+DS_PLACEHOLDE3=Code
+DS_HELP_BLOCK3=Web-API Zugriffscode.
+DS_LABEL4=Mod Map
+DS_HELP_BLOCK4=Installierte Karte auf dem Server auswählen.
+DS_LABEL5=WebStats Password
+DS_PLACEHOLDE5=Password
+DS_PLACEHOLDE6=Password wiederholen
+DS_HELP_BLOCK5=Mit dem Passwort können später die Servereinstellungen geändert und die Karte gewechselt werden.
+NO_INSTALL_1=Auf diesem Webserver kann FS17 Webstats leider nicht mit einem Dedicated Server verwendet werden, da die Funktion <code>fsockopen()</code> nicht unterstützt wird.
+NO_INSTALL_2=Bitte prüfe bei deinem Webhoster, ob die Funktion in der <code>php.ini</code> aktiviert werden kann.
+INTRO1=Bitte beachte, dass in Farming Simulator der Spielstand grundsätzlich nicht automatisch gespeichert wird. Damit auf dieser Webseite korrekte Lagerbestände angezeigt werden, muss der Spielstand zuvor gespeichert werden. Alternativ installiere die Mod
+INTRO2=, um den Spielstand automatisch alle 5 Minuten zu speichern.
+LINK_TEXT=Map Autosave
+LS_LABEL1=Pfad zum Spielstand
+LS_PLACEHOLDE1=Pfad
+LS_HELP_BLOCK1=Standartmäßig speichert Farming Simulator Spielstände unter:<br> <code>C:\Users\"deinusername"\Documents\My Games\FarmingSimulator2019\savegamex</code>
+LS_LABEL2=Mod Map
+LS_HELP_BLOCK2=Karte des Spielstands auswählen.
+SAVE_CONFIG=Konfiguration speichern
+ERROR_CODE=Der eingegebene Code ist ungültig.
+ERROR_PORT=Der eingegebene Port ist ungültig.
+ERROR_IP=Die eingegebene IP Adresse ist nicht gültig.
+ERROR_MAP=Die Karte ist ungültig.
+ERROR_OFFLINE=Server ist offline oder die IP Adresse ist falsch.
+ERROR_SAVEGAME=Unter dem angegebenen Pfad wurde kein Spielstand gefunden.
+PASSWORD_MATCH=Die Passwörter stimmen nicht überein.
+PASSWORD_SHORT=Das Passwort muss mindestens 6 Zeichen lang sein.
+ERROR=Fehler!
+
+//index.tpl
+TPL_ERROR_1=Fehler beim Seitenaufruf
+TPL_ERROR_2=Die Datei
+TPL_ERROR_3=existiert nicht.
+CON_ERROR_1=Verbindungsfehler
+CON_ERROR_2=Es konnten keine Daten vom Dedicated Server abgerufen werden.<br>Bitte überprüfe, ob die Serveradresse korrekt ist und die Internetverbindung besteht oder ein Savegame existiert. Die Funktion <code>fsockopen()</code> muss auf dem Webserver erlaubt sein.
+USER_ONLINE=Benutzer online
+INFO_1=Webseite zur Anzeige des Serverstatus sowie Überwachung der Produktionsanlagen und Lagerbestände.
+INFO_2=Anregungen, Hilfe und Verbesserungsvorschläge von
+INFO_3=Programmierung
+INFO_4=Kartenkonfiguration
+LICENSE=Informationen zur Lizenzierung
+
+//navbar.tpl
+TOGGLE=Toggle navigation
+OVERVIEW=Überblick
+SERVER=Server
+STORAGE=Lager
+PRODUCTION=Produktion
+FACTORY=Fabriken
+INFO=Info
+
+//overview.tpl
+VERSION=Version
+PLAYER=Spieler
+UPTIME=Spielzeit
+ISADMIN=Admin
+POSITION=Position
+INVEHICLE=im Fahrzeug
+NOPLAYER=Zur Zeit sind keine Spieler online.
+WEATHER=Wettervorhersage
+NEWS=Nachrichten
+GREAT_DEMAND=Große Nachfrage
+PAYS_ACTUAL=zahlt aktuell
+FOR=für
+SALES=Sonderangebote
+ACTUAL=aktuell
+STARTING=Ab
+DISCOUNT=Rabatt auf
+WHOLE_BRAND=und alle weiteren Fahrzeuge und Geräte der Marke.
+FINANCES5DAYS=Finanzen (letzten 5 Tage)
+OPERATING_RESULT=Betriebsergebnis
+LIFESTOCK_NSU=Tierproduktion
+HARVEST=Ernteeinnahmen
+WAGE_PAYMENT=Lohnzahlungen
+VEHICLES_NCS=Neue/Verkaufte Fahrzeuge
+PROPERTY_CSP=Neue/Verkaufte Gebäude
+VEHICLES_U=Betriebskosten Fahrzeuge
+PROPERTY_MI=Betriebskosten/Einnahmen Gebäude
+BALANCE=Kontostand
+
+//commodity.tpl
+DETAILVIEW=Detailansicht
+CHOOSE_COMMODITY=Ware auswählen
+PLACE=Lagerort
+AMOUNT=Menge
+NO_STOCK=Keine Lagerbestände
+WHOLE_AMOUNT=Gesamter Lagerbestand
+SELLTRIGGERS=Verkaufsstellen
+SELLTRIGGER=Verkaufsstelle
+CURRENT_PRICE=aktueller Verkaufspreis
+PRICE_INFO=ACHTUNG: Verkaufspreise sind ggf. nicht aktuell.
+DEMAND=Nachfrage
+WHOLE_DEMAND=Gesamter Bedarf
+ITEM_POSITIONS=Positionen von Paletten/Ballen
+NOT_FOUND=Object nicht gefunden :-/
+
+//factories.tpl
+CHOOSE_PLANT=Produktionsanlage auswählen
+REQUIRED=Benötigte Rohstoffe
+CAPACITY=Kapazität
+REQUIRE_HOUR=Bedarf/Stunde
+REQUIRE_DAY=Bedarf/Tag
+PRODUCED_GOODS=Produzierte Waren
+PRODUCT_HOUR=Produktion/Stunde
+PRODUCT_DAY=Produktion/Tag
+
+//production.tpl
+PRODUCTION_OVERVIEW=Produktionsübersicht
+RAW_MATERIALS=Rohstoffe
+PRODUCTS=Produkte
+MORE_DETAILS=weitere Details
+
+//storage.tpl
+CAUTION=Achtung
+DETAILS=Details
+QUANTITY=Menge
+PALLET=Palette
+PALETTES=Paletten
+BALE=Ballen
+BALES=Ballen
+INCORRECT_POSITIONS_TITLE=Fehlerhafte Paletten und Ballen
+INCORRECT_POSITIONS_TEXT=Die Positionen der folgenden Ballen oder Paletten in der <code>vehicle.xml</code> sind ungültig.
+INCORRECT_POSITION=ungültige Position
+SUGGESTION_POSITION=Vorschlag Position
+
+//options.tpl
+GENERAL=Allgemein
+CHOOSE_STYLE=Stylesheet wählen
+AUTO_RELOAD=automatischer Reload
+HIDE_FOOTER=Fußzeile
+SORT_ORDER=Sortierung
+ALPHABETICALLY=alphabetisch
+FILL_LEVEL=nach Füllstand
+SHOW=anzeigen
+HIDE=nicht anzeigen
+VEHICLE_LOAD=Ladung von Fahrzeugen
+ONLY_PALETTS=Nur Paletten anzeigen
+TOOLTIP=Tooltip mit Lagerständen anzeigen
+TOOLTIP_HELP=Im Tooltip werden werden die Bestände aus allen Lagern und Produktionsstätten summiert.  
+YES=ja
+NO=nein
+SHOW_ZERO_STOCK=Null-Bestände anzeigen
+HIDE_ANIMALS=Tiere nicht anzeigen
+FULL_PRODUCT_STORAGE=Volle Produktlager
+SORT_FULL_PRODUCTS=bei Sortierung berücksichtigen
+IGNORE_FULL_PRODUCTS=bei Sortierung ignorieren
+SHOW_HIDDEN_PLANTS=Produktionsanlagen anzeigen
+HIDE_NOT_USED=Automatisch ausblenden
+HIDE_NOT_USED_HELP=Produktionsanlagen, ohne Rohstoffe oder Produkte in den Lagern, werden automatisch ausgeblendet 
+MOD_MAP=Mod Map
+LAYOUT=Layout
+3COLUMN=3 Spalten
+4COLUMN=4 Spalten
+SERVER_SETTINGS=Servereinstellungen löschen
+ADMIN_AREA=Serververwaltung
+ADMIN_DESCRIPTION=Achtung nach Eingabe des Passworts die Einstellungen zum Dedicated Server oder des Savegames gelöscht. FS19 Web Stats kann danach neu initialisiert werden.
+ENTER_PASSWORD=Bitte Passwort eingeben
+
+//animals.tpl
+ANIMALS=Tiere
+SHEEP_COUNT=Schafbestand
+PIG_COUNT=Schweinebestand
+COW_COUNT=Kuhbestand
+PRODUCTIVITY=Produktivität
+REPRO_RATE=Reproduktionsrate
+NEXT_ANIMAL=Nächstes Tier in
+CLEANNESS=Sauberkeit
+
+//prices.tpl
+MIN_PRICE=niedrigster Verkaufspreis
+MAX_PRICE=maximaler Verkaufspreis
+BEST_PRICE=bester Verkaufspreis
+PROCEEDS=möglicher Verkaufserlös
+PERCENT=%
+
+//finances.tpl
+FINANCES=Finanzen
+INCOME_EXPENDITURE=Einnahmen/Ausgaben
+TODAY=Heute
+NEWVEHICLESCOST=Neue Fahrzeuge
+SOLDVEHICLES=Verkaufte Fahrzeuge
+NEWANIMALSCOST=Neue Tiere
+SOLDANIMALS=Verkaufte Tiere
+CONSTRUCTIONCOST=Baukosten
+SOLDBUILDINGS=Verkaufte Gebäude
+FIELDPURCHASE=Neue Felder
+VEHICLERUNNINGCOST=Betriebskosten Fahrzeuge
+VEHICLELEASINGCOST=Mietkosten Fahrzeuge
+ANIMALUPKEEP=Tierhaltungskosten
+PROPERTYMAINTENANCE=Betriebskosten Gebäude
+PROPERTYINCOME=Einnahmen Gebäude
+SOLDWOOD=Verkauftes Holz
+SOLDBALES=Verkaufte Ballen
+SOLDWOOL=Verkaufte Wolle
+SOLDMILK=Verkaufte Milch
+PURCHASEFUEL=Kosten Kraftstoff
+PURCHASESEEDS=Kosten Saatgut
+PURCHASEFERTILIZER=Kosten Dünger
+PURCHASESAPLINGS=Kosten Setzlinge
+PURCHASEWATER=Kosten Wasser
+HARVESTINCOME=Einnahmen Ernte
+INCOMEBGA=Einnahmen BGA
+MISSIONINCOME=Einnahmen Feldmissionen
+WAGEPAYMENT=Lohnzahlungen
+OTHER=Sonstiges
+LOANINTEREST=Kreditzinsen
+TOTAL=Gesamt
+BALANCE1=Kontostand
+LOAN=Kredit
+BALANCE2=Saldo

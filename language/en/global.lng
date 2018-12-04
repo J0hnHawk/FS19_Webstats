@@ -1,0 +1,171 @@
+//global
+CLOSE=Close
+SAVE=Save
+SUBMIT=Submit
+RESET=Reset
+SAVETIME=Savegame time
+DAY=Day
+COMMODITY=Commodity
+COMMODITIES=Commodities
+PLANT=Production plant
+PLANTS=Production plants
+SETTINGS=Settings
+STOCK=Stock
+STOCKS=Stocks
+PRICES=Selling prices
+
+//install.tpl
+CHANGE_BUTTON=Change
+CHOOSE_LANGUAGE_LABEL=Select language
+CHOOSE_LANGUAGE=Change
+CONFIG_SAVED=Configuration saved successfully.
+CONTINUE=Go to overview
+DESCRIPTON=Farming Simulator 17 game statistics can be used to view players, vehicles, inventory and production facilities. Missing factory inputs as well as full product warehouses are identified.
+INSTALL_TITLE=Installation
+DEDICATED=Dedicated Server
+LOCAL=local statistics
+DS_LABEL1=Server IP Address
+DS_PLACEHOLDE1=IP Address
+DS_HELP_BLOCK1=Farming Simulator 17 Dedicated Server IP Address
+DS_LABEL2=Server Port
+DS_PLACEHOLDE2=Port
+DS_HELP_BLOCK2=Web API port (not the game client port)
+DS_LABEL3=Server Code
+DS_PLACEHOLDE3=Code
+DS_HELP_BLOCK3=Web API Access Code
+DS_LABEL4=Mod Map
+DS_HELP_BLOCK4=Select map installed on the server
+DS_LABEL5=WebStats Password
+DS_PLACEHOLDE5=Password
+DS_PLACEHOLDE6=Confirm Password
+DS_HELP_BLOCK5=The password can be used to change the server settings and change the map.
+NO_INSTALL_1=Unfortunately, WebStats cannot be used with a Farming Simulator 17 Dedicated Server on this web server because the <code>fsockopen()</ code> function is not supported.
+NO_INSTALL_2=Please consult your web hosting provider in order to determine if the function can be activated within the <code>php.ini</code> configuration.
+INTRO1=Please note that statistics are not saved automatically within Farming Simulator 17. In order for correct statistics to be displayed here, the game must first be saved. Alternatively, install the 
+INTRO2=Autosave mod to automatically save the game every 5 minutes.
+LINK_TEXT=Map Autosave
+LS_LABEL1=Statistics Path
+LS_PLACEHOLDE1=Path
+LS_HELP_BLOCK1=By default, Farming Simulator 17 saves saved games under: <br><code>%USERPROFILE%\Documents\My Games\FarmingSimulator2017\savegame[n]</code>
+LS_LABEL2=Mod Map
+LS_HELP_BLOCK2=Select the map for the statistics
+SAVE_CONFIG=Save configuration
+ERROR_CODE=The code is invalid.
+ERROR_PORT=The port is invalid.
+ERROR_IP=The IP address is invalid.
+ERROR_MAP=The map is invalid.
+ERROR_OFFLINE=The server is either offline or the IP address is incorrect.
+ERROR_SAVEGAME=No game statistics found at the specified path.
+PASSWORD_MATCH=The passwords do not match.
+PASSWORD_SHORT=The password must be at least 6 characters long.
+ERROR=Error!
+
+//index.tpl
+TPL_ERROR_1=Error during page load
+TPL_ERROR_2=The file
+TPL_ERROR_3=does not exist.
+CON_ERROR_1=Connection Error
+CON_ERROR_2=No data could be retrieved from the dedicated server. Please check the server address or internet connection. The <code>fsockopen()</code> function must be enabled on the web server.
+USER_ONLINE=Visitor online
+INFO_1=Web page to display the server status and monitor the production facilities and stock levels.
+INFO_2=Tips, help and suggestions for improvement
+LICENSE=Licensing information
+
+//navbar.tpl
+TOGGLE=Toggle navigation
+SERVER=Server
+STORAGE=Storage
+PRODUCTION=Production
+FACTORY=Factory
+INFO=Info
+
+//overview.tpl
+PLAYER=Player
+UPTIME=Uptime
+ISADMIN=Is admin
+POSITION=Position
+INVEHICLE=In Vehicle
+NOPLAYER=At the moment is no player online.
+
+//commodity.tpl
+DETAILVIEW=detailed view
+CHOOSE_COMMODITY=Select goods
+PLACE=storage location
+AMOUNT=amount
+NO_STOCK=no stocks
+WHOLE_AMOUNT=total warehouse stock
+DEMAND=demand
+WHOLE_DEMAND=Total demand
+ITEM_POSITIONS=Pallet/Bale positions
+
+//factories.tpl
+CHOOSE_PLANT=Select production plant
+REQUIRED=Required inputs
+CAPACITY=capacity
+REQUIRE_HOUR=Demand per hour
+REQUIRE_DAY=Demand per day
+PRODUCED_GOODS=Products
+PRODUCT_HOUR=Production per hour
+PRODUCT_DAY=Production per day
+
+//production.tpl
+PRODUCTION_OVERVIEW=production overview
+RAW_MATERIALS=inputs
+PRODUCTS=products
+MORE_DETAILS=more details
+
+//storage.tpl
+CAUTION=Caution
+DETAILS=Details
+PALLET=Pallet
+PALETTES=Pallets
+BALE=Bale
+BALES=Bales
+INCORRECT_POSITIONS_TITLE=Invalid positions of pallets and bales
+INCORRECT_POSITIONS_TEXT=The positions of the following bales/pallets in the <code>vehicle.xml</code> are invalid:
+INCORRECT_POSITION=invalid position
+SUGGESTION_POSITION=Suggested Position
+
+//options.tpl
+GENERAL=General
+CHOOSE_STYLE=Select style
+HIDE_FOOTER=Hide footer
+AUTO_RELOAD=automatic reload
+SORT_ORDER=sorting
+ALPHABETICALLY=alphabetically
+FILL_LEVEL=according to fill level
+SHOW=display
+HIDE=hide
+VEHICLE_LOAD=Vehicle load
+ONLY_PALETTS=Only display pallets
+TOOLTIP=Show tooltip with stock
+TOOLTIP_HELP=The tooltip displays the total stock from all warehouses and production sites.
+YES=yes
+NO=no
+SHOW_ZERO_STOCK=Displaying Zero Stock
+HIDE_ANIMALS=Hide Animals
+FULL_PRODUCT_STORAGE=Full product storage
+SORT_FULL_PRODUCTS=take into account when sorting
+IGNORE_FULL_PRODUCTS=ignore during sorting
+SHOW_HIDDEN_PLANTS=Show production plants
+HIDE_NOT_USED=Automatic hide
+HIDE_NOT_USED_HELP=Production plants, without inputs or products in stocks, are automatically hidden. 
+MOD_MAP=Mod Map
+LAYOUT=Layout
+3COLUMN=3 Columns
+4COLUMN=4 Columns
+SERVER_SETTINGS=Delete server settings
+ADMIN_AREA=Server management
+ADMIN_DESCRIPTION=Warning! After entering the password, the settings for the Dedicated Server or Savegame are deleted. FS17 WebStats can then be reinitialized.
+ENTER_PASSWORD=Enter Password
+
+//animals.tpl
+ANIMALS=Animals
+SHEEP_COUNT=Sheep owned
+PIG_COUNT=Pigs owned
+COW_COUNT=Cows owned
+PRODUCTIVITY=Productivity
+REPRO_RATE=Reproduction rate
+NEXT_ANIMAL=Next animal in
+CLEANNESS=Cleanliness
+

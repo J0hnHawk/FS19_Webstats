@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<item name="TipTrigger_GRAIN_ELEVATOR" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
+	<item name="TipTrigger_FARMER_1" locationType="TipTrigger" position="-949 0 571" isSellingPoint="true" />
+	<item name="TipTrigger_RAILROAD_MILL" locationType="TipTrigger" position="-946 0 -26" isSellingPoint="true" />
+	<item name="TipTrigger_FARMER_3" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
+	<item name="TipTrigger_FARMER_3_SLURRY" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
+	<item name="TipTrigger_TOWN_BAKERY" locationType="TipTrigger" position="-157 0 503" isSellingPoint="true" />
+	<item name="TipTrigger_FARMER_2" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="TipTrigger_FARMER_2_MANURE" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="TipTrigger_WINDROW_STORAGE" locationType="TipTrigger" position="190 0 45" isSellingPoint="true" />
+	<item name="TipTrigger_SPINNERY" locationType="TipTrigger" position="-425 0 501" isSellingPoint="true" />
+	<item name="TipTrigger_SAWMILL" locationType="TipTrigger" position="-727 0 -289" isSellingPoint="true" />
+	<l10n>
+		<text name="TipTrigger_GRAIN_ELEVATOR">
+			<en>Goldcrest Pacific Grain</en>
+			<de>Goldcrest Pacific Grain</de>
+			<fr>Goldcrest Pacific Grain</fr>
+		</text>
+		<text name="TipTrigger_FARMER_1">
+			<en>Gomez Ridge Acres</en>
+			<de>Gomez Ridge Acres</de>
+			<fr>Gomez Ridge Acres</fr>
+		</text>
+		<text name="TipTrigger_RAILROAD_MILL">
+			<en>Maplefield Mill</en>
+			<de>Maplefield Mill</de>
+			<fr>Maplefield Mill</fr>
+		</text>
+		<text name="TipTrigger_FARMER_3">
+			<en>Wright Agribusiness</en>
+			<de>Wright Agribusiness</de>
+			<fr>Wright Agribusiness</fr>
+		</text>
+		<text name="TipTrigger_TOWN_BAKERY">
+			<en>Denton Bakery</en>
+			<de>Denton Bakery</de>
+			<fr>Denton Bakery</fr>
+		</text>
+		<text name="TipTrigger_FARMER_2">
+			<en>Mary's Farm</en>
+			<de>Mary's Farm</de>
+			<fr>Mary's Farm</fr>
+		</text>
+		<text name="TipTrigger_WINDROW_STORAGE">
+			<en>Barn</en>
+			<de>Scheune</de>
+			<fr>Grange</fr>
+		</text>
+		<text name="TipTrigger_SPINNERY">
+			<en>Spinnery</en>
+			<de>Spinnerei</de>
+			<fr>Filature</fr>
+		</text>
+		<text name="TipTrigger_SAWMILL">
+			<en>Santon Sawmill</en>
+			<de>Santon Sawmill</de>
+			<fr>Santon Sawmill</fr>
+		</text>
+		<text name="TipTrigger_FARMER_2_MANURE">
+			<en>Mary's Farm</en>
+			<de>Mary's Farm</de>
+			<fr>Mary's Farm</fr>
+		</text>
+		<text name="TipTrigger_FARMER_3_SLURRY">
+			<en>Wright Agribusiness</en>
+			<de>Wright Agribusiness</de>
+			<fr>Wright Agribusiness</fr>
+		</text>
+	</l10n>
+</mapconfig>
