@@ -48,9 +48,10 @@ include ('./include/loadConfig.php');
 $smarty->assign ( 'onlineUser', sizeof ( $onlineUser ) );
 $smarty->assign ('hideFooter',$options ['general'] ['hideFooter']);
 
-require ('./include/savegame.php');
+//require ('./include/savegame.php');
+$serverOnline = true;
 
-// EAllowed/existing pages
+// Allowed/existing pages
 $pages = array (
 		'overview',
 		'husbandry',
@@ -65,7 +66,7 @@ $pages = array (
 );
 $page = GetParam ( 'page', 'G' );
 if (! in_array ( $page, $pages )) {
-	$page = 'production';
+	$page = 'prices';
 }
 $smarty->assign ( 'page', $page );
 if ($serverOnline) {

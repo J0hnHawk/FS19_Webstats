@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<!-- Square bales -->
+		<text name="baleGrass240">
+			<cz>Tráva</cz>
+			<en>Grass</en>
+			<de>Gras</de>
+			<fr>Herbe</fr>
+		</text>
+		<text name="baleHay240">
+			<cz>Seno</cz>
+			<en>Dry grass</en>
+			<de>Heu</de>
+			<fr>Foin</fr>
+		</text>
+		<text name="baleStraw240">
+			<cz>Sláma</cz>
+			<en>Straw</en>
+			<de>Stroh</de>
+			<fr>Paille</fr>
+		</text>
+		<!-- Round bales -->
+		<text name="roundbaleGrass_w112_d130">
+			<cz>Tráva</cz>
+			<en>Grass</en>
+			<de>Gras</de>
+			<fr>Herbe</fr>
+		</text>
+		<text name="roundbaleHay_w112_d130">
+			<cz>Seno</cz>
+			<en>Dry grass</en>
+			<de>Heu</de>
+			<fr>Foin</fr>
+		</text>
+		<text name="roundbaleSilage_w112_d130">
+			<cz>Siláž</cz>
+			<en>Silage</en>
+			<de>Silage</de>
+			<fr>Ensilage</fr>
+		</text>
+		<text name="roundbaleStraw_w112_d130">
+			<cz>Sláma</cz>
+			<en>Straw</en>
+			<de>Stroh</de>
+			<fr>Paille</fr>
+		</text>
+		<!-- Big bags -->
+		<text name="bigBagContainerFertilizer">
+			<cz>Pevné hnojivo</cz>
+			<en>Fertilizer</en>
+			<de>Dünger</de>
+			<fr>Engrais</fr>
+		</text>
+		<text name="bigBagContainerPigFood">
+			<cz>Prasečí krmivo</cz>
+			<en>Pig food</en>
+			<de>Schweinefutter</de>
+			<fr>Aliment pour les cochons</fr>
+		</text>
+		<text name="bigBagContainerSeeds">
+			<cz>Osivo</cz>
+			<en>Seeds</en>
+			<de>Saatgut</de>
+			<fr>Semence</fr>
+		</text>
+		<!-- Pallets -->
+		<text name="fertilizerTank">
+			<cz>Tekuté hnojivo</cz>
+			<en>Liquid fertilizer</en>
+			<de>Flüssigdünger</de>
+			<fr>Engrais liquide</fr>
+		</text>
+		<text name="palletPoplar">
+			<en>Poplar sapling</en>
+			<de>Papplsetzlinge</de>
+			<fr>Plants de peuplier</fr>
+		</text>
+		<text name="palletPotato">
+			<cz>Brambory</cz>
+			<en>Potatoes</en>
+			<de>Kartoffeln</de>
+			<fr>Pommes de terre</fr>
+		</text>
+		<text name="palletSugarBeet">
+			<cz>Cukrová řepa</cz>
+			<en>Sugar beet</en>
+			<de>Zuckerrüben</de>
+			<fr>Betterave à sucre</fr>
+		</text>
+		<text name="treeSaplingPallet">
+			<cz>Sazenice</cz>
+			<en>Saplings</en>
+			<de>Setzlinge</de>
+			<fr>Semence</fr>
+		</text>
+		<text name="woolPallet">
+			<cz>Bavlna</cz>
+			<en>Wool</en>
+			<de>Wolle</de>
+			<fr>Laine</fr>
+		</text>
+		<!-- Animals -->
+		<text name="cow">
+			<cz>Krávy</cz>
+			<en>Cows</en>
+			<de>Kühe</de>
+			<fr>Vache</fr>
+		</text>
+		<text name="pig">
+			<cz>Prasata</cz>
+			<en>Pigs</en>
+			<de>Schweine</de>
+			<fr>Cochon</fr>
+		</text>
+		<text name="sheep">
+			<cz>Ovce</cz>
+			<en>Sheep</en>
+			<de>Schafe</de>
+			<fr>Mouton</fr>
+		</text>
+		<!-- Fruits -->
+		<text name="WHEAT">
+			<cz>Pšenice</cz>
+			<en>Wheat</en>
+			<de>Weizen</de>
+			<fr>Blé</fr>
+		</text>
+		<text name="BARLEY">
+			<cz>Ječmen</cz>
+			<en>Barley</en>
+			<de>Gerste</de>
+			<fr>Orge</fr>
+		</text>
+		<text name="OAT">
+			<cz></cz>
+			<en>Oat</en>
+			<de>Hafer</de>
+			<fr></fr>
+		</text>
+		<text name="CANOLA">
+			<cz>Řepka</cz>
+			<en>Canola</en>
+			<de>Raps</de>
+			<fr>Colza</fr>
+		</text>
+		<text name="SUNFLOWER">
+			<cz>Slunečnice</cz>
+			<en>Sunflower</en>
+			<de>Sonnenblumen</de>
+			<fr>Tournesol</fr>
+		</text>
+		<text name="SOYBEAN">
+			<cz>Sójvé boby</cz>
+			<en>Soybean</en>
+			<de>Sojabohnen</de>
+			<fr>Soja</fr>
+		</text>
+		<text name="MAIZE">
+			<cz>Kukuřice</cz>
+			<en>Maize</en>
+			<de>Körnermais</de>
+			<fr>Maïs</fr>
+		</text>
+		<text name="POTATO">
+			<cz>Brambory</cz>
+			<en>Potatoes</en>
+			<de>Kartoffeln</de>
+			<fr>Pommes de terre</fr>
+		</text>
+		<text name="SUGARBEET">
+			<cz>Cukrová řepa</cz>
+			<en>Sugar beet</en>
+			<de>Zuckerrüben</de>
+			<fr>Betterave à sucre</fr>
+		</text>
+		<text name="SUGARCANE">
+			<cz>Cukrová třtina</cz>
+			<en>Sugar cane</en>
+			<de>Zuckerrohr</de>
+			<fr>Canne à sucre</fr>
+		</text>
+		<text name="water">
+			<cz>Voda</cz>
+			<en>Water</en>
+			<de>Wasser</de>
+			<fr>Eau</fr>
+		</text>
+		<!-- Products -->
+		<text name="fuel">
+			<cz>Palivo</cz>
+			<en>Fuel</en>
+			<de>Treibstoff</de>
+			<fr>Carburant</fr>
+		</text>
+		<text name="fertilizer">
+			<cz>Pevné hnojivo</cz>
+			<en>Fertilizer</en>
+			<de>Dünger</de>
+			<fr>Engrais</fr>
+		</text>
+		<text name="seeds">
+			<cz>Osivo</cz>
+			<en>Seeds</en>
+			<de>Saatgut</de>
+			<fr>Semence</fr>
+		</text>
+		<text name="liquidManure">
+			<cz>Močůvka</cz>
+			<en>Liquid manure</en>
+			<de>Gülle</de>
+			<fr>Lisier</fr>
+		</text>
+		<text name="manure">
+			<cz>Mrva</cz>
+			<en>Manure</en>
+			<de>Mist</de>
+			<fr>Fumier</fr>
+		</text>
+		<text name="MILK">
+			<cz>Cisterna na mléko</cz>
+			<en>Milk</en>
+			<de>Milch</de>
+			<fr>Lait</fr>
+		</text>
+		<text name="EGG">
+			<cz></cz>
+			<en>Egg</en>
+			<de>Eier</de>
+			<fr></fr>
+		</text>
+		<text name="WOOL">
+			<cz>Bavlna</cz>
+			<en>Wool</en>
+			<de>Wolle</de>
+			<fr>Laine</fr>
+		</text>
+		<text name="COTTON">
+			<cz></cz>
+			<en>Cotton</en>
+			<de>Baumwolle</de>
+			<fr></fr>
+		</text>
+		<text name="STRAW">
+			<cz>Sláma</cz>
+			<en>Straw</en>
+			<de>Stroh</de>
+			<fr>Paille</fr>
+		</text>
+		<text name="grass">
+			<cz>Tráva</cz>
+			<en>Grass</en>
+			<de>Gras</de>
+			<fr>Herbe</fr>
+		</text>
+		<text name="GRASS_WINDROW">
+			<cz>Tráva</cz>
+			<en>Grass</en>
+			<de>Gras</de>
+			<fr>Herbe</fr>
+		</text>
+		<text name="chaff">
+			<cz>Řezanka</cz>
+			<en>Chaff</en>
+			<de>Häckselgut</de>
+			<fr>Haché</fr>
+		</text>
+		<text name="digestate">
+			<cz>Digestát</cz>
+			<en>Digestate</en>
+			<de>Gärreste</de>
+			<fr>Digestat</fr>
+		</text>
+		<text name="DRYGRASS_WINDROW">
+			<cz>Seno</cz>
+			<en>dry Grass</en>
+			<de>Heu</de>
+			<fr>Foin</fr>
+		</text>
+		<text name="SILAGE">
+			<cz>Siláž</cz>
+			<en>Silage</en>
+			<de>Silage</de>
+			<fr>Ensilage</fr>
+		</text>
+		<text name="forage">
+			<cz>Energetické krmivo</cz>
+			<en>Forage</en>
+			<de>Mischfutter</de>
+			<fr>Aliments composés</fr>
+		</text>
+		<text name="WOODCHIPS">
+			<cz>Štěpka</cz>
+			<en>Wood chips</en>
+			<de>Hackschnitzel</de>
+			<fr>Copeaux de bois</fr>
+		</text>
+		<!-- Animals troughs -->
+		<text name="grass_windrow_dryGrass_windrow">
+			<cz>Seno, Tráva</cz>
+			<en>Grass, Dry gras</en>
+			<de>Gras, Heu</de>
+			<fr>Herbe, Foin</fr>
+		</text>
+		<text name="maize_pigFood">
+			<cz>Kukuřice</cz>
+			<en>Maize</en>
+			<de>Körnermais</de>
+			<fr>Maïs</fr>
+		</text>
+		<text name="wheat_barley_pigFood">
+			<cz>Pšenice, Ječmen</cz>
+			<en>Wheat, Barley</en>
+			<de>Weizen, Gerste</de>
+			<fr>Blé, Orge</fr>
+		</text>
+		<text name="rape_sunflower_soybean_pigFood">
+			<cz>Řepka, Slunečnice, Sójvé boby</cz>
+			<en>Canola, Sunflower, Soybean</en>
+			<de>Raps, Sonnenblumen, Sojabohnen</de>
+			<fr>Colza, Tournesols, Soja</fr>
+		</text>
+		<text name="potato_sugarBeet_pigFood">
+			<cz>Brambory, Cukrová řepa</cz>
+			<en>Potatoes, sugar beet</en>
+			<de>Kartoffeln, Zuckerrüben</de>
+			<fr>Pommes de terre, Betterave à sucre</fr>
+		</text>
+		<text name="pigFood">
+			<cz>Prasečí krmivo</cz>
+			<en>Pig food</en>
+			<de>Schweinefutter</de>
+			<fr>Aliment pour les cochons</fr>
+		</text>
+		<text name="silage_dryGrass_windrow">
+			<cz>Siláž, Seno</cz>
+			<en>Silage, dry grass</en>
+			<de>Silage, Heu</de>
+			<fr>Ensilage, Foin</fr>
+		</text>
+		<text name="powerFood">
+			<cz>Energetické krmivo</cz>
+			<en>Power food</en>
+			<de>Kraftfutter</de>
+			<fr>Aliments composés</fr>
+		</text>
+	</l10n>
+</mapconfig>

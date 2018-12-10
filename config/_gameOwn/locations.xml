@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="onMap">
+			<cz>Terén</cz>
+			<en>Landscape</en>
+			<de>Landschaft</de>
+			<fr>Campagne</fr>
+		</text>
+		<text name="outOfMap">
+			<cz>Mimo mapu</cz>
+			<en>Out of map</en>
+			<de>Außerhalb der Karte</de>
+			<fr>En dehors de la carte</fr>
+		</text>
+		<text name="Animals_cow">
+			<cz>Krávy</cz>
+			<en>Cows</en>
+			<de>Kuhstall</de>
+			<fr>Vaches</fr>
+		</text>
+		<text name="Animals_sheep">
+			<cz>Ovce</cz>
+			<en>Sheep</en>
+			<de>Schafstall</de>
+			<fr>Moutons</fr>
+		</text>
+		<text name="Animals_pig">
+			<cz>Prasata</cz>
+			<en>Pig</en>
+			<de>Schweinestall</de>
+			<fr>Cochons</fr>
+		</text>
+	</l10n>
+</mapconfig>

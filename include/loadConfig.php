@@ -42,10 +42,9 @@ $stylesDir->close ();
 // Load server configuration - start install if it does not exists
 $configFile = './config/server.conf';
 if (file_exists ( $configFile )) {
-	$server = file ( $configFile );
-	$serverConfig = unserialize ( $server [0] );
-	list ( $dSrvIp, $dSrvPort, $dSrvCode, $savegame, $isDediServer, $mapPath ) = $serverConfig;
-	$smarty->assign ( 'isDediServer', $isDediServer );
+	$config = file ( $configFile );
+	$config = unserialize ( $config [0] );
+	$smarty->assign ( 'configType', $config['configType'] );
 } else {
 	define ( 'IN_INSTALL', true );
 	include ('./include/install.php');
@@ -53,7 +52,7 @@ if (file_exists ( $configFile )) {
 }
 
 // Load map infomations
-$map = loadMapCFGfile ( $mapPath );
+$map = loadMapCFGfile ( $config['map'] );
 $smarty->assign ( 'map', $map );
 
 // Load map config
@@ -63,7 +62,7 @@ $loadedConfig = loadXMLMapConfig ( '_gameOwn', $userLang );
 $mapconfig = $loadedConfig [0];
 $lang = $loadedConfig [1];
 // Kartenkonfiguration aus XML Dateien laden
-$loadedConfig = loadXMLMapConfig ( $mapPath, $userLang );
+$loadedConfig = loadXMLMapConfig ( $config['map'], $userLang );
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
 if (is_dir ( './config/ZZZ_additional' )) {

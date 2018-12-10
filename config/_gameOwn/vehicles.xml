@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="damconPL75">
+			<all>Damcon PL-75</all>
+		</text>
+		<text name="FST990">
+			<all>FST 990</all>
+		</text>
+		<text name="grimmeRH2460">
+			<all>RH 24-60</all>
+		</text>
+		<text name="stollToolShovel">
+			<all>Universalschaufel</all>
+		</text>
+		<text name="sampoRosenlewC6">
+			<all>Comia C5</all>
+		</text>
+		<text name="caseIH1660">
+			<all>1660 Axial-Flow</all>
+		</text>
+		<text name="newHollandTC590">
+			<all>TC5.90</all>
+		</text>
+		<text name="MF7347Activa">
+			<all>MF Activa 7347 S</all>
+		</text>
+		<text name="rsmAcros595">
+			<all>ACROS 595 Plus</all>
+		</text>
+		<text name="caseIH130Series">
+			<all>Axial-Flow 7130</all>
+		</text>
+		<text name="rsmTorum760">
+			<all>TORUM 760</all>
+		</text>
+		<text name="caseIH230Series">
+			<all>Axial-Flow 9230</all>
+		</text>
+		<text name="newHollandCR1090">
+			<all>CR10.90</all>
+		</text>
+		<text name="MF9380Delta">
+			<all>MF Delta 9380</all>
+		</text>
+		<text name="grimmeSE260">
+			<all>SE 260</all>
+		</text>
+		<text name="grimmeTectron415">
+			<all>Tectron 415</all>
+		</text>
+		<text name="grimmeRootster604">
+			<all>ROOTSTER 604</all>
+		</text>
+		<text name="holmerTerraDosT4_40">
+			<all>Terra Dos T4-40</all>
+		</text>
+		<text name="holmerTerraFelis2">
+			<all>Terra Felis 2 eco</all>
+		</text>
+		<text name="db8000">
+			<all>DB 8</all>
+		</text>
+		<text name="brantnerE8041">
+			<all>E 8041</all>
+		</text>
+		<text name="farmtechTDK1600">
+			<all>TDK 1600</all>
+		</text>
+		<text name="kroegerHKD302">
+			<all>HKD 302</all>
+		</text>
+		<text name="kroegerTKD302">
+			<all>TKD 302</all>
+		</text>
+		<text name="joskinTransSpace8000">
+			<all>Trans-SPACE 8000</all>
+		</text>
+		<text name="krampeBandit750">
+			<all>Bandit 750</all>
+		</text>
+		<text name="kroegerTAW30">
+			<all>TAW 30</all>
+		</text>
+		<text name="joskinDrakkar8600">
+			<all>DRAKKAR 8600</all>
+		</text>
+		<text name="flieglASS2101">
+			<all>ASS 298</all>
+		</text>
+		<text name="kroneTX560D">
+			<all>TX 560 D</all>
+		</text>
+		<text name="krampeSB3060">
+			<all>Bandit SB 30/60</all>
+		</text>
+		<text name="pp20">
+			<all>PP 20</all>
+		</text>
+		<text name="bergmannGTW430">
+			<all>GTW 430</all>
+		</text>
+		<text name="kvernelandAccordDL">
+			<all>Accord DL</all>
+		</text>
+		<text name="grimmeGL420">
+			<all>GL 420</all>
+		</text>
+		<text name="vaderstadRapid600s">
+			<all>Rapid A 600S</all>
+		</text>
+		<text name="lemkenSolitair12">
+			<all>Solitair 12</all>
+		</text>
+		<text name="amazoneFT1001">
+			<all>FT 1001</all>
+		</text>
+		<text name="amazoneUF1201">
+			<all>UF 1201</all>
+		</text>
+		<text name="caruelleNicolasStilla460">
+			<all>Stilla 460</all>
+		</text>
+		<text name="amazoneED3000">
+			<all>ED 3000-C</all>
+		</text>
+		<text name="gp3P1006NT">
+			<all>3P1006NT</all>
+		</text>
+		<text name="kvernelandOptimaV">
+			<all>Optima V</all>
+		</text>
+		<text name="grimmeGL860">
+			<all>GL 860 Compacta</all>
+		</text>
+		<text name="vaderstadTempoF8">
+			<all>Tempo F8</all>
+		</text>
+		<text name="horschPronto9DC">
+			<all>Pronto 9 DC</all>
+		</text>
+		<text name="horschMaestro12SW">
+			<all>Maestro 12 SW</all>
+		</text>
+		<text name="amazoneCondor15001">
+			<all>Condor 15001</all>
+		</text>
+		<text name="SP400F">
+			<all>SP.400F</all>
+		</text>
+		<text name="kvernelandExactaEL">
+			<all>Exacta EL 700</all>
+		</text>
+		<text name="F2WS4000">
+			<all>F2WS 4000</all>
+		</text>
+		<text name="K165">
+			<all>K165</all>
+		</text>
+		<text name="farmtechSuperfex800">
+			<all>Superfex 800</all>
+		</text>
+		<text name="joskinTornado3">
+			<all>Tornado 3</all>
+		</text>
+		<text name="strautmannPS3401">
+			<all>PS 3401</all>
+		</text>
+		<text name="VE8000">
+			<all>VE 8000</all>
+		</text>
+		<text name="joskinModulo">
+			<all>MODULO2</all>
+		</text>
+		<text name="zunhammer18500PE">
+			<all>SKE 18.5 PUD</all>
+		</text>
+		<text name="premiumIntegral30000">
+			<all>Premium Integral II</all>
+		</text>
+		<text name="garantFieldContainer">
+			<all>FRC</all>
+		</text>
+		<text name="garantTSA">
+			<all>TSA 30000</all>
+		</text>
+		<text name="poettingerEuroboss330T">
+			<all>EUROBOSS 330 T</all>
+		</text>
+		<text name="bergmannRepex34S">
+			<all>REPEX 34S</all>
+		</text>
+		<text name="lelyTigoLoaderWagon">
+			<all>TIGO XR 75 D</all>
+		</text>
+		<text name="strautmannTeraVitesse5201">
+			<all>Tera-Vitesse CFS 5201 DO</all>
+		</text>
+		<text name="newHollandRollBelt150">
+			<all>Roll-Belt 150</all>
+		</text>
+		<text name="newHollandBB1290">
+			<all>BigBaler 1290</all>
+		</text>
+		<text name="wheelLoaderShovel">
+			<de>Universalschaufel</de>
+		</text>
+		<text name="joskinAquaTrans7300">
+			<all>AQUATRANS 7300 S</all>
+		</text>
+		<text name="joskinBetimaxRDS7500">
+			<all>BETIMAX RDS 7500</all>
+		</text>
+		<text name="kuhnPrimor15070">
+			<all>PRIMOR 15070</all>
+		</text>
+		<text name="michielettoTrailer">
+			<all>AM19</all>
+		</text>
+		<text name="holarasMES400">
+			<all>MES 400</all>
+		</text>
+		<text name="holarasMES500">
+			<all>MES 500</all>
+		</text>
+		<text name="lizardBeltSystem">
+			<all>S-710</all>
+		</text>
+		<text name="grimmeTC8016">
+			<all>TC 80-16</all>
+		</text>
+		<text name="grimmeSL8022">
+			<all>SL 80-22 Quantum</all>
+		</text>
+		<text name="siloKingSelfLineCompact1612">
+			<all>SelfLine Compact 1612</all>
+		</text>
+		<text name="stollToolManureFork">
+			<de>Dunggabel</de>
+		</text>
+		<text name="stollToolManureGrabFork">
+			<de>Gabelzange</de>
+		</text>
+		<text name="stollToolSilageCutter">
+			<de>Silageschneidzange</de>
+		</text>
+		<text name="lizardSilageFork">
+			<de>Silagegabel</de>
+		</text>
+		<text name="telehandlerShovel">
+			<de>Universalschaufel</de>
+		</text>
+		<text name="jcbShovel">
+			<de>Universalschaufel</de>
+		</text>
+	</l10n>	
+</mapconfig>
+
+
+
+
+
+
+
+
+
