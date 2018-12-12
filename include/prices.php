@@ -87,6 +87,7 @@ foreach ( $careerItems->item as $item ) {
 		$location = cleanFileName ( $item ['filename'] );
 		// Lager, Fabriken usw. analysieren
 		if (! isset ( $mapconfig [$location] ['locationType'] )) {
+			echo("$location<br>");
 			// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
 			continue;
 		} else {

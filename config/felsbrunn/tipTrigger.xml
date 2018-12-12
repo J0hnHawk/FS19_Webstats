@@ -11,35 +11,35 @@
 	<l10n>
 		<text name="sellingStationMill02">
 			<en>sellingStationMill02</en>
-			<de>sellingStationMill02</de>
+			<de>Getreidemühle</de>
 		</text>
 		<text name="sellingStationPort02">
 			<en>sellingStationPort02</en>
-			<de>sellingStationPort02</de>
+			<de>Hafen (Nord)</de>
 		</text>
 		<text name="trainStationMill">
 			<en>trainStationMill</en>
-			<de>trainStationMill</de>
+			<de>Bahnstation Mühle</de>
 		</text>
 		<text name="sellingStationWool">
 			<en>sellingStationWool</en>
-			<de>sellingStationWool</de>
+			<de>Spinnerei</de>
 		</text>
 		<text name="sellingStationPort01">
 			<en>sellingStationPort01</en>
-			<de>sellingStationPort01</de>
+			<de>Hafen (Süd)</de>
 		</text>
 		<text name="sellingStationBales">
 			<en>sellingStationBales</en>
-			<de>sellingStationBales</de>
+			<de>Scheune</de>
 		</text>
 		<text name="grainElevatorEast">
 			<en>grainElevatorEast</en>
-			<de>grainElevatorEast</de>
+			<de>Getreidespeicher Ost</de>
 		</text>
 		<text name="sellingStationWoodChips">
 			<en>sellingStationWoodChips</en>
-			<de>sellingStationWoodChips</de>
+			<de>Sägewerk</de>
 		</text>
 	</l10n>
 </mapconfig>

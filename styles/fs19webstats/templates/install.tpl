@@ -134,13 +134,13 @@
 			<div class="form-group row">
 				<label for="ftpserver" class="col-sm-3 col-form-label">##FTPADRESS##</label>
 				<div class="col-sm-7">
-					<input type="ip" class="form-control" id="ftpserver" name="ftpserver" placeholder="0.0.0.0" value="94.250.220.122">
+					<input type="ip" class="form-control" id="ftpserver" name="ftpserver" placeholder="0.0.0.0">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="ftpport" class="col-sm-3 col-form-label">##FTPPORT##</label>
 				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftpport" name="ftpport" placeholder="21" value="51411">
+					<input type="text" class="form-control" id="ftpport" name="ftpport" placeholder="21">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -152,13 +152,21 @@
 			<div class="form-group row">
 				<label for="ftpuser" class="col-sm-3 col-form-label">##FTPUSER##</label>
 				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftpuser" name="ftpuser" value="gpftp984561261498164">
+					<input type="text" class="form-control" id="ftpuser" name="ftpuser">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="ftppass" class="col-sm-3 col-form-label">##FTPPASSWORD##</label>
 				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftppass" name="ftppass" value="yy9LteUv">
+					<input type="text" class="form-control" id="ftppass" name="ftppass">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-3 control-label">##DS_LABEL4##</label>
+				<div class="col-sm-7">
+					<select class="form-control" id="map" name="map"> {foreach $maps as $mapDir => $mapData}
+						<option value="{$mapDir}">{$mapData.Name} {$mapData.Version}</option> {/foreach}
+					</select><span id="helpBlock" class="help-block">##DS_HELP_BLOCK4##</span>
 				</div>
 			</div>
 			<div class="form-group row">
