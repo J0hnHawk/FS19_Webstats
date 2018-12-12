@@ -158,7 +158,7 @@ foreach ( $prices as $fillType => $fillTyleData ) {
 	ksort ( $prices [$fillType] ['locations'] );
 }
 $smarty->assign ( 'prices', $prices );
-$smarty->assign ( 'commodities', $commodities );
+$smarty->assign ( 'commodities', array()/*$commodities */);
 ksort ( $sellingPoints );
 $smarty->assign ( 'sellingPoints', $sellingPoints );
 function getPrice($amplitude0, $amplitude1, $period0, $period1, $time0, $time1, $nominalAmplitude1) {
