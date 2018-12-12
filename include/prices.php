@@ -21,14 +21,39 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-$careerEnvironment = simplexml_load_file ( $config ['path'] . 'environment.xml' );
+$xmlFiles = array (
+		'economy.xml',
+		'environment.xml',
+		'items.xml' 
+);
+foreach ( $xmlFiles as $xmlFile ) {
+	$fp = fopen ( "./cache/$xmlFile", "w" );
+	$url = "ftp://" . $config ['user'] . ":" . $config ['pass'] . "@" . $config ['server'] . ":" . $config ['port'] . $config ['path'] . $xmlFile;
+	$handle = curl_init ();
+	curl_setopt ( $handle, CURLOPT_URL, $url );
+	curl_setopt ( $handle, CURLOPT_RETURNTRANSFER, 0 );
+	curl_setopt ( $handle, CURLOPT_UPLOAD, 0 );
+	curl_setopt ( $handle, CURLOPT_FILE, $fp );
+	$result = curl_exec ( $handle );
+	if ($result) {
+	} else {
+		echo "Übertragung fehlgeschlagen";
+	}
+	curl_close ( $handle );
+}
+// $careerEconomy = simplexml_load_file ( $config ['path'] . 'economy.xml' );
+// $careerEnvironment = simplexml_load_file ( $config ['path'] . 'environment.xml' );
+// $careerItems = simplexml_load_file ( $config ['path'] . 'items.xml' );
+$careerEconomy = simplexml_load_file ( './cache/economy.xml' );
+$careerEnvironment = simplexml_load_file ( './cache/environment.xml' );
+$careerItems = simplexml_load_file ( './cache/items.xml' );
+
 $currentDay = $careerEnvironment->currentDay;
 $dayTime = $careerEnvironment->dayTime * 60;
 $dayTime = gmdate ( "H:i", $dayTime );
 $smarty->assign ( 'currentDay', intval ( $currentDay ) );
 $smarty->assign ( 'dayTime', $dayTime );
 
-$careerEconomy = simplexml_load_file ( $config ['path'] . 'economy.xml' );
 $demandIsRunning = false;
 foreach ( $careerEconomy->greatDemands->greatDemand as $greatDemand ) {
 	$stationName = strval ( $greatDemand ['stationName'] );
@@ -56,7 +81,6 @@ foreach ( $careerEconomy->greatDemands->greatDemand as $greatDemand ) {
 		);
 	}
 }
-$careerItems = simplexml_load_file ( $config ['path'] . 'items.xml' );
 foreach ( $careerItems->item as $item ) {
 	$className = strval ( $item ['className'] );
 	if ($className == 'SellingStationPlaceable') {

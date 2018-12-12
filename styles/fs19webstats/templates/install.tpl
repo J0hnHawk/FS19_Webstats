@@ -129,6 +129,50 @@
 	{else if $mode=='ftp'}
 	<div class="container">
 		<h2>##INSTALL_TITLE## ##HEAD_FTP##</h2>
+		<form class="form-horizontal" action="index.php?mode={$mode}" method="post">
+			{if $error}{$error}{/if}
+			<div class="form-group row">
+				<label for="ftpserver" class="col-sm-3 col-form-label">##FTPADRESS##</label>
+				<div class="col-sm-7">
+					<input type="ip" class="form-control" id="ftpserver" name="ftpserver" placeholder="0.0.0.0" value="94.250.220.122">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="ftpport" class="col-sm-3 col-form-label">##FTPPORT##</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="ftpport" name="ftpport" placeholder="21" value="51411">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="ftppath" class="col-sm-3 col-form-label">##FTPPATH##</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="ftppath" name="ftppath" placeholder="/folder/subfolder/" value="/profile/savegame1/">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="ftpuser" class="col-sm-3 col-form-label">##FTPUSER##</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="ftpuser" name="ftpuser" value="gpftp984561261498164">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="ftppass" class="col-sm-3 col-form-label">##FTPPASSWORD##</label>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="ftppass" name="ftppass" value="yy9LteUv">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="password" class="col-sm-3 control-label">##DS_LABEL5##</label>
+				<div class="col-sm-7 form-inline">
+					<input type="password" name="adminpass1" class="form-control" id="password" placeholder="##DS_PLACEHOLDE5##">&nbsp;<input type="password" name="adminpass2" class="form-control" id="password" placeholder="##DS_PLACEHOLDE6##"> <span id="helpBlock" class="help-block">##DS_HELP_BLOCK5##</span>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-offset-7 col-sm-3">
+					<button type="submit" name="submit" value="gameSettings" class="pull-right btn btn-primary btn-block">##SAVE_CONFIG##</button>
+				</div>
+			</div>
+		</form>
 	</div>
 	{else if $mode=='local'}
 	<div class="container">

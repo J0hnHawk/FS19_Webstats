@@ -67,7 +67,31 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 				}
 				break;
 			case 'ftp' :
-				//http://php.net/manual/de/book.ftp.php
+				/*
+				 * FTP does not work properly on G-Portal Server! 
+				 * It is possible to connect, login an check if a folder exists. 
+				 * But I had no luck to get the directory list or to download a file.
+				 */
+				$config += array (
+						'configType' => 'ftp',
+						'server' => GetParam ( 'ftpserver', 'P' ),
+						'port' => intval ( GetParam ( 'ftpport', 'P' ) ),
+						'path' => GetParam ( 'ftppath', 'P' ),
+						'user' => GetParam ( 'ftpuser', 'P' ),
+						'pass' => GetParam ( 'ftppass', 'P' ) 
+				);
+				$ftp_conn = ftp_connect ( $config ['server'], $config ['port'], 10 );
+				if ($ftp_conn) {
+					if (@ftp_login ( $ftp_conn, $config ['user'], $config ['pass'] )) {
+						if (! ftp_directory_exists ( $ftp_conn, $config ['path'] )) {
+							$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_FTPPATH##</div>';
+						}
+					} else {
+						$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_FTPUSERPASS##</div>';
+					}
+				} else {
+					$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_FTPSERVER##</div>';
+				}
 				break;
 			case 'local' :
 				$config += array (
@@ -126,3 +150,16 @@ function checkConnectionAPI($serverIp, $serverPort, $serverCode) {
 	}
 	return false;
 }
+function ftp_directory_exists($ftp, $dir) {
+	// Function by swiftyexpress http://php.net/manual/de/function.ftp-chdir.php#87256
+	// Get the current working directory
+	$origin = ftp_pwd ( $ftp );
+	// Attempt to change directory, suppress errors
+	if (@ftp_chdir ( $ftp, $dir )) {
+		// If the directory exists, set back to origin
+		ftp_chdir ( $ftp, $origin );
+		return true;
+	}
+	// Directory does not exist
+	return false;
+} 
