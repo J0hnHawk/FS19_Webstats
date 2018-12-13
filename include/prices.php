@@ -21,38 +21,16 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-$xmlFiles = array (
-		'economy.xml',
-		'environment.xml',
-		'items.xml' 
-);
-foreach ( $xmlFiles as $xmlFile ) {
-	$fp = fopen ( "./cache/$xmlFile", "w" );
-	$url = "ftp://" . $config ['user'] . ":" . $config ['pass'] . "@" . $config ['server'] . ":" . $config ['port'] . $config ['path'] . $xmlFile;
-	$handle = curl_init ();
-	curl_setopt ( $handle, CURLOPT_URL, $url );
-	curl_setopt ( $handle, CURLOPT_RETURNTRANSFER, 0 );
-	curl_setopt ( $handle, CURLOPT_UPLOAD, 0 );
-	curl_setopt ( $handle, CURLOPT_FILE, $fp );
-	$result = curl_exec ( $handle );
-	if ($result) {
-	} else {
-		echo "Übertragung fehlgeschlagen";
-	}
-	curl_close ( $handle );
-}
-// $careerEconomy = simplexml_load_file ( $config ['path'] . 'economy.xml' );
-// $careerEnvironment = simplexml_load_file ( $config ['path'] . 'environment.xml' );
-// $careerItems = simplexml_load_file ( $config ['path'] . 'items.xml' );
+include ('./include/Savegame.class.php');
+$savegame = new Savegame ( $config );
+
 $careerEconomy = simplexml_load_file ( './cache/economy.xml' );
 $careerEnvironment = simplexml_load_file ( './cache/environment.xml' );
 $careerItems = simplexml_load_file ( './cache/items.xml' );
 
-$currentDay = $careerEnvironment->currentDay;
-$dayTime = $careerEnvironment->dayTime * 60;
-$dayTime = gmdate ( "H:i", $dayTime );
-$smarty->assign ( 'currentDay', intval ( $currentDay ) );
-$smarty->assign ( 'dayTime', $dayTime );
+// $smarty->assign ( 'currentDay', intval ( $currentDay ) );
+$smarty->assign ( 'currentDay', $savegame->currentDay () );
+$smarty->assign ( 'dayTime', $savegame->dayTime () );
 
 $demandIsRunning = false;
 foreach ( $careerEconomy->greatDemands->greatDemand as $greatDemand ) {
@@ -87,7 +65,7 @@ foreach ( $careerItems->item as $item ) {
 		$location = cleanFileName ( $item ['filename'] );
 		// Lager, Fabriken usw. analysieren
 		if (! isset ( $mapconfig [$location] ['locationType'] )) {
-			echo("$location<br>");
+			echo ("$location<br>");
 			// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
 			continue;
 		} else {
@@ -158,7 +136,7 @@ foreach ( $prices as $fillType => $fillTyleData ) {
 	ksort ( $prices [$fillType] ['locations'] );
 }
 $smarty->assign ( 'prices', $prices );
-$smarty->assign ( 'commodities', array()/*$commodities */);
+$smarty->assign ( 'commodities', array ()/*$commodities */);
 ksort ( $sellingPoints );
 $smarty->assign ( 'sellingPoints', $sellingPoints );
 function getPrice($amplitude0, $amplitude1, $period0, $period1, $time0, $time1, $nominalAmplitude1) {

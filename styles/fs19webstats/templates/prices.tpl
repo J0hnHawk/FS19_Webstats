@@ -1,8 +1,4 @@
-<div class="page-header">
-	<h3>
-		##PRICES##<small> (##SAVETIME##: ##DAY## {$currentDay}, {$dayTime})</small><small class="pull-right"><a href="#" data-toggle="modal" data-target="#optionsDialog"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> ##SETTINGS##</a></small>
-	</h3>
-</div>
+<h3 class="mt-3">##PRICES1000##</h3>
 {$mode = GetParam('umode','G',0)} {if $mode == 1}
 <!-- Alternative ingame like price overview. Looks not good. -->
 <div class="row">
@@ -82,7 +78,7 @@
 		var rows = parseInt(($( window ).height() - 370) / 30)
 		$(document).ready(function() {
 		    var table = $('#bestPrices').DataTable( {
-		    	"pageLength": rows,
+		    	"pageLength": 20,
 		    	stateSave: true,
 		    	"dom":	"<'row'<'col-sm-6'><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",		
 		    	"language": {

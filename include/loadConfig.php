@@ -44,7 +44,7 @@ $configFile = './config/server.conf';
 if (file_exists ( $configFile )) {
 	$config = file ( $configFile );
 	$config = unserialize ( $config [0] );
-	$smarty->assign ( 'configType', $config['configType'] );
+	$smarty->assign ( 'configType', $config['type'] );
 } else {
 	define ( 'IN_INSTALL', true );
 	include ('./include/install.php');

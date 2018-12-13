@@ -214,6 +214,7 @@ NEXT_ANIMAL=Nächstes Tier in
 CLEANNESS=Sauberkeit
 
 //prices.tpl
+PRICES1000=Preise / 1000 L
 MIN_PRICE=niedrigster Verkaufspreis
 MAX_PRICE=maximaler Verkaufspreis
 BEST_PRICE=bester Verkaufspreis

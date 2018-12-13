@@ -36,7 +36,7 @@
 					<li class="nav-item"><a class="nav-link" href="#">Farm</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Statistik</a></li>
 				</ul>
-				<span class="navbar-text text-right">Uhrzeit | Kontostand</span>
+				<span class="navbar-text text-right font-weight-bold">##DAY## {$currentDay}, {$dayTime} | Kontostand</span>
 			</div>
 		</nav>
 	</header>

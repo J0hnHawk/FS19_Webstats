@@ -46,7 +46,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 		switch ($mode) {
 			case 'api' :
 				$config += array (
-						'configType' => 'api',
+						'type' => 'api',
 						'serverIp' => GetParam ( 'serverip', 'P' ),
 						'serverPort' => intval ( GetParam ( 'serverport', 'P' ) ),
 						'serverCode' => GetParam ( 'servercode', 'P', '' ) 
@@ -73,7 +73,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 				 * But I had no luck to get the directory list or to download a file.
 				 */
 				$config += array (
-						'configType' => 'ftp',
+						'type' => 'ftp',
 						'server' => GetParam ( 'ftpserver', 'P' ),
 						'port' => intval ( GetParam ( 'ftpport', 'P' ) ),
 						'path' => GetParam ( 'ftppath', 'P' ),
@@ -95,7 +95,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 				break;
 			case 'local' :
 				$config += array (
-						'configType' => 'local',
+						'type' => 'local',
 						'path' => GetParam ( 'savepath', 'P', '' ) . DIRECTORY_SEPARATOR 
 				);
 				if (! file_exists ( $config ['path'] . 'careerSavegame.xml' )) {
