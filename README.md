@@ -1,6 +1,8 @@
 # FS19 Web Stats
 
-### EARLY ALPHA VERSION - NOT WORKING. 
+### EARLY ALPHA VERSION - ONLY PARTIAL WORKING. 
+
+#### Also with patch 1.2.0.1 the Farming Simulator Web API has not been extended yet. The only way to get all required data from the dedicated server is FTP access. 
 
 When it is finished, FS19 Web Stats should display a production and stock overview for the Farming Simulator 19 dedicated servers.
 
