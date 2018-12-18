@@ -30,12 +30,13 @@ if (isset ( $_COOKIE ['fs19webstats'] )) {
 		$options = array ();
 	}
 }
-
 if (! isset ( $options ['general'] )) {
+	$options ['version'] = $cookieVersion;
 	$options ['general'] ['reload'] = true;
 	$options ['general'] ['language'] = $defaultLanguage;
 	$options ['general'] ['style'] = $defaultStyle;
 	$options ['general'] ['hideFooter'] = 0;
+	$options ['general'] ['farmId'] = 0;
 }
 
 if (! isset ( $options ['storage'] )) {
@@ -52,12 +53,12 @@ if (! isset ( $options ['production'] )) {
 	$options ['production'] ['sortFullProducts'] = true;
 	$options ['production'] ['showTooltip'] = false;
 	$options ['production'] ['hideNotUsed'] = false;
-	$options ['production'] ['hidePlant'] = array();
+	$options ['production'] ['hidePlant'] = array ();
 }
 
 if (! isset ( $options ['defaultView'] )) {
 	$options ['defaultView'] ['factories'] = false;
 	$options ['defaultView'] ['commodities'] = false;
 }
-
+// setcookie ( 'fs19webstats', json_encode ( $options ), time () + 31536000 );
 $_SESSION ['language'] = $options ['general'] ['language'];

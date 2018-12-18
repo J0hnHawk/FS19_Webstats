@@ -21,66 +21,26 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-include ('./include/Savegame.class.php');
-$savegame = new Savegame ( $config );
+$careerItems = $savegame->xml ['items'];
 
-$careerEconomy = simplexml_load_file ( './cache/economy.xml' );
-$careerEnvironment = simplexml_load_file ( './cache/environment.xml' );
-$careerItems = simplexml_load_file ( './cache/items.xml' );
-
-// $smarty->assign ( 'currentDay', intval ( $currentDay ) );
-$smarty->assign ( 'currentDay', $savegame->currentDay () );
-$smarty->assign ( 'dayTime', $savegame->dayTime () );
-
-$demandIsRunning = false;
-foreach ( $careerEconomy->greatDemands->greatDemand as $greatDemand ) {
-	$stationName = strval ( $greatDemand ['stationName'] );
-	$fillTypeName = strval ( $greatDemand ['fillTypeName'] );
-	$demandMultiplier = floatval ( $greatDemand ['demandMultiplier'] );
-	$isRunning = get_bool ( $greatDemand ['isRunning'] );
-	$demandIsRunning = $demandIsRunning || $isRunning;
-	$l_fillType = translate ( $fillTypeName );
-	if (isset ( $greatDemands [$l_fillType] )) {
-		$greatDemands [$l_fillType] ['locations'] += array (
-				$stationName => array (
-						'demandMultiplier' => $demandMultiplier,
-						'isRunning' => $isRunning 
-				) 
-		);
-	} else {
-		$greatDemands [$l_fillType] = array (
-				'i3dName' => $fillTypeName,
-				'locations' => array (
-						$stationName => array (
-								'demandMultiplier' => $demandMultiplier,
-								'isRunning' => $isRunning 
-						) 
-				) 
-		);
-	}
-}
 foreach ( $careerItems->item as $item ) {
-	$className = strval ( $item ['className'] );
-	if ($className == 'SellingStationPlaceable') {
-		$location = cleanFileName ( $item ['filename'] );
-		// Lager, Fabriken usw. analysieren
-		if (! isset ( $mapconfig [$location] ['locationType'] )) {
-			echo ("$location<br>");
-			// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
-			continue;
-		} else {
-			if (isset ( $mapconfig [$location] ['isSellingPoint'] ) && $mapconfig [$location] ['isSellingPoint']) {
-				$l_location = translate ( $location );
-				$sellingPoints [$l_location] = $location;
-				if ($mapconfig [$location] ['locationType'] == 'bga') {
-					/*
-					 * BGA not yet analyzed
-					 * $foreach = $object->tipTrigger->stats;
-					 */
-				} else {
-					$foreach = $item->sellingStation->stats;
-				}
-				foreach ( $foreach as $triggerStats ) {
+	$location = cleanFileName ( $item ['filename'] );
+	$stationId = intval ( $item ['id'] );
+	// Lager, Fabriken usw. analysieren
+	if (! isset ( $mapconfig [$location] ['locationType'] )) {
+		// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
+		continue;
+	} else {
+		if (isset ( $mapconfig [$location] ['isSellingPoint'] ) && $mapconfig [$location] ['isSellingPoint']) {
+			$l_location = translate ( $location );
+			$sellingPoints [$l_location] = $location;
+			if ($mapconfig [$location] ['locationType'] == 'bga') {
+				/*
+				 * BGA not yet analyzed
+				 * $foreach = $object->tipTrigger->stats;
+				 */
+			} else {
+				foreach ( $item->sellingStation->stats as $triggerStats ) {
 					$fillType = strval ( $triggerStats ['fillType'] );
 					$isInPlateau = get_bool ( $triggerStats ['isInPlateau'] );
 					$l_fillType = translate ( $fillType );
@@ -101,9 +61,9 @@ foreach ( $careerItems->item as $item ) {
 						$priceTrend = 0;
 					}
 					$greatDemand = 1;
-					if (isset ( $greatDemands [$l_fillType] ['locations'] [$l_location] )) {
-						if ($greatDemands [$l_fillType] ['locations'] [$l_location] ['isRunning']) {
-							$greatDemand = $greatDemands [$l_fillType] ['locations'] [$l_location] ['demandMultiplier'];
+					if (isset ( $savegame->greatDemands [$l_fillType] ['locations'] [$stationId] )) {
+						if ($savegame->greatDemands [$l_fillType] ['locations'] [$stationId] ['isRunning']) {
+							$greatDemand = $savegame->greatDemands [$l_fillType] ['locations'] [$stationId] ['demandMultiplier'];
 						}
 					}
 					$prices [$l_fillType] ['locations'] [$l_location] = array (
@@ -135,6 +95,8 @@ ksort ( $prices );
 foreach ( $prices as $fillType => $fillTyleData ) {
 	ksort ( $prices [$fillType] ['locations'] );
 }
+
+$smarty->assign ( 'options', $options ['general'] );
 $smarty->assign ( 'prices', $prices );
 $smarty->assign ( 'commodities', array ()/*$commodities */);
 ksort ( $sellingPoints );

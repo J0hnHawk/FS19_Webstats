@@ -35,7 +35,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 		$_SESSION ['language'] = $options ['general'] ['language'] = GetParam ( 'language' );
 		setcookie ( 'fs19webstats', json_encode ( $options ), time () + 31536000 );
 	} elseif ($submit == 'style') {
-		$style = $options ['general'] ['style'] = GetParam ( 'style', 'P', 'fs17' );
+		$style = $options ['general'] ['style'] = GetParam ( 'style', 'P', 'fs19webstats' );
 		setcookie ( 'fs19webstats', json_encode ( $options ), time () + 31536000 );
 	} elseif ($submit == 'gameSettings') {
 		$config = array (

@@ -95,6 +95,7 @@ STORAGE=Lager
 PRODUCTION=Produktion
 FACTORY=Fabriken
 INFO=Info
+FARM=Hof
 
 //overview.tpl
 VERSION=Version
@@ -256,3 +257,13 @@ TOTAL=Gesamt
 BALANCE1=Kontostand
 LOAN=Kredit
 BALANCE2=Saldo
+
+//missions.tpl
+MISSIONS=Verträge
+TYPE=Art
+REWARD=Belohnung
+FIELD=Feld
+MIS_HARVEST=Ernten
+MIS_FERTILIZE=Düngen
+MIS_TRANSPORT=Transport
+MIS_SOW=Säen

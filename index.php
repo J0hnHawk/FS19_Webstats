@@ -46,32 +46,101 @@ $smarty->assign ( 'webStatsVersion', '2.0.0-0001 (29.11.2018)' );
 
 include ('./include/loadConfig.php');
 $smarty->assign ( 'onlineUser', sizeof ( $onlineUser ) );
-$smarty->assign ('hideFooter',$options ['general'] ['hideFooter']);
+$smarty->assign ( 'hideFooter', $options ['general'] ['hideFooter'] );
 
-//require ('./include/savegame.php');
+include ('./include/Savegame.class.php');
+$savegame = new Savegame ( $config );
+$smarty->assign ( 'currentDay', $savegame->currentDay () );
+$smarty->assign ( 'dayTime', $savegame->dayTime () );
+
+// require ('./include/savegame.php');
 $serverOnline = true;
 
-// Allowed/existing pages
-$pages = array (
-		'overview',
-		'husbandry',
-		'storage',
-		'production',
-		'commodity',
-		'options',
-		'lizenz',
-		'finances',
-		'prices',
-		'factories'
+// Existing pages and nav items
+$showInNav = ($options ['general'] ['farmId'] > 0) ? true : false;
+$navItems = array (
+		'overview' => array (
+				'showInNav' => true,
+				'active' => false,
+				'text' => '##OVERVIEW##' 
+		),
+		'storage' => array (
+				'showInNav' => $showInNav,
+				'active' => false,
+				'text' => '##STORAGE##' 
+		),
+		'prices' => array (
+				'showInNav' => true,
+				'active' => false,
+				'text' => '##PRICES##' 
+		),
+		'vehicles' => array (
+				'showInNav' => $showInNav,
+				'active' => false,
+				'text' => '##VEHICLES##' 
+		),
+		'finances' => array (
+				'showInNav' => $showInNav,
+				'active' => false,
+				'text' => '##FINANCES##' 
+		),
+		'husbandry' => array (
+				'showInNav' => $showInNav,
+				'active' => false,
+				'text' => '##HUSBANDRY##' 
+		),
+		'missions' => array (
+				'showInNav' => true,
+				'active' => false,
+				'text' => '##MISSIONS##' 
+		),
+		'farm' => array (
+				'showInNav' => true,
+				'active' => false,
+				'text' => '##FARM##' 
+		),
+		'statistics' => array (
+				'showInNav' => $showInNav,
+				'active' => false,
+				'text' => '##STATISTICS##' 
+		),
+		'production' => array (
+				'showInNav' => false,
+				'active' => false,
+				'text' => '##PRODUCTION##' 
+		),
+		'commodity' => array (
+				'showInNav' => false,
+				'active' => false,
+				'text' => '##COMMODITY##' 
+		),
+		'options' => array (
+				'showInNav' => false,
+				'active' => false,
+				'text' => '##OPTIONS##' 
+		),
+		'lizenz' => array (
+				'showInNav' => false,
+				'active' => false,
+				'text' => '##LIZENZ##' 
+		),
+		'factories' => array (
+				'showInNav' => false,
+				'active' => false,
+				'text' => '##FACTORIES##' 
+		) 
 );
 $page = GetParam ( 'page', 'G' );
-if (! in_array ( $page, $pages )) {
+if (! isset ( $navItems [$page] )) {
+	
 	$page = 'prices';
 }
+$navItems [$page] ['active'] = true;
 $smarty->assign ( 'page', $page );
 if ($serverOnline) {
 	include ("./include/$page.php");
 }
+$smarty->assign ( 'navItems', $navItems );
 $smarty->assign ( 'reloadPage', $options ['general'] ['reload'] );
 $smarty->assign ( 'serverOnline', $serverOnline );
 $smarty->setTemplateDir ( "./styles/$style/templates" );

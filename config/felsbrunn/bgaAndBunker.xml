@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<item name="bga" locationType="bga" ProdPerHour="1000" position="-80 0 -494" showInProduction="true" isSellingPoint="true">
+		<input name="silage" capacity="50000" factor="360" fillTypes="bunkerFillLevel" showInStorage="false" />
+		<input name="liquidManure" capacity="&#8734;" factor="180" fillTypes="liquidManureFillLevel" showInStorage="false" />
+		<output name="digestate" capacity="800000" factor="87" fillTypes="digestateSiloFillLevel" showInStorage="true" />
+	</item>
+	<item name="BunkerSilo_silo001" locationType="bunker" position="-45 0 -548" />
+	<item name="BunkerSilo_silo002" locationType="bunker" position="-35 0 -548" />
+	<item name="BunkerSilo_silo003" locationType="bunker" position="-25 0 -548" />
+	<item name="BunkerSilo_silo004" locationType="bunker" position="-55 0 -548" />
+	<item name="BunkerSilo_silo005" locationType="bunker" position="-65 0 -548" />
+</mapconfig>
