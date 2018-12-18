@@ -267,3 +267,6 @@ MIS_HARVEST=Ernten
 MIS_FERTILIZE=Düngen
 MIS_TRANSPORT=Transport
 MIS_SOW=Säen
+MIS_WEED=Unkraut bekämpfen
+MIS_PLOW=Pflügen
+MIS_MOW_BALE=Ballen pressen
