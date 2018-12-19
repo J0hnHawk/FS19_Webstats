@@ -21,21 +21,5 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-if (isset ( $_GET ['join_farm'] )) {
-	$farmId = GetParam ( 'join_farm', 'G' );
-	if (isset ( $savegame->farms [$farmId] )) {
-		$options ['general'] ['farmId'] = $farmId;
-		setcookie ( 'fs19webstats', json_encode ( $options ), time () + 31536000 );
-		$nav->updateItems ( true );
-	}
-}
-if (isset ( $_GET ['leave_farm'] )) {
-	$farmId = GetParam ( 'leave_farm', 'G' );
-	if (isset ( $savegame->farms [$farmId] )) {
-		$options ['general'] ['farmId'] = 0;
-		setcookie ( 'fs19webstats', json_encode ( $options ), time () + 31536000 );
-		$nav->updateItems ( false );
-	}
-}
-$smarty->assign ( 'selectedFarm', $options ['general'] ['farmId'] );
-$smarty->assign ( 'farms', $savegame->farms );
+
+$smarty->assign ( 'vehicles', $savegame->vehicles );

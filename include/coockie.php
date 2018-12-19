@@ -62,3 +62,4 @@ if (! isset ( $options ['defaultView'] )) {
 }
 // setcookie ( 'fs19webstats', json_encode ( $options ), time () + 31536000 );
 $_SESSION ['language'] = $options ['general'] ['language'];
+$_SESSION ['farmId'] = $options ['general'] ['farmId'];

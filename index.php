@@ -34,6 +34,7 @@ $defaultStyle = 'fs19webstats';
 require ('./include/smarty/Smarty.class.php');
 require ('./include/language.php');
 require ('./include/functions.php');
+require ('./include/NavItems.class.php');
 
 // Load cookie with user settings
 include ('./include/coockie.php');
@@ -49,98 +50,27 @@ $smarty->assign ( 'onlineUser', sizeof ( $onlineUser ) );
 $smarty->assign ( 'hideFooter', $options ['general'] ['hideFooter'] );
 
 include ('./include/Savegame.class.php');
-$savegame = new Savegame ( $config );
-$smarty->assign ( 'currentDay', $savegame->currentDay () );
-$smarty->assign ( 'dayTime', $savegame->dayTime () );
+$savegame = new Savegame ( $config, $_SESSION ['farmId'] );
+$smarty->assign ( 'currentDay', $savegame->getCurrentDay () );
+$smarty->assign ( 'dayTime', $savegame->getDayTime () );
+$smarty->assign ( 'money', $savegame->getFarmMoney ( $_SESSION ['farmId'] ) );
 
 // require ('./include/savegame.php');
 $serverOnline = true;
 
 // Existing pages and nav items
-$showInNav = ($options ['general'] ['farmId'] > 0) ? true : false;
-$navItems = array (
-		'overview' => array (
-				'showInNav' => true,
-				'active' => false,
-				'text' => '##OVERVIEW##' 
-		),
-		'storage' => array (
-				'showInNav' => $showInNav,
-				'active' => false,
-				'text' => '##STORAGE##' 
-		),
-		'prices' => array (
-				'showInNav' => true,
-				'active' => false,
-				'text' => '##PRICES##' 
-		),
-		'vehicles' => array (
-				'showInNav' => $showInNav,
-				'active' => false,
-				'text' => '##VEHICLES##' 
-		),
-		'finances' => array (
-				'showInNav' => $showInNav,
-				'active' => false,
-				'text' => '##FINANCES##' 
-		),
-		'husbandry' => array (
-				'showInNav' => $showInNav,
-				'active' => false,
-				'text' => '##HUSBANDRY##' 
-		),
-		'missions' => array (
-				'showInNav' => true,
-				'active' => false,
-				'text' => '##MISSIONS##' 
-		),
-		'farm' => array (
-				'showInNav' => true,
-				'active' => false,
-				'text' => '##FARM##' 
-		),
-		'statistics' => array (
-				'showInNav' => $showInNav,
-				'active' => false,
-				'text' => '##STATISTICS##' 
-		),
-		'production' => array (
-				'showInNav' => false,
-				'active' => false,
-				'text' => '##PRODUCTION##' 
-		),
-		'commodity' => array (
-				'showInNav' => false,
-				'active' => false,
-				'text' => '##COMMODITY##' 
-		),
-		'options' => array (
-				'showInNav' => false,
-				'active' => false,
-				'text' => '##OPTIONS##' 
-		),
-		'lizenz' => array (
-				'showInNav' => false,
-				'active' => false,
-				'text' => '##LIZENZ##' 
-		),
-		'factories' => array (
-				'showInNav' => false,
-				'active' => false,
-				'text' => '##FACTORIES##' 
-		) 
-);
+$showInNav = ($_SESSION ['farmId'] > 0) ? true : false;
+$nav = new Nav ( $showInNav );
 $page = GetParam ( 'page', 'G' );
-if (! isset ( $navItems [$page] )) {
-	
+if (! isset ( $nav->items [$page] )) {
 	$page = 'prices';
 }
-$navItems [$page] ['active'] = true;
+$nav->setActiveItem ( $page );
 $smarty->assign ( 'page', $page );
 if ($serverOnline) {
 	include ("./include/$page.php");
 }
-$smarty->assign ( 'navItems', $navItems );
+$smarty->assign ( 'navItems', $nav->items );
 $smarty->assign ( 'reloadPage', $options ['general'] ['reload'] );
 $smarty->assign ( 'serverOnline', $serverOnline );
 $smarty->setTemplateDir ( "./styles/$style/templates" );

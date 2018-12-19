@@ -96,6 +96,7 @@ PRODUCTION=Produktion
 FACTORY=Fabriken
 INFO=Info
 FARM=Hof
+VEHICLES=Fahrzeuge
 
 //overview.tpl
 VERSION=Version
@@ -270,3 +271,20 @@ MIS_SOW=Säen
 MIS_WEED=Unkraut bekämpfen
 MIS_PLOW=Pflügen
 MIS_MOW_BALE=Ballen pressen
+
+//farm.tpl
+FARMMANAGER=Farm-Manager
+CONTRACTS=Lohnunternehmer
+WORKSFOR=arbeitet für
+HASWORKSFOR=beschäftigt
+JOIN_FARM=Hof beitreten
+LEAVE_FARM=Hof verlassen
+
+//vehicles.tpl
+H3VEHICLES=Fahrzeugübersicht
+VNAME=Fahrzeug
+VAGE=Alter
+VOTIME=Betriebsstunden
+VPRICE=Kaufpreis
+VWEAR=Zustand
+VPSTATE=Eigentum

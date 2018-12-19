@@ -25,6 +25,7 @@ class Savegame {
 	public $demandIsRunning = false;
 	public $greatDemands = array ();
 	public $missions = array ();
+	public $vehicles = array ();
 	public $farms = array ();
 	public $xml = array ();
 	protected $xmlFiles = array (
@@ -32,14 +33,17 @@ class Savegame {
 			'economy.xml',
 			'farms.xml',
 			'items.xml',
-			'missions.xml' 
+			'missions.xml',
+			'vehicles.xml' 
 	);
+	private $farmId;
 	private $ftpURL = '';
 	private $cache = './cache/';
-	public function __construct($config) {
+	public function __construct($config, $farmId = 0) {
 		if (! file_exists ( $this->cache )) {
 			mkdir ( $this->cache );
 		}
+		$this->farmId = $farmId;
 		switch ($config ['type']) {
 			case 'ftp' :
 				$this->ftpURL = "ftp://" . $config ['user'] . ":" . $config ['pass'] . "@" . $config ['server'] . ":" . $config ['port'] . $config ['path'];
@@ -67,22 +71,53 @@ class Savegame {
 				break;
 			case 'local' :
 				$this->cache = $config ['path'];
+				
 				break;
 			case 'api' :
 				break;
 		}
 		self::loadInitialData ();
 	}
-	public function currentDay() {
+	public function getCurrentDay() {
 		return intval ( $this->xml ['environment']->currentDay );
 	}
-	public function dayTime() {
-		return gmdate ( "H:i", intval ( $this->xml ['environment']->dayTime * 60 ) );
+	public function getDayTime() {
+		return gmdate ( "H:i", floatval ( $this->xml ['environment']->dayTime ) * 60 );
+	}
+	public function getFarmMoney($farmId) {
+		if (isset ( $this->farms [$farmId] )) {
+			return $this->farms [$farmId] ['money'];
+		} else {
+			return false;
+		}
 	}
 	private function loadInitialData() {
 		self::loadFarms ();
 		self::loadMissions ();
 		self::loadGreatDemands ();
+		self::loadVehicles ();
+	}
+	private function loadVehicles() {
+		foreach ( $this->xml ['vehicles'] as $vehicle ) {
+			if ($vehicle ['farmId'] != $this->farmId) {
+				continue;
+			}
+			$vehicleId = intval ( $vehicle ['id'] );
+			if (isset ( $vehicle->wearable )) {
+				$wearnode = (1 - floatval ( $vehicle->wearable->wearNode ['amount'] )) * 100;
+			}
+			$operatingTime = floatval ( $vehicle ['operatingTime'] );
+			$opHours = (gmdate ( "j", $operatingTime ) - 1) * 24 + gmdate ( "H", $operatingTime );
+			$opMinutes = gmdate ( "i", $operatingTime );
+			$this->vehicles [$vehicleId] = array (
+					'name' => cleanFileName ( $vehicle ['filename'] ),
+					'age' => intval ( $vehicle ['age'] ),
+					'wear' => $wearnode,
+					'price' => intval ( $vehicle ['price'] ),
+					'propertyState' => intval ( $vehicle ['propertyState'] ),
+					'operatingTime' => "$opHours:$opMinutes" 
+			);
+		}
 	}
 	private function loadFarms() {
 		foreach ( $this->xml ['farms'] as $farm ) {
@@ -92,15 +127,27 @@ class Savegame {
 					'color' => intval ( $farm ['color'] ),
 					'loan' => intval ( $farm ['loan'] ),
 					'money' => floatval ( $farm ['money'] ),
-					'players' => array () 
+					'players' => array (),
+					'contractFrom' => array (),
+					'contractWith' => array () 
 			);
 			if (isset ( $farm->players )) {
 				foreach ( $farm->players->player as $player ) {
 					$this->farms [$farmId] ['players'] [] = array (
-							'name' => strval($player ['lastNickname']),
+							'name' => strval ( $player ['lastNickname'] ),
 							'isFarmManager' => get_bool ( $player ['farmManager'] ) 
 					);
 				}
+			}
+			if (isset ( $farm->contracting )) {
+				foreach ( $farm->contracting->farm as $farm ) {
+					$this->farms [$farmId] ['contractFrom'] [intval ( $farm ['farmId'] )] = true;
+				}
+			}
+		}
+		foreach ( $this->farms as $farmId1 => $farm ) {
+			foreach ( $farm ['contractFrom'] as $farmId2 => $bool ) {
+				$this->farms [$farmId2] ['contractWith'] [$farmId1] = true;
 			}
 		}
 	}
