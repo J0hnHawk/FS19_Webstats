@@ -107,7 +107,7 @@ function loadXMLMapConfig($directory, $language) {
 				$key = strval ( $text ['name'] );
 				if (isset ( $text->all )) {
 					$value = strval ( $text->all );
-				} elseif (isset($text->$language)) {
+				} elseif (isset ( $text->$language )) {
 					$value = strval ( $text->$language );
 				} else {
 					$value = strval ( $text->$defaultLanguage );
@@ -115,6 +115,11 @@ function loadXMLMapConfig($directory, $language) {
 				$translations = array_merge ( $translations, array (
 						$key => $value 
 				) );
+			}
+		}
+		if (isset ( $object->pallets )) {
+			foreach ( $object->pallets->pallet as $pallet ) {
+				$objects ['pallets'] [] = strval ( $pallet ['name'] );
 			}
 		}
 	}

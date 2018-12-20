@@ -98,7 +98,7 @@ foreach ( $prices as $fillType => $fillTyleData ) {
 
 $smarty->assign ( 'options', $options ['general'] );
 $smarty->assign ( 'prices', $prices );
-$smarty->assign ( 'commodities', array ()/*$commodities */);
+$smarty->assign ( 'commodities', $savegame->commodities );
 ksort ( $sellingPoints );
 $smarty->assign ( 'sellingPoints', $sellingPoints );
 function getPrice($amplitude0, $amplitude1, $period0, $period1, $time0, $time1, $nominalAmplitude1) {

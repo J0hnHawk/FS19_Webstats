@@ -26,6 +26,9 @@ class Savegame {
 	public $greatDemands = array ();
 	public $missions = array ();
 	public $vehicles = array ();
+	public $commodities = array ();
+	public $outOfMap = array ();
+	public $positions = array ();
 	public $farms = array ();
 	public $xml = array ();
 	protected $xmlFiles = array (
@@ -51,19 +54,19 @@ class Savegame {
 				if (file_exists ( $this->cache . $this->xmlFiles [0] )) {
 					$this->xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
 					$lastDayTime = intval ( $this->xml ['environment']->currentDay ) * 86400 + intval ( $this->xml ['environment']->dayTime * 60 );
-					self::getFileByFTP ( $this->xmlFiles [0] );
+					$this->getFileByFTP ( $this->xmlFiles [0] );
 					$careerEnvironment = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
 					$newDayTime = intval ( $careerEnvironment->currentDay ) * 86400 + intval ( $careerEnvironment->dayTime * 60 );
 					if ($newDayTime == $lastDayTime) {
 						$updateFiles = false;
 					}
 				} else {
-					self::getFileByFTP ( $this->xmlFiles [0] );
+					$this->getFileByFTP ( $this->xmlFiles [0] );
 				}
 				$this->xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
 				for($s1 = 1; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
 					if ($updateFiles) {
-						self::getFileByFTP ( $this->xmlFiles [$s1] );
+						$this->getFileByFTP ( $this->xmlFiles [$s1] );
 					}
 					$this->xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
@@ -76,7 +79,7 @@ class Savegame {
 			case 'api' :
 				break;
 		}
-		self::loadInitialData ();
+		$this->loadInitialData ();
 	}
 	public function getCurrentDay() {
 		return intval ( $this->xml ['environment']->currentDay );
@@ -92,31 +95,144 @@ class Savegame {
 		}
 	}
 	private function loadInitialData() {
-		self::loadFarms ();
-		self::loadMissions ();
-		self::loadGreatDemands ();
-		self::loadVehicles ();
+		$this->loadFarms ();
+		$this->loadMissions ();
+		$this->loadGreatDemands ();
+		if ($this->farmId) {
+			$this->loadVehicles ();
+			$this->loadCommodities ();
+		}
+	}
+	private function loadCommodities() {
+		global $mapconfig;
+		foreach ( $this->xml ['items'] as $item ) {
+			// Bahnsilos
+			// Ballen usw.
+			$className = strval ( $item ['className'] );
+			$fillType = false;
+			$location = getLocation ( $item ['position'] );
+			if (stristr ( $className, 'pallet' ) !== false || $className == 'Bale') {
+				if (isset ( $item ['i3dFilename'] )) {
+					$fillType = cleanFileName ( $item ['i3dFilename'] );
+				} else {
+					$fillType = cleanFileName ( $item ['filename'] );
+				}
+				if ($fillType && strval ( $item ['farmId'] ) == $this->farmId) {
+					$fillLevel = intval ( $item ['fillLevel'] );
+					$this->addCommodity ( $fillType, $fillLevel, $location, $className );
+					if ($location == 'outOfMap') {
+						$this->commodities [translate ( $fillType )] ['outOfMap'] = true;
+						// für Modal Dialog mit Edit-Vorschlag, Platzierung beim Palettenlager
+						$this->outOfMap [] = array (
+								$className,
+								$fillType,
+								strval ( $item ['position'] ),
+								'-870 100 ' . (- 560 + sizeof ( $outOfMap ) * 2) 
+						);
+					} else {
+						$this->positions [$className] [translate ( $fillType )] [] = array (
+								'name' => $className,
+								'position' => explode ( ' ', $item ['position'] ) 
+						);
+					}
+				}
+			}
+			$location = cleanFileName ( $item ['filename'] );
+			$stationId = intval ( $item ['id'] );
+			// Lager, Fabriken usw. analysieren
+			if (! isset ( $mapconfig [$location] ['locationType'] )) {
+				// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
+				continue;
+			} else {
+				if ($mapconfig [$location] ['locationType'] == 'storage') {
+					foreach ( $item as $storage ) {
+						if (strval ( $storage ['farmId'] ) == $this->farmId) {
+							foreach ( $storage as $node ) {
+								$fillType = strval ( $node ['fillType'] );
+								$fillLevel = intval ( $node ['fillLevel'] );
+								$this->addCommodity ( $fillType, $fillLevel, $location );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	private function addCommodity($fillType, $fillLevel, $location, $className = 'none', $isCombine = false) {
+		$l_fillType = translate ( $fillType );
+		$l_location = translate ( $location );
+		if (! isset ( $this->commodities [$l_fillType] )) {
+			$this->commodities [$l_fillType] = array (
+					'overall' => $fillLevel,
+					'i3dName' => $fillType,
+					'isCombine' => $isCombine,
+					'locations' => array () 
+			);
+		} else {
+			$this->commodities [$l_fillType] ['overall'] += $fillLevel;
+		}
+		if (isset ( $location )) {
+			$l_location = translate ( $location );
+			if (! isset ( $this->commodities [$l_fillType] ['locations'] [$l_location] )) {
+				$this->commodities [$l_fillType] ['locations'] += array (
+						$l_location => array (
+								'i3dName' => $location,
+								$className => 1,
+								'fillLevel' => $fillLevel 
+						) 
+				);
+			} else {
+				if (! isset ( $this->commodities [$l_fillType] ['locations'] [$l_location] [$className] )) {
+					$this->commodities [$l_fillType] ['locations'] [$l_location] [$className] = 1;
+				} else {
+					$this->commodities [$l_fillType] ['locations'] [$l_location] [$className] ++;
+				}
+				$this->commodities [$l_fillType] ['locations'] [$l_location] ['fillLevel'] += $fillLevel;
+			}
+			ksort ( $this->commodities [$l_fillType] ['locations'] );
+		}
 	}
 	private function loadVehicles() {
+		global $mapconfig;
 		foreach ( $this->xml ['vehicles'] as $vehicle ) {
 			if ($vehicle ['farmId'] != $this->farmId) {
 				continue;
 			}
-			$vehicleId = intval ( $vehicle ['id'] );
-			if (isset ( $vehicle->wearable )) {
-				$wearnode = (1 - floatval ( $vehicle->wearable->wearNode ['amount'] )) * 100;
+			$vehicleName = cleanFileName ( $vehicle ['filename'] );
+			if (in_array ( $vehicleName, $mapconfig ['pallets'] )) {
+				// Palette
+				$location = getLocation ( $vehicle->component1 ['position'] );
+				$className = 'FillablePallet';
+			} else {
+				// Fahrzeug
+				$location = $vehicleName;
+				$className = 'isVehicle';
+				$vehicleId = intval ( $vehicle ['id'] );
+				if (isset ( $vehicle->wearable )) {
+					$wearnode = (1 - floatval ( $vehicle->wearable->wearNode ['amount'] )) * 100;
+				}
+				$operatingTime = floatval ( $vehicle ['operatingTime'] );
+				$opHours = (gmdate ( "j", $operatingTime ) - 1) * 24 + gmdate ( "H", $operatingTime );
+				$opMinutes = gmdate ( "i", $operatingTime );
+				$this->vehicles [$vehicleId] = array (
+						'name' => $vehicleName,
+						'age' => intval ( $vehicle ['age'] ),
+						'wear' => $wearnode,
+						'price' => intval ( $vehicle ['price'] ),
+						'propertyState' => intval ( $vehicle ['propertyState'] ),
+						'operatingTime' => "$opHours:$opMinutes",
+						'opTimeTS' => $operatingTime 
+				);
 			}
-			$operatingTime = floatval ( $vehicle ['operatingTime'] );
-			$opHours = (gmdate ( "j", $operatingTime ) - 1) * 24 + gmdate ( "H", $operatingTime );
-			$opMinutes = gmdate ( "i", $operatingTime );
-			$this->vehicles [$vehicleId] = array (
-					'name' => cleanFileName ( $vehicle ['filename'] ),
-					'age' => intval ( $vehicle ['age'] ),
-					'wear' => $wearnode,
-					'price' => intval ( $vehicle ['price'] ),
-					'propertyState' => intval ( $vehicle ['propertyState'] ),
-					'operatingTime' => "$opHours:$opMinutes" 
-			);
+			if (isset ( $vehicle->fillUnit )) {
+				foreach ( $vehicle->fillUnit->unit as $unit ) {
+					$fillType = strval ( $unit ['fillType'] );
+					$fillLevel = intval ( $unit ['fillLevel'] );
+					if ($fillType != 'UNKNOWN') {
+						$this->addCommodity ( $fillType, $fillLevel, $location, $className );
+					}
+				}
+			}
 		}
 	}
 	private function loadFarms() {

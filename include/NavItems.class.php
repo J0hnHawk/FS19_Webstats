@@ -37,7 +37,7 @@ class Nav {
 						'text' => '##OVERVIEW##' 
 				),
 				'storage' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => true,//$showInNav,
 						'active' => false,
 						'text' => '##STORAGE##' 
 				),

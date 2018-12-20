@@ -20,7 +20,7 @@
 					<td>{$vehicle.wear|number_format:0} %</td>
 					<td>{$vehicle.price|number_format:0:",":"."}</td>
 					<td>{if $vehicle.propertyState==2}gemietet{elseif $vehicle.propertyState==3}Mission{/if}</td>
-					<td>{$vehicle.operatingTime}</td>
+					<td data-order="{$vehicle.opTimeTS|number_format:0:",":"."}">{$vehicle.operatingTime}</td>
 				</tr>
 				{/foreach}
 			</tbody>

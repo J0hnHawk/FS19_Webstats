@@ -14,6 +14,12 @@
 			<de>Heu</de>
 			<fr>Foin</fr>
 		</text>
+		<text name="baleSilage240">
+			<cz>Siláž</cz>
+			<en>Silage</en>
+			<de>Silage</de>
+			<fr>Ensilage</fr>
+		</text>
 		<text name="baleStraw240">
 			<cz>Sláma</cz>
 			<en>Straw</en>
@@ -65,11 +71,35 @@
 			<fr>Semence</fr>
 		</text>
 		<!-- Pallets -->
+		<text name="LIME">
+			<cz>LIME</cz>
+			<en>LIME</en>
+			<de>Kalk</de>
+			<fr>LIME</fr>
+		</text>
+		<text name="LIQUIDFERTILIZER">
+			<cz>LIQUIDFERTILIZER</cz>
+			<en>LIQUIDFERTILIZER</en>
+			<de>Flüssigdünger</de>
+			<fr>LIQUIDFERTILIZER</fr>
+		</text>
 		<text name="fertilizerTank">
 			<cz>Tekuté hnojivo</cz>
 			<en>Liquid fertilizer</en>
 			<de>Flüssigdünger</de>
 			<fr>Engrais liquide</fr>
+		</text>
+		<text name="HERBICIDE">
+			<cz>HERBICIDE</cz>
+			<en>HERBICIDE</en>
+			<de>Pflanzenschutzmittel</de>
+			<fr>HERBICIDE</fr>
+		</text>
+		<text name="herbicideTank">
+			<cz>herbicideTank</cz>
+			<en>herbicideTank</en>
+			<de>Pflanzenschutzmittel</de>
+			<fr>herbicideTank</fr>
 		</text>
 		<text name="palletPoplar">
 			<en>Poplar sapling</en>
@@ -193,13 +223,13 @@
 			<de>Treibstoff</de>
 			<fr>Carburant</fr>
 		</text>
-		<text name="fertilizer">
+		<text name="FERTILIZER">
 			<cz>Pevné hnojivo</cz>
 			<en>Fertilizer</en>
 			<de>Dünger</de>
 			<fr>Engrais</fr>
 		</text>
-		<text name="seeds">
+		<text name="SEEDS">
 			<cz>Osivo</cz>
 			<en>Seeds</en>
 			<de>Saatgut</de>

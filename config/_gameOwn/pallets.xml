@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<pallets>
+		<pallet name="bigBagContainerFertilizer" />
+		<pallet name="bigBagContainerLime" />
+		<pallet name="bigBagContainerSeeds" />
+		<pallet name="fertilizerTank" />
+		<pallet name="herbicideTank" />
+	</pallets>
+</mapconfig>
+
+
+
+
+
+
+
+
+

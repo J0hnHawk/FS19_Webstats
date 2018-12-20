@@ -1,29 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
-	<item name="Storage_storage1" locationType="storage" position="189 0 109" />
-	<item name="Storage_storage2" locationType="storage" position="329 0 -576" />
-	<item name="Storage_storage3" locationType="storage" position="-224 0 -151" />
-	<item name="Storage_storage4" locationType="storage" position="-587 0 129" />
+	<item name="railroadSilo01" locationType="storage" position="189 0 109" />
+	<item name="railroadSilo02" locationType="storage" position="329 0 -576" />
 	<l10n>
-		<text name="Storage_storage1">
-			<en>Farm silo</en>
-			<de>Hofsilo</de>
-			<fr>Silo agricole</fr>
+		<text name="railroadSilo01">
+			<en>railroadSilo01</en>
+			<de>Bahnsilo Ost</de>
 		</text>
-		<text name="Storage_storage2">
-			<en>Goldcrest Pacific Grain</en>
-			<de>Goldcrest Pacific Grain</de>
-			<fr>Goldcrest Pacific Grain</fr>
-		</text>
-		<text name="Storage_storage3">
-			<en>Central Transport Hub</en>
-			<de>Central Transport Hub</de>
-			<fr>Central Transport Hub</fr>
-		</text>
-		<text name="Storage_storage4">
-			<en>Maplefield Pool</en>
-			<de>Maplefield Pool</de>
-			<fr>Maplefield Pool</fr>
+		<text name="railroadSilo02">
+			<en>railroadSilo02</en>
+			<de>Bahnsilo West</de>
 		</text>
 	</l10n>
 </mapconfig>
