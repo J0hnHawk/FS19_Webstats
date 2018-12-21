@@ -22,3 +22,4 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 $smarty->assign ( 'missions', $savegame->missions );
+$smarty->assign ( 'farms', $savegame->farms );

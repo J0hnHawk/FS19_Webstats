@@ -261,9 +261,11 @@ BALANCE2=Saldo
 
 //missions.tpl
 MISSIONS=Verträge
-TYPE=Art
+TYPE=Auftrag
 REWARD=Belohnung
 FIELD=Feld
+ACTIVE=aktiv
+STATUS=Status
 MIS_HARVEST=Ernten
 MIS_FERTILIZE=Düngen
 MIS_TRANSPORT=Transport

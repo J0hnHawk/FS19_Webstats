@@ -75,12 +75,18 @@
 			</tbody>
 		</table>
 		<script>
-		var rows = parseInt(($( window ).height() - 370) / 30)
+		var h = window.innerHeight; 			//Height of the HTML document
+		var c = 325; 							// Sum of the heights of navbar, footer, headings, etc.  
+		var th = parseInt((h-c)/h*100) + 'vh';	// Height for table
+		var rw = parseInt((h - c) / 30);		// Rows when paging is activated
 		$(document).ready(function() {
 		    var table = $('#bestPrices').DataTable( {
-		    	"pageLength": 20,
-		    	stateSave: true,
-		    	"dom":	"<'row'<'col-sm-6'><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",		
+		    	//"pageLength": rw,
+		    	scrollY:        th,
+        		scrollCollapse: true,
+       			paging:         false,
+		    	stateSave:		true,
+		    	"dom":	"<'row'<'col-sm-12'tr>>",		
 		    	"language": {
 		    		"decimal": ",",
 		            "thousands": ".",
