@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<item name="sellingStationBales" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
+	<item name="sellingStationBrauerei" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
+	<item name="sellingStationBales1" locationType="TipTrigger" position="-949 0 571" isSellingPoint="true" />
+	<item name="sellingStationBales2" locationType="TipTrigger" position="-949 0 571" isSellingPoint="true" />
+	<item name="sellingStationBales3" locationType="TipTrigger" position="-949 0 571" isSellingPoint="true" />
+	<item name="sellingStationWool" locationType="TipTrigger" position="-946 0 -26" isSellingPoint="true" />
+	<item name="sellingStationWoodChips" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
+	<item name="sellingStationZuckerfabrik" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
+	<item name="sellingStationEdeka" locationType="TipTrigger" position="-157 0 503" isSellingPoint="true" />
+	<item name="sellingStationBaecker" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationWoodChips2" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationHafen" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationRaiffeisen" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationRaffinerie" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationDepot" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationGetreidehandel" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationBahnhof" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationMolkerei" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationLidl" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<item name="sellingStationKlaerwerk" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<l10n>
+		<text name="sellingStationKlaerwerk">
+			<en>sellingStationKlaerwerk</en>
+			<de>Klärwerk</de>
+		</text>
+		<text name="sellingStationBales">
+			<en>sellingStationBales</en>
+			<de>Gärtnerei</de>
+		</text>
+		<text name="sellingStationBrauerei">
+			<en>sellingStationBrauerei</en>
+			<de>Brauerei</de>
+		</text>
+		<text name="sellingStationBales1">
+			<en>sellingStationBales1</en>
+			<de>Mischfutterfabrik</de>
+		</text>
+		<text name="sellingStationBales2">
+			<en>sellingStationBales2</en>
+			<de>Heizkraftwerk</de>
+		</text>
+		<text name="sellingStationBales3">
+			<en>sellingStationBales3</en>
+			<de>Zellstofffabrik</de>
+		</text>
+		<text name="sellingStationWool">
+			<en>sellingStationWool</en>
+			<de>Weberei</de>
+		</text>
+		<text name="sellingStationWoodChips">
+			<en>sellingStationWoodChips</en>
+			<de>Heizkraftwerk</de>
+		</text>
+		<text name="sellingStationZuckerfabrik">
+			<en>sellingStationZuckerfabrik</en>
+			<de>Zuckerfabrik</de>
+		</text>
+		<text name="sellingStationEdeka">
+			<en>sellingStationEdeka</en>
+			<de>Edeka</de>
+		</text>
+		<text name="sellingStationBaecker">
+			<en>sellingStationBaecker</en>
+			<de>Bäcker</de>
+		</text>
+		<text name="sellingStationWoodChips2">
+			<en>sellingStationWoodChips2</en>
+			<de>Zellstofffabrik</de>
+		</text>
+		<text name="sellingStationHafen">
+			<en>sellingStationHafen</en>
+			<de>Hafen</de>
+		</text>
+		<text name="sellingStationRaiffeisen">
+			<en>sellingStationRaiffeisen</en>
+			<de>Raiffeisen</de>
+		</text>
+		<text name="sellingStationRaffinerie">
+			<en>sellingStationRaffinerie</en>
+			<de>Raffinerie</de>
+		</text>
+		<text name="sellingStationDepot">
+			<en>sellingStationDepot</en>
+			<de>Depot</de>
+		</text>
+		<text name="sellingStationGetreidehandel">
+			<en>sellingStationGetreidehandel</en>
+			<de>Getreidehandel</de>
+		</text>
+		<text name="sellingStationLidl">
+			<en>sellingStationLidl</en>
+			<de>Lidl</de>
+		</text>
+		<text name="sellingStationBahnhof">
+			<en>sellingStationBahnhof</en>
+			<de>Bahnhof</de>
+		</text>
+		<text name="sellingStationMolkerei">
+			<en>sellingStationMolkerei</en>
+			<de>Bäcker</de>
+		</text>
+	</l10n>
+</mapconfig>

@@ -1,5 +1,5 @@
 <h3 class="mt-3">##PRICES1000##</h3>
-{$mode = GetParam('umode','G',0)} {if $mode == 1}
+{$mode = GetParam('subPage','G','bestPrices')} {if $mode == 'allPrices'}
 <!-- Alternative ingame like price overview. Looks not good. -->
 <div class="row">
 	<div class="col-sm-12">
@@ -7,15 +7,22 @@
 			<thead>
 				<tr>
 					<th>##STOCKS##</th> {foreach $prices as $fillType => $fillTypeData}
-					<th class="text-center">{$fillType}</th> {/foreach}
+					<th class="text-center">{$fillType|truncate:4:""}</th> {/foreach}
 				</tr>
 			</thead>
 			<tbody>
 				{foreach $sellingPoints as $location => $i3dName}
 				<tr>
-					<th nowrap>{$location}</th> {foreach $prices as $fillType => $fillTypeData}
-					<td class="text-right" width="200px">{if isset($fillTypeData.locations.$location)}{$fillTypeData.locations.$location.price|number_format:0:",":"."} {if $fillTypeData.priceTrend == 1} <span class="glyphicon glyphicon-triangle-top text-success" aria-hidden="true"></span>{elseif
-						$fillTypeData.priceTrend == -1} <span class="glyphicon glyphicon-triangle-bottom text-danger" aria-hidden="true"></span>{else} <span class="glyphicon glyphicon-arrow-down" style="visibility: hidden"><span>{/if}{else}&nbsp;{/if} </td>{/foreach}
+					<th nowrap>{$location}</th> {foreach $prices as $fillType => $fillTypeData}{if isset($fillTypeData.locations.$location)}{math equation="round(100
+					/ max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice
+					current=$fillTypeData.locations.$location.price-$fillTypeData.locations.$location.minPrice assign="percent"}{/if}
+					<td
+						class="text-right text-nowrap {if isset($fillTypeData.locations.$location)}{if $fillTypeData.locations.$location.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}{/if}">{if
+						isset($fillTypeData.locations.$location)}{$fillTypeData.locations.$location.price|number_format:0:",":"."} {if
+						$fillTypeData.locations.$location.priceTrend == 1}<i class="fas fa-caret-up text-success"></i>{elseif
+						$fillTypeData.locations.$location.priceTrend == -1}<i class="fas fa-caret-down text-danger"></i>{else}<i class="fas fa-caret-down"
+						style="visibility: hidden"></i>{/if}{else}&nbsp;{/if}
+					</td> {/foreach}
 				</tr>
 				{/foreach}
 			</tbody>
@@ -57,16 +64,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				{foreach $prices as $fillType => $fillTypeData} {math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice current=$fillTypeData.bestPrice-$fillTypeData.minPrice assign="percent"}
+				{foreach $prices as $fillType => $fillTypeData} {math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice
+				current=$fillTypeData.bestPrice-$fillTypeData.minPrice assign="percent"}
 				<tr>
 					<td>{$fillType}</td>
 					<td>{$fillTypeData.bestLocation}</td>
 					<td class="text-right col-sm-1">{$fillTypeData.minPrice|number_format:0:",":"."}</td>
 					<td class="text-right col-sm-1">{$fillTypeData.maxPrice|number_format:0:",":"."}</td>
-					<td class="text-right col-sm-1 {if $fillTypeData.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}">{$fillTypeData.bestPrice|number_format:0:",":"."} {if $fillTypeData.priceTrend == 1} <i class="fas fa-caret-up text-success"></i>{elseif
-						$fillTypeData.priceTrend == -1} <i class="fas fa-caret-down text-danger"></i>{else} <i class="fas fa-caret-down" style="visibility: hidden"></i><span>{/if} </td>
+					<td class="text-right col-sm-1 {if $fillTypeData.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}">
+						{$fillTypeData.bestPrice|number_format:0:",":"."} {if $fillTypeData.priceTrend == 1} <i class="fas fa-caret-up text-success"></i> {elseif
+						$fillTypeData.priceTrend == -1} <i class="fas fa-caret-down text-danger"></i> {else} <i class="fas fa-caret-down" style="visibility: hidden"></i>
+						{/if}
+					</td>
 					<td class="text-center">{$percent|number_format:0:",":"."} %</td> {if isset($commodities.$fillType) && $commodities.$fillType.overall > 0}
-					<td class="text-right col-sm-1">{$commodities.$fillType.overall|number_format:0:",":"."}</td> {$proceeds = $commodities.$fillType.overall * $fillTypeData.bestPrice / 1000}
+					<td class="text-right col-sm-1">{$commodities.$fillType.overall|number_format:0:",":"."}</td> {math equation="overall * bestPrice / 1000"
+					overall=$commodities.$fillType.overall bestPrice=$fillTypeData.bestPrice assign="proceeds"}
 					<td class="text-right col-sm-1">{$proceeds|number_format:0:",":"."}</td> {else}
 					<td></td>
 					<td></td> {/if}
@@ -75,25 +87,29 @@
 			</tbody>
 		</table>
 		<script>
-		var h = window.innerHeight; 			//Height of the HTML document
-		var c = 325; 							// Sum of the heights of navbar, footer, headings, etc.  
-		var th = parseInt((h-c)/h*100) + 'vh';	// Height for table
-		var rw = parseInt((h - c) / 30);		// Rows when paging is activated
-		$(document).ready(function() {
-		    var table = $('#bestPrices').DataTable( {
-		    	//"pageLength": rw,
-		    	scrollY:        th,
-        		scrollCollapse: true,
-       			paging:         false,
-		    	stateSave:		true,
-		    	"dom":	"<'row'<'col-sm-12'tr>>",		
-		    	"language": {
-		    		"decimal": ",",
-		            "thousands": ".",
-		            "url": "./language/{$smarty.session.language}/dataTables.lang"
-		    	}
-		    } );
-		} );
+			var h = window.innerHeight; //Height of the HTML document
+			{if $options.hideFooter}
+			var c = 230; // Sum of the heights of navbar, footer, headings, etc.
+			{else}
+			var c = 325; // Sum of the heights of navbar, footer, headings, etc.
+			{/if} 
+			var th = parseInt((h-c)/h*100) + 'vh'; // Height for table 
+			var rw = parseInt((h - c) / 30); // Rows when paging is activated
+			$(document).ready(function() { 
+				var table = $('#bestPrices').DataTable( { 
+					//"pageLength": rw, 
+					scrollY: th, 
+					scrollCollapse: true, 
+					paging:	false, 
+					stateSave: true, 
+					"dom": "<'row'<'col-sm-12'tr>>", 
+					"language": { 
+						"decimal": ",", 
+						"thousands": ".", 
+						"url": "./language/{$smarty.session.language}/dataTables.lang" 
+					}
+				} ); 
+			} );
 		</script>
 	</div>
 </div>

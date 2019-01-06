@@ -235,13 +235,13 @@
 			<de>Saatgut</de>
 			<fr>Semence</fr>
 		</text>
-		<text name="liquidManure">
+		<text name="LIQUIDMANURE">
 			<cz>Močůvka</cz>
 			<en>Liquid manure</en>
 			<de>Gülle</de>
 			<fr>Lisier</fr>
 		</text>
-		<text name="manure">
+		<text name="MANURE">
 			<cz>Mrva</cz>
 			<en>Manure</en>
 			<de>Mist</de>
@@ -295,7 +295,7 @@
 			<de>Häckselgut</de>
 			<fr>Haché</fr>
 		</text>
-		<text name="digestate">
+		<text name="DIGESTATE">
 			<cz>Digestát</cz>
 			<en>Digestate</en>
 			<de>Gärreste</de>

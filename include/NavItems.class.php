@@ -32,72 +32,98 @@ class Nav {
 	public function updateItems($showInNav) {
 		$this->items = array (
 				'overview' => array (
-						'showInNav' => false,//true,
+						'showInNav' => false, // true,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##OVERVIEW##' 
 				),
 				'storage' => array (
-						'showInNav' => true,//$showInNav,
+						'showInNav' => true, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##STORAGE##' 
 				),
 				'prices' => array (
 						'showInNav' => true,
+						'hasSubmenu' => true,
 						'active' => false,
-						'text' => '##PRICES##' 
+						'text' => '##PRICES##',
+						'submenu' => array (
+								'bestPrices' => array (
+										'showInNav' => true,
+										'active' => false,
+										'text' => '##BESTPRICES##' 
+								),
+								'allPrices' => array (
+										'showInNav' => true,
+										'active' => false,
+										'text' => '##ALLPRICES##' 
+								) 
+						) 
 				),
 				'vehicles' => array (
 						'showInNav' => $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##VEHICLES##' 
 				),
 				'finances' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => false, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##FINANCES##' 
 				),
 				'husbandry' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => false, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##HUSBANDRY##' 
 				),
 				'missions' => array (
 						'showInNav' => true,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##MISSIONS##' 
 				),
 				'farm' => array (
 						'showInNav' => true,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##FARM##' 
 				),
 				'statistics' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => false, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##STATISTICS##' 
 				),
 				'production' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => false, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##PRODUCTION##' 
 				),
 				'commodity' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => false, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##COMMODITY##' 
 				),
 				'options' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => true, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##OPTIONS##' 
 				),
 				'lizenz' => array (
 						'showInNav' => false,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##LIZENZ##' 
 				),
 				'factories' => array (
-						'showInNav' => false,//$showInNav,
+						'showInNav' => false, // $showInNav,
+						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##FACTORIES##' 
 				) 

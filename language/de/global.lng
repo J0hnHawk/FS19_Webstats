@@ -273,6 +273,8 @@ MIS_SOW=Säen
 MIS_WEED=Unkraut bekämpfen
 MIS_PLOW=Pflügen
 MIS_MOW_BALE=Ballen pressen
+MIS_CULTIVATE=Grubbern
+MIS_SPRAY=Spritzen
 
 //farm.tpl
 FARMMANAGER=Farm-Manager

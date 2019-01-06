@@ -106,7 +106,6 @@ class Savegame {
 	private function loadCommodities() {
 		global $mapconfig;
 		foreach ( $this->xml ['items'] as $item ) {
-			// Bahnsilos
 			// Ballen usw.
 			$className = strval ( $item ['className'] );
 			$fillType = false;
@@ -137,21 +136,22 @@ class Savegame {
 					}
 				}
 			}
+			// Bahnsilos
 			$location = cleanFileName ( $item ['filename'] );
 			$stationId = intval ( $item ['id'] );
 			// Lager, Fabriken usw. analysieren
 			if (! isset ( $mapconfig [$location] ['locationType'] )) {
 				// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
+				// echo ("$location<br>");
 				continue;
-			} else {
-				if ($mapconfig [$location] ['locationType'] == 'storage') {
-					foreach ( $item as $storage ) {
-						if (strval ( $storage ['farmId'] ) == $this->farmId) {
-							foreach ( $storage as $node ) {
-								$fillType = strval ( $node ['fillType'] );
-								$fillLevel = intval ( $node ['fillLevel'] );
-								$this->addCommodity ( $fillType, $fillLevel, $location );
-							}
+			}
+			if ($mapconfig [$location] ['locationType'] == 'storage') {
+				foreach ( $item as $storage ) {
+					if (strval ( $storage ['farmId'] ) == $this->farmId) {
+						foreach ( $storage as $node ) {
+							$fillType = strval ( $node ['fillType'] );
+							$fillLevel = intval ( $node ['fillLevel'] );
+							$this->addCommodity ( $fillType, $fillLevel, $location );
 						}
 					}
 				}
@@ -195,6 +195,7 @@ class Savegame {
 	private function loadVehicles() {
 		global $mapconfig;
 		foreach ( $this->xml ['vehicles'] as $vehicle ) {
+			$propertyState = 1;
 			if ($vehicle ['farmId'] != $this->farmId) {
 				continue;
 			}
@@ -214,21 +215,22 @@ class Savegame {
 				$operatingTime = floatval ( $vehicle ['operatingTime'] );
 				$opHours = (gmdate ( "j", $operatingTime ) - 1) * 24 + gmdate ( "H", $operatingTime );
 				$opMinutes = gmdate ( "i", $operatingTime );
+				$propertyState = intval ( $vehicle ['propertyState'] );
 				$this->vehicles [$vehicleId] = array (
 						'name' => $vehicleName,
 						'age' => intval ( $vehicle ['age'] ),
 						'wear' => $wearnode,
 						'price' => intval ( $vehicle ['price'] ),
-						'propertyState' => intval ( $vehicle ['propertyState'] ),
+						'propertyState' => $propertyState,
 						'operatingTime' => "$opHours:$opMinutes",
 						'opTimeTS' => $operatingTime 
 				);
 			}
-			if (isset ( $vehicle->fillUnit )) {
+			if (isset ( $vehicle->fillUnit ) && $propertyState != 3) {
 				foreach ( $vehicle->fillUnit->unit as $unit ) {
 					$fillType = strval ( $unit ['fillType'] );
 					$fillLevel = intval ( $unit ['fillLevel'] );
-					if ($fillType != 'UNKNOWN') {
+					if ($fillType != 'UNKNOWN' && $fillType != 'SQUAREBALE') {
 						$this->addCommodity ( $fillType, $fillLevel, $location, $className );
 					}
 				}
@@ -282,8 +284,11 @@ class Savegame {
 			}
 			foreach ( $mission as $details ) {
 				if ($details->getName () == 'field') {
+					$vehicleUseCost = intval ( $details ['vehicleUseCost'] );
 					$missionData += array (
-							'field' => intval ( $details ['id'] ) 
+							'field' => intval ( $details ['id'] ),
+							'fieldSize' => 0,
+							'vehicleUseCost' => $vehicleUseCost 
 					);
 				}
 			}
