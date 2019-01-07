@@ -96,12 +96,21 @@ class Savegame {
 	}
 	private function loadInitialData() {
 		$this->loadFarms ();
+		$this->saveDateAndMoney ();
 		$this->loadMissions ();
 		$this->loadGreatDemands ();
 		if ($this->farmId) {
 			$this->loadVehicles ();
 			$this->loadCommodities ();
 		}
+	}
+	private function saveDateAndMoney() {
+		$fp = fopen ( './cache/DateAndMoney', 'w' );
+		fwrite ( $fp, $this->getCurrentDay () . PHP_EOL );
+		fwrite ( $fp, $this->getDayTime () . PHP_EOL );
+		echo($this->farmId);
+		fwrite ( $fp, $this->getFarmMoney ($this->farmId) . PHP_EOL );
+		fclose ( $fp );
 	}
 	private function loadCommodities() {
 		global $mapconfig;

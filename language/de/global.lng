@@ -97,6 +97,8 @@ FACTORY=Fabriken
 INFO=Info
 FARM=Hof
 VEHICLES=Fahrzeuge
+BESTPRICES=Beste Verkaufspreise
+ALLPRICES=Alle Verkaufspreise
 
 //overview.tpl
 VERSION=Version

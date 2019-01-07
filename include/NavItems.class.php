@@ -113,7 +113,7 @@ class Nav {
 						'showInNav' => true, // $showInNav,
 						'hasSubmenu' => false,
 						'active' => false,
-						'text' => '##OPTIONS##' 
+						'text' => '##SETTINGS##' 
 				),
 				'lizenz' => array (
 						'showInNav' => false,
