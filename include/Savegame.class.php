@@ -40,7 +40,7 @@ class Savegame {
 			'vehicles.xml' 
 	);
 	private $farmId;
-	private $ftpURL = '';
+	private $ftp = array ();
 	private $cache = './cache/';
 	public function __construct($config, $farmId = 0) {
 		if (! file_exists ( $this->cache )) {
@@ -49,7 +49,12 @@ class Savegame {
 		$this->farmId = $farmId;
 		switch ($config ['type']) {
 			case 'ftp' :
-				$this->ftpURL = "ftp://" . $config ['user'] . ":" . $config ['pass'] . "@" . $config ['server'] . ":" . $config ['port'] . $config ['path'];
+				$this->ftp ['server'] = $config ['server'];
+				$this->ftp ['port'] = $config ['port'];
+				$this->ftp ['path'] = $config ['path'];
+				$this->ftp ['user'] = $config ['user'];
+				$this->ftp ['pass'] = $config ['pass'];
+				$this->ftp ['isgportal'] = $config ['isgportal'];
 				$updateFiles = true;
 				if (file_exists ( $this->cache . $this->xmlFiles [0] )) {
 					$this->xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
@@ -96,21 +101,12 @@ class Savegame {
 	}
 	private function loadInitialData() {
 		$this->loadFarms ();
-		$this->saveDateAndMoney ();
 		$this->loadMissions ();
 		$this->loadGreatDemands ();
 		if ($this->farmId) {
 			$this->loadVehicles ();
 			$this->loadCommodities ();
 		}
-	}
-	private function saveDateAndMoney() {
-		$fp = fopen ( './cache/DateAndMoney', 'w' );
-		fwrite ( $fp, $this->getCurrentDay () . PHP_EOL );
-		fwrite ( $fp, $this->getDayTime () . PHP_EOL );
-		echo($this->farmId);
-		fwrite ( $fp, $this->getFarmMoney ($this->farmId) . PHP_EOL );
-		fclose ( $fp );
 	}
 	private function loadCommodities() {
 		global $mapconfig;
@@ -239,7 +235,7 @@ class Savegame {
 				foreach ( $vehicle->fillUnit->unit as $unit ) {
 					$fillType = strval ( $unit ['fillType'] );
 					$fillLevel = intval ( $unit ['fillLevel'] );
-					if ($fillType != 'UNKNOWN' && $fillType != 'SQUAREBALE') {
+					if ($fillType != 'UNKNOWN' && $fillType != 'SQUAREBALE' && $fillType != 'AIR' && $fillType != 'DEF') {
 						$this->addCommodity ( $fillType, $fillLevel, $location, $className );
 					}
 				}
@@ -296,9 +292,13 @@ class Savegame {
 					$vehicleUseCost = intval ( $details ['vehicleUseCost'] );
 					$missionData += array (
 							'field' => intval ( $details ['id'] ),
-							'fieldSize' => 0,
-							'vehicleUseCost' => $vehicleUseCost 
+							'fieldSize' => $vehicleUseCost / 320,
+							'vehicleUseCost' => $vehicleUseCost,
+							'fruitTypeName' => translate ( $details ['fruitTypeName'] ) 
 					);
+				}
+				if ($details->getName () == 'bale') {
+					$missionData ['fruitTypeName'] = translate ( $details ['fillTypeName'] );
 				}
 			}
 			$this->missions [] = $missionData;
@@ -333,15 +333,38 @@ class Savegame {
 		}
 	}
 	private function getFileByFTP($file) {
-		$fp = fopen ( $this->cache . $file, "w" );
-		$url = $this->ftpURL . $file;
-		$curl = curl_init ();
-		curl_setopt ( $curl, CURLOPT_URL, $url );
-		curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 0 );
-		curl_setopt ( $curl, CURLOPT_UPLOAD, 0 );
-		curl_setopt ( $curl, CURLOPT_FILE, $fp );
-		$result = curl_exec ( $curl );
-		curl_close ( $curl );
-		fclose ( $fp );
+		if ($this->ftp ['isgportal']) {
+			$URL = "ftp://" . $this->ftp ['user'] . ":" . $this->ftp ['pass'] . "@" . $this->ftp ['server'] . ":" . $this->ftp ['port'] . $this->ftp ['path'];
+			$fp = fopen ( $this->cache . $file, "w" );
+			$url = $URL . $file;
+			$curl = curl_init ();
+			curl_setopt ( $curl, CURLOPT_URL, $url );
+			curl_setopt ( $curl, CURLOPT_RETURNTRANSFER, 0 );
+			curl_setopt ( $curl, CURLOPT_UPLOAD, 0 );
+			curl_setopt ( $curl, CURLOPT_FILE, $fp );
+			$result = curl_exec ( $curl );
+			curl_close ( $curl );
+			fclose ( $fp );
+		} else {
+			$local_file = $this->cache . $file;
+			$server_file = $this->ftp ['path'] . $file;
+			$conn_id = ftp_connect ( $this->ftp ['server'], $this->ftp ['port'], 1 );
+			if (! $conn_id) {
+				echo ("Verbindung fehlgeschlagen<br>\r\n");
+			} else {
+				if (! ftp_login ( $conn_id, $this->ftp ['user'], $this->ftp ['pass'] )) {
+					echo ("Login fehlgeschlagen<br>\r\n");
+				} else {
+					if (! ftp_pasv ( $conn_id, true )) {
+						echo ("Umschalten in passiven Modus fehlgeschlagen<br>\r\n");
+					} else {
+						if (! ftp_get ( $conn_id, $local_file, $server_file, FTP_ASCII )) {
+							echo ("Download von '$server_file' fehlgeschlagen<br>\r\n");
+						}
+					}
+				}
+				ftp_close ( $conn_id );
+			}
+		}
 	}
 }

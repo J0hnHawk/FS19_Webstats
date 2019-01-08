@@ -210,19 +210,20 @@
 			<de>Zuckerrohr</de>
 			<fr>Canne à sucre</fr>
 		</text>
-		<text name="water">
+		<text name="WATER">
 			<cz>Voda</cz>
 			<en>Water</en>
 			<de>Wasser</de>
 			<fr>Eau</fr>
 		</text>
-		<!-- Products -->
-		<text name="fuel">
+		<text name="DIESEL">
 			<cz>Palivo</cz>
 			<en>Fuel</en>
-			<de>Treibstoff</de>
+			<de>Diesel</de>
 			<fr>Carburant</fr>
 		</text>
+		
+		<!-- Products -->
 		<text name="FERTILIZER">
 			<cz>Pevné hnojivo</cz>
 			<en>Fertilizer</en>

@@ -7,5 +7,6 @@
 		<pallet name="fertilizerTank" />
 		<pallet name="herbicideTank" />
 		<pallet name="woolPallet" />
+		<pallet name="eggBox" />
 	</pallets>
 </mapconfig>

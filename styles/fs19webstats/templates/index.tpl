@@ -64,7 +64,7 @@
 		<div class="container">
 			<p class="navbar-text text-center">{$onlineUser} ##USER_ONLINE##</p>
 			<p class="navbar-text pull-right">
-				&copy; 2018 FS19 Web Stats by John Hawk &bull; <a href="https://github.com/J0hnHawk/FS19_WebStats" target="_blank">GitHub</a> &bull; Map config by
+				&copy; 2018-2019 FS19 Web Stats by John Hawk &bull; <a href="https://github.com/J0hnHawk/FS19_WebStats" target="_blank">GitHub</a> &bull; Map config by
 				{$map.configBy}
 			</p>
 		</div>
