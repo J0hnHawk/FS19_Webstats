@@ -80,7 +80,7 @@
 	</div>
 	{else if $mode=='api'}
 	<div class="container">
-		<h2>##INSTALL_TITLE## ##HEAD_API##</h2>
+		<h3 class="mt-3">##INSTALL_TITLE## ##HEAD_API##</h3>
 		<form class="form-horizontal" action="index.php?mode={$mode}" method="post">
 			{if $fsockopen} {if $error}{$error}{/if}
 			<div class="form-group">
@@ -128,7 +128,7 @@
 	</div>
 	{else if $mode=='ftp'}
 	<div class="container">
-		<h2>##INSTALL_TITLE## ##HEAD_FTP##</h2>
+		<h3 class="mt-3">##INSTALL_TITLE## ##HEAD_FTP##</h3>
 		<form class="form-horizontal" action="index.php?mode={$mode}" method="post">
 			{if $error}{$error}{/if}
 			<div class="form-group row">
@@ -141,6 +141,17 @@
 				<label for="ftpport" class="col-sm-3 col-form-label">##FTPPORT##</label>
 				<div class="col-sm-7">
 					<input type="text" class="form-control" id="ftpport" name="ftpport" placeholder="21">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-3">##FTPOPTIONS##</div>
+				<div class="col-sm-7">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="checkbox" id="ftpssl" name="ftpssl"> <label class="form-check-label pl-1" for="ftpssl">##FTPSSLCON##</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="checkbox" id="ftpgportal" name="ftpgportal"> <label class="form-check-label pl-1" for="ftpgportal">G-Portal Game Server</label>
+					</div>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -184,7 +195,7 @@
 	</div>
 	{else if $mode=='local'}
 	<div class="container">
-		<h2>##INSTALL_TITLE## ##HEAD_LOCAL##</h2>
+		<h3 class="mt-3">##INSTALL_TITLE## ##HEAD_LOCAL##</h3>
 		<form class="form-horizontal" action="index.php?mode={$mode}" method="post">
 			{if $error}{$error}{/if}
 			<p>

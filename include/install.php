@@ -76,11 +76,17 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 						'type' => 'ftp',
 						'server' => GetParam ( 'ftpserver', 'P' ),
 						'port' => intval ( GetParam ( 'ftpport', 'P' ) ),
+						'ssl' => get_bool ( GetParam ( 'ftpssl', 'P', false ) ),
+						'isgportal' => get_bool ( GetParam ( 'ftpgportal', 'P', false ) ),
 						'path' => GetParam ( 'ftppath', 'P' ),
 						'user' => GetParam ( 'ftpuser', 'P' ),
 						'pass' => GetParam ( 'ftppass', 'P' ) 
 				);
-				$ftp_conn = ftp_connect ( $config ['server'], $config ['port'], 10 );
+				if ($config ['ssl']) {
+					ftp_ssl_connect ( $config ['server'], $config ['port'], 10 );
+				} else {
+					$ftp_conn = ftp_connect ( $config ['server'], $config ['port'], 10 );
+				}
 				if ($ftp_conn) {
 					if (@ftp_login ( $ftp_conn, $config ['user'], $config ['pass'] )) {
 						if (! ftp_directory_exists ( $ftp_conn, $config ['path'] )) {

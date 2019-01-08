@@ -137,6 +137,8 @@ function get_bool($value) {
 			return true;
 		case 'false' :
 			return false;
+		case 'on':
+			return true;
 		default :
 			if (is_numeric ( $value )) {
 				return $value + 0;
