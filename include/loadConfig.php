@@ -2,7 +2,7 @@
 /**
  *
  * This file is part of the "FS19 Web Stats" package.
- * Copyright (C) 2017-2018 John Hawk <john.hawk@gmx.net>
+ * Copyright (C) 2017-2019 John Hawk <john.hawk@gmx.net>
  *
  * "FS19 Web Stats" is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published
@@ -55,26 +55,19 @@ if (file_exists ( $configFile )) {
 $map = loadMapCFGfile ( $config['map'] );
 $smarty->assign ( 'map', $map );
 
-// Load map config
 $userLang = $_SESSION ['language'];
 // Kartenkonfiguration aus XML Dateien laden
 $loadedConfig = loadXMLMapConfig ( '_gameOwn', $userLang );
 $mapconfig = $loadedConfig [0];
 $lang = $loadedConfig [1];
+// load installed mods
+$loadedConfig = loadXMLMapConfig ( '_mods', $userLang );
+$mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
+$lang = array_merge ( $lang, $loadedConfig [1] );
 // Kartenkonfiguration aus XML Dateien laden
 $loadedConfig = loadXMLMapConfig ( $config['map'], $userLang );
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
-if (is_dir ( './config/ZZZ_additional' )) {
-	$loadedConfig = loadXMLMapConfig ( 'ZZZ_additional', $userLang );
-	$mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
-	$lang = array_merge ( $lang, $loadedConfig [1] );
-}
-
-// load installed mods
-$loadedConfig = loadXMLMapConfig ( '_mods', $userLang );
-$placeableObjects = $loadedConfig [0];
-$placeablesLang = $loadedConfig [1];
 
 // count active user
 $userFile = './config/onlineUser.conf';

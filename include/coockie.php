@@ -2,7 +2,7 @@
 /**
  *
  * This file is part of the "FS19 Web Stats" package.
- * Copyright (C) 2017-2018 John Hawk <john.hawk@gmx.net>
+ * Copyright (C) 2017-2019 John Hawk <john.hawk@gmx.net>
  *
  * "FS19 Web Stats" is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as published
