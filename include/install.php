@@ -83,12 +83,13 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 						'pass' => GetParam ( 'ftppass', 'P' ) 
 				);
 				if ($config ['ssl']) {
-					ftp_ssl_connect ( $config ['server'], $config ['port'], 10 );
+					$ftp_conn = ftp_ssl_connect ( $config ['server'], $config ['port'], 10 );
 				} else {
 					$ftp_conn = ftp_connect ( $config ['server'], $config ['port'], 10 );
 				}
 				if ($ftp_conn) {
 					if (@ftp_login ( $ftp_conn, $config ['user'], $config ['pass'] )) {
+						ftp_pasv ( $ftp_conn, true );
 						if (! ftp_directory_exists ( $ftp_conn, $config ['path'] )) {
 							$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_FTPPATH##</div>';
 						}

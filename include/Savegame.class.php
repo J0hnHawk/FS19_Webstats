@@ -51,6 +51,7 @@ class Savegame {
 			case 'ftp' :
 				$this->ftp ['server'] = $config ['server'];
 				$this->ftp ['port'] = $config ['port'];
+				$this->ftp ['ssl'] = $config ['ssl'];
 				$this->ftp ['path'] = $config ['path'];
 				$this->ftp ['user'] = $config ['user'];
 				$this->ftp ['pass'] = $config ['pass'];
@@ -348,7 +349,11 @@ class Savegame {
 		} else {
 			$local_file = $this->cache . $file;
 			$server_file = $this->ftp ['path'] . $file;
-			$conn_id = ftp_connect ( $this->ftp ['server'], $this->ftp ['port'], 1 );
+			if ($this->ftp ['ssl']) {
+				$conn_id = ftp_ssl_connect ( $this->ftp ['server'], $this->ftp ['port'], 1 );
+			} else {
+				$conn_id = ftp_connect ( $this->ftp ['server'], $this->ftp ['port'], 1 );
+			}
 			if (! $conn_id) {
 				echo ("Verbindung fehlgeschlagen<br>\r\n");
 			} else {
