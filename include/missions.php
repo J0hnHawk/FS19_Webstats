@@ -21,5 +21,9 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
+include ('./include/Farm.class.php');
+Farm::extractXML ( $savegame->xml ['farms'] );
+$farms = Farm::getAllFarms ();
+
 $smarty->assign ( 'missions', $savegame->missions );
-$smarty->assign ( 'farms', $savegame->farms );
+$smarty->assign ( 'farms', $farms );

@@ -29,7 +29,6 @@ class Savegame {
 	public $commodities = array ();
 	public $outOfMap = array ();
 	public $positions = array ();
-	public $farms = array ();
 	public $xml = array ();
 	protected $xmlFiles = array (
 			'environment.xml',
@@ -76,11 +75,12 @@ class Savegame {
 					}
 					$this->xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
-				
 				break;
 			case 'local' :
 				$this->cache = $config ['path'];
-				
+				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
+					$this->xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+				}
 				break;
 			case 'api' :
 				break;
@@ -100,8 +100,10 @@ class Savegame {
 			return false;
 		}
 	}
+	public function getXML($xml) {
+		return $this->xml [$xml];
+	}
 	private function loadInitialData() {
-		$this->loadFarms ();
 		$this->loadMissions ();
 		$this->loadGreatDemands ();
 		if ($this->farmId) {
@@ -240,38 +242,6 @@ class Savegame {
 						$this->addCommodity ( $fillType, $fillLevel, $location, $className );
 					}
 				}
-			}
-		}
-	}
-	private function loadFarms() {
-		foreach ( $this->xml ['farms'] as $farm ) {
-			$farmId = intval ( $farm ['farmId'] );
-			$this->farms [$farmId] = array (
-					'name' => strval ( $farm ['name'] ),
-					'color' => intval ( $farm ['color'] ),
-					'loan' => intval ( $farm ['loan'] ),
-					'money' => floatval ( $farm ['money'] ),
-					'players' => array (),
-					'contractFrom' => array (),
-					'contractWith' => array () 
-			);
-			if (isset ( $farm->players )) {
-				foreach ( $farm->players->player as $player ) {
-					$this->farms [$farmId] ['players'] [] = array (
-							'name' => strval ( $player ['lastNickname'] ),
-							'isFarmManager' => get_bool ( $player ['farmManager'] ) 
-					);
-				}
-			}
-			if (isset ( $farm->contracting )) {
-				foreach ( $farm->contracting->farm as $farm ) {
-					$this->farms [$farmId] ['contractFrom'] [intval ( $farm ['farmId'] )] = true;
-				}
-			}
-		}
-		foreach ( $this->farms as $farmId1 => $farm ) {
-			foreach ( $farm ['contractFrom'] as $farmId2 => $bool ) {
-				$this->farms [$farmId2] ['contractWith'] [$farmId1] = true;
 			}
 		}
 	}
