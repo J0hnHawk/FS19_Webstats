@@ -8,6 +8,7 @@
 					<th class="text-center">##VAGE##</th>
 					<th class="text-center">##VWEAR##</th>
 					<th class="text-center">##VPRICE##</th>
+					<th class="text-center">##VRESALE##</th>
 					<th class="text-center">##VPSTATE##</th>
 					<th class="text-center">##VOTIME##</th>
 				</tr>
@@ -19,8 +20,9 @@
 					<td class="text-right pr-3">{$vehicle.age}</td>
 					<td class="text-right pr-3">{$vehicle.wear|number_format:0} %</td>
 					<td class="text-right pr-3">{$vehicle.price|number_format:0:",":"."}</td>
+					<td class="text-right pr-3">{$vehicle.resale2|number_format:0:",":"."}</td>
 					<td>{if $vehicle.propertyState==2}gemietet{elseif $vehicle.propertyState==3}Mission{/if}</td>
-					<td data-order="{$vehicle.opTimeTS|number_format:0:",":"."}" class="text-right pr-3">{$vehicle.operatingTime}</td>
+					<td data-order="{$vehicle.opTimeTS|number_format:0:",":"."}" class="text-right pr-3">{$vehicle.operatingTimeString}</td>
 				</tr>
 				{/foreach}
 			</tbody>

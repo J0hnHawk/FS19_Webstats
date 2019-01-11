@@ -44,7 +44,7 @@ $configFile = './config/server.conf';
 if (file_exists ( $configFile )) {
 	$config = file ( $configFile );
 	$config = unserialize ( $config [0] );
-	$smarty->assign ( 'configType', $config['type'] );
+	$smarty->assign ( 'configType', $config ['type'] );
 } else {
 	define ( 'IN_INSTALL', true );
 	include ('./include/install.php');
@@ -52,7 +52,7 @@ if (file_exists ( $configFile )) {
 }
 
 // Load map infomations
-$map = loadMapCFGfile ( $config['map'] );
+$map = loadMapCFGfile ( $config ['map'] );
 $smarty->assign ( 'map', $map );
 
 $userLang = $_SESSION ['language'];
@@ -62,11 +62,15 @@ $mapconfig = $loadedConfig [0];
 $lang = $loadedConfig [1];
 // load installed mods
 $loadedConfig = loadXMLMapConfig ( '_mods', $userLang );
+$pallets = $mapconfig ['pallets'];
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
+$mapconfig ['pallets'] = array_merge ( $pallets, $mapconfig ['pallets'] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
 // Kartenkonfiguration aus XML Dateien laden
-$loadedConfig = loadXMLMapConfig ( $config['map'], $userLang );
+$loadedConfig = loadXMLMapConfig ( $config ['map'], $userLang );
+$pallets = $mapconfig ['pallets'];
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
+$mapconfig ['pallets'] = array_merge ( $pallets, $mapconfig ['pallets'] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
 
 // count active user

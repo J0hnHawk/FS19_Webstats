@@ -119,7 +119,8 @@ function loadXMLMapConfig($directory, $language) {
 		}
 		if (isset ( $object->pallets )) {
 			foreach ( $object->pallets->pallet as $pallet ) {
-				$objects ['pallets'] [] = strval ( $pallet ['name'] );
+				$name = strval ( $pallet ['name'] );
+				$objects ['pallets'] [$name] = $name;
 			}
 		}
 	}
