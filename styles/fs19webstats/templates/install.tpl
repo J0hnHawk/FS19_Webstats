@@ -157,7 +157,7 @@
 			<div class="form-group row">
 				<label for="ftppath" class="col-sm-3 col-form-label">##FTPPATH##</label>
 				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftppath" name="ftppath" placeholder="/folder/subfolder/" value="/profile/savegame1/">
+					<input type="text" class="form-control" id="ftppath" name="ftppath" placeholder="/folder/subfolder/">
 				</div>
 			</div>
 			<div class="form-group row">

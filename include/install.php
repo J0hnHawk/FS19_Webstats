@@ -96,6 +96,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 					} else {
 						$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_FTPUSERPASS##</div>';
 					}
+					ftp_close ( $ftp_conn );
 				} else {
 					$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_FTPSERVER##</div>';
 				}

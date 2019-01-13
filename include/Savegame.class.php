@@ -94,11 +94,12 @@ class Savegame {
 		return gmdate ( "H:i", floatval ( $this->xml ['environment']->dayTime ) * 60 );
 	}
 	public function getFarmMoney($farmId) {
-		if (isset ( $this->farms [$farmId] )) {
-			return $this->farms [$farmId] ['money'];
-		} else {
-			return false;
+		foreach ( $this->xml ['farms'] as $farmInXML ) {
+			if (intval ( $farmInXML ['farmId'] ) == $farmId) {
+				return floatval ( $farmInXML ['money'] );
+			}
 		}
+		return false;
 	}
 	public function getXML($xml) {
 		return $this->xml [$xml];
@@ -219,6 +220,8 @@ class Savegame {
 				$vehicleId = intval ( $vehicle ['id'] );
 				if (isset ( $vehicle->wearable )) {
 					$wearnode = (1 - floatval ( $vehicle->wearable->wearNode ['amount'] )) * 100;
+				} else {
+					$wearnode = 100;
 				}
 				$operatingTime = floatval ( $vehicle ['operatingTime'] );
 				$opHours = (gmdate ( "j", $operatingTime ) - 1) * 24 + gmdate ( "H", $operatingTime );
@@ -320,25 +323,25 @@ class Savegame {
 			$local_file = $this->cache . $file;
 			$server_file = $this->ftp ['path'] . $file;
 			if ($this->ftp ['ssl']) {
-				$conn_id = ftp_ssl_connect ( $this->ftp ['server'], $this->ftp ['port'], 1 );
+				$ftp_conn = ftp_ssl_connect ( $this->ftp ['server'], $this->ftp ['port'], 10 );
 			} else {
-				$conn_id = ftp_connect ( $this->ftp ['server'], $this->ftp ['port'], 1 );
+				$ftp_conn = ftp_connect ( $this->ftp ['server'], $this->ftp ['port'], 10 );
 			}
-			if (! $conn_id) {
+			if (! $ftp_conn) {
 				echo ("Verbindung fehlgeschlagen<br>\r\n");
 			} else {
-				if (! ftp_login ( $conn_id, $this->ftp ['user'], $this->ftp ['pass'] )) {
+				if (! ftp_login ( $ftp_conn, $this->ftp ['user'], $this->ftp ['pass'] )) {
 					echo ("Login fehlgeschlagen<br>\r\n");
 				} else {
-					if (! ftp_pasv ( $conn_id, true )) {
+					if (! ftp_pasv ( $ftp_conn, true )) {
 						echo ("Umschalten in passiven Modus fehlgeschlagen<br>\r\n");
 					} else {
-						if (! ftp_get ( $conn_id, $local_file, $server_file, FTP_ASCII )) {
+						if (! ftp_get ( $ftp_conn, $local_file, $server_file, FTP_ASCII )) {
 							echo ("Download von '$server_file' fehlgeschlagen<br>\r\n");
 						}
 					}
 				}
-				ftp_close ( $conn_id );
+				ftp_close ( $ftp_conn );
 			}
 		}
 	}
