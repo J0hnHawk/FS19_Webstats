@@ -7,10 +7,11 @@
 					<th class="text-center">##VNAME##</th>
 					<th class="text-center">##VAGE##</th>
 					<th class="text-center">##VWEAR##</th>
-					<th class="text-center">##VPRICE##</th>
-					<th class="text-center">##VRESALE##</th>
-					<th class="text-center">##VPSTATE##</th>
 					<th class="text-center">##VOTIME##</th>
+					<th class="text-center">##VRESALE##</th>
+					<th class="text-center">##VLPDAY##</th>
+					<th class="text-center">##VLPHOUR##</th>
+					<th class="text-center">##VLCOST##</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -19,10 +20,11 @@
 					<td>{$vehicle.name}</td>
 					<td class="text-right pr-3">{$vehicle.age}</td>
 					<td class="text-right pr-3">{$vehicle.wear|number_format:0} %</td>
-					<td class="text-right pr-3">{$vehicle.price|number_format:0:",":"."}</td>
-					<td class="text-right pr-3">{$vehicle.resale2|number_format:0:",":"."}</td>
-					<td>{if $vehicle.propertyState==2}gemietet{elseif $vehicle.propertyState==3}Mission{/if}</td>
-					<td data-order="{$vehicle.opTimeTS|number_format:0:",":"."}" class="text-right pr-3">{$vehicle.operatingTimeString}</td>
+					<td data-order="{$vehicle.operatingTime|number_format:0:" ,":"."}" class="text-right pr-3">{$vehicle.operatingTimeString}</td>
+					<td class="text-right pr-3">{if $vehicle.propertyState==1}{$vehicle.resale|number_format:0:",":"."}{elseif $vehicle.propertyState==3}Mission{/if}</td>
+					<td>{if $vehicle.propertyState==2}{$vehicle.dayLeasingCost|number_format:0:",":"."}{/if}</td>
+					<td>{if $vehicle.propertyState==2}{$vehicle.leasingCostPerHour|number_format:0:",":"."}{/if}</td>
+					<td>{if $vehicle.propertyState==2}{$vehicle.leasingCost|number_format:0:",":"."}{/if}</td>
 				</tr>
 				{/foreach}
 			</tbody>

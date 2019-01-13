@@ -21,28 +21,7 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-/*
- * if (isset ( $farm->players )) {
- * foreach ( $farm->players->player as $player ) {
- * $this->farms [$farmId] ['players'] [] = array (
- * 'name' => strval ( $player ['lastNickname'] ),
- * 'isFarmManager' => get_bool ( $player ['farmManager'] )
- * );
- * }
- * }
- * if (isset ( $farm->contracting )) {
- * foreach ( $farm->contracting->farm as $farm ) {
- * $this->farms [$farmId] ['contractFrom'] [intval ( $farm ['farmId'] )] = true;
- * }
- * }
- * }
- * foreach ( $this->farms as $farmId1 => $farm ) {
- * foreach ( $farm ['contractFrom'] as $farmId2 => $bool ) {
- * $this->farms [$farmId2] ['contractWith'] [$farmId1] = true;
- * }
- * }
- * }
- */
+
 class Farm {
 	private $name;
 	private $color;

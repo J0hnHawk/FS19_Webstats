@@ -22,17 +22,16 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 class Vehicle {
-	const DEPOPFACTOR = - 0.035001691;
-	const DEPAGEFACTOR = - 0.002916669;
 	const LIFETIME_OPERATINGTIME_RATIO = 0.08333;
+	const DEFAULT_LEASING_DEPOSIT_FACTOR = 0.02;
+	const DEFAULT_RUNNING_LEASING_FACTOR = 0.021;
+	const PER_DAY_LEASING_FACTOR = 0.01;
 	private $name;
 	private $age;
 	private $lifetime = 600;
 	private $wear;
 	private $price;
-	private $resale1;
-	private $resale2;
-	private $resale3;
+	private $resale;
 	private $propertyState;
 	private $operatingTime;
 	private $operatingTimeString;
@@ -54,14 +53,15 @@ class Vehicle {
 			$vehicle->wear = $wearnode;
 			$vehicle->price = intval ( $vehicleInXML ['price'] );
 			$vehicle->operatingTime = floatval ( $vehicleInXML ['operatingTime'] );
-			$operatingHours = $vehicle->operatingTime / 60 / 60;
-			$vehicle->resale1 = $vehicle->price * 0.9 * exp ( (($operatingHours < 50) ? $operatingHours : 50) * self::DEPOPFACTOR ) * exp ( (($vehicle->age < $vehicle->lifetime) ? $vehicle->age : $vehicle->lifetime) * self::DEPAGEFACTOR );
-			$vehicle->resale2 = $vehicle->resale1 / 1.2; // direct sale - not at the shop
-			$vehicle->resale3 = self::getSellPrice ( $vehicle->price, $vehicle->lifetime, $vehicle->age, $vehicle->operatingTime );
-			$operatingTimeString = (gmdate ( "j", $vehicle->operatingTime ) - 1) * 24 + gmdate ( "H", $vehicle->operatingTime );
-			$operatingTimeString .= ':' . gmdate ( "i", $vehicle->operatingTime );
-			$vehicle->operatingTimeString = $operatingTimeString;
+			$vehicle->resale = self::getSellPrice ( $vehicle->price, $vehicle->lifetime, $vehicle->age, $vehicle->operatingTime );
+			$vehicle->operatingTimeString = self::getOperatingTimeString ( $vehicle->operatingTime );
 			$vehicle->propertyState = intval ( $vehicleInXML ['propertyState'] );
+			if ($vehicle->propertyState == 2) {
+				$vehicle->leasingDepositCost = self::getLeasingDepositCost ( $vehicle->price );
+				$vehicle->leasingCostPerHour = self::getLeasingCostPerHour ( $vehicle->price );
+				$vehicle->dayLeasingCost = self::getDayLeasingCost ( $vehicle->price );
+				$vehicle->leasingCost = self::getLeasingCost ( $vehicle->price, $vehicle->age, $vehicle->operatingTime );
+			}
 			if (in_array ( $vehicle->name, $pallets )) {
 				self::$pallets [] = get_object_vars ( $vehicle );
 			} else {
@@ -69,17 +69,37 @@ class Vehicle {
 			}
 		}
 	}
+	public static function getAllVehicles() {
+		return self::$vehicles;
+	}
 	private static function getSellPrice($price, $maxVehicleAge, $age, $operatingTime) {
 		$priceMultiplier = 0.75;
 		if ($maxVehicleAge != null and $maxVehicleAge != 0) {
 			$ageMultiplier = 0.5 * min ( $age / $maxVehicleAge, 1 );
-			$operatingTime = $operatingTime / (1000 * 60 * 60);
+			$operatingTime = $operatingTime / 1000;
 			$operatingTimeMultiplier = 0.5 * min ( $operatingTime / ($maxVehicleAge * self::LIFETIME_OPERATINGTIME_RATIO), 1 );
 			$priceMultiplier = $priceMultiplier * exp ( - 3.5 * ($ageMultiplier + $operatingTimeMultiplier) );
 		}
-		return $price * max ( $priceMultiplier, 0.05 );
+		return floor ( $price * max ( $priceMultiplier, 0.05 ) );
 	}
-	public static function getAllVehicles() {
-		return self::$vehicles;
+	private static function getOperatingTimeString($operatingTime) {
+		$hours = (gmdate ( "j", $operatingTime ) - 1) * 24 + gmdate ( "H", $operatingTime );
+		$minutes = gmdate ( "i", $operatingTime );
+		return "$hours:$minutes";
+	}
+	private static function getLeasingCost($price, $age, $operatingTime) {
+		$depositeCost = self::getLeasingDepositCost ( $price );
+		$costHours = self::getLeasingCostPerHour ( $price ) * ($operatingTime / 60 / 60);
+		$costDays = self::getDayLeasingCost ( $price ) * $age;
+		return $depositeCost + $costHours + $costDays;
+	}
+	private static function getLeasingDepositCost($price) {
+		return floor ( $price * self::DEFAULT_LEASING_DEPOSIT_FACTOR );
+	}
+	private static function getLeasingCostPerHour($price) {
+		return floor ( $price * self::DEFAULT_RUNNING_LEASING_FACTOR );
+	}
+	private static function getDayLeasingCost($price) {
+		return floor ( $price * self::PER_DAY_LEASING_FACTOR );
 	}
 }
