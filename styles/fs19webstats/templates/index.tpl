@@ -65,6 +65,20 @@
 	</div>
 	{/if}
 	<script type="text/javascript">
+	function clickDropdown() {
+	    if ($('.navbar-toggler').css("display") === "none") {
+	        $('.dropdown-toggle').click(function () {
+	            window.location.href = $(this).attr('href');
+	            return false;
+	        });
+	    }
+	}
+	$(document).ready(function () {
+	    clickDropdown();
+	    $(window).resize(function () {
+	        clickDropdown();
+	    });
+	});
 	{if $reloadPage && $serverOnline}
 	var time = new Date().getTime();
 	$(document.body).bind("mousemove keypress", function () {
@@ -77,21 +91,6 @@
 	    }
 	}, 1000);
 	{/if}
-	function clickDropdown() {
-	    if ($('.navbar-toggler').css("display") === "none") {
-	        $('.dropdown-toggle').click(function () {
-	            window.location.href = $(this).attr('href');
-	            return false;
-	        });
-	    }
-	}
-
-	$(document).ready(function () {
-	    clickDropdown();
-	    $(window).resize(function () {
-	        clickDropdown();
-	    });
-	});
 	</script>
 </body>
 </html>

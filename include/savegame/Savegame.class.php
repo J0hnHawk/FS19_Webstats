@@ -22,14 +22,24 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 class Savegame {
-	public $demandIsRunning = false;
-	public $greatDemands = array ();
-	public $missions = array ();
-	public $vehicles = array ();
+	const CONFIG_CHANGE_PRICE = 1000;
+	const COST_MULTIPLIER = array (
+			1 => 0.4,
+			2 => 0.7,
+			3 => 1 
+	);
+	const MAX_DAILYUPKEEP_MULTIPLIER = 4;
+	const MAX_GREAT_DEMANDS = 3;
+	const PRICE_DROP_MIN_PERCENT = 0.6;
+	const PRICE_MULTIPLIER = array (
+			1 => 3,
+			2 => 1.8,
+			3 => 1 
+	);
 	public $commodities = array ();
 	public $outOfMap = array ();
 	public $positions = array ();
-	public $xml = array ();
+	public static $xml = array ();
 	protected $xmlFiles = array (
 			'environment.xml',
 			'economy.xml',
@@ -41,7 +51,9 @@ class Savegame {
 	private $farmId;
 	private $ftp = array ();
 	private $cache = './cache/';
-	public function __construct($config, $farmId = 0) {
+	public function __construct($farmId = 0) {
+		$config = file ( './config/server.conf' );
+		$config = unserialize ( $config [0] );
 		if (! file_exists ( $this->cache )) {
 			mkdir ( $this->cache );
 		}
@@ -57,8 +69,8 @@ class Savegame {
 				$this->ftp ['isgportal'] = $config ['isgportal'];
 				$updateFiles = true;
 				if (file_exists ( $this->cache . $this->xmlFiles [0] )) {
-					$this->xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
-					$lastDayTime = intval ( $this->xml ['environment']->currentDay ) * 86400 + intval ( $this->xml ['environment']->dayTime * 60 );
+					self::$xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
+					$lastDayTime = intval ( self::$xml ['environment']->currentDay ) * 86400 + intval ( self::$xml ['environment']->dayTime * 60 );
 					$this->getFileByFTP ( $this->xmlFiles [0] );
 					$careerEnvironment = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
 					$newDayTime = intval ( $careerEnvironment->currentDay ) * 86400 + intval ( $careerEnvironment->dayTime * 60 );
@@ -68,18 +80,18 @@ class Savegame {
 				} else {
 					$this->getFileByFTP ( $this->xmlFiles [0] );
 				}
-				$this->xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
+				self::$xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
 				for($s1 = 1; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
 					if ($updateFiles) {
 						$this->getFileByFTP ( $this->xmlFiles [$s1] );
 					}
-					$this->xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+					self::$xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
 				break;
 			case 'local' :
 				$this->cache = $config ['path'];
 				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
-					$this->xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+					self::$xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
 				break;
 			case 'api' :
@@ -88,25 +100,23 @@ class Savegame {
 		$this->loadInitialData ();
 	}
 	public function getCurrentDay() {
-		return intval ( $this->xml ['environment']->currentDay );
+		return intval ( self::$xml ['environment']->currentDay );
 	}
 	public function getDayTime() {
-		return gmdate ( "H:i", floatval ( $this->xml ['environment']->dayTime ) * 60 );
+		return gmdate ( "H:i", floatval ( self::$xml ['environment']->dayTime ) * 60 );
 	}
 	public function getFarmMoney($farmId) {
-		foreach ( $this->xml ['farms'] as $farmInXML ) {
+		foreach ( self::$xml ['farms'] as $farmInXML ) {
 			if (intval ( $farmInXML ['farmId'] ) == $farmId) {
 				return floatval ( $farmInXML ['money'] );
 			}
 		}
 		return false;
 	}
-	public function getXML($xml) {
-		return $this->xml [$xml];
+	public static function getXML($xml) {
+		return self::$xml [$xml];
 	}
 	private function loadInitialData() {
-		$this->loadMissions ();
-		$this->loadGreatDemands ();
 		if ($this->farmId) {
 			$this->loadVehicles ();
 			$this->loadCommodities ();
@@ -114,7 +124,7 @@ class Savegame {
 	}
 	private function loadCommodities() {
 		global $mapconfig;
-		foreach ( $this->xml ['items'] as $item ) {
+		foreach ( self::$xml ['items'] as $item ) {
 			// Ballen usw.
 			$className = strval ( $item ['className'] );
 			$fillType = false;
@@ -180,7 +190,7 @@ class Savegame {
 		} else {
 			$this->commodities [$l_fillType] ['overall'] += $fillLevel;
 		}
-		if (isset ( $location )) {
+		//if (isset ( $location )) {
 			$l_location = translate ( $location );
 			if (! isset ( $this->commodities [$l_fillType] ['locations'] [$l_location] )) {
 				$this->commodities [$l_fillType] ['locations'] += array (
@@ -199,11 +209,11 @@ class Savegame {
 				$this->commodities [$l_fillType] ['locations'] [$l_location] ['fillLevel'] += $fillLevel;
 			}
 			ksort ( $this->commodities [$l_fillType] ['locations'] );
-		}
+		//}
 	}
 	private function loadVehicles() {
 		global $mapconfig;
-		foreach ( $this->xml ['vehicles'] as $vehicle ) {
+		foreach ( self::$xml ['vehicles'] as $vehicle ) {
 			$propertyState = 1;
 			if ($vehicle ['farmId'] != $this->farmId) {
 				continue;
@@ -227,15 +237,6 @@ class Savegame {
 				$opHours = (gmdate ( "j", $operatingTime ) - 1) * 24 + gmdate ( "H", $operatingTime );
 				$opMinutes = gmdate ( "i", $operatingTime );
 				$propertyState = intval ( $vehicle ['propertyState'] );
-				$this->vehicles [$vehicleId] = array (
-						'name' => $vehicleName,
-						'age' => intval ( $vehicle ['age'] ),
-						'wear' => $wearnode,
-						'price' => intval ( $vehicle ['price'] ),
-						'propertyState' => $propertyState,
-						'operatingTime' => "$opHours:$opMinutes",
-						'opTimeTS' => $operatingTime 
-				);
 			}
 			if (isset ( $vehicle->fillUnit ) && $propertyState != 3) {
 				foreach ( $vehicle->fillUnit->unit as $unit ) {
@@ -245,64 +246,6 @@ class Savegame {
 						$this->addCommodity ( $fillType, $fillLevel, $location, $className );
 					}
 				}
-			}
-		}
-	}
-	private function loadMissions() {
-		foreach ( $this->xml ['missions'] as $mission ) {
-			$missionData = array (
-					'type' => sprintf ( '##MIS_%s##', strtoupper ( strval ( $mission ['type'] ) ) ),
-					'reward' => intval ( $mission ['reward'] ),
-					'status' => floatval ( $mission ['status'] ),
-					'success' => get_bool ( $mission ['success'] ) 
-			);
-			if (isset ( $mission ['farmId'] )) {
-				$missionData += array (
-						'farmId' => intval ( $mission ['farmId'] ) 
-				);
-			}
-			foreach ( $mission as $details ) {
-				if ($details->getName () == 'field') {
-					$vehicleUseCost = intval ( $details ['vehicleUseCost'] );
-					$missionData += array (
-							'field' => intval ( $details ['id'] ),
-							'fieldSize' => $vehicleUseCost / 320,
-							'vehicleUseCost' => $vehicleUseCost,
-							'fruitTypeName' => translate ( $details ['fruitTypeName'] ) 
-					);
-				}
-				if ($details->getName () == 'bale') {
-					$missionData ['fruitTypeName'] = translate ( $details ['fillTypeName'] );
-				}
-			}
-			$this->missions [] = $missionData;
-		}
-	}
-	private function loadGreatDemands() {
-		foreach ( $this->xml ['economy']->greatDemands->greatDemand as $greatDemand ) {
-			$stationId = strval ( $greatDemand ['itemId'] );
-			$fillTypeName = strval ( $greatDemand ['fillTypeName'] );
-			$demandMultiplier = floatval ( $greatDemand ['demandMultiplier'] );
-			$isRunning = get_bool ( $greatDemand ['isRunning'] );
-			$this->demandIsRunning = $this->demandIsRunning || $isRunning;
-			$l_fillType = translate ( $fillTypeName );
-			if (isset ( $this->greatDemands [$l_fillType] )) {
-				$this->greatDemands [$l_fillType] ['locations'] += array (
-						$stationId => array (
-								'demandMultiplier' => $demandMultiplier,
-								'isRunning' => $isRunning 
-						) 
-				);
-			} else {
-				$this->greatDemands [$l_fillType] = array (
-						'i3dName' => $fillTypeName,
-						'locations' => array (
-								$stationId => array (
-										'demandMultiplier' => $demandMultiplier,
-										'isRunning' => $isRunning 
-								) 
-						) 
-				);
 			}
 		}
 	}

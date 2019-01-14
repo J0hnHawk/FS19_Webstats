@@ -21,8 +21,7 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-
-class Farm {
+class Farm  {
 	private $name;
 	private $color;
 	private $loan;

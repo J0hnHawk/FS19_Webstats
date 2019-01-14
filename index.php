@@ -49,8 +49,8 @@ include ('./include/loadConfig.php');
 $smarty->assign ( 'onlineUser', sizeof ( $onlineUser ) );
 $smarty->assign ( 'hideFooter', $options ['general'] ['hideFooter'] );
 
-include ('./include/Savegame.class.php');
-$savegame = new Savegame ( $config, $_SESSION ['farmId'] );
+include ('./include/savegame/Savegame.class.php');
+$savegame = new Savegame ( $_SESSION ['farmId'] );
 $smarty->assign ( 'currentDay', $savegame->getCurrentDay () );
 $smarty->assign ( 'dayTime', $savegame->getDayTime () );
 $smarty->assign ( 'money', $savegame->getFarmMoney ( $_SESSION ['farmId'] ) );

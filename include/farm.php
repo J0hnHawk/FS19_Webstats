@@ -22,8 +22,8 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 
-include ('./include/Farm.class.php');
-Farm::extractXML ( $savegame->xml ['farms'] );
+include ('./include/savegame/Farm.class.php');
+Farm::extractXML ( $savegame->getXML ( 'farms' ) );
 $farms = Farm::getAllFarms ();
 
 if (isset ( $_GET ['join_farm'] )) {

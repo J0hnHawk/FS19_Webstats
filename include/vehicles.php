@@ -21,7 +21,7 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-include ('./include/Vehicles.class.php');
-Vehicle::extractXML ( $savegame->xml ['vehicles'], $options ['general'] ['farmId'], $mapconfig ['pallets'] );
+include ('./include/savegame/Vehicles.class.php');
+Vehicle::extractXML ( $savegame->getXML ( 'vehicles' ), $options ['general'] ['farmId'], $mapconfig ['pallets'] );
 $vehicles = Vehicle::getAllVehicles ();
 $smarty->assign ( 'vehicles', $vehicles );

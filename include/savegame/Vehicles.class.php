@@ -22,10 +22,12 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 class Vehicle {
-	const LIFETIME_OPERATINGTIME_RATIO = 0.08333;
 	const DEFAULT_LEASING_DEPOSIT_FACTOR = 0.02;
 	const DEFAULT_RUNNING_LEASING_FACTOR = 0.021;
 	const PER_DAY_LEASING_FACTOR = 0.01;
+	const LIFETIME_OPERATINGTIME_RATIO = 0.08333;
+	const MAX_DAILYUPKEEP_MULTIPLIER = 4;
+	const DIRECT_SELL_MULTIPLIER = 1.2;
 	private $name;
 	private $age;
 	private $lifetime = 600;
@@ -101,5 +103,15 @@ class Vehicle {
 	}
 	private static function getDayLeasingCost($price) {
 		return floor ( $price * self::PER_DAY_LEASING_FACTOR );
+	}
+	private static function getDailyUpkeep($vehicle) {
+		$multiplier = 1;
+		if ($vehicle->lifetime != null && $vehicle->lifetime != 0) {
+			$ageMultiplier = 0.3 * min ( $vehicle->age / $vehicle->lifetime, 1 );
+			$operatingTime = $vehicle->operatingTime / 1000;
+			$operatingTimeMultiplier = 0.7 * min ( $operatingTime / ($vehicle->lifetime * self::LIFETIME_OPERATINGTIME_RATIO), 1 );
+			$multiplier = 1 + self::MAX_DAILYUPKEEP_MULTIPLIER * ($ageMultiplier + $operatingTimeMultiplier);
+		}
+		return $vehicle->dailyUpkeep * $multiplier;
 	}
 }
