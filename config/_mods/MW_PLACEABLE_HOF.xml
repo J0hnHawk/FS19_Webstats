@@ -2,6 +2,8 @@
 <mapconfig>
 	<item name="SCS_HOFSILO" locationType="storage" />
 	<item name="SCS_BIG_NEW_SILO" locationType="storage" />
+	<item name="SCS_HOFSILO_EXTENTION" locationType="storage" />
+	<item name="SCS_FUTTERMISCH_SILO" locationType="storage" />
 	<l10n>
 		<text name="SCS_HOFSILO">
 			<en>SCS_HOFSILO</en>
@@ -10,6 +12,14 @@
 		<text name="SCS_BIG_NEW_SILO">
 			<en>SCS_BIG_NEW_SILO</en>
 			<de>Hofsilo</de>
+		</text>
+		<text name="SCS_HOFSILO_EXTENTION">
+			<en>SCS_HOFSILO_EXTENTION</en>
+			<de>Hofsilo</de>
+		</text>
+		<text name="SCS_FUTTERMISCH_SILO">
+			<en>SCS_FUTTERMISCH_SILO</en>
+			<de>Futtermischsilo</de>
 		</text>
 	</l10n>
 </mapconfig>
