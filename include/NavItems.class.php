@@ -68,10 +68,22 @@ class Nav {
 						'text' => '##VEHICLES##' 
 				),
 				'finances' => array (
-						'showInNav' => false, // $showInNav,
-						'hasSubmenu' => false,
+						'showInNav' => $showInNav,
+						'hasSubmenu' => true,
 						'active' => false,
-						'text' => '##FINANCES##' 
+						'text' => '##FINANCES##',
+						'submenu' => array (
+								'5dayhistory' => array (
+										'showInNav' => true,
+										'active' => false,
+										'text' => '##FINANCES5DAYS##' 
+								),
+								'balance' => array (
+										'showInNav' => true,
+										'active' => false,
+										'text' => '##BALANCESHEET##' 
+								) 
+						) 
 				),
 				'husbandry' => array (
 						'showInNav' => false, // $showInNav,

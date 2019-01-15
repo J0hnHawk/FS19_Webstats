@@ -16,11 +16,11 @@
 	<item name="BunkerSilo_silo004" locationType="bunker" position="-55 0 -548" />
 	<item name="BunkerSilo_silo005" locationType="bunker" position="-65 0 -548" />
 	<l10n>
-		<text name="bga">
+		<text name="bga1">
 			<en>bga</en>
 			<de>BGA</de>
 		</text>
-		<text name="bga1">
+		<text name="bga">
 			<en>bga1</en>
 			<de>BGA Nord</de>
 		</text>

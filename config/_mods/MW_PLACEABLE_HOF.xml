@@ -4,6 +4,7 @@
 	<item name="SCS_BIG_NEW_SILO" locationType="storage" />
 	<item name="SCS_HOFSILO_EXTENTION" locationType="storage" />
 	<item name="SCS_FUTTERMISCH_SILO" locationType="storage" />
+	<item name="SCS_BUNKER_SILO_KLEIN_ONE_WAY" locationType="bunker" />
 	<l10n>
 		<text name="SCS_HOFSILO">
 			<en>SCS_HOFSILO</en>
@@ -21,5 +22,10 @@
 			<en>SCS_FUTTERMISCH_SILO</en>
 			<de>Futtermischsilo</de>
 		</text>
+		<text name="SCS_BUNKER_SILO_KLEIN_ONE_WAY">
+			<en>SCS_BUNKER_SILO_KLEIN_ONE_WAY</en>
+			<de>kleines Fahrsilo</de>
+		</text>
+
 	</l10n>
 </mapconfig>

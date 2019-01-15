@@ -290,7 +290,7 @@
 			<de>Gras</de>
 			<fr>Herbe</fr>
 		</text>
-		<text name="chaff">
+		<text name="CHAFF">
 			<cz>Řezanka</cz>
 			<en>Chaff</en>
 			<de>Häckselgut</de>
@@ -357,7 +357,7 @@
 			<de>Kartoffeln, Zuckerrüben</de>
 			<fr>Pommes de terre, Betterave à sucre</fr>
 		</text>
-		<text name="pigFood">
+		<text name="PIGFOOD">
 			<cz>Prasečí krmivo</cz>
 			<en>Pig food</en>
 			<de>Schweinefutter</de>

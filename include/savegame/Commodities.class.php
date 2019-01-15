@@ -44,7 +44,7 @@ class Commodity {
 		self::$farmId = $_SESSION ['farmId'];
 		self::$xml = $xml;
 		self::loadBales ();
-		self::loadSilos ();
+		self::loadPlaceables ();
 		self::loadVehicles ();
 	}
 	public static function getAllCommodities() {
@@ -79,20 +79,34 @@ class Commodity {
 			}
 		}
 	}
-	private static function loadSilos() {
+	private static function loadPlaceables() {
 		global $mapconfig;
 		foreach ( self::$xml ['items'] as $item ) {
 			$location = cleanFileName ( $item ['filename'] );
 			$stationId = intval ( $item ['id'] );
-			if (isset ( $mapconfig [$location] ['locationType'] ) && $mapconfig [$location] ['locationType'] == 'storage') {
-				foreach ( $item as $storage ) {
-					if (strval ( $storage ['farmId'] ) == self::$farmId) {
-						foreach ( $storage as $node ) {
-							$fillType = strval ( $node ['fillType'] );
-							$fillLevel = intval ( $node ['fillLevel'] );
-							self::addCommodity ( $fillType, $fillLevel, $location );
+			if (isset ( $mapconfig [$location] ['locationType'] )) {
+				switch ($mapconfig [$location] ['locationType']) {
+					case 'storage' :
+						foreach ( $item as $storage ) {
+							if (strval ( $storage ['farmId'] ) == self::$farmId) {
+								foreach ( $storage as $node ) {
+									$fillType = strval ( $node ['fillType'] );
+									$fillLevel = intval ( $node ['fillLevel'] );
+									self::addCommodity ( $fillType, $fillLevel, $location );
+								}
+							}
 						}
-					}
+						break;
+					case 'bunker' :
+					case 'bga' :
+						foreach ( $item->bunkerSilo as $bunkerSilo ) {
+							$state = intval ( $bunkerSilo ['state'] );
+							$fillLevel = intval ( $bunkerSilo ['fillLevel'] );
+							$compactedFillLevel = intval ( $bunkerSilo ['compactedFillLevel'] );
+							self::addCommodity ( 'CHAFF', ($state < 2) ? $compactedFillLevel : 0, $location );
+							self::addCommodity ( 'SILAGE', ($state < 2) ? 0 : $fillLevel, $location );
+						}
+						break;
 				}
 			}
 		}
