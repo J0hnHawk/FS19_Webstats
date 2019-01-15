@@ -22,6 +22,13 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 class Commodity {
+	const FILLTYPES_TO_IGNORE = array (
+			'AIR',
+			'DEF',
+			'ROUNDBALE',
+			'SQUAREBALE',
+			'UNKNOWN' 
+	);
 	private $overall;
 	private $i3dName;
 	private $isCombine;
@@ -29,44 +36,96 @@ class Commodity {
 	private $outOfMap = false;
 	private static $xml;
 	private static $farmId;
-	public static $commodities;
-	public static $outOfMap2 = array ();
+	public static $commodities = array ();
+	public static $commoditiesArray = array ();
+	public static $outOfMapArray = array ();
 	public static $positions = array ();
 	public static function loadCommodities($xml) {
-		global $mapconfig;
 		self::$farmId = $_SESSION ['farmId'];
 		self::$xml = $xml;
 		self::loadBales ();
+		self::loadSilos ();
+		self::loadVehicles ();
+	}
+	public static function getAllCommodities() {
+		return self::$commoditiesArray;
+	}
+	public static function getAllOutOfMap() {
+		return self::$outOfMapArray;
 	}
 	private static function loadBales() {
 		foreach ( self::$xml ['items'] as $item ) {
 			$className = strval ( $item ['className'] );
-			if ($className == 'Bale') {
+			if ($className == 'Bale' && strval ( $item ['farmId'] ) == self::$farmId) {
 				$location = getLocation ( $item ['position'] );
 				$fillType = cleanFileName ( $item ['filename'] );
-				if (strval ( $item ['farmId'] ) == self::$farmId) {
-					$fillLevel = intval ( $item ['fillLevel'] );
-					self::addCommodity ( $fillType, $fillLevel, $location, $className );
-					if ($location == 'outOfMap') {
-						self::$commodities [translate ( $fillType )] ['outOfMap'] = true;
-						// für Modal Dialog mit Edit-Vorschlag, Platzierung beim Palettenlager
-						self::$outOfMap2 [] = array (
-								$className,
-								$fillType,
-								strval ( $item ['position'] ),
-								'-870 100 ' . (- 560 + sizeof ( $outOfMap ) * 2) 
-						);
-					} else {
-						self::$positions [$className] [translate ( $fillType )] [] = array (
-								'name' => $className,
-								'position' => explode ( ' ', $item ['position'] ) 
-						);
+				$fillLevel = intval ( $item ['fillLevel'] );
+				self::addCommodity ( $fillType, $fillLevel, $location, $className );
+				if ($location == 'outOfMap') {
+					self::$commodities [translate ( $fillType )] ['outOfMap'] = true;
+					// für Modal Dialog mit Edit-Vorschlag, Platzierung beim Palettenlager
+					self::$outOfMapArray [] = array (
+							$className,
+							$fillType,
+							strval ( $item ['position'] ),
+							'-870 100 ' . (- 560 + sizeof ( $outOfMap ) * 2) 
+					);
+				} else {
+					self::$positions [$className] [translate ( $fillType )] [] = array (
+							'name' => $className,
+							'position' => explode ( ' ', $item ['position'] ) 
+					);
+				}
+			}
+		}
+	}
+	private static function loadSilos() {
+		global $mapconfig;
+		foreach ( self::$xml ['items'] as $item ) {
+			$location = cleanFileName ( $item ['filename'] );
+			$stationId = intval ( $item ['id'] );
+			if (isset ( $mapconfig [$location] ['locationType'] ) && $mapconfig [$location] ['locationType'] == 'storage') {
+				foreach ( $item as $storage ) {
+					if (strval ( $storage ['farmId'] ) == self::$farmId) {
+						foreach ( $storage as $node ) {
+							$fillType = strval ( $node ['fillType'] );
+							$fillLevel = intval ( $node ['fillLevel'] );
+							self::addCommodity ( $fillType, $fillLevel, $location );
+						}
 					}
 				}
 			}
 		}
 	}
-	public static function addCommodity($fillType, $fillLevel, $location, $className = 'none', $isCombine = false) {
+	private static function loadVehicles() {
+		global $mapconfig;
+		foreach ( self::$xml ['vehicles'] as $vehicle ) {
+			if ($vehicle ['farmId'] != self::$farmId) {
+				continue;
+			}
+			$vehicleName = cleanFileName ( $vehicle ['filename'] );
+			if (in_array ( $vehicleName, $mapconfig ['pallets'] )) {
+				// Palette
+				$location = getLocation ( $vehicle->component1 ['position'] );
+				$className = 'FillablePallet';
+			} else {
+				// Fahrzeug
+				$location = $vehicleName;
+				$className = 'isVehicle';
+				$vehicleId = intval ( $vehicle ['id'] );
+			}
+			if (isset ( $vehicle->fillUnit )) {
+				foreach ( $vehicle->fillUnit->unit as $unit ) {
+					$fillType = strval ( $unit ['fillType'] );
+					$fillLevel = intval ( $unit ['fillLevel'] );
+					if (! in_array ( $fillType, self::FILLTYPES_TO_IGNORE )) {
+						self::addCommodity ( $fillType, $fillLevel, $location, $className );
+					}
+				}
+			}
+		}
+	}
+	private static function addCommodity($fillType, $fillLevel, $location, $className = 'none', $isCombine = false) {
 		$l_fillType = translate ( $fillType );
 		$l_location = translate ( $location );
 		if (! isset ( self::$commodities [$l_fillType] )) {
@@ -75,7 +134,6 @@ class Commodity {
 			$commodity->i3dName = $fillType;
 			$commodity->isCombine = $isCombine;
 			$commodity->locations = array ();
-			self::$commodities [$l_fillType] = $commodity;
 		} else {
 			$commodity = self::$commodities [$l_fillType];
 			$commodity->overall += $fillLevel;
@@ -90,18 +148,15 @@ class Commodity {
 			);
 		} else {
 			if (! isset ( $commodity->locations [$l_location] [$className] )) {
-				$commodity->locations [$l_location] [$l_location] [$className] = 1;
+				$commodity->locations [$l_location] [$className] = 1;
 			} else {
-				$commodity->locations [$l_location] [$l_location] [$className] ++;
+				$commodity->locations [$l_location] [$className] ++;
 			}
 			$commodity->locations [$l_location] ['fillLevel'] += $fillLevel;
 		}
 		self::$commodities [$l_fillType] = $commodity;
-		ksort ( self::$commodities [$l_fillType] ['locations'] );
-	}
-	private static function getCommoditiesArray() {
-		$json = json_encode ( self::$commodities );
-		return json_decode ( $json, TRUE );
+		self::$commoditiesArray [$l_fillType] = get_object_vars ( $commodity );
+		// ksort ( self::$commodities [$l_fillType] ['locations'] );
 	}
 }
 

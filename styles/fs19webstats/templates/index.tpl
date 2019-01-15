@@ -11,8 +11,7 @@
 <link rel="stylesheet" type="text/css" href="{#CSS#}/theme.min.css?{$smarty.now}">
 <link rel="stylesheet" type="text/css" href="{#CSS#}/customstyle.css?{$smarty.now}">
 <link rel="stylesheet" type="text/css" href="{#CSS#}/datatables.min.css" />
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-	integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <script type="text/javascript" src="{#SCRIPTS#}/jquery.min.js"></script>
 <script type="text/javascript" src="{#SCRIPTS#}/bootstrap.min.js"></script>
 <script type="text/javascript" src="{#SCRIPTS#}/datatables.min.js"></script>
@@ -27,7 +26,7 @@
 			<div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
 				<ul class="navbar-nav mx-auto text-center">
 					{foreach $navItems as $link => $navItem} {if $navItem.showInNav} {if $navItem.active} {$class="nav-item active"} {else} {$class="nav-item"} {/if} {if $navItem.hasSubmenu}
-					<li class="{$class|cat:"dropdown"}"><a class="nav-link dropdown-toggle" href="index.php?page={$link}" id="navbarDropdown" data-toggle="dropdown">{$navItem.text}</a>
+					<li class="{$class|cat:" dropdown"}"><a class="nav-link dropdown-toggle" href="index.php?page={$link}" id="navbarDropdown" data-toggle="dropdown">{$navItem.text}</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							{foreach $navItem.submenu as $subLink => $subItem} <a class="dropdown-item" href="index.php?page={$link}&subPage={$subLink}">{$subItem.text}</a> {/foreach}
 						</div></li> {else}
@@ -66,13 +65,13 @@
 	{/if}
 	<script type="text/javascript">
 	function clickDropdown() {
-	    if ($('.navbar-toggler').css("display") === "none") {
-	        $('.dropdown-toggle').click(function () {
+		if ($('.navbar-toggler').css("display") === "none") {
+			$('.dropdown-toggle').click(function () {
 	            window.location.href = $(this).attr('href');
 	            return false;
 	        });
 	    }
-	}
+	}    
 	$(document).ready(function () {
 	    clickDropdown();
 	    $(window).resize(function () {

@@ -32,7 +32,10 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 	$options ['version'] = $cookieVersion;
 	setcookie ( 'fs19webstats', json_encode ( $options ), time () + 31536000 );
 }
-$commodities = $savegame->commodities;
+include ('./include/savegame/Commodities.class.php');
+Commodity::loadCommodities ( $savegame::$xml );
+
+$commodities = Commodity::getAllCommodities ();
 foreach ( $commodities as $name => $commodity ) {
 	if ($commodity ['isCombine']) {
 		unset ( $commodities [$name] );
@@ -73,5 +76,5 @@ if (! $options ['storage'] ['sortByName']) {
 
 $smarty->assign ( 'commodities', $commodities );
 $smarty->assign ( 'plants', array ()/*$plants*/ );
-$smarty->assign ( 'outOfMap', $savegame->outOfMap );
+$smarty->assign ( 'outOfMap', Commodity::getAllOutOfMap () );
 $smarty->assign ( 'options', $options ['storage'] );

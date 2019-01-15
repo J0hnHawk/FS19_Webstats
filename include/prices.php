@@ -24,16 +24,11 @@ if (! defined ( 'IN_FS19WS' )) {
 
 include ('./include/savegame/Prices.class.php');
 Price::extractXML ( $savegame::$xml );
-$prices = Price::getAllPrices ();
-$sellingPoints = Price::getSellStations ();
 
-/*
 include ('./include/savegame/Commodities.class.php');
 Commodity::loadCommodities ( $savegame::$xml );
-var_dump ( Commodity::$commodities );
-*/
 
 $smarty->assign ( 'options', $options ['general'] );
-$smarty->assign ( 'prices', $prices );
-$smarty->assign ( 'commodities', $savegame->commodities );
-$smarty->assign ( 'sellingPoints', $sellingPoints );
+$smarty->assign ( 'prices', Price::getAllPrices () );
+$smarty->assign ( 'commodities', Commodity::getAllCommodities() );
+$smarty->assign ( 'sellingPoints', Price::getSellStations () );
