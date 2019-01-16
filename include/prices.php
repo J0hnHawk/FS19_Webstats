@@ -30,5 +30,5 @@ Commodity::loadCommodities ( $savegame::$xml );
 
 $smarty->assign ( 'options', $options ['general'] );
 $smarty->assign ( 'prices', Price::getAllPrices () );
-$smarty->assign ( 'commodities', Commodity::getAllCommodities() );
+$smarty->assign ( 'commodities', Commodity::getAllCommodities () );
 $smarty->assign ( 'sellingPoints', Price::getSellStations () );

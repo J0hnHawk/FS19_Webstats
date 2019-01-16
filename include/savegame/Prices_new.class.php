@@ -32,6 +32,7 @@ class Price {
 	private $greatDemand = false;
 	private $locations = array ();
 	public static $prices = array ();
+	public static $pricesArray = array ();
 	public static $sellStations = array ();
 	public static $greatDemands = array ();
 	public static $greatDemandIsRunning = false;
@@ -47,66 +48,80 @@ class Price {
 				continue;
 			} else {
 				if (isset ( $mapconfig [$location] ['isSellingPoint'] ) && $mapconfig [$location] ['isSellingPoint']) {
-					self::$sellStations [translate ( $location )] = $location;
+					$l_location = translate ( $location );
+					self::$sellStations [$l_location] = $location;
 					if ($mapconfig [$location] ['locationType'] == 'bga') {
-						foreach ( $mapconfig [$location] ['input'] as $fillType => $inputTrigger ) {
-							$currentPrice = $inputTrigger ['price'];
-							self::addNewPrice ( $fillType, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
+						$bgaPrices = array (
+								'SILAGE' => 219,
+								'GRASS_WINDROW' => 57,
+								'DRYGRASS_WINDROW' => 57,
+								'MANURE' => 219,
+								'LIQUIDMANURE' => 76 
+						);
+						foreach ( $bgaPrices as $fillType => $currentPrice ) {
+							$l_fillType = translate ( $fillType );
+							$price = self::createNewPrice ( $fillType );
+							$price = self::setNewLocation ( $price, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
 						}
 					} else {
 						foreach ( $item->sellingStation->stats as $triggerStats ) {
 							$fillType = strval ( $triggerStats ['fillType'] );
 							$isInPlateau = get_bool ( $triggerStats ['isInPlateau'] );
+							$l_fillType = translate ( $fillType );
+							$price = self::createNewPrice ( $fillType );
 							extract ( self::getPrices ( $triggerStats->curveBaseCurve, $triggerStats->curve1 ) );
 							if ($isInPlateau) {
 								$priceTrend = 0;
 							}
-							$greatDemand = self::getGreatDemandMultiplier ( $fillType, $stationId );
-							self::addNewPrice ( $fillType, $currentPrice, $location, $maxPrice, $minPrice, $greatDemand, $priceTrend );
+							$greatDemand = self::getGreatDemandMultiplier ( $l_fillType, $stationId );							
+							$price = self::setNewLocation ( $price, $currentPrice, $location, $maxPrice, $minPrice, $greatDemand, $priceTrend );
 						}
 					}
+					self::$prices [$l_fillType] = $price;
+					self::$pricesArray [$l_fillType] = get_object_vars ( $price );
 				}
 			}
 		}
 	}
-	private static function addNewPrice($fillType, $currentPrice, $location, $maxPrice, $minPrice, $greatDemand, $priceTrend) {
-		$l_fillType = translate ( $fillType );
+	private static function setNewLocation($price, $currentPrice, $location, $maxPrice, $minPrice, $greatDemand, $priceTrend) {
 		$l_location = translate ( $location );
-		if (! isset ( self::$prices [$l_fillType] )) {
-			self::$prices [$l_fillType] = array (
-					'i3dName' => $fillType,
-					'bestPrice' => 0,
-					'maxPrice' => 0,
-					'minPrice' => 65535,
-					'priceTrend' => 0,
-					'bestLocation' => '',
-					'greatDemand' => false,
-					'locations' => array () 
-			);
-		}
-		self::$prices [$l_fillType] ['locations'] [$l_location] = array (
-				'i3dName' => $location,
-				'price' => $currentPrice * $greatDemand,
-				'greatDemand' => ($greatDemand > 1) ? true : false,
-				'maxPrice' => $maxPrice,
-				'minPrice' => $minPrice,
-				'priceTrend' => $priceTrend 
+		$price->locations += array (
+				$l_location => array (
+						'i3dName' => $location,
+						'price' => $currentPrice * $greatDemand,
+						'greatDemand' => ($greatDemand > 1) ? true : false,
+						'maxPrice' => $maxPrice,
+						'minPrice' => $minPrice,
+						'priceTrend' => $priceTrend 
+				) 
 		);
-		if ($currentPrice * $greatDemand > self::$prices [$l_fillType] ['bestPrice']) {
-			self::$prices [$l_fillType] ['bestPrice'] = $currentPrice * $greatDemand;
-			self::$prices [$l_fillType] ['bestLocation'] = $l_location;
-			self::$prices [$l_fillType] ['greatDemand'] = ($greatDemand > 1) ? true : false;
-			self::$prices [$l_fillType] ['priceTrend'] = $priceTrend;
+		if ($currentPrice * $greatDemand > $price->bestPrice) {
+			$price->bestPrice = $currentPrice * $greatDemand;
+			$price->bestLocation = $l_location;
+			$price->greatDemand = ($greatDemand > 1) ? true : false;
+			$price->priceTrend = $priceTrend;
 		}
-		if ($maxPrice > self::$prices [$l_fillType] ['maxPrice']) {
-			self::$prices [$l_fillType] ['maxPrice'] = $maxPrice;
+		if ($maxPrice > $price->maxPrice) {
+			$price->maxPrice = $maxPrice;
 		}
-		if ($minPrice < self::$prices [$l_fillType] ['minPrice']) {
-			self::$prices [$l_fillType] ['minPrice'] = $minPrice;
+		if ($minPrice < $price->minPrice) {
+			$price->minPrice = $minPrice;
+		}
+		return $price;
+	}
+	private static function createNewPrice($fillType) {
+		$l_fillType = translate ( $fillType );
+		if (! isset ( self::$prices [$l_fillType] )) {
+			$price = new Price ();
+			$price->name = $l_fillType;
+			$price->i3dName = $fillType;
+			return $price;
+		} else {
+			return self::$prices [$l_fillType];
 		}
 	}
 	public static function getAllPrices() {
-		return self::$prices;
+		return self::$pricesArray;
 	}
 	public static function getSellStations() {
 		return self::$sellStations;
@@ -148,8 +163,7 @@ class Price {
 			}
 		}
 	}
-	private static function getGreatDemandMultiplier($fillType, $stationId) {
-		$l_fillType = translate ( $fillType );
+	private static function getGreatDemandMultiplier($l_fillType, $stationId) {
 		if (isset ( self::$greatDemands [$l_fillType] ['locations'] [$stationId] )) {
 			if (self::$greatDemands [$l_fillType] ['locations'] [$stationId] ['isRunning']) {
 				return self::$greatDemands [$l_fillType] ['locations'] [$stationId] ['demandMultiplier'];
