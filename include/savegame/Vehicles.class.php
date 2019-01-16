@@ -38,6 +38,7 @@ class Vehicle {
 	private $operatingTime;
 	private $operatingTimeString;
 	private static $vehicles = array ();
+	private static $vehiclesResameSum = 0;
 	private static $pallets = array ();
 	public static function extractXML($xml, $farmId, $pallets) {
 		foreach ( $xml as $vehicleInXML ) {
@@ -68,11 +69,15 @@ class Vehicle {
 				self::$pallets [] = get_object_vars ( $vehicle );
 			} else {
 				self::$vehicles [] = get_object_vars ( $vehicle );
+				self::$vehiclesResameSum += ($vehicle->propertyState == 1) ? $vehicle->resale : 0;
 			}
 		}
 	}
 	public static function getAllVehicles() {
 		return self::$vehicles;
+	}
+	public static function getVehiclesResameSum() {
+		return self::$vehiclesResameSum;
 	}
 	private static function getSellPrice($price, $maxVehicleAge, $age, $operatingTime) {
 		$priceMultiplier = 0.75;

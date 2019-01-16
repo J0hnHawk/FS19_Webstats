@@ -21,3 +21,39 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
+$mode = GetParam ( 'subPage', 'G', 'balance' );
+switch ($mode) {
+	case 'balance' :
+		include ('./include/savegame/Prices.class.php');
+		Price::extractXML ( $savegame::$xml );
+		$prices = Price::getAllPrices ();
+		include ('./include/savegame/Commodities.class.php');
+		Commodity::loadCommodities ( $savegame::$xml );
+		$commoditiesFullSale = 0;
+		foreach ( Commodity::getAllCommodities () as $l_fillType => $commodity ) {
+			$fillType = $commodity ['i3dName'];
+			if ($fillType == 'CHAFF') {
+				$l_fillType = translate ( 'SILAGE' );
+			}
+			if (isset ( $prices [$l_fillType] )) {
+				$commoditiesFullSale += getCurrentValue ( $commodity ['overall'], $prices [$l_fillType] ['bestPrice'] );
+			} elseif (isset ( $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'] )) {
+				$commoditiesFullSale += getCurrentValue ( $commodity ['overall'], $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'], true );
+			} else {
+				echo ("Kein Preis für $l_fillType ($fillType)<br>");
+			}
+		}
+		include ('./include/savegame/Vehicles.class.php');
+		Vehicle::extractXML ( $savegame->getXML ( 'vehicles' ), $options ['general'] ['farmId'], $mapconfig ['pallets'] );
+		$vehicleResameSum = Vehicle::getVehiclesResameSum ();
+		break;
+	case '5dayhistory' :
+		break;
+	case 'summary' :
+		break;
+}
+var_dump ( $commoditiesFullSale, $vehicleResameSum );
+function getCurrentValue($storage, $price, $pricePerLiter = false) {
+	return floor ( $storage * $price / (($pricePerLiter) ? 1 : 1000) );
+}
+exit ();

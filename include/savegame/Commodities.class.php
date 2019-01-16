@@ -83,7 +83,6 @@ class Commodity {
 		global $mapconfig;
 		foreach ( self::$xml ['items'] as $item ) {
 			$location = cleanFileName ( $item ['filename'] );
-			$stationId = intval ( $item ['id'] );
 			if (isset ( $mapconfig [$location] ['locationType'] )) {
 				switch ($mapconfig [$location] ['locationType']) {
 					case 'storage' :

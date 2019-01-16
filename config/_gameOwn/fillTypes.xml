@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
+	<fillTypes>
+		<fillType name="FERTILIZER" pricePerLiter="1.920" />
+		<fillType name="LIME" pricePerLiter="0.450" />
+		<fillType name="SEEDS" pricePerLiter="0.600" />
+		<fillType name="WATER" pricePerLiter="0.000" />
+		<fillType name="PIG_TYPE_RED" pricePerLiter="1.000" isAnimal="true" />
+		<fillType name="SHEEP_TYPE_BLACK_WHITE" pricePerLiter="1.000" isAnimal="true" />
+	</fillTypes>
 	<l10n>
 		<!-- Square bales -->
 		<text name="baleGrass240">
@@ -137,11 +145,11 @@
 			<de>Kühe</de>
 			<fr>Vache</fr>
 		</text>
-		<text name="pig">
-			<cz>Prasata</cz>
-			<en>Pigs</en>
-			<de>Schweine</de>
-			<fr>Cochon</fr>
+		<text name="PIG_TYPE_RED">
+			<cz>PIG_TYPE_RED</cz>
+			<en>PIG_TYPE_RED</en>
+			<de>Schweine (rosa)</de>
+			<fr>PIG_TYPE_RED</fr>
 		</text>
 		<text name="sheep">
 			<cz>Ovce</cz>
@@ -222,7 +230,7 @@
 			<de>Diesel</de>
 			<fr>Carburant</fr>
 		</text>
-		
+
 		<!-- Products -->
 		<text name="FERTILIZER">
 			<cz>Pevné hnojivo</cz>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<item name="Animals_cow" locationType="animal" reproRate="1200">
+		<input name="water" trough_factor="35" consumption_factor="35" fillTypes="water" showInStorage="false" />
+		<input name="straw" trough_factor="70" consumption_factor="70" fillTypes="straw" showInStorage="false" />
+		<input name="grass_windrow" trough_factor="70" consumption_factor="100" fillTypes="grass_windrow" showInStorage="false" />
+		<input name="silage_dryGrass_windrow" trough_factor="175" consumption_factor="175" fillTypes="silage dryGrass_windrow" showInStorage="false" />
+		<input name="powerFood" trough_factor="105" consumption_factor="105" fillTypes="powerFood" showInStorage="false" />
+		<output name="liquidManure" production_factor="250" capacity="800000" fillType="liquidManure" showInStorage="true" />
+		<output name="manure" production_factor="200" fillType="manure" showInStorage="true" />
+		<output name="milk" production_factor="714" fillType="milk" showInStorage="true" />
+		<productivity name="straw" factor="10" />
+		<productivity name="grass_windrow" factor="18" />
+		<productivity name="silage_dryGrass_windrow" factor="45" />
+		<productivity name="powerFood" factor="27" />
+	</item>
+	<item name="Animals_pig" locationType="animal" reproRate="144">
+		<input name="water" trough_factor="10" consumption_factor="10" fillTypes="water" showInStorage="false" />
+		<input name="straw" trough_factor="20" consumption_factor="20" fillTypes="straw" showInStorage="false" />
+		<input name="maize_pigFood" trough_factor="45" consumption_factor="61" fillTypes="maize pigFood" showInStorage="false" />
+		<input name="wheat_barley_pigFood" trough_factor="25" consumption_factor="23" fillTypes="wheat barley pigFood" showInStorage="false" />
+		<input name="rape_sunflower_soybean_pigFood" trough_factor="18" consumption_factor="18" fillTypes="rape sunflower soybean pigFood" showInStorage="false" />
+		<input name="potato_sugarBeet_pigFood" trough_factor="4.5" consumption_factor="5" fillTypes="potato sugarBeet pigFood" showInStorage="false" />
+		<output name="liquidManure" production_factor="65" capacity="800000" fillType="liquidManure" showInStorage="true" />
+		<output name="manure" production_factor="50" fillType="manure" showInStorage="true" />
+		<productivity name="straw" factor="9.8" />
+		<productivity name="maize_pigFood" factor="44.8" />
+		<productivity name="wheat_barley_pigFood" factor="22.8" />
+		<productivity name="rape_sunflower_soybean_pigFood" factor="17.8" />
+		<productivity name="potato_sugarBeet_pigFood" factor="4.8" />
+	</item>
+	<item name="husbandrySheepLarge" locationType="animal" reproRate="960">
+		<input name="water" trough_factor="15" consumption_factor="15" fillTypes="water" showInStorage="false" />
+		<input name="grass_windrow_dryGrass_windrow" trough_factor="30" consumption_factor="36" fillTypes="grass_windrow dryGrass_windrow" showInStorage="false" />
+		<output name="woolPallet" production_factor="24" capacity="2000" fillType="woolPallet" palettArea="578.3 -25.7 594.8 -21.3" palettPlaces="16" showInStorage="false" />
+		<productivity name="grass_windrow_dryGrass_windrow" factor="90" />
+	</item>
+</mapconfig>
