@@ -41,6 +41,7 @@ class Savegame {
 			'environment.xml',
 			'economy.xml',
 			'farms.xml',
+			'farmland.xml',
 			'items.xml',
 			'missions.xml',
 			'vehicles.xml' 

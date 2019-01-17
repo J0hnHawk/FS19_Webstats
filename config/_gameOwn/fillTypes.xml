@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
 	<fillTypes>
-		<fillType name="FERTILIZER" pricePerLiter="1.920" />
-		<fillType name="LIME" pricePerLiter="0.450" />
-		<fillType name="SEEDS" pricePerLiter="0.600" />
-		<fillType name="WATER" pricePerLiter="0.000" />
-		<fillType name="PIG_TYPE_RED" pricePerLiter="1.000" isAnimal="true" />
-		<fillType name="SHEEP_TYPE_BLACK_WHITE" pricePerLiter="1.000" isAnimal="true" />
+		<fillType name="FERTILIZER" pricePerLiter="1.920" balanceSheet="CI1" />
+		<fillType name="LIME" pricePerLiter="0.450" balanceSheet="CI1" />
+		<fillType name="SEEDS" pricePerLiter="0.600" balanceSheet="CI1" />
+		<fillType name="WATER" pricePerLiter="0.000" balanceSheet="CI1" />
+		<fillType name="DIESEL" pricePerLiter="0.000" balanceSheet="CI1" />
+		<fillType name="HERBICIDE" pricePerLiter="0.000" balanceSheet="CI1" />
+		<fillType name="LIQUIDFERTILIZER" pricePerLiter="0.000" balanceSheet="CI1" />
+		<fillType name="PIGFOOD" pricePerLiter="0.000" balanceSheet="CI1" />
+		<fillType name="PIG_TYPE_RED" pricePerLiter="1.000" isAnimal="true" balanceSheet="B3" />
+		<fillType name="SHEEP_TYPE_BLACK_WHITE" pricePerLiter="1.000" isAnimal="true" balanceSheet="B2" />
+		<fillType name="CHICKEN_TYPE_WHITE" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
+		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
+		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
+		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
 	</fillTypes>
 	<l10n>
 		<!-- Square bales -->

@@ -26,34 +26,73 @@ switch ($mode) {
 	case 'balance' :
 		include ('./include/savegame/Prices.class.php');
 		Price::extractXML ( $savegame::$xml );
-		$prices = Price::getAllPrices ();
 		include ('./include/savegame/Commodities.class.php');
 		Commodity::loadCommodities ( $savegame::$xml );
-		$commoditiesFullSale = 0;
+		include ('./include/savegame/Vehicles.class.php');
+		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig ['pallets'] );
+		include ('./include/savegame/Farm.class.php');
+		Farm::extractXML ( $savegame::$xml );
+		
+		/*
+		 * *** ASSETS
+		 */
+		$money = Farm::getMoney ( $_SESSION ['farmId'] );
+		$assets = array (
+				'A1' => 0,
+				'A2' => Vehicle::getBuildingsResaleSum (),
+				'A3' => Vehicle::getVehiclesResaleSum (),
+				'CIII' => ($money < 0) ? 0 : $money 
+		);
+		foreach ( $savegame::$xml ['farmland'] as $farmland ) {
+			if ($farmland ['farmId'] == $_SESSION ['farmId']) {
+				$assets ['A1'] += $mapconfig ['Farmlands'] [intval ( $farmland ['id'] )] ['price'];
+			}
+		}
+		$prices = Price::getAllPrices ();
 		foreach ( Commodity::getAllCommodities () as $l_fillType => $commodity ) {
 			$fillType = $commodity ['i3dName'];
 			if ($fillType == 'CHAFF') {
+				// Chaff will be silage after some time in a silo
 				$l_fillType = translate ( 'SILAGE' );
 			}
 			if (isset ( $prices [$l_fillType] )) {
-				$commoditiesFullSale += getCurrentValue ( $commodity ['overall'], $prices [$l_fillType] ['bestPrice'] );
+				$pricePerLiter = $prices [$l_fillType] ['bestPrice'] / 1000;
 			} elseif (isset ( $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'] )) {
-				$commoditiesFullSale += getCurrentValue ( $commodity ['overall'], $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'], true );
+				$pricePerLiter = $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'];
 			} else {
+				$pricePerLiter = 0;
 				echo ("Kein Preis für $l_fillType ($fillType)<br>");
 			}
+			if (! isset ( $mapconfig ['fillTypes'] [$fillType] ['balanceSheet'] )) {
+				$assetPosition = 'CI3';
+			} else {
+				$assetPosition = $mapconfig ['fillTypes'] [$fillType] ['balanceSheet'];
+			}
+			$assets = addValue ( $assets, $assetPosition, floor ( $commodity ['overall'] * $pricePerLiter ) );
 		}
-		include ('./include/savegame/Vehicles.class.php');
-		Vehicle::extractXML ( $savegame->getXML ( 'vehicles' ), $options ['general'] ['farmId'], $mapconfig ['pallets'] );
-		$vehicleResameSum = Vehicle::getVehiclesResameSum ();
+		/*
+		 * LIABILITIES
+		 */
+		$liabilities = array (
+				'A1' => 500000,
+				'B1' => Farm::getLoan ( $_SESSION ['farmId'] ),
+				'B2' => (($money < 0) ? $money : 0) * - 1 
+		);
+		$balanceSheetSum = array_sum ( $assets );
+		$liabilities ['A2'] = $balanceSheetSum - ($liabilities ['A1'] + $liabilities ['B1'] + $liabilities ['B2']);
+		$smarty->assign ( 'assets', $assets );
+		$smarty->assign ( 'liabilities', $liabilities );
+		$smarty->assign ( 'balanceSheetSum', $balanceSheetSum );
 		break;
 	case '5dayhistory' :
 		break;
 	case 'summary' :
 		break;
 }
-var_dump ( $commoditiesFullSale, $vehicleResameSum );
-function getCurrentValue($storage, $price, $pricePerLiter = false) {
-	return floor ( $storage * $price / (($pricePerLiter) ? 1 : 1000) );
+function addValue($array, $key, $value) {
+	if (! isset ( $array [$key] )) {
+		$array [$key] = 0;
+	}
+	$array [$key] += $value;
+	return $array;
 }
-exit ();

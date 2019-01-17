@@ -38,10 +38,13 @@ class Vehicle {
 	private $operatingTime;
 	private $operatingTimeString;
 	private static $vehicles = array ();
-	private static $vehiclesResameSum = 0;
-	private static $pallets = array ();
+	private static $buildings = array ();
+	private static $buildingsArray = array ();
+	private static $vehiclesResaleSum = 0;
+	private static $buildingsResaleSum = 0;
+	// private static $pallets = array ();
 	public static function extractXML($xml, $farmId, $pallets) {
-		foreach ( $xml as $vehicleInXML ) {
+		foreach ( $xml ['vehicles'] as $vehicleInXML ) {
 			if ($vehicleInXML ['farmId'] != $farmId) {
 				continue;
 			}
@@ -66,26 +69,50 @@ class Vehicle {
 				$vehicle->leasingCost = self::getLeasingCost ( $vehicle->price, $vehicle->age, $vehicle->operatingTime );
 			}
 			if (in_array ( $vehicle->name, $pallets )) {
-				self::$pallets [] = get_object_vars ( $vehicle );
+				// self::$pallets [] = get_object_vars ( $vehicle );
 			} else {
 				self::$vehicles [] = get_object_vars ( $vehicle );
-				self::$vehiclesResameSum += ($vehicle->propertyState == 1) ? $vehicle->resale : 0;
+				self::$vehiclesResaleSum += ($vehicle->propertyState == 1) ? $vehicle->resale : 0;
 			}
+		}
+		foreach ( $xml ['items'] as $item ) {
+			if ($item ['farmId'] != $farmId || strval ( $item ['className'] ) == 'Bale') {
+				continue;
+			}
+			$building = new Vehicle ();
+			$building->name = cleanFileName ( $item ['filename'] );
+			$building->age = intval ( $item ['age'] );
+			$building->lifetime = 1000;
+			$building->price = intval ( $item ['price'] );
+			$building->resale = self::getBuildingSellPrice ( $building->price, $building->lifetime, $building->age, 0 );
+			self::$buildings [] = get_object_vars ( $vehicle );
+			self::$buildingsArray [] = $vehicle;
+			self::$buildingsResaleSum += $building->resale;
 		}
 	}
 	public static function getAllVehicles() {
 		return self::$vehicles;
 	}
-	public static function getVehiclesResameSum() {
-		return self::$vehiclesResameSum;
+	public static function getVehiclesResaleSum() {
+		return self::$vehiclesResaleSum;
+	}
+	public static function getBuildingsResaleSum() {
+		return self::$buildingsResaleSum;
 	}
 	private static function getSellPrice($price, $maxVehicleAge, $age, $operatingTime) {
 		$priceMultiplier = 0.75;
-		if ($maxVehicleAge != null and $maxVehicleAge != 0) {
+		if ($maxVehicleAge != null && $maxVehicleAge != 0) {
 			$ageMultiplier = 0.5 * min ( $age / $maxVehicleAge, 1 );
 			$operatingTime = $operatingTime / 1000;
 			$operatingTimeMultiplier = 0.5 * min ( $operatingTime / ($maxVehicleAge * self::LIFETIME_OPERATINGTIME_RATIO), 1 );
 			$priceMultiplier = $priceMultiplier * exp ( - 3.5 * ($ageMultiplier + $operatingTimeMultiplier) );
+		}
+		return floor ( $price * max ( $priceMultiplier, 0.05 ) );
+	}
+	private static function getBuildingSellPrice($price, $maxVehicleAge, $age) {
+		$priceMultiplier = 0.5;
+		if ($maxVehicleAge != null && $maxVehicleAge != 0) {
+			$priceMultiplier = $priceMultiplier * exp ( - 3.5 * min ( $age / $maxVehicleAge, 1 ) );
 		}
 		return floor ( $price * max ( $priceMultiplier, 0.05 ) );
 	}

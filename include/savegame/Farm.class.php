@@ -21,7 +21,7 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-class Farm  {
+class Farm {
 	private $name;
 	private $color;
 	private $loan;
@@ -30,8 +30,9 @@ class Farm  {
 	private $contractFrom = array ();
 	private $contractWith = array ();
 	private static $farms = array ();
+	private static $farmsArray = array ();
 	public static function extractXML($xml) {
-		foreach ( $xml as $farmInXML ) {
+		foreach ( $xml ['farms'] as $farmInXML ) {
 			$farmId = intval ( $farmInXML ['farmId'] );
 			$farm = new Farm ();
 			$farm->name = strval ( $farmInXML ['name'] );
@@ -51,19 +52,26 @@ class Farm  {
 					$farm->contractFrom [intval ( $contractingFarm ['farmId'] )] = true;
 				}
 			}
-			self::$farms [$farmId] = get_object_vars ( $farm );
+			self::$farms [$farmId] = $farm;
+			self::$farmsArray [$farmId] = get_object_vars ( $farm );
 		}
 		foreach ( self::$farms as $farmId1 => $farm ) {
-			foreach ( $farm ['contractFrom'] as $farmId2 => $bool ) {
-				self::$farms [$farmId2] ['contractWith'] [$farmId1] = true;
+			foreach ( $farm->contractFrom as $farmId2 => $bool ) {
+				self::$farms [$farmId2]->contractWith [$farmId1] = true;
+				self::$farmsArray [$farmId2] ['contractWith'] [$farmId1] = true;
 			}
 		}
 	}
 	public static function getAllFarms() {
-		return self::$farms;
+		return self::$farmsArray;
 	}
-	public static function setFarm($farmId) {
-		return self::$farms [$farmId];
+	public static function getMoney($farmId) {
+		$farm = self::$farms [$farmId];
+		return $farm->money;
+	}
+	public static function getLoan($farmId) {
+		$farm = self::$farms [$farmId];
+		return $farm->loan;
 	}
 }
 	

@@ -123,6 +123,19 @@ function loadXMLMapConfig($directory, $language) {
 				$objects ['pallets'] [$name] = $name;
 			}
 		}
+		if (isset ( $object->Farmlands )) {
+			$objects = array_merge ( $objects, array (
+					'Farmlands' => array ()
+			) );
+			foreach ( $object->Farmlands->Farmland as $Farmland ) {
+				$name = strval ( $Farmland ['id'] );
+				foreach ( $Farmland->attributes () as $attribute => $value ) {
+					if ($attribute != 'id') {
+						$objects ['Farmlands'] [$name] [$attribute] = get_bool ( $value );
+					}
+				}
+			}
+		}
 		if (isset ( $object->fillTypes )) {
 			$objects = array_merge ( $objects, array (
 					'fillTypes' => array ()
