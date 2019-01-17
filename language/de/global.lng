@@ -261,6 +261,11 @@ TOTAL=Gesamt
 BALANCE1=Kontostand
 LOAN=Kredit
 BALANCE2=Saldo
+BALANCESHEET=Bilanz
+ASSETS=AKTIVA
+LIABILITIES=PASSIVA
+TO=zu
+FORFARM=für den Hof
 
 //missions.tpl
 MISSIONS=Verträge

@@ -85,8 +85,8 @@ class Vehicle {
 			$building->lifetime = 1000;
 			$building->price = intval ( $item ['price'] );
 			$building->resale = self::getBuildingSellPrice ( $building->price, $building->lifetime, $building->age, 0 );
-			self::$buildings [] = get_object_vars ( $vehicle );
-			self::$buildingsArray [] = $vehicle;
+			self::$buildings [] = get_object_vars ( $building );
+			self::$buildingsArray [] = $building;
 			self::$buildingsResaleSum += $building->resale;
 		}
 	}

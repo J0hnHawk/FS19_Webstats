@@ -69,6 +69,10 @@ class Farm {
 		$farm = self::$farms [$farmId];
 		return $farm->money;
 	}
+	public static function getName($farmId) {
+		$farm = self::$farms [$farmId];
+		return $farm->name;
+	}
 	public static function getLoan($farmId) {
 		$farm = self::$farms [$farmId];
 		return $farm->loan;

@@ -26,7 +26,7 @@ Mission::extractXML ( $savegame->getXML ( 'missions' ) );
 $missions = Mission::getAllMissions ();
 
 include ('./include/savegame/Farm.class.php');
-Farm::extractXML ($savegame->getXML ( 'farms' ));
+Farm::extractXML ( $savegame::$xml );
 $farms = Farm::getAllFarms ();
 
 $smarty->assign ( 'missions', $missions );

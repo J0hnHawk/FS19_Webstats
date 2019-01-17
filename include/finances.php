@@ -83,6 +83,7 @@ switch ($mode) {
 		$smarty->assign ( 'assets', $assets );
 		$smarty->assign ( 'liabilities', $liabilities );
 		$smarty->assign ( 'balanceSheetSum', $balanceSheetSum );
+		$smarty->assign ( 'farmName', Farm::getName ( $_SESSION ['farmId'] ) );
 		break;
 	case '5dayhistory' :
 		break;
