@@ -9,12 +9,13 @@
 		<fillType name="HERBICIDE" pricePerLiter="1.200" balanceSheet="CI1" />
 		<fillType name="LIQUIDFERTILIZER" pricePerLiter="1.600" balanceSheet="CI1" />
 		<fillType name="PIGFOOD" pricePerLiter="1.000" balanceSheet="CI1" />
-		<fillType name="PIG_TYPE_RED" pricePerLiter="1.000" isAnimal="true" balanceSheet="B3" />
-		<fillType name="SHEEP_TYPE_BLACK_WHITE" pricePerLiter="1.000" isAnimal="true" balanceSheet="B2" />
-		<fillType name="CHICKEN_TYPE_WHITE" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
-		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
-		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
-		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="0.050" isAnimal="true" balanceSheet="B1" />
+		<fillType name="PIG_TYPE_RED" pricePerLiter="1000.000" isAnimal="true" balanceSheet="B3" />
+		<fillType name="SHEEP_TYPE_BLACK_WHITE" pricePerLiter="1000.000" isAnimal="true" balanceSheet="B4" />
+		<fillType name="COW_TYPE_BLACK_WHITE" pricePerLiter="5000.000" isAnimal="true" balanceSheet="B2" />
+		<fillType name="CHICKEN_TYPE_WHITE" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
 	</fillTypes>
 	<l10n>
 		<!-- Square bales -->
@@ -147,7 +148,7 @@
 			<fr>Laine</fr>
 		</text>
 		<!-- Animals -->
-		<text name="cow">
+		<text name="COW_TYPE_BLACK_WHITE">
 			<cz>Krávy</cz>
 			<en>Cows</en>
 			<de>Kühe</de>
@@ -156,10 +157,34 @@
 		<text name="PIG_TYPE_RED">
 			<cz>PIG_TYPE_RED</cz>
 			<en>PIG_TYPE_RED</en>
-			<de>Schweine (rosa)</de>
+			<de>Schweine</de>
 			<fr>PIG_TYPE_RED</fr>
 		</text>
-		<text name="sheep">
+		<text name="CHICKEN_TYPE_ROOSTER">
+			<cz>CHICKEN_TYPE_ROOSTER</cz>
+			<en>Chicken</en>
+			<de>Hühner</de>
+			<fr>CHICKEN_TYPE_ROOSTER</fr>
+		</text>
+		<text name="CHICKEN_TYPE_WHITE">
+			<cz>CHICKEN_TYPE_ROOSTER</cz>
+			<en>Chicken</en>
+			<de>Hühner</de>
+			<fr>CHICKEN_TYPE_ROOSTER</fr>
+		</text>
+		<text name="CHICKEN_TYPE_BROWN">
+			<cz>CHICKEN_TYPE_ROOSTER</cz>
+			<en>Chicken</en>
+			<de>Hühner</de>
+			<fr>CHICKEN_TYPE_ROOSTER</fr>
+		</text>
+		<text name="CHICKEN_TYPE_BLACK">
+			<cz>CHICKEN_TYPE_ROOSTER</cz>
+			<en>Chicken</en>
+			<de>Hühner</de>
+			<fr>CHICKEN_TYPE_ROOSTER</fr>
+		</text>
+		<text name="SHEEP_TYPE_BLACK_WHITE">
 			<cz>Ovce</cz>
 			<en>Sheep</en>
 			<de>Schafe</de>

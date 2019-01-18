@@ -41,6 +41,10 @@ switch ($mode) {
 				'A1' => 0,
 				'A2' => Vehicle::getBuildingsResaleSum (),
 				'A3' => Vehicle::getVehiclesResaleSum (),
+				'CI1' => 0,
+				'CI2' => 0,
+				'CI3' => 0,
+				'CII' => 0,
 				'CIII' => ($money < 0) ? 0 : $money 
 		);
 		foreach ( $savegame::$xml ['farmland'] as $farmland ) {

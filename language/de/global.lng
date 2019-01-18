@@ -100,6 +100,7 @@ FARM=Hof
 VEHICLES=Fahrzeuge
 BESTPRICES=Beste Verkaufspreise
 ALLPRICES=Alle Verkaufspreise
+BALANCESHEET=Bilanz
 
 //overview.tpl
 VERSION=Version
@@ -261,11 +262,33 @@ TOTAL=Gesamt
 BALANCE1=Kontostand
 LOAN=Kredit
 BALANCE2=Saldo
-BALANCESHEET=Bilanz
-ASSETS=AKTIVA
-LIABILITIES=PASSIVA
-TO=zu
-FORFARM=für den Hof
+BS_HEAD_MAIN=Gesamtbilanz für Hof
+BS_HEAD_LEFT=AKTIVA
+BS_HEAD_RIGHT=PASSIVA
+BS_FIXED=A. Anlagevermögen
+BS_ANIMAL=B. Tiervermögen
+BS_CURRENT=C. Umlaufvermögen 
+BS_LAND=Grundstücke
+BS_BUILDINGS=Gebäude
+BS_VEHICLES=Fahrzeuge
+BS_HORSES=Pferde
+BS_COWS=Rinder
+BS_PIGS=Schweine
+BS_SHEEPS=Schafe
+BS_CHICKEN=Geflügel
+BS_INVENTORY=I. Vorräte
+BS_SUPPLIES=Roh- Hilfs- und Betriebsstoffe
+BS_STORAGE=Fertige Erzeugnisse
+BS_ACCRECEIV=II. Forderungen
+BS_CASH=III. Bankguthaben
+BS_SHAREHOLDERS_EQUITY=A. Eigenkapital
+BS_INITIAL=Anfangskapital
+BS_PROFIT=Gewinn
+BS_LIABILITIES=B. Verbindlichkeiten
+BS_BANKDEBT=Bankkredit
+BS_BANKOPCREDIT=Kontokorrent
+BS_TOTAL_LEFT=Bilanzsumme
+BS_TOTAL_RIGHT=Bilanzsumme
 
 //missions.tpl
 MISSIONS=Verträge
