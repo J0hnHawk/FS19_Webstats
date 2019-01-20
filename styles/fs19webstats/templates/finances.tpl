@@ -113,7 +113,7 @@
 		</div>
 	</div>
 </div>
-{assign "eigenkapital" $liabilities.A1+$liabilities.A2} {assign "fremdkapital" $liabilities.B1+$liabilities.B2} {assign "anlagevermoegen" $assets.A1+$assets.A2+$assets.A3+1} {assign "kurzfristigesFremdkapital" $liabilities.B1+$liabilities.B2+1}{assign "vorraete" $assets.CI1+$assets.CI3}
+{assign "eigenkapital" $liabilities.A1 + $liabilities.A2} {assign "fremdkapital" $liabilities.B1+$liabilities.B2} {assign "anlagevermoegen" $assets.A1+$assets.A2+$assets.A3+1} {assign "kurzfristigesFremdkapital" $liabilities.B1+$liabilities.B2+1}{assign "vorraete" $assets.CI1+$assets.CI3}
 <!-- Eigenkapitalquote -->
 {math equation="round(100 * eigenkapital / gesamtkapital)" eigenkapital=$eigenkapital gesamtkapital=$balanceSheetSum assign="ekq"}
 <!-- Eigenkapitalrentabilität -->
@@ -135,11 +135,10 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			Eigenkapitalquote<span class="float-right">{$ekr|number_format:0:",":"."} %</span>
+			Eigenkapitalquote<span class="float-right">{$ekq|number_format:0:",":"."} %</span>
 		</h5>
 		<p class="text-justify">Eine hohe Eigenkapitalquote gilt als positiv: Der Hof finanziert sich vorwiegend aus eigener Kraft und muss nicht auf Fremdkapital zurückgreifen.</p>
 	</div>
-	<!-- 
 	<div class="col-6">
 		<h5>
 			Eigenkapitalrentabilität<span class="float-right">{$ekr|number_format:0:",":"."} %</span>
@@ -164,7 +163,6 @@
 		</h5>
 		<p class="text-justify">Die Gesamtkapitalrendite gibt Auskunft darüber, wie hoch die Erträge aus investiertem Gesamtkapital ausfallen.</p>
 	</div>
-	 -->
 	<div class="col-12">
 		<p class="text-center">
 			Formeln und Beschreibungen von <a href="https://debitoor.de/lexikon">debitor</a>

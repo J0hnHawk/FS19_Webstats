@@ -72,6 +72,16 @@ class Commodity {
 									foreach ( $module->animal as $animal ) {
 										$fillType = strval ( $animal ['fillType'] );
 										self::addCommodity ( $fillType, 1, $location );
+										/*
+										 * Tested horse sell prices:
+										 * 49000 * (fitnessScale * healthScale) + 500 * dirtScale
+										 * 
+										 * Giants LUA Doc:
+										 * function Horse:getValueScale()
+										 * 		-- dirt scale should only count 10%
+										 * 		return 0.90 * (self.fitnessScale * self.healthScale) + 0.10 * (1-self.dirtScale)
+										 * end
+										 */
 									}
 									break;
 								case 'liquidManure' :

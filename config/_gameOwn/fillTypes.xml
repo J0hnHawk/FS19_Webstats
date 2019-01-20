@@ -11,11 +11,11 @@
 		<fillType name="PIGFOOD" pricePerLiter="1.000" balanceSheet="CI1" />
 		<fillType name="PIG_TYPE_RED" pricePerLiter="1000.000" isAnimal="true" balanceSheet="B3" />
 		<fillType name="SHEEP_TYPE_BLACK_WHITE" pricePerLiter="1000.000" isAnimal="true" balanceSheet="B4" />
-		<fillType name="COW_TYPE_BLACK_WHITE" pricePerLiter="5000.000" isAnimal="true" balanceSheet="B2" />
-		<fillType name="CHICKEN_TYPE_WHITE" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
-		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
-		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
-		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="50.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="COW_TYPE_BLACK_WHITE" pricePerLiter="2000.000" isAnimal="true" balanceSheet="B2" />
+		<fillType name="CHICKEN_TYPE_WHITE" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
 	</fillTypes>
 	<l10n>
 		<!-- Square bales -->
