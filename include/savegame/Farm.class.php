@@ -50,9 +50,10 @@ class Farm {
 				}
 			}
 			foreach ( $farmInXML->statistics->children () as $statisticItem => $statisticValue ) {
-				$statisticItem = sprintf ( "##%s##", strtoupper ( $statisticItem ) );
-				$statisticValue = floatval ( $statisticValue );
-				$farm->statistics [$statisticItem] = $statisticValue;
+				$statisticData = self::statisticMapping ( $statisticItem, $statisticValue );
+				if ($statisticData !== false) {
+					$farm->statistics [$statisticItem] = $statisticData;
+				}
 			}
 			foreach ( $farmInXML->finances->stats as $stats ) {
 				$financesDay = self::financeDayMapping ( intval ( $stats ['day'] ) );
@@ -95,6 +96,55 @@ class Farm {
 		$farm = self::$farms [$farmId];
 		return $farm->loan;
 	}
+	private static function statisticMapping($key, $value) {
+		$statisticItem = sprintf ( "##%s##", strtoupper ( $key ) );
+		$statisticValue = floatval ( $value );
+		$litres = array (
+				'fuelUsage',
+				'seedUsage',
+				'sprayUsage' 
+		);
+		$hectares = array (
+				'workedHectares',
+				'cultivatedHectares',
+				'sownHectares',
+				'fertilizedHectares',
+				'threshedHectares',
+				'plowedHectares' 
+		);
+		$time = array (
+				'workedTime',
+				'cultivatedTime',
+				'sownTime',
+				'fertilizedTime',
+				'threshedTime',
+				'plowedTime',
+				'playTime' 
+		);
+		$ignore = array (
+				'fieldJobMissionByNPC',
+				'treeTypesCut',
+				'revenue',
+				'expenses' 
+		);
+		if (in_array ( $key, $ignore )) {
+			return false;
+		} elseif (in_array ( $key, $litres )) {
+			$statisticCategory = "litres";
+		} elseif (in_array ( $key, $hectares )) {
+			$statisticCategory = "hectares";
+		} elseif (in_array ( $key, $time )) {
+			$statisticCategory = "time";
+			$statisticValue = self::getWorkTimeString ( $statisticValue );
+		} else {
+			$statisticCategory = "count";
+		}
+		return array (
+				'item' => $statisticItem,
+				'value' => $statisticValue,
+				'category' => $statisticCategory 
+		);
+	}
 	private static function financeDayMapping($day) {
 		switch ($day) {
 			case 1 :
@@ -107,6 +157,12 @@ class Farm {
 				return 1;
 		}
 		return 0;
+	}
+	private static function getWorkTimeString($workTime) {
+		$workTime = $workTime * 60;
+		$hours = (gmdate ( "j", $workTime ) - 1) * 24 + gmdate ( "H", $workTime );
+		$minutes = gmdate ( "i", $workTime );
+		return "$hours:$minutes";
 	}
 }
 	
