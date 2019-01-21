@@ -82,14 +82,19 @@ class Nav {
 										'showInNav' => true,
 										'active' => false,
 										'text' => '##BALANCESHEET##' 
-								) 
+								),
+								'ratios' => array (
+										'showInNav' => true,
+										'active' => false,
+										'text' => '##RATIOS##'
+								)
 						) 
 				),
 				'husbandry' => array (
-						'showInNav' => false, // $showInNav,
+						'showInNav' => $showInNav, 
 						'hasSubmenu' => false,
 						'active' => false,
-						'text' => '##HUSBANDRY##' 
+						'text' => '##ANIMALS##' 
 				),
 				'missions' => array (
 						'showInNav' => true,
@@ -104,7 +109,7 @@ class Nav {
 						'text' => '##FARM##' 
 				),
 				'statistics' => array (
-						'showInNav' => false, // $showInNav,
+						'showInNav' => $showInNav,
 						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##STATISTICS##' 

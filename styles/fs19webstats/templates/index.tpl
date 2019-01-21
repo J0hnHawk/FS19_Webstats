@@ -26,9 +26,9 @@
 			<div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNav">
 				<ul class="navbar-nav mx-auto text-center">
 					{foreach $navItems as $link => $navItem} {if $navItem.showInNav} {if $navItem.active} {$class="nav-item active"} {else} {$class="nav-item"} {/if} {if $navItem.hasSubmenu}
-					<li class="{$class|cat:" dropdown"}"><a class="nav-link dropdown-toggle" href="index.php?page={$link}" id="navbarDropdown" data-toggle="dropdown">{$navItem.text}</a>
+					<li class="{$class|cat:' dropdown'}"><a class="nav-link dropdown-toggle" href="index.php?page={$link}" id="navbarDropdown" data-toggle="dropdown">{$navItem.text}</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							{foreach $navItem.submenu as $subLink => $subItem} <a class="dropdown-item" href="index.php?page={$link}&subPage={$subLink}">{$subItem.text}</a> {/foreach}
+							{foreach $navItem.submenu as $subLink => $subItem} {if $subItem.showInNav}<a class="dropdown-item" href="index.php?page={$link}&subPage={$subLink}">{$subItem.text}</a>{/if}{/foreach}
 						</div></li> {else}
 					<li class="{$class}"><a class="nav-link" href="index.php?page={$link}">{$navItem.text}</a></li> {/if} {/if} {/foreach}
 				</ul>

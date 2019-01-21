@@ -29,6 +29,8 @@ class Farm {
 	private $players = array ();
 	private $contractFrom = array ();
 	private $contractWith = array ();
+	private $statistics = array ();
+	private $finances = array ();
 	private static $farms = array ();
 	private static $farmsArray = array ();
 	public static function extractXML($xml) {
@@ -46,6 +48,22 @@ class Farm {
 							'isFarmManager' => get_bool ( $player ['farmManager'] ) 
 					);
 				}
+			}
+			foreach ( $farmInXML->statistics->children () as $statisticItem => $statisticValue ) {
+				$statisticItem = sprintf ( "##%s##", strtoupper ( $statisticItem ) );
+				$statisticValue = floatval ( $statisticValue );
+				$farm->statistics [$statisticItem] = $statisticValue;
+			}
+			foreach ( $farmInXML->finances->stats as $stats ) {
+				$financesDay = self::financeDayMapping ( intval ( $stats ['day'] ) );
+				$farm->finances [$financesDay] = array ();
+				foreach ( $stats->children () as $financeItem => $financeValue ) {
+					// $financeItem = sprintf ( "##%s##", strtoupper ( $financeItem ) );
+					$financeItem = $financeItem;
+					$financeValue = floatval ( $financeValue );
+					$farm->finances [$financesDay] [$financeItem] = $financeValue;
+				}
+				$farm->finances [$financesDay] ['total'] = array_sum ( $farm->finances [$financesDay] );
 			}
 			if (isset ( $farmInXML->contracting )) {
 				foreach ( $farmInXML->contracting->farm as $contractingFarm ) {
@@ -76,6 +94,19 @@ class Farm {
 	public static function getLoan($farmId) {
 		$farm = self::$farms [$farmId];
 		return $farm->loan;
+	}
+	private static function financeDayMapping($day) {
+		switch ($day) {
+			case 1 :
+				return 4;
+			case 2 :
+				return 3;
+			case 3 :
+				return 2;
+			case 4 :
+				return 1;
+		}
+		return 0;
 	}
 }
 	

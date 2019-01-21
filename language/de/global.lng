@@ -101,6 +101,7 @@ VEHICLES=Fahrzeuge
 BESTPRICES=Beste Verkaufspreise
 ALLPRICES=Alle Verkaufspreise
 BALANCESHEET=Bilanz
+RATIOS=BWL Kennzahlen
 
 //overview.tpl
 VERSION=Version
@@ -289,6 +290,7 @@ BS_BANKDEBT=Bankkredit
 BS_BANKOPCREDIT=Kontokorrent
 BS_TOTAL_LEFT=Bilanzsumme
 BS_TOTAL_RIGHT=Bilanzsumme
+BUSINESS_RATIOS=Betriebswirtschaftliche Kennzahlen
 
 //missions.tpl
 MISSIONS=Verträge
@@ -328,3 +330,6 @@ VLPDAY=Leasing/<br>Tag
 VLPHOUR=Leasing/<br>Stunde
 VLCOST=Leasing<br>Gesamt
 VRESALE=Restwert
+
+//statistics.tpl
+STATISTICS=Statistiken

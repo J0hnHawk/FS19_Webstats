@@ -113,54 +113,125 @@
 		</div>
 	</div>
 </div>
-{assign "eigenkapital" $liabilities.A1 + $liabilities.A2} {assign "fremdkapital" $liabilities.B1+$liabilities.B2} {assign "anlagevermoegen" $assets.A1+$assets.A2+$assets.A3+1} {assign "kurzfristigesFremdkapital" $liabilities.B1+$liabilities.B2+1}{assign "vorraete" $assets.CI1+$assets.CI3}
-<!-- Eigenkapitalquote -->
-{math equation="round(100 * eigenkapital / gesamtkapital)" eigenkapital=$eigenkapital gesamtkapital=$balanceSheetSum assign="ekq"}
-<!-- Eigenkapitalrentabilität -->
-{math equation="round(100 * gewinn / eigenkapital)" eigenkapital=$eigenkapital gewinn=$liabilities.A2 assign="ekr"}
-<!-- Anlagendeckungsgrad -->
-{math equation="round(100 * eigenkapital / anlagevermoegen)" eigenkapital=$eigenkapital anlagevermoegen=$anlagevermoegen assign="adg"}
-<!-- Fremdkapitalquote -->
-{math equation="round(100 * fremdkapital / gesamtkapital)" fremdkapital=$fremdkapital gesamtkapital=$balanceSheetSum assign="fkq"}
-<!-- Liquidität 2. Grades -->
-{math equation="round(100 * (fluessigeMittel + kurzfristigeForderungen + vorraete) / kurzfristigesFremdkapital)" fluessigeMittel=$assets.CIII kurzfristigeForderungen=$assets.CII kurzfristigesFremdkapital=$kurzfristigesFremdkapital vorraete=$vorraete assign="l3g"}
-<!-- Gesamtkapitalrentabilität -->
-{math equation="round(100 * (gewinn + fremdkapitalzinsen) / eigenkapital)" eigenkapital=$eigenkapital fremdkapitalzinsen=0 gewinn=$liabilities.A2 assign="gkr"}
+{elseif $mode == 'ratios'}
+<h3 class="my-3">##BUSINESS_RATIOS##</h3>
 <div class="row mt-3">
 	<div class="col-6">
 		<h5>
-			Anlagendeckungsgrad<span class="float-right">{$adg|number_format:0:",":"."} %</span>
+			Anlagendeckungsgrad <a href="#Anlagendeckungsgrad" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.adg|number_format:0:",":"."} %</span>
 		</h5>
+		<div class="collapse" id="Anlagendeckungsgrad">
+			<p class="text-justify">Der Anlagendeckungsgrad setzt das Eigenkapital in Verhältnis zum Anlagevermögen eines Hofes. Mit dem Anlagevermögen sind Maschinen, Gebäude und Grundstücke gemeint.</p>
+			<p>
+				<var>Anlagendeckungsgrad</var>
+				=
+				<var>Eigenkapital</var>
+				x 100 :
+				<var>Anlagevermögen</var>
+			</p>
+		</div>
 		<p class="text-justify">Ein hoher Anlagendeckungsgrad bedeutet, dass große Teile des Anlagevermögens über Eigenkapital und nicht per Kredit „auf Pump“ finanziert werden.</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Eigenkapitalquote<span class="float-right">{$ekq|number_format:0:",":"."} %</span>
+			Eigenkapitalquote <a href="#Eigenkapitalquote" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekq|number_format:0:",":"."} %</span>
 		</h5>
+		<div class="collapse" id="Eigenkapitalquote">
+			<p class="text-justify">Die Eigenkapitalquote sagt aus, wie hoch der Anteil des Eigenkapitals am Gesamtkapital ist.</p>
+			<p>
+				<var>Eigenkapitalquote</var>
+				=
+				<var>Eigenkapital</var>
+				x 100 :
+				<var>Gesamtkapital</var>
+			</p>
+		</div>
 		<p class="text-justify">Eine hohe Eigenkapitalquote gilt als positiv: Der Hof finanziert sich vorwiegend aus eigener Kraft und muss nicht auf Fremdkapital zurückgreifen.</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Eigenkapitalrentabilität<span class="float-right">{$ekr|number_format:0:",":"."} %</span>
+			Eigenkapitalrentabilität <a href="#Eigenkapitalrentabilität" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekr|number_format:0:",":"."} %</span>
 		</h5>
+		<div class="collapse" id="Eigenkapitalrentabilität">
+			<p class="text-justify">Höfe stehen oft vor der Entscheidung, Kapital anzulegen oder zu investieren. Die Eigenkapitalrentabilität zeigt auf, ob eine Investition rentabel war.</p>
+			<p>
+				<var>Eigenkapitalrentabilität</var>
+				=
+				<var>Gewinn</var>
+				x 100 :
+				<var>Eigenkapital</var>
+			</p>
+		</div>
 		<p class="text-justify">Liegt die Eigenkapitalrentabilität über dem aktuellen Zinssatz, hat sich die Investition in den eigenen Hof gelohnt.</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Fremdkapitalquote<span class="float-right">{$fkq|number_format:0:",":"."} %</span>
+			Fremdkapitalquote <a href="#Fremdkapitalquote" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkq|number_format:0:",":"."} %</span>
 		</h5>
-		<p class="text-justify">Je niedriger der Anteil an Fremdkapital am Gesamtkapital ist, desto finanziell unabhängiger ist der Hog. Er finanziert sich dann in erster Linie aus eigenen Kapitalreserven (Eigenkapital).</p>
+		<div class="collapse" id="Fremdkapitalquote">
+			<p class="text-justify">Bei der Fremdkapitalquote wird das Fremdkapital ins Verhältnis zum Gesamtkapital gesetzt:</p>
+			<p>
+				<var>Fremdkapitalquote</var>
+				=
+				<var>Fremdkapital</var>
+				x 100 :
+				<var>Gesamtkapital</var>
+			</p>
+		</div>
+		<p class="text-justify">Je niedriger der Anteil an Fremdkapital am Gesamtkapital ist, desto finanziell unabhängiger ist der Hof. Er finanziert sich dann in erster Linie aus eigenen Kapitalreserven (Eigenkapital).</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Liquidität 3. Grades<span class="float-right">{$l3g|number_format:0:",":"."} %</span>
+			Fremdkapitaldeckung <a href="#Fremdkapitaldeckung" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkd|number_format:0:",":"."} %</span>
 		</h5>
+		<div class="collapse" id="Fremdkapitaldeckung">
+			<p class="text-justify"></p>
+			<p>
+				<var>Fremdkapitaldeckung</var>
+				= (
+				<var>abnutzbares Anlagevermögen</var>
+				+
+				<var>Tiervermögen</var>
+				+
+				<var>Umlaufvermögen</var>
+				) x 100 :
+				<var>Fremdkapital</var>
+			</p>
+		</div>
+		<p class="text-justify">Eine hohe Fremdkapitaldeckung bedeutet, dass große Teile oder das gesamte Fremdkapital durch schnell veräußerbare Vermögenswerte zurück geführt werden können..</p>
+	</div>
+	<div class="col-6">
+		<h5>
+			Liquidität <a href="#Liquidität" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
+		</h5>
+		<div class="collapse" id="Liquidität">
+			<p class="text-justify">Die Liquidität beschreibt die Möglichkeit des Hofes, Schulden mit verfügbaren Mitteln begleichen zu können.</p>
+			<p>
+				<var>Liquidität</var>
+				=
+				<var>Umlaufvermögen</var>
+				x 100 :
+				<var>Fremdkapital</var>
+			</p>
+		</div>
 		<p class="text-justify">Je höher die Liquidität, umso besser ist die Zahlungsfähigkeit (Solvenz) eines Hofes. Die Liquidität gilt daher auch als Gradmesser für eine drohende Insolvenz.</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Gesamtkapitalrentabilität<span class="float-right">{$gkr|number_format:0:",":"."} %</span>
+			Gesamtkapitalrentabilität <a href="#Gesamtkapitalrentabilität" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.gkr|number_format:0:",":"."} %</span>
 		</h5>
+		<div class="collapse" id="Gesamtkapitalrentabilität">
+			<p class="text-justify">Zur Berechnung der Gesamtrentabilität (Gesamtkapitalrendite) werden Gewinn und Zinsen auf Fremdkapital in Bezug zum Eigenkapital gesetzt.</p>
+			<p>
+				<var>Gesamtkapitalrentabilität</var>
+				= (
+				<var>Gewinn</var>
+				+
+				<var>Kreditzinsen</var>
+				) x 100 :
+				<var>Eigenkapital</var>
+			</p>
+		</div>
 		<p class="text-justify">Die Gesamtkapitalrendite gibt Auskunft darüber, wie hoch die Erträge aus investiertem Gesamtkapital ausfallen.</p>
 	</div>
 	<div class="col-12">
