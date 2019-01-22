@@ -23,5 +23,12 @@ if (! defined ( 'IN_FS19WS' )) {
 }
 include ('./include/savegame/Vehicles.class.php');
 Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig ['pallets'] );
-$vehicles = Vehicle::getAllVehicles ();
-$smarty->assign ( 'vehicles', $vehicles );
+$subPage = GetParam ( 'subPage', 'G', 'vehicles' );
+if ($subPage == 'vehicles') {
+	$vehicles = Vehicle::getAllVehicles ();
+	$smarty->assign ( 'vehicles', $vehicles );
+} else {
+	$buildings = Vehicle::getAllBuildings ();
+	$smarty->assign ( 'buildings', $buildings );
+}
+$smarty->assign ( 'subPage', $subPage );

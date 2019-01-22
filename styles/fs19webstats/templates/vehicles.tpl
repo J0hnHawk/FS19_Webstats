@@ -1,4 +1,5 @@
-<h3 class="mt-3">##H3VEHICLES##</h3>
+{if $subPage == 'vehicles'}
+<h3 class="my-3">##H3VEHICLES##</h3>
 <div class="row">
 	<div class="col-sm-12">
 		<table class="table table-sm table-hover display table-bordered table-striped" id="vehicles">
@@ -22,9 +23,9 @@
 					<td class="text-right pr-3">{$vehicle.wear|number_format:0} %</td>
 					<td data-order="{$vehicle.operatingTime|number_format:0:" ,":"."}" class="text-right pr-3">{$vehicle.operatingTimeString}</td>
 					<td data-order="{if $vehicle.propertyState==1}{$vehicle.resale}{else}0{/if}" class="text-right pr-3">{if $vehicle.propertyState==1}{$vehicle.resale|number_format:0:",":"."}{elseif $vehicle.propertyState==3}Mission{/if}</td>
-					<td>{if $vehicle.propertyState==2}{$vehicle.dayLeasingCost|number_format:0:",":"."}{/if}</td>
-					<td>{if $vehicle.propertyState==2}{$vehicle.leasingCostPerHour|number_format:0:",":"."}{/if}</td>
-					<td>{if $vehicle.propertyState==2}{$vehicle.leasingCost|number_format:0:",":"."}{/if}</td>
+					<td class="text-right pr-3">{if $vehicle.propertyState==2}{$vehicle.dayLeasingCost|number_format:0:",":"."}{/if}</td>
+					<td class="text-right pr-3">{if $vehicle.propertyState==2}{$vehicle.leasingCostPerHour|number_format:0:",":"."}{/if}</td>
+					<td class="text-right pr-3">{if $vehicle.propertyState==2}{$vehicle.leasingCost|number_format:0:",":"."}{/if}</td>
 				</tr>
 				{/foreach}
 			</tbody>
@@ -52,3 +53,51 @@
 		</script>
 	</div>
 </div>
+{elseif $subPage == 'buildings'}
+<h3 class="my-3">##H3BUILDINGS##</h3>
+<div class="row">
+	<div class="col-sm-12">
+		<table class="table table-sm table-hover display table-bordered table-striped" id="buildings">
+			<thead>
+				<tr>
+					<th class="text-center">##BNAME##</th>
+					<th class="text-center">##VAGE##</th>
+					<th class="text-center">##VPRICE##</th>
+					<th class="text-center">##VRESALE##</th>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach $buildings as $buildingId => $building}
+				<tr>
+					<td>{$building.name}</td>
+					<td class="text-right pr-3">{$building.age}</td>
+					<td class="text-right pr-3">{$building.price}</td>
+					<td data-order="{$building.resale}" class="text-right pr-3">{$building.resale|number_format:0:",":"."}</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		<script>
+		var h = window.innerHeight; 			//Height of the HTML document
+		var c = 285; 							// Sum of the heights of navbar, footer, headings, etc.  
+		var th = parseInt((h-c)/h*100) + 'vh';	// Height for table
+		var rw = parseInt((h - c) / 30);		// Rows when paging is activated
+		$(document).ready(function() {
+		    var table = $('#buildings').DataTable( {
+		    	//"pageLength": rw,
+		    	scrollY:        th,
+        		scrollCollapse: true,
+       			paging:         false,
+		    	stateSave:		true,
+		    	"dom":	"<'row'<'col-sm-12'tr>>", // cut from beginn: <'row'<'col-sm-6'><'col-sm-6'f>> cut from end: <'row'<'col-sm-5'i><'col-sm-7'p>>		
+		    	"language": {
+		    		"decimal": ",",
+		            "thousands": ".",
+		            "url": "./language/{$smarty.session.language}/dataTables.lang"
+		    	}
+		    } );
+		} );
+		</script>
+	</div>
+</div>
+{/if}

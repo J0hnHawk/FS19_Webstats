@@ -21,7 +21,7 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-class Mission  {
+class Mission {
 	private $type;
 	private $reward;
 	private $status;

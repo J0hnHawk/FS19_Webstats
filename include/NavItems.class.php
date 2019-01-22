@@ -38,7 +38,7 @@ class Nav {
 						'text' => '##OVERVIEW##' 
 				),
 				'storage' => array (
-						'showInNav' => true, // $showInNav,
+						'showInNav' => $showInNav,
 						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##STORAGE##' 
@@ -63,9 +63,21 @@ class Nav {
 				),
 				'vehicles' => array (
 						'showInNav' => $showInNav,
-						'hasSubmenu' => false,
+						'hasSubmenu' => true,
 						'active' => false,
-						'text' => '##VEHICLES##' 
+						'text' => '##VEHICLES##',
+						'submenu' => array (
+								'vehicles' => array (
+										'showInNav' => true,
+										'active' => false,
+										'text' => '##VEHICLES##' 
+								),
+								'buildings' => array (
+										'showInNav' => true,
+										'active' => false,
+										'text' => '##BUILDINGS##' 
+								) 
+						) 
 				),
 				'finances' => array (
 						'showInNav' => $showInNav,
@@ -86,12 +98,12 @@ class Nav {
 								'ratios' => array (
 										'showInNav' => true,
 										'active' => false,
-										'text' => '##RATIOS##'
-								)
+										'text' => '##RATIOS##' 
+								) 
 						) 
 				),
-				'husbandry' => array (
-						'showInNav' => $showInNav, 
+				'animals' => array (
+						'showInNav' => $showInNav,
 						'hasSubmenu' => false,
 						'active' => false,
 						'text' => '##ANIMALS##' 

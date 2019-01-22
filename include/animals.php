@@ -21,3 +21,6 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
+
+include ('./include/savegame/Animals.class.php');
+Animals::loadStables ( $savegame::$xml );

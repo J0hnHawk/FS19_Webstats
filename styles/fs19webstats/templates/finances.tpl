@@ -1,7 +1,7 @@
 {$mode = GetParam('subPage','G','balance')} {if $mode == 'balance'}
 <h3 class="my-3">##BS_HEAD_MAIN## "{$farmName}"</h3>
 <div class="row">
-	<div class="col-md-6 border-right border-dark">
+	<div class="col-md-6 order-1 border-right border-dark mt-3">
 		<h5>##BS_HEAD_LEFT##</h5>
 		<div class="row border-top pt-2 border-dark">
 			<div class="col-9">
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 order-3 order-md-2 mt-3">
 		<h5 class="text-right">##BS_HEAD_RIGHT##</h5>
 		<div class="row border-top pt-2 border-dark">
 			<div class="col-9">
@@ -92,7 +92,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6 d-none d-lg-block border-right border-top border-bottom border-dark">
+	<!-- <div class="col-md-6 d-none d-lg-block border-right border-top border-bottom border-dark"> -->
+	<div class="col-md-6 order-2 order-md-3 border-right border-top border-bottom border-dark">
 		<div class="row">
 			<div class="col-9">
 				<p class="h5 pt-1">##BS_TOTAL_LEFT##</p>
@@ -102,7 +103,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6 border-top border-bottom border-dark">
+	<div class="col-md-6 order-4 border-top border-bottom border-dark">
 		<div class="row">
 			<div class="col-9">
 				<p class="h5 pt-1">##BS_TOTAL_RIGHT##</p>
@@ -241,11 +242,7 @@
 	</div>
 </div>
 {else}
-<div class="page-header">
-	<h3>
-		##FINANCES##<small> (##SAVETIME##: ##DAY## {$currentDay}, {$dayTime})</small>
-	</h3>
-</div>
+<h3 class="my-3">##FINANCES##</h3>
 <div class="row">
 	<div class="col-sm-12">
 		<table id="finances" class="table table-hover table-bordered table-striped" width="100%">

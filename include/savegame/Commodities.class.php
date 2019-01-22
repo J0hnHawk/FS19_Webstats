@@ -47,6 +47,7 @@ class Commodity {
 		self::loadVehicles ();
 	}
 	public static function getAllCommodities() {
+		ksort ( self::$commoditiesArray );
 		return self::$commoditiesArray;
 	}
 	public static function getAllOutOfMap() {
@@ -75,11 +76,11 @@ class Commodity {
 										/*
 										 * Tested horse sell prices:
 										 * 49000 * (fitnessScale * healthScale) + 500 * dirtScale
-										 * 
+										 *
 										 * Giants LUA Doc:
 										 * function Horse:getValueScale()
-										 * 		-- dirt scale should only count 10%
-										 * 		return 0.90 * (self.fitnessScale * self.healthScale) + 0.10 * (1-self.dirtScale)
+										 * -- dirt scale should only count 10%
+										 * return 0.90 * (self.fitnessScale * self.healthScale) + 0.10 * (1-self.dirtScale)
 										 * end
 										 */
 									}
@@ -207,7 +208,7 @@ class Commodity {
 		}
 		self::$commodities [$l_fillType] = $commodity;
 		self::$commoditiesArray [$l_fillType] = get_object_vars ( $commodity );
-		// ksort ( self::$commodities [$l_fillType] ['locations'] );
+		ksort ( self::$commoditiesArray [$l_fillType] ['locations'] );
 	}
 	private static function loadBales() {
 		/*

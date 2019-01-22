@@ -22,7 +22,22 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 class Animals {
-	public $animals = 0;
-	public function __construct() {
+	private static $farmId;
+	private static $xml;
+	private static $stables = array ();
+	public static function loadStables($xml) {
+		self::$farmId = $_SESSION ['farmId'];
+		self::$xml = $xml;
+		self::analyzeItems ();
+	}
+	private static function analyzeItems() {
+		foreach ( self::$xml ['items'] as $item ) {
+			$location = cleanFileName ( $item ['filename'] );
+			if ($item ['className'] == 'AnimalHusbandry' && $item ['farmId'] == self::$farmId) {
+				/*
+				 * Some further action here
+				 */
+			}
+		}
 	}
 }

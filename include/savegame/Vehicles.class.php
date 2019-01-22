@@ -85,13 +85,16 @@ class Vehicle {
 			$building->lifetime = 1000;
 			$building->price = intval ( $item ['price'] );
 			$building->resale = self::getBuildingSellPrice ( $building->price, $building->lifetime, $building->age, 0 );
-			self::$buildings [] = get_object_vars ( $building );
-			self::$buildingsArray [] = $building;
+			self::$buildings [] = $building;
+			self::$buildingsArray [] = get_object_vars ( $building );
 			self::$buildingsResaleSum += $building->resale;
 		}
 	}
 	public static function getAllVehicles() {
 		return self::$vehicles;
+	}
+	public static function getAllBuildings() {
+		return self::$buildingsArray;
 	}
 	public static function getVehiclesResaleSum() {
 		return self::$vehiclesResaleSum;

@@ -102,6 +102,7 @@ BESTPRICES=Beste Verkaufspreise
 ALLPRICES=Alle Verkaufspreise
 BALANCESHEET=Bilanz
 RATIOS=BWL Kennzahlen
+BUILDINGS=Gebäude
 
 //overview.tpl
 VERSION=Version
@@ -238,7 +239,8 @@ NEWANIMALSCOST=Neue Tiere
 SOLDANIMALS=Verkaufte Tiere
 CONSTRUCTIONCOST=Baukosten
 SOLDBUILDINGS=Verkaufte Gebäude
-FIELDPURCHASE=Neue Felder
+FIELDPURCHASE=Landkauf
+FIELDSELLING=Landverkauf
 VEHICLERUNNINGCOST=Betriebskosten Fahrzeuge
 VEHICLELEASINGCOST=Mietkosten Fahrzeuge
 ANIMALUPKEEP=Tierhaltungskosten
@@ -330,6 +332,8 @@ VLPDAY=Leasing/<br>Tag
 VLPHOUR=Leasing/<br>Stunde
 VLCOST=Leasing<br>Gesamt
 VRESALE=Restwert
+H3BUILDINGS=Gebäudeübersicht
+BNAME=Gebäude
 
 //statistics.tpl
 STATISTICS=Statistiken

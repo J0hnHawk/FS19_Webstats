@@ -106,6 +106,7 @@ class Price {
 		}
 	}
 	public static function getAllPrices() {
+		ksort ( self::$prices );
 		return self::$prices;
 	}
 	public static function getSellStations() {

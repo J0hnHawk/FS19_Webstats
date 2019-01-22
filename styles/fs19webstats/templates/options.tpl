@@ -1,6 +1,4 @@
-<div class="page-header">
-	<h3>##SETTINGS##</h3>
-</div>
+<h3 class="my-3">##SETTINGS##</h3>
 <div class="row">
 	<div class="col-sm-12">
 		{if $error}{$error}{/if}

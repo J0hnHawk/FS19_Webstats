@@ -1,4 +1,4 @@
-<h3 class="mt-3">##MISSIONS##</h3>
+<h3 class="my-3">##MISSIONS##</h3>
 <div class="row">
 	<div class="col-sm-12">
 		<table class="table table-sm table-hover table-bordered table-striped" id="missions">
@@ -21,7 +21,7 @@
 					<td>{$mission.type}{if $mission.type=='##MIS_HARVEST##' || $mission.type=='##MIS_MOW_BALE##'} ({$mission.fruitTypeName}){/if}</td>
 					<td class="text-right pr-3">{$mission.reward|number_format:0:",":"."}</td>
 					<td class="text-right pr-3">{if isset($mission.field)}{$mission.vehicleUseCost|number_format:0:",":"."}{/if}</td>
-					<td>{if isset($mission.farmId)}{$farms[$mission.farmId].name}{/if}</td>
+					<td class="col-2">{if isset($mission.farmId)}{$farms[$mission.farmId].name}{/if}</td>
 					<td>{if $mission.success}abgeschlossen{elseif $mission.status}##ACTIVE##{/if}</td>
 				</tr>
 				{/foreach}
@@ -35,6 +35,7 @@
 		$(document).ready(function() {
 		    var table = $('#missions').DataTable( {
 		    	//"pageLength": rw,
+		    	order: 			[[ 3, "desc" ]],
 		    	scrollY:        th,
         		scrollCollapse: true,
        			paging:         false,

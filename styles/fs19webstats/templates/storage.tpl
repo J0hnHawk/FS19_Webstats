@@ -1,7 +1,4 @@
-<h3 class="mt-3">
-	##STOCKS##<small class="text-right">{if $outOfMap|@count>0}</span><a href="#" data-toggle="modal" data-target="#outOfMapAlert"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> ##CAUTION##</a>&nbsp;&nbsp;{/if}<a href="#" data-toggle="modal" data-target="#optionsDialog"><span
-			class="glyphicon glyphicon-cog" aria-hidden="true"></span> ##SETTINGS##</a></small>
-</h3>
+<h3 class="my-3">##STOCKS##</h3>
 <div class="row">
 	{if $options.3column} {$class="col-sm-4"} {$end=2} {$colmax[0] = -1} {$colmax[1] = ($commodities|@count/3)|ceil} {$colmax[2] = $colmax[1] *2} {$colmax[3] = $commodities|@count} {else} {$class="col-sm-3"} {$end=3} {$colmax[0] = -1} {$colmax[1] = ($commodities|@count/4)|ceil} {$colmax[2] = $colmax[1]
 	*2} {$colmax[3] = $colmax[1] *3} {$colmax[4] = $commodities|@count} {/if} {for $i=0 to $end}
@@ -25,7 +22,7 @@
 						<table class="table" style="margin-bottom: 0px;">
 							<thead>
 								<tr>
-									<th>##PLACE##<a class="pull-right" href="index.php?page=commodity&object={$commodity.i3dName}">##DETAILS##</a></th>
+									<th>##PLACE##<a class="float-right" href="index.php?page=commodity&object={$commodity.i3dName}">##DETAILS##</a></th>
 									<th class="text-right">##QUANTITY##</th>
 								</tr>
 							</thead>

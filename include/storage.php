@@ -73,7 +73,6 @@ if (! $options ['storage'] ['sortByName']) {
 	}
 	array_multisort ( $sortFillLevel, SORT_DESC, $commodities );
 }
-
 $smarty->assign ( 'commodities', $commodities );
 $smarty->assign ( 'plants', array ()/*$plants*/ );
 $smarty->assign ( 'outOfMap', Commodity::getAllOutOfMap () );
