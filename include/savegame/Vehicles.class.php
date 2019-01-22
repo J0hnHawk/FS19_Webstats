@@ -48,8 +48,9 @@ class Vehicle {
 			if ($vehicleInXML ['farmId'] != $farmId) {
 				continue;
 			}
+			$filename = cleanFileName ( $vehicleInXML ['filename'] );
 			$vehicle = new Vehicle ();
-			$vehicle->name = cleanFileName ( $vehicleInXML ['filename'] );
+			$vehicle->name = translate ( $filename );
 			$vehicle->age = intval ( $vehicleInXML ['age'] );
 			if (isset ( $vehicleInXML->wearable )) {
 				$wearnode = (1 - floatval ( $vehicleInXML->wearable->wearNode ['amount'] )) * 100;
@@ -68,7 +69,7 @@ class Vehicle {
 				$vehicle->dayLeasingCost = self::getDayLeasingCost ( $vehicle->price );
 				$vehicle->leasingCost = self::getLeasingCost ( $vehicle->price, $vehicle->age, $vehicle->operatingTime );
 			}
-			if (in_array ( $vehicle->name, $pallets )) {
+			if (in_array ( $filename, $pallets )) {
 				// self::$pallets [] = get_object_vars ( $vehicle );
 			} else {
 				self::$vehicles [] = get_object_vars ( $vehicle );
@@ -79,8 +80,9 @@ class Vehicle {
 			if ($item ['farmId'] != $farmId || strval ( $item ['className'] ) == 'Bale') {
 				continue;
 			}
+			$filename = cleanFileName ( $item ['filename'] );
 			$building = new Vehicle ();
-			$building->name = cleanFileName ( $item ['filename'] );
+			$building->name = translate ( $filename );
 			$building->age = intval ( $item ['age'] );
 			$building->lifetime = 1000;
 			$building->price = intval ( $item ['price'] );

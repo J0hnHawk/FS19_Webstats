@@ -16,7 +16,7 @@
 		</text>
 		<text name="SCS_HOFSILO_EXTENTION">
 			<en>SCS_HOFSILO_EXTENTION</en>
-			<de>Hofsilo</de>
+			<de>Hofsilo Erweiterung</de>
 		</text>
 		<text name="SCS_FUTTERMISCH_SILO">
 			<en>SCS_FUTTERMISCH_SILO</en>
@@ -26,6 +26,13 @@
 			<en>SCS_BUNKER_SILO_KLEIN_ONE_WAY</en>
 			<de>kleines Fahrsilo</de>
 		</text>
-
+		<text name="SCS_SCHWEINESTALL">
+			<en>SCS_SCHWEINESTALL</en>
+			<de>SCS_SCHWEINESTALL</de>
+		</text>
+		<text name="SCS_KUHSTALL_BIG_MIT_WEIDE">
+			<en>SCS_KUHSTALL_BIG_MIT_WEIDE</en>
+			<de>SCS_KUHSTALL_BIG_MIT_WEIDE</de>
+		</text>
 	</l10n>
 </mapconfig>

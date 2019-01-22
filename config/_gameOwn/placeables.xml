@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="husbandryChickenLarge">
+			<en>husbandryChickenLarge</en>
+			<de>Großer Hühnerstall</de>
+		</text>
+		<text name="husbandrySheepLarge">
+			<en>husbandrySheepLarge</en>
+			<de>Großer Schafweide</de>
+		</text>
+	</l10n>
+</mapconfig>
+
+
+
+
+
+
+
+
+
