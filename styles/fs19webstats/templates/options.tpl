@@ -11,13 +11,13 @@
 			<label for="basic-url">##CHOOSE_LANGUAGE_LABEL##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_language">&#9664;</button>
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_language">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="g_language" id="g_language">{foreach $languages as $language}
 					<option value="{$language.path}" {if $language.path==$smarty.session.language}selected{/if}>{$language.localName}</option> {/foreach}
 				</select>
 				<div class="input-group-append">
-					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_language">&#9654;</button>
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_language">&#11208;</button>
 				</div>
 			</div>
 		</div>
@@ -25,13 +25,13 @@
 			<label for="basic-url">##CHOOSE_STYLE##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_style">&#9664;</button>
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_style">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="g_style" id="g_style">{foreach $styles as $styleData}
 					<option value="{$styleData.path}" {if $styleData.path==$style}selected{/if}>{$styleData.name}</option> {/foreach}
 				</select>
 				<div class="input-group-append">
-					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_style">&#9654;</button>
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_style">&#11208;</button>
 				</div>
 			</div>
 		</div>
@@ -39,14 +39,14 @@
 			<label for="basic-url">##AUTO_RELOAD##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
-					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_reload">&#9664;</button>
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_reload">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="g_reload" id="g_reload">
 					<option value="1"{if $options.general.reload}selected{/if}>##YES##</option>
 					<option value="0"{if !$options.general.reload}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
-					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_reload">&#9654;</button>
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_reload">&#11208;</button>
 				</div>
 			</div>
 		</div>

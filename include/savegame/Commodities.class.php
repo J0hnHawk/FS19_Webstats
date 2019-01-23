@@ -111,12 +111,21 @@ class Commodity {
 					 * Planed: Check if bunkersilo is on farmland the farm owned
 					 */
 					if ($item ['farmId'] == $_SESSION ['farmId']) {
-						foreach ( $item->bga->bunkerSilo as $bunkerSilo ) {
+						foreach ( $item->bunkerSilo as $bunkerSilo ) {
 							$state = intval ( $bunkerSilo ['state'] );
 							$fillLevel = intval ( $bunkerSilo ['fillLevel'] );
 							$compactedFillLevel = intval ( $bunkerSilo ['compactedFillLevel'] );
-							self::addCommodity ( 'CHAFF', ($state < 2) ? $compactedFillLevel : 0, $location );
-							self::addCommodity ( 'SILAGE', ($state < 2) ? 0 : $fillLevel, $location );
+							switch ($state) {
+								case 0 :
+									self::addCommodity ( 'CHAFF', $fillLevel, $location );
+									break;
+								case 1 :
+									self::addCommodity ( 'CHAFF', $compactedFillLevel, $location );
+									break;
+								case 2 :
+									self::addCommodity ( 'SILAGE', ($state < 2) ? 0 : $fillLevel, $location );
+									break;
+							}
 						}
 					}
 					break;
