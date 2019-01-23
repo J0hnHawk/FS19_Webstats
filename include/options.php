@@ -50,7 +50,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 			break;
 		case 'password' :
 			$adminpass1 = GetParam ( 'adminpass1', 'P' );
-			if (! password_verify ( $adminpass1, $serverConfig [6] )) {
+			if (! password_verify ( $adminpass1, $config ['adminPass'] )) {
 				$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##PASSWORD_ERROR##</div>';
 			} else {
 				@unlink('./config/server.conf');

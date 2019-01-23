@@ -13,9 +13,10 @@
 			<tbody>
 				{foreach $sellingPoints as $location => $i3dName}
 				<tr>
-					<th nowrap>{$location}</th> {foreach $prices as $fillType => $fillTypeData}{if isset($fillTypeData.locations.$location)}{math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice
+					<td nowrap><strong>{$location}</strong></td> {foreach $prices as $fillType => $fillTypeData}{if isset($fillTypeData.locations.$location)}{math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice
 					current=$fillTypeData.locations.$location.price-$fillTypeData.locations.$location.minPrice assign="percent"}{/if}
-					<td data-order="{if	isset($fillTypeData.locations.$location)}{$fillTypeData.locations.$location.price}{/if}" class="text-right text-nowrap {if isset($fillTypeData.locations.$location)}{if $fillTypeData.locations.$location.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}{/if}">{if
+					<td data-order="{if	isset($fillTypeData.locations.$location)}{$fillTypeData.locations.$location.price}{/if}"
+						class="text-right text-nowrap {if isset($fillTypeData.locations.$location)}{if $fillTypeData.locations.$location.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}{/if}">{if
 						isset($fillTypeData.locations.$location)}{$fillTypeData.locations.$location.price|number_format:0:",":"."} {if $fillTypeData.locations.$location.priceTrend == 1}<i class="fas fa-caret-up text-success"></i>{elseif $fillTypeData.locations.$location.priceTrend == -1}<i
 						class="fas fa-caret-down text-danger"></i>{else}<i class="fas fa-caret-down" style="visibility: hidden"></i>{/if}{else}&nbsp;{/if}
 					</td> {/foreach}
@@ -26,16 +27,16 @@
 		<script>
 		var h = window.innerHeight; //Height of the HTML document
 		{if $options.hideFooter}
-		var c = 230; // Sum of the heights of navbar, footer, headings, etc.
+		var c = 320; // Sum of the heights of navbar, footer, headings, etc.
 		{else}
-		var c = 325; // Sum of the heights of navbar, footer, headings, etc.
+		var c = 400; // Sum of the heights of navbar, footer, headings, etc.
 		{/if} 
 		var th = parseInt((h-c)/h*100) + 'vh'; // Height for table 
 		var rw = parseInt((h - c) / 30); // Rows when paging is activated
 		$(document).ready(function() {
 			$('#allPrices').DataTable( {
 				"fixedColumns": true,
-		    	"bFilter": false,
+				"bFilter": false,
 		    	"paging": false,		    	
 		    	"autoWidth": false,
 		    	"info": false,

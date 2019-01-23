@@ -1,151 +1,247 @@
-<h3 class="my-3">##SETTINGS##</h3>
-<div class="row">
-	<div class="col-sm-12">
-		{if $error}{$error}{/if}
-		<form class="form-horizontal" action="index.php?page=options" method="post">
-			<fieldset>
-				<legend>##GENERAL##</legend>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">##AUTO_RELOAD##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="g_reload" value="1"{if $options.general.reload}checked{/if}> ##YES##
-						</label> <label class="radio-inline"> <input type="radio" name="g_reload" value="0"{if !$options.general.reload}checked{/if}> ##NO##
-						</label>
-					</div>
+<style>
+.custom-select {
+	background: none !important;
+}
+</style>
+{if $error} {$error} {/if}
+<h3 class="my-3">##SETTINGS## - ##GENERAL##</h3>
+<form class="form" action="index.php?page=options" method="post">
+	<div class="row">
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##CHOOSE_LANGUAGE_LABEL##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_language">&#9664;</button>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">##CHOOSE_LANGUAGE_LABEL##</label>
-					<div class="col-sm-4">
-						<select class="form-control" name="g_language"> {foreach $languages as $language}
-							<option value="{$language.path}" {if $language.path==$smarty.session.language}selected{/if}>{$language.localName}</option> {/foreach}
-						</select>
-					</div>
+				<select class="custom-select text-center" name="g_language" id="g_language">{foreach $languages as $language}
+					<option value="{$language.path}" {if $language.path==$smarty.session.language}selected{/if}>{$language.localName}</option> {/foreach}
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_language">&#9654;</button>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">##CHOOSE_STYLE##</label>
-					<div class="col-sm-4">
-						<select class="form-control" name="g_style"> {foreach $styles as $styleData}
-							<option value="{$styleData.path}" {if $styleData.path==$style}selected{/if}>{$styleData.name}</option> {/foreach}
-						</select>
-					</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##CHOOSE_STYLE##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_style">&#9664;</button>
 				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">##HIDE_FOOTER##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="g_hideFooter" value="0"{if !$options.general.hideFooter}checked{/if}> ##SHOW##
-						</label> <label class="radio-inline"> <input type="radio" name="g_hideFooter" value="1"{if $options.general.hideFooter}checked{/if}> ##HIDE##
-						</label>
-					</div>
+				<select class="custom-select text-center" name="g_style" id="g_style">{foreach $styles as $styleData}
+					<option value="{$styleData.path}" {if $styleData.path==$style}selected{/if}>{$styleData.name}</option> {/foreach}
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_style">&#9654;</button>
 				</div>
-			</fieldset>
-			<fieldset>
-				<legend>##STOCKS##</legend>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">##SORT_ORDER##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="s_sortByName" value="1"{if $options.storage.sortByName}checked{/if}> ##ALPHABETICALLY##
-						</label> <label class="radio-inline"> <input type="radio" name="s_sortByName" value="0"{if !$options.storage.sortByName}checked{/if}>
-							##FILL_LEVEL##
-						</label>
-					</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##AUTO_RELOAD##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_reload">&#9664;</button>
 				</div>
-				<div class="form-group">
-					<label for="s_showVehicles" class="col-sm-3 control-label">##VEHICLE_LOAD##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="s_showVehicles" value="1"{if $options.storage.showVehicles}checked{/if}> ##SHOW##
-						</label> <label class="radio-inline"> <input type="radio" name="s_showVehicles" value="0"{if !$options.storage.showVehicles}checked{/if}>
-							##HIDE##
-						</label>
-					</div>
+				<select class="custom-select text-center" name="g_reload" id="g_reload">
+					<option value="1"{if $options.general.reload}selected{/if}>##YES##</option>
+					<option value="0"{if !$options.general.reload}selected{/if}>##NO##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_reload">&#9654;</button>
 				</div>
-				<div class="form-group">
-					<label for="s_onlyPallets" class="col-sm-3 control-label">##ONLY_PALETTS##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="s_onlyPallets" value="1"{if $options.storage.onlyPallets}checked{/if}> ##YES##
-						</label> <label class="radio-inline"> <input type="radio" name="s_onlyPallets" value="0"{if !$options.storage.onlyPallets}checked{/if}> ##NO##
-						</label>
-					</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##HIDE_FOOTER##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_hideFooter">&#9664;</button>
 				</div>
-				<div class="form-group">
-					<label for="s_hideZero" class="col-sm-3 control-label">##SHOW_ZERO_STOCK##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="s_hideZero" value="0"{if !$options.storage.hideZero}checked{/if}> ##YES##
-						</label> <label class="radio-inline"> <input type="radio" name="s_hideZero" value="1"{if $options.storage.hideZero}checked{/if}> ##NO##
-						</label>
-					</div>
+				<select class="custom-select text-center" name="g_hideFooter" id="g_hideFooter">
+					<option value="1"{if $options.general.hideFooter}selected{/if}>##HIDE##</option>
+					<option value="0"{if !$options.general.hideFooter}selected{/if}>##SHOW##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_hideFooter">&#9654;</button>
 				</div>
-				<div class="form-group">
-					<label for="s_hideAnimalsInStorage" class="col-sm-3 control-label">##HIDE_ANIMALS##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="s_hideAnimalsInStorage" value="1"{if $options.storage.hideAnimalsInStorage}checked{/if}>
-							##YES##
-						</label> <label class="radio-inline"> <input type="radio" name="s_hideAnimalsInStorage" value="0"{if !$options.storage.hideAnimalsInStorage}checked{/if}>
-							##NO##
-						</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="s_3column" class="col-sm-3 control-label">##LAYOUT##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="s_3column" value="1"{if !$options.storage.hideZero}checked{/if}> ##3COLUMN##
-						</label> <label class="radio-inline"> <input type="radio" name="s_3column" value="0"{if $options.storage.hideZero}checked{/if}> ##4COLUMN##
-						</label>
-					</div>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>##PLANTS##</legend>
-				<div class="form-group">
-					<label for="sortType" class="col-sm-3 control-label">##SORT_ORDER##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="p_sortByName" value="1"{if $options.production.sortByName}checked{/if}>
-							##ALPHABETICALLY##
-						</label> <label class="radio-inline"> <input type="radio" name="p_sortByName" value="0"{if !$options.production.sortByName}checked{/if}>
-							##FILL_LEVEL##
-						</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="sortType" class="col-sm-3 control-label">##FULL_PRODUCT_STORAGE##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="p_sortFullProducts" value="1"{if $options.production.sortFullProducts}checked{/if}>
-							##SORT_FULL_PRODUCTS##
-						</label> <label class="radio-inline"> <input type="radio" name="p_sortFullProducts" value="0"{if !$options.production.sortFullProducts}checked{/if}>
-							##IGNORE_FULL_PRODUCTS##
-						</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">##TOOLTIP##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="p_showTooltip" value="1"{if $options.production.showTooltip}checked{/if}> ##YES##
-						</label> <label class="radio-inline"> <input type="radio" name="p_showTooltip" value="0"{if !$options.production.showTooltip}checked{/if}>
-							##NO##
-						</label><span id="helpBlock" class="help-block">##TOOLTIP_HELP##</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-3 control-label">##HIDE_NOT_USED##</label>
-					<div class="col-sm-9">
-						<label class="radio-inline"> <input type="radio" name="p_hideNotUsed" value="1"{if $options.production.hideNotUsed}checked{/if}> ##YES##
-						</label> <label class="radio-inline"> <input type="radio" name="p_hideNotUsed" value="0"{if !$options.production.hideNotUsed}checked{/if}>
-							##NO##
-						</label><span id="helpBlock" class="help-block">##HIDE_NOT_USED_HELP##</span>
-					</div>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend></legend>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<button type="button" data-toggle="modal" data-target="#password_check" class="btn btn-danger">##SERVER_SETTINGS##</button>
-						<button type="submit" class="btn btn-success pull-right" name="submit" value="options">##SAVE##</button>
-						<button type="reset" class="btn btn-default pull-right">##RESET##</button>
-					</div>
-				</div>
-			</fieldset>
-		</form>
+			</div>
+		</div>
 	</div>
+	<h3 class="my-3">##SETTINGS## - ##STOCKS##</h3>
+	<div class="row">
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##SORT_ORDER##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_sortByName">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="s_sortByName" id="s_sortByName">
+					<option value="1"{if $options.storage.sortByName}selected{/if}>##ALPHABETICALLY##</option>
+					<option value="0"{if !$options.storage.sortByName}selected{/if}>##FILL_LEVEL##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_sortByName">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##VEHICLE_LOAD##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_showVehicles">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="s_showVehicles" id="s_showVehicles">
+					<option value="1"{if $options.storage.showVehicles}selected{/if}>##SHOW##</option>
+					<option value="0"{if !$options.storage.showVehicles}selected{/if}>##HIDE##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_showVehicles">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##ONLY_PALETTS##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_onlyPallets">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="s_onlyPallets" id="s_onlyPallets">
+					<option value="1"{if $options.storage.onlyPallets}selected{/if}>##YES##</option>
+					<option value="0"{if !$options.storage.onlyPallets}selected{/if}>##NO##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_onlyPallets">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##SHOW_ZERO_STOCK##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_hideZero">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="s_hideZero" id="s_hideZero">
+					<option value="1"{if $options.storage.hideZero}selected{/if}>##YES##</option>
+					<option value="0"{if !$options.storage.hideZero}selected{/if}>##NO##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_hideZero">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##HIDE_ANIMALS##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_hideAnimalsInStorage">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="s_hideAnimalsInStorage" id="s_hideAnimalsInStorage">
+					<option value="1"{if $options.storage.hideAnimalsInStorage}selected{/if}>##YES##</option>
+					<option value="0"{if !$options.storage.hideAnimalsInStorage}selected{/if}>##NO##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_hideAnimalsInStorage">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##LAYOUT##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_3column">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="s_3column" id="s_3column">
+					<option value="1"{if $options.storage.3column}selected{/if}>##3COLUMN##</option>
+					<option value="0"{if !$options.storage.3column}selected{/if}>##4COLUMN##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_3column">&#9654;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h3 class="my-3">##SETTINGS## - ##PLANTS##</h3>
+	<div class="row">
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##SORT_ORDER##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_sortByName">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="p_sortByName" id="p_sortByName">
+					<option value="1"{if $options.production.sortByName}selected{/if}>##ALPHABETICALLY##</option>
+					<option value="0"{if !$options.production.sortByName}selected{/if}>##FILL_LEVEL##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_sortByName">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##FULL_PRODUCT_STORAGE##</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_sortFullProducts">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="p_sortFullProducts" id="p_sortFullProducts">
+					<option value="1"{if $options.production.sortFullProducts}selected{/if}>##SORT_FULL_PRODUCTS##</option>
+					<option value="0"{if !$options.production.sortFullProducts}selected{/if}>##IGNORE_FULL_PRODUCTS##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_sortFullProducts">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##TOOLTIP##</label>
+			<div class="input-group mb-3 hoverhelp" data-helptext="##TOOLTIP_HELP##">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_showTooltip">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="p_showTooltip" id="p_showTooltip">
+					<option value="1"{if $options.production.showTooltip}selected{/if}>##YES##</option>
+					<option value="0"{if !$options.production.showTooltip}selected{/if}>##NO##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_showTooltip">&#9654;</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-lg-4 col-xl-3">
+			<label for="basic-url">##HIDE_NOT_USED##</label>
+			<div class="input-group mb-3 hoverhelp" data-helptext="##HIDE_NOT_USED_HELP##">
+				<div class="input-group-prepend">
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_hideNotUsed">&#9664;</button>
+				</div>
+				<select class="custom-select text-center" name="p_hideNotUsed" id="p_hideNotUsed">
+					<option value="1"{if $options.production.hideNotUsed}selected{/if}>##YES##</option>
+					<option value="0"{if !$options.production.hideNotUsed}selected{/if}>##NO##</option>
+				</select>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_hideNotUsed">&#9654;</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<label for="basic-url">&nbsp;</label>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">i</span>
+				</div>
+				<input type="text" class="form-control" id="helpRow">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<button type="button" data-toggle="modal" data-target="#password_check" class="btn btn-danger">##SERVER_SETTINGS##</button>
+			<button type="submit" class="btn btn-success float-right" name="submit" value="options">##SAVE##</button>
+			<button type="reset" class="btn btn-default float-right mr-2">##RESET##</button>
+		</div>
+	</div>
+</form>
+</div>
 </div>
 <div class="modal fade" id="password_check" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
@@ -160,9 +256,7 @@
 				<div class="modal-body">
 					<p>##ADMIN_DESCRIPTION##</p>
 					<p>##ENTER_PASSWORD##</p>
-					<label for="inputPassword" class="sr-only">Password</label> <input type="password" name="adminpass1" id="inputPassword" class="form-control"
-						placeholder="##DS_PLACEHOLDE5##" required autofocus>
-
+					<label for="inputPassword" class="sr-only">Password</label> <input type="password" name="adminpass1" id="inputPassword" class="form-control" placeholder="##DS_PLACEHOLDE5##" required autofocus>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">##CLOSE##</button>
@@ -172,3 +266,26 @@
 		</form>
 	</div>
 </div>
+<script>
+$(".next-button").click(function() {
+	id = ($(this).data("id"));
+	var nextElement = $('#' + id + ' > option:selected').next('option');
+	if (nextElement.length > 0) {
+		$('#' + id + ' > option:selected').removeAttr('selected').next('option').attr('selected', 'selected');
+	}
+})
+$(".back-button").click(function() {
+	id = ($(this).data("id"));
+	var nextElement = $('#' + id + ' > option:selected').prev('option');
+	if (nextElement.length > 0) {
+		$('#' + id + ' > option:selected').removeAttr('selected').prev('option').attr('selected', 'selected');
+	}
+});
+$(".hoverhelp").hover(function() {
+	text = ($(this).data("helptext"));
+	$('#helpRow').val(text);
+}, function () {
+	$('#helpRow').val('');
+})
+
+</script>

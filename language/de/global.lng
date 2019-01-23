@@ -20,6 +20,8 @@ THURSDAY=Donnerstag
 FRIDAY=Freitag
 SATURDAY=Samstag
 SUNDAY=Sonntag
+ON=An
+OFF=Aus
 
 //install.tpl
 CHANGE_BUTTON=Ändern
@@ -96,13 +98,18 @@ STORAGE=Lager
 PRODUCTION=Produktion
 FACTORY=Fabriken
 INFO=Info
-FARM=Hof
+FARMS=Höfe
 VEHICLES=Fahrzeuge
 BESTPRICES=Beste Verkaufspreise
 ALLPRICES=Alle Verkaufspreise
 BALANCESHEET=Bilanz
 RATIOS=BWL Kennzahlen
 BUILDINGS=Gebäude
+
+//info.tpl
+VERSION=Version
+COPYRIGHT=Copyright
+3RDPARTY=Software von Drittanbietern
 
 //overview.tpl
 VERSION=Version
@@ -210,6 +217,7 @@ SERVER_SETTINGS=Servereinstellungen löschen
 ADMIN_AREA=Serververwaltung
 ADMIN_DESCRIPTION=Achtung nach Eingabe des Passworts die Einstellungen zum Dedicated Server oder des Savegames gelöscht. FS19 Web Stats kann danach neu initialisiert werden.
 ENTER_PASSWORD=Bitte Passwort eingeben
+PASSWORD_ERROR=Das eingegebene Passwort ist falsch.
 
 //animals.tpl
 ANIMALS=Tiere

@@ -114,17 +114,17 @@ class Nav {
 						'active' => false,
 						'text' => '##MISSIONS##' 
 				),
-				'farm' => array (
-						'showInNav' => true,
-						'hasSubmenu' => false,
-						'active' => false,
-						'text' => '##FARM##' 
-				),
 				'statistics' => array (
 						'showInNav' => $showInNav,
 						'hasSubmenu' => false,
 						'active' => false,
-						'text' => '##STATISTICS##' 
+						'text' => '##STATISTICS##'
+				),
+				'farms' => array (
+						'showInNav' => true,
+						'hasSubmenu' => false,
+						'active' => false,
+						'text' => '##FARMS##' 
 				),
 				'production' => array (
 						'showInNav' => false, // $showInNav,
@@ -144,11 +144,11 @@ class Nav {
 						'active' => false,
 						'text' => '##SETTINGS##' 
 				),
-				'lizenz' => array (
-						'showInNav' => false,
+				'info' => array (
+						'showInNav' => true,
 						'hasSubmenu' => false,
 						'active' => false,
-						'text' => '##LIZENZ##' 
+						'text' => '##INFO##' 
 				),
 				'factories' => array (
 						'showInNav' => false, // $showInNav,
