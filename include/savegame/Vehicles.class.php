@@ -21,7 +21,7 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-class Vehicle {
+class Vehicle extends Savegame {
 	const DEFAULT_LEASING_DEPOSIT_FACTOR = 0.02;
 	const DEFAULT_RUNNING_LEASING_FACTOR = 0.021;
 	const PER_DAY_LEASING_FACTOR = 0.01;
@@ -29,6 +29,7 @@ class Vehicle {
 	const MAX_DAILYUPKEEP_MULTIPLIER = 4;
 	const DIRECT_SELL_MULTIPLIER = 1.2;
 	private $name;
+	private $category = '';
 	private $age;
 	private $lifetime = 600;
 	private $wear;
@@ -44,6 +45,7 @@ class Vehicle {
 	private static $buildingsResaleSum = 0;
 	// private static $pallets = array ();
 	public static function extractXML($xml, $farmId, $pallets) {
+		$dataFromStore = simplexml_load_file ( './config/_gameOwn/vehicles.xml' );
 		foreach ( $xml ['vehicles'] as $vehicleInXML ) {
 			if ($vehicleInXML ['farmId'] != $farmId) {
 				continue;
@@ -51,6 +53,14 @@ class Vehicle {
 			$filename = cleanFileName ( $vehicleInXML ['filename'] );
 			$vehicle = new Vehicle ();
 			$vehicle->name = translate ( $filename );
+			foreach ( $dataFromStore->vehicle as $storeData ) {
+				if (basename ( $vehicleInXML ['filename'] ) == $storeData ['basename']) {
+					$vehicle->name = strval ( $storeData ['brand'] . ' ' . $storeData ['name'] );
+					$vehicle->lifetime = intval ( $storeData ['lifetime'] );
+					$vehicle->category = strval ( $storeData ['category'] );
+					break;
+				}
+			}
 			$vehicle->age = intval ( $vehicleInXML ['age'] );
 			if (isset ( $vehicleInXML->wearable )) {
 				$wearnode = (1 - floatval ( $vehicleInXML->wearable->wearNode ['amount'] )) * 100;

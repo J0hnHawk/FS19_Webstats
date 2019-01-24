@@ -6,6 +6,7 @@
 			<thead>
 				<tr>
 					<th class="text-center">##VNAME##</th>
+					<th class="text-center">##VCATEGORY##</th>
 					<th class="text-center">##VAGE##</th>
 					<th class="text-center">##VWEAR##</th>
 					<th class="text-center">##VOTIME##</th>
@@ -19,6 +20,7 @@
 				{foreach $vehicles as $vehicleId => $vehicle}
 				<tr>
 					<td>{$vehicle.name}</td>
+					<td>{$vehicle.category}</td>
 					<td class="text-right pr-3">{$vehicle.age}</td>
 					<td class="text-right pr-3">{$vehicle.wear|number_format:0} %</td>
 					<td data-order="{$vehicle.operatingTime|number_format:0:" ,":"."}" class="text-right pr-3">{$vehicle.operatingTimeString}</td>
