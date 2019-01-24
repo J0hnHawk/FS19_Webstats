@@ -7,7 +7,7 @@
 <h3 class="my-3">##SETTINGS## - ##GENERAL##</h3>
 <form class="form" action="index.php?page=options" method="post">
 	<div class="row">
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##CHOOSE_LANGUAGE_LABEL##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##CHOOSE_STYLE##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##AUTO_RELOAD##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -50,7 +50,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##HIDE_FOOTER##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -68,7 +68,7 @@
 	</div>
 	<h3 class="my-3">##SETTINGS## - ##STOCKS##</h3>
 	<div class="row">
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##SORT_ORDER##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -83,7 +83,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##VEHICLE_LOAD##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -98,7 +98,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##ONLY_PALETTS##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -113,7 +113,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##SHOW_ZERO_STOCK##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -128,7 +128,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##HIDE_ANIMALS##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -143,7 +143,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##LAYOUT##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -161,7 +161,7 @@
 	</div>
 	<h3 class="my-3">##SETTINGS## - ##PLANTS##</h3>
 	<div class="row">
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##SORT_ORDER##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -176,7 +176,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##FULL_PRODUCT_STORAGE##</label>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
@@ -191,7 +191,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##TOOLTIP##</label>
 			<div class="input-group mb-3 hoverhelp" data-helptext="##TOOLTIP_HELP##">
 				<div class="input-group-prepend">
@@ -206,7 +206,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-lg-4 col-xl-3">
+		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##HIDE_NOT_USED##</label>
 			<div class="input-group mb-3 hoverhelp" data-helptext="##HIDE_NOT_USED_HELP##">
 				<div class="input-group-prepend">
