@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="$l10n_shopItem_frontloaderLogFork">
+			<en>$l10n_shopItem_frontloaderLogFork</en>
+			<de>Poltergabel</de>
+		</text>
+	</l10n>
+</mapconfig>

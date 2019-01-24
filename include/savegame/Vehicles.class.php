@@ -21,7 +21,7 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-class Vehicle extends Savegame {
+class Vehicle {
 	const DEFAULT_LEASING_DEPOSIT_FACTOR = 0.02;
 	const DEFAULT_RUNNING_LEASING_FACTOR = 0.021;
 	const PER_DAY_LEASING_FACTOR = 0.01;
@@ -55,7 +55,12 @@ class Vehicle extends Savegame {
 			$vehicle->name = translate ( $filename );
 			foreach ( $dataFromStore->vehicle as $storeData ) {
 				if (basename ( $vehicleInXML ['filename'] ) == $storeData ['basename']) {
-					$vehicle->name = strval ( $storeData ['brand'] . ' ' . $storeData ['name'] );
+					$name = $storeData ['name'];
+					if (substr ( $name, 0, 5 ) == '$l10n') {
+						$name = translate($name);
+					}
+					$vehicle->name = strval ( $storeData ['brand'] . ' ' . $name );
+					// preg_split('/(?<=\\w)(?=[A-Z])/', "maxMusterMann")
 					$vehicle->lifetime = intval ( $storeData ['lifetime'] );
 					$vehicle->category = strval ( $storeData ['category'] );
 					break;

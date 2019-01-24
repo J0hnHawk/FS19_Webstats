@@ -39,7 +39,7 @@
 						{else}
 							{$dataorder=""}{$class=""}{$value=""}{$trend=""}
 						{/if}
-						<td {$dataorder} class="text-right text-nowrap {$class}">{$trend}<span class="float-right">{$value}</span></td>
+						<td {$dataorder} class="text-nowrap {$class} pr-2">{$trend}<span class="float-right">{$value}</span></td>
 					{/foreach}
 				</tr>
 				{/foreach}

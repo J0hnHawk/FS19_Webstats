@@ -1,4 +1,4 @@
-<h3 class="my-3">##FARM##</h3>
+<h3 class="my-3">##FARMS##</h3>
 <div class="row">
 	<div class="col">
 		<div class="table-responsive">
