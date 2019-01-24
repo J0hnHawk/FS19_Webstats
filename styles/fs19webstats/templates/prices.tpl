@@ -3,26 +3,53 @@
 <!-- Alternative ingame like price overview. Looks not good. -->
 <div class="row">
 	<div class="col-sm-12">
-		<table class="table table-sm table-hover table-bordered table-striped" id="allPrices" width="100%">
+		<table class="table  table-hover table-bordered table-striped" id="allPrices">
 			<thead>
 				<tr>
-					<th>##STOCKS##</th> {foreach $prices as $fillType => $fillTypeData}
+					<th class="">##SELLTRIGGER##</th> {foreach $prices as $fillType => $fillTypeData}
 					<th class="text-center">{$fillType|truncate:4:""}</th> {/foreach}
 				</tr>
 			</thead>
 			<tbody>
 				{foreach $sellingPoints as $location => $i3dName}
 				<tr>
-					<td nowrap><strong>{$location}</strong></td> {foreach $prices as $fillType => $fillTypeData}{if isset($fillTypeData.locations.$location)}{math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice
-					current=$fillTypeData.locations.$location.price-$fillTypeData.locations.$location.minPrice assign="percent"}{/if}
-					<td data-order="{if	isset($fillTypeData.locations.$location)}{$fillTypeData.locations.$location.price}{/if}"
-						class="text-right text-nowrap {if isset($fillTypeData.locations.$location)}{if $fillTypeData.locations.$location.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}{/if}">{if
-						isset($fillTypeData.locations.$location)}{$fillTypeData.locations.$location.price|number_format:0:",":"."} {if $fillTypeData.locations.$location.priceTrend == 1}<i class="fas fa-caret-up text-success"></i>{elseif $fillTypeData.locations.$location.priceTrend == -1}<i
-						class="fas fa-caret-down text-danger"></i>{else}<i class="fas fa-caret-down" style="visibility: hidden"></i>{/if}{else}&nbsp;{/if}
-					</td> {/foreach}
+					<td class="text-nowrap">
+						<strong>{$location}</strong>
+					</td> 
+					{foreach $prices as $fillType => $fillTypeData}
+						{if isset($fillTypeData.locations.$location)}
+							{math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice current=$fillTypeData.locations.$location.price-$fillTypeData.locations.$location.minPrice assign="percent"}
+							{$dataorder="data-order='{$fillTypeData.locations.$location.price}'"}
+							{if $fillTypeData.locations.$location.greatDemand}
+								{$class="text-info"}
+							{elseif $percent>=60}
+								{$class="text-success"}
+							{elseif $percent<=40}
+								{$class="text-danger"}
+							{/if}
+							{if $fillTypeData.locations.$location.priceTrend == 1}
+								{$trend='<i class="fas fa-caret-up text-success"></i>'}
+							{elseif $fillTypeData.locations.$location.priceTrend == -1}
+								{$trend='<i class="fas fa-caret-down text-danger"></i>'}
+							{else}
+								{$trend='<i class="fas fa-caret-down" style="visibility: hidden"></i>'}
+							{/if}
+							{$value=$fillTypeData.locations.$location.price|number_format:0:",":"."}
+							
+						{else}
+							{$dataorder=""}{$class=""}{$value=""}{$trend=""}
+						{/if}
+						<td {$dataorder} class="text-right text-nowrap {$class}">{$trend}<span class="float-right">{$value}</span></td>
+					{/foreach}
 				</tr>
 				{/foreach}
 			</tbody>
+			<tfoot>
+				<tr>
+					<th>##STOCKS##</th> {foreach $prices as $fillType => $fillTypeData}
+					<th class="text-right pr-2">{if isset($commodities.$fillType)}{$commodities.$fillType.overall|number_format:0:",":"."}{/if}</th> {/foreach}
+				</tr>
+			</tfoot>
 		</table>
 		<script>
 		var h = window.innerHeight; //Height of the HTML document
@@ -36,9 +63,13 @@
 		$(document).ready(function() {
 			$('#allPrices').DataTable( {
 				"fixedColumns": true,
+				columnDefs: [
+			        { "width": "150px", "targets": [0] },       
+			        { "width": "45px", "targets": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22] }
+			      ],
 				"bFilter": false,
 		    	"paging": false,		    	
-		    	"autoWidth": false,
+		    	"autoWidth": true,
 		    	"info": false,
 		    	"scrollX": true,
 		    	"scrollY":th,
