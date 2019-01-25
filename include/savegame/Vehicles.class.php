@@ -56,11 +56,11 @@ class Vehicle {
 			foreach ( $dataFromStore->vehicle as $storeData ) {
 				if (basename ( $vehicleInXML ['filename'] ) == $storeData ['basename']) {
 					$name = $storeData ['name'];
+					$brand = strval ( $storeData ['brand'] );
 					if (substr ( $name, 0, 5 ) == '$l10n') {
-						$name = translate($name);
+						$name = translate ( $name );
 					}
-					$vehicle->name = strval ( $storeData ['brand'] . ' ' . $name );
-					// preg_split('/(?<=\\w)(?=[A-Z])/', "maxMusterMann")
+					$vehicle->name = "$brand $name";
 					$vehicle->lifetime = intval ( $storeData ['lifetime'] );
 					$vehicle->category = strval ( $storeData ['category'] );
 					break;

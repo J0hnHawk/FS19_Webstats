@@ -16,17 +16,10 @@
 					</tr>
 					<tr class="d-flex">
 						{foreach $farms as $farmId => $farm}
-						<td class="col-3"><strong>##PLAYER##</strong>
-							<table class="table table-sm table-borderless">
-								<tbody>
-									{foreach $farm.players as $player}
-									<tr>
-										<td>{$player.name|truncate:10:"...":true}</td>
-										<td class="text-right">{if $player.isFarmManager}##FARMMANAGER##{/if}</td>
-									</tr>
-									{/foreach}
-								</tbody>
-							</table></td> {/foreach}
+						<td class="col-3"><strong>##PLAYER##</strong><br> {foreach $farm.players as $player}
+							<p class="my-1">
+								{$player.name|truncate:10:"...":true}{if $player.isFarmManager}<span class="float-right">##FARMMANAGER##</span>{/if}
+							</p>{/foreach}</td> {/foreach}
 					</tr>
 					<tr class="d-flex">
 						{foreach $farms as $farmId => $farm}

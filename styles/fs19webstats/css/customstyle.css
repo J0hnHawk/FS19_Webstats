@@ -10,8 +10,43 @@
 body {
 	padding-top: 64px; /*3.5rem;*/
 	margin-bottom: 60px;
+	background-color: #2B2E2F;
+	color: #fff;
 }
 
 .card-columns {
 	column-count: 2;
+}
+
+.custom-select {
+	color: #fff;
+	border: 1px solid #8B8A8A;
+	background-color: #3F4040;
+	border: 1px solid #8B8A8A;
+}
+
+.btn-outline-secondary {
+	color: #fff;
+	background-color: #3F4040;
+	border-color: #8B8A8A;
+	background-color: #3F4040;
+}
+
+.btn-outline-secondary:hover {
+	color: #000;
+	background-color: #FEA71C;
+	border-color: #F6B678;
+}
+
+.bg-dark {
+	background-color: #3f3f3f !important;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active,
+	.navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link
+	{
+	color: #fff;
+	background-color: #8a8a8a;
+	border-bottom: 3px solid #FEA71C;
+	
 }
