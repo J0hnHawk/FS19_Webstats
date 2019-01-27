@@ -5,5 +5,13 @@
 			<en>$l10n_shopItem_frontloaderLogFork</en>
 			<de>Poltergabel</de>
 		</text>
+		<text name="$l10n_shopItem_skidSteerHighDumpBucket">
+			<en>$l10n_shopItem_skidSteerHighDumpBucketk</en>
+			<de>Hochkippschaufel</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderPalletFork">
+			<en>$l10n_shopItem_frontloaderPalletFork</en>
+			<de>Palettengabel</de>
+		</text>
 	</l10n>
 </mapconfig>

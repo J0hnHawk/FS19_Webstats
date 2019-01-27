@@ -51,7 +51,7 @@ switch ($mode) {
 				'CI1' => 0,
 				'CI2' => 0,
 				'CI3' => 0,
-				'CII' => 0,
+				'CII' => getBGAreceivable ( $savegame::$xml ),
 				'CIII' => ($money < 0) ? 0 : $money 
 		);
 		foreach ( $savegame::$xml ['farmland'] as $farmland ) {
@@ -167,7 +167,7 @@ switch ($mode) {
 				'HARVEST', // 6/ soldWood, soldBales, harvestIncome, incomeBga
 				'MISSION', // 7/ missionIncome
 				'OTHER', // 8/ purchaseSeeds, purchaseFertilizer, purchaseSaplings, purchaseWater, other
-				'LOANINTEREST'  // 9/ loanInterest
+				'LOANINTEREST' // 9/ loanInterest
 		);
 		$weekdays = array (
 				'SUNDAY',
@@ -198,4 +198,14 @@ function addValue($array, $key, $value) {
 	}
 	$array [$key] += $value;
 	return $array;
+}
+function getBGAreceivable($xml) {
+	$receivables = 0;
+	foreach ( $xml ['items'] as $item ) {
+		if ($item ['className'] != 'BgaPlaceable' || $item ['farmId'] != $_SESSION ['farmId'] || strval ( $item ['className'] ) == 'Bale') {
+			continue;
+		}
+		$receivables += intval ( $item->bga ['money'] );
+	}
+	return $receivables;
 }

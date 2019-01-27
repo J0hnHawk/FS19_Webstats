@@ -123,7 +123,8 @@ class Commodity {
 									self::addCommodity ( 'CHAFF', $compactedFillLevel, $location );
 									break;
 								case 2 :
-									self::addCommodity ( 'SILAGE', ($state < 2) ? 0 : $fillLevel, $location );
+								case 3 :
+									self::addCommodity ( 'SILAGE', $fillLevel, $location );
 									break;
 							}
 						}
@@ -171,6 +172,12 @@ class Commodity {
 				$location = $vehicleName;
 				$className = 'isVehicle';
 				$vehicleId = intval ( $vehicle ['id'] );
+			}
+			if (isset ( $vehicle->livestockTrailer )) {
+				foreach ( $vehicle->livestockTrailer->animal as $animal ) {
+					$fillType = strval ( $animal ['fillType'] );
+					self::addCommodity ( $fillType, 1, $location );
+				}
 			}
 			if (isset ( $vehicle->fillUnit )) {
 				foreach ( $vehicle->fillUnit->unit as $unit ) {

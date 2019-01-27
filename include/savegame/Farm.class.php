@@ -164,5 +164,21 @@ class Farm {
 		$minutes = gmdate ( "i", $workTime );
 		return "$hours:$minutes";
 	}
+	private static function getFarmColor($color) {
+		/*
+		 * rgb = srgb ^ (1 / 2.2) * 255 
+		 */
+		$farmColors = array (
+				'1' => '#89ff89',
+				'2' => '#003b78',
+				'3' => '#f8b61c',
+				'4' => '#f1710d',
+				'5' => '#c70d0d',
+				'6' => '#0085ef',
+				'7' => '#f24295',
+				'8' => '#550d65' 
+		);
+		return $farmColors [$color];
+	}
 }
 	

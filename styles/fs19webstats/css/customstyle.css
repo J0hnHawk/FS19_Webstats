@@ -10,14 +10,14 @@
 body {
 	padding-top: 64px; /*3.5rem;*/
 	margin-bottom: 60px;
-	background-color: #2B2E2F;
-	color: #fff;
+	/*background-color: #2B2E2F;
+	color: #fff;*/
 }
 
 .card-columns {
 	column-count: 2;
 }
-
+/*
 .custom-select {
 	color: #fff;
 	border: 1px solid #8B8A8A;
@@ -50,3 +50,4 @@ body {
 	border-bottom: 3px solid #FEA71C;
 	
 }
+*/
