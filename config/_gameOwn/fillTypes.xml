@@ -151,43 +151,43 @@
 		<text name="COW_TYPE_BLACK_WHITE">
 			<cz>Krávy</cz>
 			<en>Cows</en>
-			<de>Kühe</de>
+			<de>Kuh (Schwarz &amp; Weiß)</de>
 			<fr>Vache</fr>
 		</text>
 		<text name="PIG_TYPE_RED">
 			<cz>PIG_TYPE_RED</cz>
 			<en>PIG_TYPE_RED</en>
-			<de>Schweine</de>
+			<de>Schwein (Rosa)</de>
 			<fr>PIG_TYPE_RED</fr>
 		</text>
 		<text name="CHICKEN_TYPE_ROOSTER">
 			<cz>CHICKEN_TYPE_ROOSTER</cz>
 			<en>Chicken</en>
-			<de>Hühner</de>
+			<de>Hahn</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="CHICKEN_TYPE_WHITE">
 			<cz>CHICKEN_TYPE_ROOSTER</cz>
 			<en>Chicken</en>
-			<de>Hühner</de>
+			<de>Huhn (Weiß)</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="CHICKEN_TYPE_BROWN">
 			<cz>CHICKEN_TYPE_ROOSTER</cz>
 			<en>Chicken</en>
-			<de>Hühner</de>
+			<de>Huhn (Braun)</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="CHICKEN_TYPE_BLACK">
 			<cz>CHICKEN_TYPE_ROOSTER</cz>
 			<en>Chicken</en>
-			<de>Hühner</de>
+			<de>Huhn (Schwarz)</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="SHEEP_TYPE_BLACK_WHITE">
 			<cz>Ovce</cz>
 			<en>Sheep</en>
-			<de>Schafe</de>
+			<de>Schaf (Schwarz &amp; Weiß)</de>
 			<fr>Mouton</fr>
 		</text>
 		<!-- Fruits -->

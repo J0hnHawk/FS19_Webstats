@@ -21,6 +21,8 @@
 if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
-
 include ('./include/savegame/Animals.class.php');
 Animals::loadStables ( $savegame::$xml );
+$smarty->assign ( 'stables', Animals::getStables () );
+$smarty->assign ( 'currentStable', 'husbandryChickenLarge' );
+$smarty->assign ( 'currentAnimal', 'CHICKEN_TYPE_BROWN' );

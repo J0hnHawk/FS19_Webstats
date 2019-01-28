@@ -32,12 +32,102 @@ class Animals {
 	}
 	private static function analyzeItems() {
 		foreach ( self::$xml ['items'] as $item ) {
-			$location = cleanFileName ( $item ['filename'] );
+			$stable = cleanFileName ( $item ['filename'] );
+			$l_stable = translate ( $stable );
 			if ($item ['className'] == 'AnimalHusbandry' && $item ['farmId'] == self::$farmId) {
-				/*
-				 * Some further action here
-				 */
+				$productivity = floatval ( $item ['globalProductionFactor'] ) * 100;
+				self::$stables [$l_stable] = array (
+						'i3dName' => $stable,
+						'productivity' => $productivity,
+						'animals' => array (),
+						'state' => array () 
+				
+				);
+				foreach ( $item->module as $module ) {
+					switch ($module ['name']) {
+						case 'animals' :
+							foreach ( $module->animal as $animal ) {
+								$animal = strval ( $animal ['fillType'] );
+								$l_animal = translate ( $animal );
+								if (isset ( self::$stables [$l_stable] ['animals'] [$l_animal] )) {
+									self::$stables [$l_stable] ['animals'] [$l_animal] ['count'] ++;
+								} else {
+									self::$stables [$l_stable] ['animals'] [$l_animal] = array (
+											'i3dName' => $animal,
+											'count' => 1,
+											'breeding' => 0,
+											'reproRate' => 0,
+											'nextAnimal' => 0 
+									);
+								}
+							}
+							foreach ( $module->breeding as $breeding ) {
+								$count = self::$stables [$l_stable] ['animals'] [$l_animal] ['count'];
+								if ($count > 1 && $productivity != 0) {
+									$animal = strval ( $breeding ['fillType'] );
+									$l_animal = translate ( $animal );
+									$breeding = floatval ( $breeding ['percentage'] );
+									$reproRate = intval ( self::getReproRate ( $animal ) / $count * 3600 * 100 / $productivity );
+									self::$stables [$l_stable] ['animals'] [$l_animal] ['breeding'] = gmdate ( "H:i", $reproRate );
+									self::$stables [$l_stable] ['animals'] [$l_animal] ['nextAnimal'] = gmdate ( "H:i", $reproRate * (1 - $breeding) );
+								}
+							}
+							break;
+						case 'foodSpillage' :
+							$cleanlinessFactor = floatval ( $module ['cleanlinessFactor'] );
+							self::$stables [$l_stable] ['##CLEANLINESS##'] = array (
+									'value' => $cleanlinessFactor,
+									'unit' => '%',
+									'factor' => $cleanlinessFactor 
+							);
+							break;
+						case 'straw' :
+							$fillCapacity = floatval ( $module ['fillCapacity'] );
+							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
+							$factor = $fillLevel / $fillCapacity;
+							self::$stables [$l_stable] [translate ( 'STRAW' )] = array (
+									'value' => $fillLevel,
+									'unit' => 'l',
+									'factor' => $factor 
+							);
+							break;
+						case 'water' :
+							$fillCapacity = floatval ( $module ['fillCapacity'] );
+							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
+							$factor = $fillLevel / $fillCapacity;
+							self::$stables [$l_stable] [translate ( 'WATER' )] = array (
+									'value' => $fillLevel,
+									'unit' => 'l',
+									'factor' => $factor
+							);
+							break;
+						case 'liquidManure' :
+							$fillLevel = intval ( $module->fillLevel ['fillLevel'] );
+							break;
+						case 'milk' :
+							$fillLevel = intval ( $module->fillLevel ['fillLevel'] );
+							break;
+					}
+				}
 			}
 		}
+	}
+	public static function getStables() {
+		return self::$stables;
+	}
+	private static function getReproRate($animalName) {
+		if (stristr ( $animalName, 'COW' ) !== false) {
+			return 1200;
+		}
+		if (stristr ( $animalName, 'PIG' ) !== false) {
+			return 144;
+		}
+		if (stristr ( $animalName, 'SHEEP' ) !== false) {
+			return 960;
+		}
+		if (stristr ( $animalName, 'CHICKEN' ) !== false) {
+			return 666;
+		}
+		return 999;
 	}
 }

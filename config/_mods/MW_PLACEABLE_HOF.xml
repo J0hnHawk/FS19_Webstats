@@ -28,11 +28,11 @@
 		</text>
 		<text name="SCS_SCHWEINESTALL">
 			<en>SCS_SCHWEINESTALL</en>
-			<de>SCS_SCHWEINESTALL</de>
+			<de>Schweinestall</de>
 		</text>
 		<text name="SCS_KUHSTALL_BIG_MIT_WEIDE">
 			<en>SCS_KUHSTALL_BIG_MIT_WEIDE</en>
-			<de>SCS_KUHSTALL_BIG_MIT_WEIDE</de>
+			<de>Großer Kuhstall mit Weide</de>
 		</text>
 	</l10n>
 </mapconfig>

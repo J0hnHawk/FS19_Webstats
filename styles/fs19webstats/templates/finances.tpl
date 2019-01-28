@@ -11,6 +11,7 @@
 							<li>##BS_LAND##</li>
 							<li>##BS_BUILDINGS##</li>
 							<li>##BS_VEHICLES##</li>
+							<li class="nostyle border-top">##BS_SUM_FIXED##</li>
 						</ol></li>
 					<li><span class="h5">##BS_ANIMAL##</span>
 						<ol>
@@ -19,6 +20,7 @@
 							<li>##BS_PIGS##</li>
 							<li>##BS_SHEEPS##</li>
 							<li>##BS_CHICKEN##</li>
+							<li class="nostyle border-top text-bold">##BS_SUM_ANIMAL##</li>
 						</ol></li>
 					<li><span class="h5">##BS_CURRENT##</span>
 						<ul class="list-unstyled ml-4">
@@ -31,30 +33,34 @@
 							</li>
 							<li>##BS_ACCRECEIV##</li>
 							<li>##BS_CASH##</li>
+							<li class="nostyle border-top text-bold">##BS_SUM_CURRENT##</li>
 						</ul></li>
 				</ul>
 			</div>
 			<div class="col-3">
 				<ul class="list-unstyled">
 					<li><span class="h5">&nbsp;</span></li>
-					<li class="text-right pr-3">{if isset($assets.A1)}{$assets.A1|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.A2)}{$assets.A2|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.A3)}{$assets.A3|number_format:0:",":"."}{else}0{/if}</li>
+					<li class="text-right pr-3">{$assets.A1|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.A2|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.A3|number_format:0:",":"."}</li>
+					<li class="text-right pr-3 border-top">{$assets.A1+$assets.A2+$assets.A3|number_format:0:",":"."}</li>
 					<li><span class="h5">&nbsp;</span></li>
 					</li>
-					<li class="text-right pr-3">{if isset($assets.B1)}{$assets.B1|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.B2)}{$assets.B2|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.B3)}{$assets.B3|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.B4)}{$assets.B4|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.B5)}{$assets.B5|number_format:0:",":"."}{else}0{/if}</li>
+					<li class="text-right pr-3">{$assets.B1|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.B2|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.B3|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.B4|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.B5|number_format:0:",":"."}</li>
+					<li class="text-right pr-3 border-top">{$assets.B1+$assets.B2+$assets.B3+$assets.B4+$assets.B5|number_format:0:",":"."}</li>
 					<li><span class="h5">&nbsp;</span></li>
 					</li>
 					<li>&nbsp;</li>
-					<li class="text-right pr-3">{if isset($assets.CI1)}{$assets.CI1|number_format:0:",":"."}{else}0{/if}</li>
-					<!-- <li class="text-right pr-3">{if isset($assets.CI2)}{$assets.CI2|number_format:0:",":"."}{else}0{/if}</li> -->
-					<li class="text-right pr-3">{if isset($assets.CI3)}{$assets.CI3|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.CII)}{$assets.CII|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($assets.CIII)}{$assets.CIII|number_format:0:",":"."}{else}0{/if}</li>
+					<li class="text-right pr-3">{$assets.CI1|number_format:0:",":"."}</li>
+					<!-- <li class="text-right pr-3">{if isset($assets.CI2)}{$assets.CI2|number_format:0:",":"."}{/if}</li> -->
+					<li class="text-right pr-3">{$assets.CI3|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.CII|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$assets.CIII|number_format:0:",":"."}</li>
+					<li class="text-right pr-3 border-top">{$assets.CI1+$assets.CI3+$assets.CII+$assets.CIII|number_format:0:",":"."}</li>
 				</ul>
 			</div>
 		</div>
@@ -68,12 +74,14 @@
 					<ol>
 						<li>##BS_INITIAL##</li>
 						<li>##BS_PROFIT##</li>
+						<li class="nostyle border-top text-bold">##BS_SUM_SHAREHOLDERS_EQUITY##</li>
 					</ol>
 					</li>
 					<li><span class="h5">##BS_LIABILITIES##</span></li>
 					<ol>
 						<li>##BS_BANKDEBT##</li>
 						<li>##BS_BANKOPCREDIT##</li>
+						<li class="nostyle border-top text-bold">##BS_SUM_LIABILITIES##</li>
 					</ol>
 					</li>
 				</ul>
@@ -82,12 +90,14 @@
 				<ul class="list-unstyled">
 					<li><span class="h5">&nbsp;</span></li>
 					</li>
-					<li class="text-right pr-3">{if isset($liabilities.A1)}{$liabilities.A1|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($liabilities.A2)}{$liabilities.A2|number_format:0:",":"."}{else}0{/if}</li>
+					<li class="text-right pr-3">{$liabilities.A1|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$liabilities.A2|number_format:0:",":"."}</li>
+					<li class="text-right pr-3 border-top">{$liabilities.A1+$liabilities.A2|number_format:0:",":"."}</li>
 					<li><span class="h5">&nbsp;</span></li>
 					</li>
-					<li class="text-right pr-3">{if isset($liabilities.B1)}{$liabilities.B1|number_format:0:",":"."}{else}0{/if}</li>
-					<li class="text-right pr-3">{if isset($liabilities.B2)}{$liabilities.B2|number_format:0:",":"."}{else}0{/if}</li>
+					<li class="text-right pr-3">{$liabilities.B1|number_format:0:",":"."}</li>
+					<li class="text-right pr-3">{$liabilities.B2|number_format:0:",":"."}</li>
+					<li class="text-right pr-3 border-top">{$liabilities.B1+$liabilities.B2|number_format:0:",":"."}</li>
 				</ul>
 			</div>
 		</div>

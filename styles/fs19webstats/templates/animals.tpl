@@ -5,17 +5,15 @@ height: calc(100vh - 100px)
 <div class="row">
 	<div class="col-3">
 		<div class="list-group">
+			{foreach $stables as $stableName => $stable}
 			<button type="button" class="list-group-item list-group-item-dark">
-				<strong>Großer Hühnerstall</strong>
+				<strong>{$stableName}</strong>
 			</button>
-			<a href="#" class="list-group-item list-group-item-action">Hahn</a> <a href="#" class="list-group-item list-group-item-action">Huhn (braun)</a>
-			<button type="button" class="list-group-item list-group-item-dark">SCS Schweinestall</button>
-			<a href="#" class="list-group-item list-group-item-action">Schwein (Rosa)<span class="float-right">147</span><br>
-			<small>Produktivität<span class="float-right">97 %</span></small></a>
-			<button type="button" class="list-group-item list-group-item-dark">SCS Kuhstall mit Weide</button>
-			<a href="#" class="list-group-item list-group-item-action">Kuh (Schwarz & Weiß)</a>
-			<button type="button" class="list-group-item list-group-item-dark">Großer Schafstall</button>
-			<a href="#" class="list-group-item list-group-item-action">Schaf (Schwarz & Weiß)</a>
+			{foreach $stable.animals as $animalName => $animal}
+			<a href="index.php?page={$page}&stable={$stable.i3dName}&animal={$animal.i3dName}" class="list-group-item list-group-item-action">{$animalName}<span class="float-right">{$animal.count}</span><br>
+			<small>Produktivität<span class="float-right">{$stable.productivity|number_format:0:",":"."} %</span></small></a>
+			{/foreach}
+			{/foreach}
 		</div>
 	</div>
 	<div class="col-9">

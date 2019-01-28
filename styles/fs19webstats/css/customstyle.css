@@ -14,6 +14,10 @@ body {
 	color: #fff;*/
 }
 
+li.nostyle {
+	list-style-type: none;
+}
+
 .card-columns {
 	column-count: 2;
 }
