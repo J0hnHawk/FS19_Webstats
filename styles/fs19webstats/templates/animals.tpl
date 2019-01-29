@@ -5,30 +5,80 @@ height: calc(100vh - 100px)
 <div class="row">
 	<div class="col-3">
 		<div class="list-group">
-			{foreach $stables as $stableName => $stable}
+			{foreach $stables as $stableI3dName => $stable}
 			<button type="button" class="list-group-item list-group-item-dark">
-				<strong>{$stableName}</strong>
+				<strong>{$stable.name}</strong>
 			</button>
-			{foreach $stable.animals as $animalName => $animal}
-			<a href="index.php?page={$page}&stable={$stable.i3dName}&animal={$animal.i3dName}" class="list-group-item list-group-item-action">{$animalName}<span class="float-right">{$animal.count}</span><br>
-			<small>Produktivität<span class="float-right">{$stable.productivity|number_format:0:",":"."} %</span></small></a>
-			{/foreach}
-			{/foreach}
+			{foreach $stable.animals as $animalI3dName => $animal} <a href="index.php?page={$page}&stable={$stableI3dName}&animal={$animalI3dName}" class="list-group-item list-group-item-action">{$animal.name}<span class="float-right">{$animal.count}</span><br> <small>Produktivität<span class="float-right">{$stable.productivity|number_format:0:",":"."}
+						%</span></small></a> {/foreach} {/foreach}
 		</div>
 	</div>
-	<div class="col-9">
+	<div class="col-9 h-100">
 		<div class="row">
-			<div class="col-6">
+			<div class="col-md-6">
 				<h4>
-					Schafe (Schwarz & Weiß)<span class="float-right">95</span>
+					{$stables.$currentStable.animals.$currentAnimal.name}<span class="float-right">{$stables.$currentStable.animals.$currentAnimal.count}</span>
 				</h4>
+				<img src="{#IMAGES#}/{$currentAnimal}.png" class="img-fluid h-50 mx-auto d-block">
+				<div class="row">
+					<div class="col-6">
+						<h5>##PRODUCTIVITY##</h5>
+					</div>
+					<div class="col-3 text-right">{$stables.$currentStable.productivity|number_format:0:",":"."} %</div>
+					<div class="col-3">
+						<div class="progress">
+							{$style='style="width: '|cat:$stables.$currentStable.productivity|cat:'%"'}
+							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.productivity}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-1">
+					<div class="col-6">##REPRO_RATE##</div>
+					<div class="col-6 text-right">{$stables.$currentStable.animals.$currentAnimal.reproRate} h</div>
+				</div>
+				<div class="row mt-1">
+					<div class="col-6">##NEXT_ANIMAL##</div>
+					<div class="col-6 text-right">{$stables.$currentStable.animals.$currentAnimal.nextAnimal} h</div>
+				</div>
+				{foreach $stables.$currentStable.product as $productName => $product}
+				<div class="row mt-1">
+					<div class="col-6">{$product.name}</div>
+					<div class="col-6 text-right">{$product.value|number_format:0:",":"."} {$product.unit}</div>
+				</div>
+				{/foreach}
 			</div>
-			<div class="col-6">
-				<h4>Stallinformationen</h4>
-				<h5>Zustand</h5>
-				<p>Sauberkeit</p>
-				<p>Wasser</p>
+			<div class="col-md-6">
+				<h4>##STABLE_INFO##</h4>
+				<h5>##STABLE_STATE##</h5>
+				{foreach $stables.$currentStable.state as $stateName => $state}
+				<div class="row mt-1">
+					<div class="col-6">{$state.name}</div>
+					<div class="col-3 text-right">{$state.value|number_format:0:",":"."} {$state.unit}</div>
+					<div class="col-3">
+						<div class="progress">
+							{$style='style="width: '|cat:$state.factor|cat:'%"'}
+							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$state.factor}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+				{/foreach}
+				<h5 class="mt-5">##FOOD##</h5>
+				{foreach $stables.$currentStable.trough as $foodName => $food}
+				<div class="row mt-1">
+					<div class="col-6">{$food.name}</div>
+					<div class="col-3 text-right">{$food.value|number_format:0:",":"."} {$food.unit}</div>
+					<div class="col-3">
+						<div class="progress">
+							{$style='style="width: '|cat:$food.factor|cat:'%"'}
+							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$food.factor}" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+					</div>
+				</div>
+				{/foreach}
 			</div>
+		</div>
+		<div class="row">
+			<div class="col">{if isset($stables.$currentStable.product.manure)}##MANURE_HELP##{/if}</div>
 		</div>
 	</div>
 </div>

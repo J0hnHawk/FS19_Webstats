@@ -20,7 +20,7 @@
 	<header>
 		{include file='navbar.tpl'}
 	</header>
-	<div class="container" style="padding-left: 10px; padding-right: 10px">
+	<div class="container" >
 		{if $serverOnline}{assign var="fullPathToTemplate" value="./styles/$style/templates/$page.tpl"} {if file_exists($fullPathToTemplate)} {include file="$page.tpl"} {else}
 		<div class="container theme-showcase" role="main">
 			<div class="jumbotron">

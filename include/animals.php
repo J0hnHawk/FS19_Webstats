@@ -23,6 +23,15 @@ if (! defined ( 'IN_FS19WS' )) {
 }
 include ('./include/savegame/Animals.class.php');
 Animals::loadStables ( $savegame::$xml );
-$smarty->assign ( 'stables', Animals::getStables () );
-$smarty->assign ( 'currentStable', 'husbandryChickenLarge' );
-$smarty->assign ( 'currentAnimal', 'CHICKEN_TYPE_BROWN' );
+$stables = Animals::getStables ();
+$smarty->assign ( 'stables', $stables );
+$firstStable = array_keys ( $stables ) [0];
+$firstAnimal = array_keys ( $stables [$firstStable] ['animals'] ) [0];
+$currentStable = GetParam ( 'stable', 'G', $firstStable );
+$currentAnimal = GetParam ( 'animal', 'G', $firstAnimal );
+if (! isset ( $stables [$currentStable] ) || ! isset ( $stables [$currentStable] ['animals'] [$currentAnimal] )) {
+	$currentStable = $firstStable;
+	$currentAnimal = $firstAnimal;
+}
+$smarty->assign ( 'currentStable', $currentStable );
+$smarty->assign ( 'currentAnimal', $currentAnimal );

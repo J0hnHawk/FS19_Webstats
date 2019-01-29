@@ -221,13 +221,14 @@ PASSWORD_ERROR=Das eingegebene Passwort ist falsch.
 
 //animals.tpl
 ANIMALS=Tiere
-SHEEP_COUNT=Schafbestand
-PIG_COUNT=Schweinebestand
-COW_COUNT=Kuhbestand
+STABLE_INFO=Stall Informationen
+STABLE_STATE=Zustand
+CLEANLINESS=Sauberkeit
 PRODUCTIVITY=Produktivität
 REPRO_RATE=Reproduktionsrate
 NEXT_ANIMAL=Nächstes Tier in
-CLEANNESS=Sauberkeit
+FOOD=Nahrung
+MANURE_HELP=Die Menge des am Stall gelagerten Mist wird seit Farming Simulator 19 nicht mehr im Savegame gespeichert. Statt des gelagerten Mist wird hier der Wert "manureToDrop" angezeigt.  
 
 //prices.tpl
 PRICES1000=Preise / 1000 L
