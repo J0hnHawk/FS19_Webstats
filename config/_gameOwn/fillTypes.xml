@@ -355,10 +355,10 @@
 			<de>Silage</de>
 			<fr>Ensilage</fr>
 		</text>
-		<text name="forage">
+		<text name="FORAGE">
 			<cz>Energetické krmivo</cz>
 			<en>Forage</en>
-			<de>Mischfutter</de>
+			<de>Mischration</de>
 			<fr>Aliments composés</fr>
 		</text>
 		<text name="WOODCHIPS">

@@ -191,7 +191,7 @@ class Animals {
 			return 960;
 		}
 		if (stristr ( $animalName, 'CHICKEN' ) !== false) {
-			return 666;
+			return 240;
 		}
 		return 999;
 	}
