@@ -43,7 +43,7 @@ $style = $options ['general'] ['style'];
 $smarty = new Smarty ();
 $smarty->debugging = false;
 $smarty->caching = false;
-$smarty->assign ( 'webStatsVersion', '2.0.0-0001 (29.11.2018)' );
+$smarty->assign ( 'webStatsVersion', sprintf ( '0.8.0-%s (%s)', intval ( file_get_contents ( 'build' ) ), date ( 'd.m.Y', filectime ( 'build' ) ) ) );
 
 include ('./include/loadConfig.php');
 $smarty->assign ( 'onlineUser', sizeof ( $onlineUser ) );
@@ -70,7 +70,7 @@ $smarty->assign ( 'page', $page );
 if ($serverOnline) {
 	include ("./include/$page.php");
 }
-//var_dump ( $savegame->commodities );
+// var_dump ( $savegame->commodities );
 $smarty->assign ( 'navItems', $nav->items );
 $smarty->assign ( 'reloadPage', $options ['general'] ['reload'] );
 $smarty->assign ( 'serverOnline', $serverOnline );
