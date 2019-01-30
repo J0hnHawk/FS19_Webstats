@@ -62,7 +62,7 @@ class Vehicle {
 					}
 					$vehicle->name = "$brand $name";
 					$vehicle->lifetime = intval ( $storeData ['lifetime'] );
-					$vehicle->category = strval ( $storeData ['category'] );
+					$vehicle->category = sprintf ( '##%s##', strtoupper ( $storeData ['category'] ) );
 					break;
 				}
 			}
