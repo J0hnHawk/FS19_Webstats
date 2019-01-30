@@ -152,7 +152,7 @@ class Animals {
 							foreach ( $module->fillLevel as $trough ) {
 								$fillType = strval ( $trough ['fillType'] );
 								$fillLevel = $trough ['fillLevel'];
-								self::$stables [$stable] ['trough'] [$fillType] = array (
+								self::$stables [$stable] ['food'] [$fillType] = array (
 										'name' => translate ( $fillType ),
 										'value' => floor ( $fillLevel ),
 										'unit' => 'l',
@@ -162,23 +162,92 @@ class Animals {
 							break;
 					}
 				}
-				$troughs = array_keys ( self::$stables [$stable] ['trough'] );
-				if (in_array ( 'MAIZE', $troughs )) {
-					$stableAnimals = 'pig';
-				} elseif (in_array ( 'FORAGE', $troughs )) {
-					$stableAnimals = 'cow';
-				} elseif (in_array ( 'OAT', $troughs )) {
-					$stableAnimals = 'horse';
-				} elseif (in_array ( 'GRASS_WINDROW', $troughs )) {
-					$stableAnimals = 'sheep';
+				$food = array_keys ( self::$stables [$stable] ['food'] ); // troughs
+				if (in_array ( 'MAIZE', $food )) {
+					self::calculateTrougs ( $stable, 'pig' );
+				} elseif (in_array ( 'FORAGE', $food )) {
+					self::calculateTrougs ( $stable, 'cow' );
+				} elseif (in_array ( 'OAT', $food )) {
+					self::calculateTrougs ( $stable, 'horse' );
+				} elseif (in_array ( 'GRASS_WINDROW', $food )) {
+					self::calculateTrougs ( $stable, 'sheep' );
 				} else {
-					$stableAnimals = 'chicken';
+					self::calculateTrougs ( $stable, 'chicken' );
 				}
 			}
 		}
 	}
 	public static function getStables() {
 		return self::$stables;
+	}
+	private static function calculateTrougs($stable, $animal) {
+		$troughs = array (
+				'pig' => array (
+						'trough1' => array (
+								'MAIZE' 
+						),
+						'trough2' => array (
+								'WHEAT',
+								'BARLEY' 
+						),
+						'trough3' => array (
+								'SOYBEAN',
+								'CANOLA',
+								'SUNFLOWER' 
+						),
+						'trough4' => array (
+								'POTATO',
+								'SUGARBEET' 
+						) 
+				),
+				'cow' => array (
+						'trough1' => array (
+								'FORAGE' 
+						),
+						'trough2' => array (
+								'DRYGRASS_WINDROW',
+								'SILAGE' 
+						),
+						'trough3' => array (
+								'GRASS_WINDROW' 
+						) 
+				),
+				'sheep' => array (
+						'trough1' => array (
+								'GRASS_WINDROW',
+								'DRYGRASS_WINDROW' 
+						) 
+				),
+				'chicken' => array (
+						'trough1' => array (
+								'WHEAT',
+								'BARLEY' 
+						) 
+				),
+				'horse' => array (
+						'trough1' => array (
+								'DRYGRASS_WINDROW' 
+						),
+						'trough2' => array (
+								'OAT' 
+						) 
+				) 
+		);
+		foreach ( $troughs [$animal] as $trough => $troughFoods ) {
+			foreach ( $troughFoods as $food ) {
+				if (! isset ( self::$stables [$stable] ['trough'] [$trough] )) {
+					self::$stables [$stable] ['trough'] [$trough] = array (
+							'name' => translate ( $food ),
+							'value' => self::$stables [$stable] ['food'] [$food] ['value'],
+							'unit' => 'l',
+							'factor' => 100 
+					);
+				} else {
+					self::$stables [$stable] ['trough'] [$trough] ['name'] .= ' / ' . translate ( $food );
+					self::$stables [$stable] ['trough'] [$trough] ['value'] += self::$stables [$stable] ['food'] [$food] ['value'];
+				}
+			}
+		}
 	}
 	private static function getReproRate($animalName) {
 		if (stristr ( $animalName, 'COW' ) !== false) {

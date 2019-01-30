@@ -15,7 +15,7 @@ height: calc(100vh - 100px)
 	</div>
 	<div class="col-9 h-100">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-lg-6">
 				<h4>
 					{$stables.$currentStable.animals.$currentAnimal.name}<span class="float-right">{$stables.$currentStable.animals.$currentAnimal.count}</span>
 				</h4>
@@ -47,7 +47,7 @@ height: calc(100vh - 100px)
 				</div>
 				{/foreach}
 			</div>
-			<div class="col-md-6">
+			<div class="col-lg-6">
 				<h4>##STABLE_INFO##</h4>
 				<h5>##STABLE_STATE##</h5>
 				{foreach $stables.$currentStable.state as $stateName => $state}
