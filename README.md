@@ -1,33 +1,44 @@
-# FS19 Web Stats - EARLY ALPHA VERSION - ONLY PARTIAL WORKING. 
-#### Also with patch 1.2.0.1 the Farming Simulator Web API has not been extended yet. The only way to get all required data from the dedicated server is FTP access. 
-#####Update 21.12.2018 - what is working so far:
-- only Felsbrunn map at the moment
-- get data by FTP from dedicated servers
-- get data from lokal savegame should work too
-- show minimal, maximum and actual prices of commodities
-- show missions, sortable
-- ability to join a farm (virtual - no ingame effect) to show data of a spefic farm
-- show silo of a choosen farm
-- show vehicles of a choosen farm
+# FS19 Web Stats - BETA VERSION
 
----
-When it is finished, FS19 Web Stats should display a production and stock overview for the Farming Simulator 19 dedicated servers.
-At the moment, the dedicated server API does not seem to be complete. It is possible to get information about
-- online player
-- Map name, server version, perhaps mods
-- Vehicles, bales and pallets
-- high demands
-- some general data like ingame options, total amount of money of all farms, date/time
-- Farmland and fields
+English below
 
-It seems that data like
-- Placeables (including farmsilos)
-- Selling prices 
-- animals 
-- ...
+## Update 30.01.2019 - was bisher funktioniert:
+- ** Auch mit Patch 1.2.0.1 wurde die Web API des Farming Simulators nicht erweitert. Zur Zeit ist es nur per FTP Server möglich die Daten von einem dedizierten Server zu laden**
+- Wir spielen zur Zeit auf der Mod-Karte NF Marsch. Meine Tests wurden mit dieser Karte durchgeführt. Wegen des neuen Platzierungssystems in FS19 sollten die Web Stats aber auch mit anderen Karten funktionieren
+- Abruf der Daten per FTP von dedizierten Servern - ein Workaround für G-Portal FTP Server ist eingebaut
+- Laden von lokalen Spielständen funktioniert auch
+- Anzeige der minimalen, maximalen und aktuellen Verkaufspreise der Waren mit Lagerbeständen und Verkaufserlösen
+- Anzeige der Missionen (sortierbar)
+- Möglichkeit einer Farm bezutreten (virtuell, ohne Ingame Effekt) um die Daten einer Farm anzuzeigen
+Nachdem eine Farm ausgewählt wurde.
+- Anzeige aller Waren einer Farm, inklusive der in Fahrsilos, Fahrzeugen und Ballen auf der Karte
+- Anzeige von Fahrzeugen und Gebäuden mit Verkaufspreis und Leasingkosten
+- Anzeige der Finanzhistorie der letzten 5 Tage und einer Bilanz
+- Anzeige der Ingame-Statistiken (welche normalerweise in Mulitplayerspielen ingame nicht angezeigt werden)
 
-are not available. 
+## Weitere Pläne
+- Abrufen der Daten über die Web API, falls Giants sie jemals erweitern wird
+- Anzeige von online Spielern, Kartenname, Serverversion und vielleicht der Mods
+- Anzeige von hohen Nachfragen, Wetter und Sonderangeboten
+- Anzeige der Grundstücke und Felder
+   
 
-With these poor data sources it is difficult to create a useful website. Hopefully Giants will add some more available data to the server api.
+## Update 30.01.2019 - what is working so far:
+- **Also with patch 1.2.0.1 the Farming Simulator Web API has not been extended yet. The only way to get all required data from the dedicated server is FTP access.**
+- We are currently playing on the mod map NF Marsch. My tests are done with this map. But because of the new placement system in FS19 the Web Stats should work on other maps also.
+- Get the data via FTP from dedicated servers - there is a workaround build in for G-Portal FTP servers
+- Load the data from lokal savegame works too
+- Display minimal, maximum and actual prices of commodities, with current storage and sales proceeds
+- Display missions, sortable
+- Ability to join a farm (virtual - no ingame effect) to show data of a spefic farm
+After a farm is choosen:
+- Display all commodities of a farm. Also those in bunker silos, vehicles or bales on the map
+- Display vehicles and buildings with resale value and leasing cost
+- Display finances history of the last 5 days and a balance sheet
+- Display ingame statistics (which are normaly not shown ingame for multiplayer games)
 
-I start programming with local savegames for my personal use. If Giants will not more add data to their Web API, it might be an option to access savegames from dedicated servers via FTP. 
+## Further plans:
+- Get the data via the Web API, if Giants will ever extend it
+- Display online player, map name, server version, perhaps mods
+- Display Information of high demands, weather, sales
+- Display Farmland and fields
