@@ -67,10 +67,10 @@ class Animals {
 									$animal = strval ( $breeding ['fillType'] );
 									$l_animal = translate ( $animal );
 									$breeding = floatval ( $breeding ['percentage'] );
-									$reproRate = floor ( self::getReproRate ( $animal ) / $count * 3600 * 100 / $productivity );
-									
+									$reproRate = ceil ( (self::getReproRate ( $animal ) / $count * 3600 * 100 / $productivity) / 900 ) * 900;
+									$nextAnimal = ceil ( ($reproRate * (1 - $breeding)) / 900 ) * 900;
 									self::$stables [$stable] ['animals'] [$animal] ['reproRate'] = self::getTimeString ( $reproRate );
-									self::$stables [$stable] ['animals'] [$animal] ['nextAnimal'] = self::getTimeString ( $reproRate * (1 - $breeding) );
+									self::$stables [$stable] ['animals'] [$animal] ['nextAnimal'] = self::getTimeString ( $nextAnimal );
 								}
 							}
 							break;
@@ -149,27 +149,27 @@ class Animals {
 							);
 							break;
 						case 'food' :
-							foreach($module->fillLevel as $trough) {
-								$fillType = strval($trough['fillType']);
-								$fillLevel = $trough['fillLevel'];
+							foreach ( $module->fillLevel as $trough ) {
+								$fillType = strval ( $trough ['fillType'] );
+								$fillLevel = $trough ['fillLevel'];
 								self::$stables [$stable] ['trough'] [$fillType] = array (
-										'name' => translate ($fillType ),
+										'name' => translate ( $fillType ),
 										'value' => floor ( $fillLevel ),
 										'unit' => 'l',
-										'factor' => 100
+										'factor' => 100 
 								);
 							}
 							break;
 					}
 				}
-				$troughs = array_keys(self::$stables [$stable] ['trough']);
-				if(in_array('MAIZE', $troughs)) {
+				$troughs = array_keys ( self::$stables [$stable] ['trough'] );
+				if (in_array ( 'MAIZE', $troughs )) {
 					$stableAnimals = 'pig';
-				} elseif (in_array('FORAGE', $troughs)) {
+				} elseif (in_array ( 'FORAGE', $troughs )) {
 					$stableAnimals = 'cow';
-				} elseif (in_array('OAT', $troughs)) {
+				} elseif (in_array ( 'OAT', $troughs )) {
 					$stableAnimals = 'horse';
-				} elseif (in_array('GRASS_WINDROW', $troughs)) {
+				} elseif (in_array ( 'GRASS_WINDROW', $troughs )) {
 					$stableAnimals = 'sheep';
 				} else {
 					$stableAnimals = 'chicken';
