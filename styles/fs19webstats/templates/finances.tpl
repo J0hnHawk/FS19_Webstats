@@ -129,125 +129,125 @@
 <div class="row mt-3">
 	<div class="col-6">
 		<h5>
-			Anlagendeckungsgrad <a href="#Anlagendeckungsgrad" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.adg|number_format:0:",":"."} %</span>
+			##BWL_ADG## <a href="#BWLADG" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.adg|number_format:0:",":"."} %</span>
 		</h5>
-		<div class="collapse" id="Anlagendeckungsgrad">
-			<p class="text-justify">Der Anlagendeckungsgrad setzt das Eigenkapital in Verhältnis zum Anlagevermögen eines Hofes. Mit dem Anlagevermögen sind Maschinen, Gebäude und Grundstücke gemeint.</p>
+		<div class="collapse" id="BWLADG">
+			<p class="text-justify">##BWL_ADG_P1##</p>
 			<p>
-				<var>Anlagendeckungsgrad</var>
+				<var>##BWL_ADG##</var>
 				=
-				<var>Eigenkapital</var>
+				<var>##BWL_EK##</var>
 				x 100 :
-				<var>Anlagevermögen</var>
+				<var>##BWL_AV##</var>
 			</p>
 		</div>
-		<p class="text-justify">Ein hoher Anlagendeckungsgrad bedeutet, dass große Teile des Anlagevermögens über Eigenkapital und nicht per Kredit „auf Pump“ finanziert werden.</p>
+		<p class="text-justify">##BWL_ADG_P2##</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Eigenkapitalquote <a href="#Eigenkapitalquote" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekq|number_format:0:",":"."} %</span>
+			##BWL_EKQ## <a href="#BWLEKQ" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekq|number_format:0:",":"."} %</span>
 		</h5>
-		<div class="collapse" id="Eigenkapitalquote">
-			<p class="text-justify">Die Eigenkapitalquote sagt aus, wie hoch der Anteil des Eigenkapitals am Gesamtkapital ist.</p>
+		<div class="collapse" id="BWLEKQ">
+			<p class="text-justify">##BWL_EKQ_P1##</p>
 			<p>
-				<var>Eigenkapitalquote</var>
+				<var>##BWL_EKQ##</var>
 				=
-				<var>Eigenkapital</var>
+				<var>##BWL_EK##</var>
 				x 100 :
-				<var>Gesamtkapital</var>
+				<var>##BWL_GK##</var>
 			</p>
 		</div>
-		<p class="text-justify">Eine hohe Eigenkapitalquote gilt als positiv: Der Hof finanziert sich vorwiegend aus eigener Kraft und muss nicht auf Fremdkapital zurückgreifen.</p>
+		<p class="text-justify">##BWL_EKQ_P2##</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Eigenkapitalrentabilität <a href="#Eigenkapitalrentabilität" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekr|number_format:0:",":"."} %</span>
+			##BWL_EKR## <a href="#BWLEKR" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekr|number_format:0:",":"."} %</span>
 		</h5>
-		<div class="collapse" id="Eigenkapitalrentabilität">
-			<p class="text-justify">Höfe stehen oft vor der Entscheidung, Kapital anzulegen oder zu investieren. Die Eigenkapitalrentabilität zeigt auf, ob eine Investition rentabel war.</p>
+		<div class="collapse" id="BWLEKR">
+			<p class="text-justify">##BWL_EKR_P1##</p>
 			<p>
-				<var>Eigenkapitalrentabilität</var>
+				<var>##BWL_EKR##</var>
 				=
-				<var>Gewinn</var>
+				<var>##BWL_G##</var>
 				x 100 :
-				<var>Eigenkapital</var>
+				<var>##BWL_EK##</var>
 			</p>
 		</div>
-		<p class="text-justify">Liegt die Eigenkapitalrentabilität über dem aktuellen Zinssatz, hat sich die Investition in den eigenen Hof gelohnt.</p>
+		<p class="text-justify">##BWL_EKR_P2##</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Fremdkapitalquote <a href="#Fremdkapitalquote" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkq|number_format:0:",":"."} %</span>
+			##BWL_FKQ## <a href="#BWLFKQ" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkq|number_format:0:",":"."} %</span>
 		</h5>
-		<div class="collapse" id="Fremdkapitalquote">
-			<p class="text-justify">Bei der Fremdkapitalquote wird das Fremdkapital ins Verhältnis zum Gesamtkapital gesetzt:</p>
+		<div class="collapse" id="BWLFKQ">
+			<p class="text-justify">##BWL_FKQ_P1##</p>
 			<p>
-				<var>Fremdkapitalquote</var>
+				<var>##BWL_FKQ##</var>
 				=
-				<var>Fremdkapital</var>
+				<var>##BWL_FK##</var>
 				x 100 :
-				<var>Gesamtkapital</var>
+				<var>##BWL_GK##</var>
 			</p>
 		</div>
-		<p class="text-justify">Je niedriger der Anteil an Fremdkapital am Gesamtkapital ist, desto finanziell unabhängiger ist der Hof. Er finanziert sich dann in erster Linie aus eigenen Kapitalreserven (Eigenkapital).</p>
+		<p class="text-justify">##BWL_FKQ_P2##</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Fremdkapitaldeckung <a href="#Fremdkapitaldeckung" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkd|number_format:0:",":"."} %</span>
+			##BWL_FKD## <a href="#BWLFK" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkd|number_format:0:",":"."} %</span>
 		</h5>
-		<div class="collapse" id="Fremdkapitaldeckung">
-			<p class="text-justify"></p>
+		<div class="collapse" id="BWLFK">
+			<p class="text-justify">##BWL_FKD_P1##</p>
 			<p>
-				<var>Fremdkapitaldeckung</var>
+				<var>##BWL_FKD##</var>
 				= (
-				<var>abnutzbares Anlagevermögen</var>
+				<var>##BWL_AAV##</var>
 				+
-				<var>Tiervermögen</var>
+				<var>##BWL_TV##</var>
 				+
-				<var>Umlaufvermögen</var>
+				<var>##BWL_UV##</var>
 				) x 100 :
-				<var>Fremdkapital</var>
+				<var>##BWL_FK##</var>
 			</p>
 		</div>
-		<p class="text-justify">Eine hohe Fremdkapitaldeckung bedeutet, dass große Teile oder das gesamte Fremdkapital durch schnell veräußerbare Vermögenswerte zurück geführt werden können..</p>
+		<p class="text-justify">##BWL_FKD_P2##</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Liquidität <a href="#Liquidität" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
+			Liquidität <a href="#BWLL" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
 		</h5>
-		<div class="collapse" id="Liquidität">
-			<p class="text-justify">Die Liquidität beschreibt die Möglichkeit des Hofes, Schulden mit verfügbaren Mitteln begleichen zu können.</p>
+		<div class="collapse" id="BWLl">
+			<p class="text-justify">##BWL_L_P1##</p>
 			<p>
-				<var>Liquidität</var>
+				<var>##BWL_L##</var>
 				=
-				<var>Umlaufvermögen</var>
+				<var>##BWL_UV##</var>
 				x 100 :
-				<var>Fremdkapital</var>
+				<var>##BWL_FK##</var>
 			</p>
 		</div>
-		<p class="text-justify">Je höher die Liquidität, umso besser ist die Zahlungsfähigkeit (Solvenz) eines Hofes. Die Liquidität gilt daher auch als Gradmesser für eine drohende Insolvenz.</p>
+		<p class="text-justify">##BWL_L_P2##</p>
 	</div>
 	<div class="col-6">
 		<h5>
-			Gesamtkapitalrentabilität <a href="#Gesamtkapitalrentabilität" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.gkr|number_format:0:",":"."} %</span>
+			##BWL_GKR## <a href="#BWLGKR" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.gkr|number_format:0:",":"."} %</span>
 		</h5>
-		<div class="collapse" id="Gesamtkapitalrentabilität">
-			<p class="text-justify">Zur Berechnung der Gesamtrentabilität (Gesamtkapitalrendite) werden Gewinn und Zinsen auf Fremdkapital in Bezug zum Eigenkapital gesetzt.</p>
+		<div class="collapse" id="BWLGKR">
+			<p class="text-justify">##BWL_GKR_P1##</p>
 			<p>
-				<var>Gesamtkapitalrentabilität</var>
+				<var>##BWL_GKR##</var>
 				= (
-				<var>Gewinn</var>
+				<var>##BWL_G##</var>
 				+
-				<var>Kreditzinsen</var>
+				<var>##BWL_KZ##</var>
 				) x 100 :
-				<var>Eigenkapital</var>
+				<var>##BWL_EK##</var>
 			</p>
 		</div>
-		<p class="text-justify">Die Gesamtkapitalrendite gibt Auskunft darüber, wie hoch die Erträge aus investiertem Gesamtkapital ausfallen.</p>
+		<p class="text-justify">##BWL_GKR_P2##</p>
 	</div>
 	<div class="col-12">
 		<p class="text-center">
-			Formeln und Beschreibungen von <a href="https://debitoor.de/lexikon">debitor</a>
+			##BWL_COPYRIGHT## <a href="https://debitoor.de/lexikon">debitor</a>
 		</p>
 	</div>
 </div>
