@@ -315,6 +315,7 @@ REWARD=Belohnung
 FIELD=Feld
 ACTIVE=aktiv
 STATUS=Status
+FARM=Hof
 FIELDSIZE=Fläche
 VEHICLEUSECOST=Fahrzeugmiete
 MIS_HARVEST=Ernten
