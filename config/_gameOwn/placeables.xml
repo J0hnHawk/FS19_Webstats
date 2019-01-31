@@ -9,6 +9,10 @@
 			<en>husbandrySheepLarge</en>
 			<de>Großer Schafweide</de>
 		</text>
+		<text name="husbandryHorseLarge">
+			<en>husbandryHorseLarge</en>
+			<de>Großer Pferdestall</de>
+		</text>
 	</l10n>
 </mapconfig>
 

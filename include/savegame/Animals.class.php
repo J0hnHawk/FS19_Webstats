@@ -37,6 +37,7 @@ class Animals {
 			if ($item ['className'] == 'AnimalHusbandry' && $item ['farmId'] == self::$farmId) {
 				$productivity = floatval ( $item ['globalProductionFactor'] ) * 100;
 				self::$stables [$stable] = array (
+						'forHorses' => false,
 						'name' => $l_stable,
 						'productivity' => floor ( $productivity ),
 						'animals' => array (),
@@ -47,24 +48,46 @@ class Animals {
 					switch ($module ['name']) {
 						case 'animals' :
 							foreach ( $module->animal as $animal ) {
-								$animal = strval ( $animal ['fillType'] );
-								$l_animal = translate ( $animal );
-								if (isset ( self::$stables [$stable] ['animals'] [$animal] )) {
-									self::$stables [$stable] ['animals'] [$animal] ['count'] ++;
-								} else {
-									self::$stables [$stable] ['animals'] [$animal] = array (
-											'name' => $l_animal,
-											'count' => 1,
-											'breeding' => 0,
-											'reproRate' => '--:--',
-											'nextAnimal' => '--:--' 
+								$animalType = strval ( $animal ['fillType'] );
+								if (stristr ( $animalType, 'HORSE' ) !== false) {
+									// Animal is a horse
+									$horseName = strval ( $animal ['name'] );
+									$horseNameURL = urlencode ( $horseName );
+									$fitnessScale = floatval ( $animal ['fitnessScale'] );
+									$healthScale = floatval ( $animal ['healthScale'] );
+									$dirtScale = floatval ( $animal ['dirtScale'] );
+									self::$stables [$stable] ['animals'] [$horseNameURL] = array (
+											'name' => $horseName,
+											'fitnessScale' => floor ( $fitnessScale * 100 ),
+											'healthScale' => floor ( $healthScale * 100 ),
+											'dirtScale' => floor ( (1 - $dirtScale) * 100 ),
+											'ridingTimer' => floor ( floatval ( $animal ['ridingTimer'] ) * 100 ),
+											'value' => 49000 * ($fitnessScale * $healthScale) + 500 * $dirtScale,
+											'isHorse' => true,
+											'image' => $animalType 
 									);
+								} else {
+									// Animal is not a Horse
+									$l_animal = translate ( $animalType );
+									if (isset ( self::$stables [$stable] ['animals'] [$animalType] )) {
+										self::$stables [$stable] ['animals'] [$animalType] ['count'] ++;
+									} else {
+										self::$stables [$stable] ['animals'] [$animalType] = array (
+												'name' => $l_animal,
+												'count' => 1,
+												'breeding' => 0,
+												'reproRate' => '--:--',
+												'nextAnimal' => '--:--',
+												'isHorse' => false,
+												'image' => $animalType 
+										);
+									}
 								}
 							}
 							foreach ( $module->breeding as $breeding ) {
+								$animal = strval ( $breeding ['fillType'] );
 								$count = self::$stables [$stable] ['animals'] [$animal] ['count'];
 								if ($count > 1 && $productivity != 0) {
-									$animal = strval ( $breeding ['fillType'] );
 									$l_animal = translate ( $animal );
 									$breeding = floatval ( $breeding ['percentage'] );
 									$reproRate = ceil ( (self::getReproRate ( $animal ) / $count * 3600 * 100 / $productivity) / 900 ) * 900;
@@ -168,6 +191,7 @@ class Animals {
 				} elseif (in_array ( 'FORAGE', $food )) {
 					self::calculateTrougs ( $stable, 'cow' );
 				} elseif (in_array ( 'OAT', $food )) {
+					self::$stables [$stable] ['forHorses'] = true;
 					self::calculateTrougs ( $stable, 'horse' );
 				} elseif (in_array ( 'GRASS_WINDROW', $food )) {
 					self::calculateTrougs ( $stable, 'sheep' );
@@ -176,6 +200,21 @@ class Animals {
 				}
 			}
 		}
+	}
+	public static function getHorseValues() {
+		$ret = array (
+				'summary' => 0,
+				'animals' => array () 
+		);
+		foreach ( self::$stables as $stable ) {
+			if ($stable ['forHorses']) {
+				foreach ( $stable ['animals'] as $animal ) {
+					$ret ['summary'] += $animal ['value'];
+					$ret ['animals'] [$animal ['name']] = $animal ['value'];
+				}
+			}
+		}
+		return $ret;
 	}
 	public static function getStables() {
 		return self::$stables;
@@ -226,10 +265,10 @@ class Animals {
 				),
 				'horse' => array (
 						'trough1' => array (
-								'DRYGRASS_WINDROW' 
+								'OAT' 
 						),
 						'trough2' => array (
-								'OAT' 
+								'DRYGRASS_WINDROW' 
 						) 
 				) 
 		);

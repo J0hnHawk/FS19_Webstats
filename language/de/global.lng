@@ -221,6 +221,8 @@ PASSWORD_ERROR=Das eingegebene Passwort ist falsch.
 
 //animals.tpl
 ANIMALS=Tiere
+FITNESS=Fitness
+HEALTH=Gesundheit
 STABLE_INFO=Stall Informationen
 STABLE_STATE=Zustand
 CLEANLINESS=Sauberkeit
@@ -368,19 +370,20 @@ JOIN_FARM=Hof beitreten
 LEAVE_FARM=Hof verlassen
 
 //vehicles.tpl
-H3VEHICLES=Fahrzeugübersicht
-VNAME=Fahrzeug
-VCATEGORY=Kategorie
-VAGE=Alter
-VOTIME=Betriebs-<br>stunden
-VPRICE=Kaufpreis
-VWEAR=Zustand
-VLPDAY=Leasing/<br>Tag
-VLPHOUR=Leasing/<br>Stunde
-VLCOST=Leasing<br>Gesamt
-VRESALE=Restwert
-H3BUILDINGS=Gebäudeübersicht
-BNAME=Gebäude
+VEH_VEHICLES=Fahrzeugübersicht
+VEH_BRAND=Marke
+VEH_NAME=Fahrzeug
+VEH_CATEGORY=Kategorie
+VEH_AGE=Alter
+VEH_OTIME=Betriebs-<br>stunden
+VEH_PRICE=Kaufpreis
+VEH_WEAR=Zustand
+VEH_LPDAY=Leasing/<br>Tag
+VEH_LPHOUR=Leasing/<br>Stunde
+VEH_LCOST=Leasing<br>Gesamt
+VEH_RESALE=Restwert
+VEH_BUILDINGS=Gebäudeübersicht
+VEH_BNAME=Gebäude
 
 //statistics.tpl
 STATISTICS=Statistiken
