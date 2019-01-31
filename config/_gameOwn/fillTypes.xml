@@ -5,7 +5,7 @@
 		<fillType name="LIME" pricePerLiter="0.450" balanceSheet="CI1" />
 		<fillType name="SEEDS" pricePerLiter="0.900" balanceSheet="CI1" />
 		<fillType name="WATER" pricePerLiter="0.100" balanceSheet="CI1" />
-		<fillType name="DIESEL" pricePerLiter="1.185" balanceSheet="CI1" />
+		<fillType name="DIESEL" pricePerLiter="1.1874666" balanceSheet="CI1" />
 		<fillType name="HERBICIDE" pricePerLiter="1.200" balanceSheet="CI1" />
 		<fillType name="LIQUIDFERTILIZER" pricePerLiter="1.600" balanceSheet="CI1" />
 		<fillType name="PIGFOOD" pricePerLiter="1.000" balanceSheet="CI1" />
@@ -16,6 +16,7 @@
 		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
 		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
 		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
+		
 	</fillTypes>
 	<l10n>
 		<!-- Square bales -->
@@ -189,6 +190,10 @@
 			<en>Sheep</en>
 			<de>Schaf (Schwarz &amp; Weiß)</de>
 			<fr>Mouton</fr>
+		</text>
+		<text name="HORSE_TYPE_RED_BROWN">
+			<en>HORSE_TYPE_RED_BROWN</en>
+			<de>Pferd (Fuchs)</de>
 		</text>
 		<!-- Fruits -->
 		<text name="WHEAT">

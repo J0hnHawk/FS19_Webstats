@@ -35,6 +35,9 @@ switch ($mode) {
 		Commodity::loadCommodities ( $savegame::$xml );
 		include ('./include/savegame/Vehicles.class.php');
 		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig ['pallets'] );
+		include ('./include/savegame/Animals.class.php');
+		Animals::loadStables ( $savegame::$xml );
+		
 		/*
 		 * *** ASSETS
 		 */
@@ -43,7 +46,7 @@ switch ($mode) {
 				'A1' => 0,
 				'A2' => Vehicle::getBuildingsResaleSum (),
 				'A3' => Vehicle::getVehiclesResaleSum (),
-				'B1' => 0,
+				'B1' => Animals::getHorseValues () ['summary'],
 				'B2' => 0,
 				'B3' => 0,
 				'B4' => 0,
@@ -72,7 +75,7 @@ switch ($mode) {
 				$pricePerLiter = $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'];
 			} else {
 				$pricePerLiter = 0;
-				echo ("Kein Preis für $l_fillType ($fillType)<br>");
+				// echo ("Kein Preis für $l_fillType ($fillType)<br>");
 			}
 			if (! isset ( $mapconfig ['fillTypes'] [$fillType] ['balanceSheet'] )) {
 				$assetPosition = 'CI3';
