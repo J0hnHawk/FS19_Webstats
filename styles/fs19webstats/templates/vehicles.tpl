@@ -1,25 +1,27 @@
 {if $subPage == 'vehicles'}
-<h3 class="my-3">##H3VEHICLES##</h3>
+<h3 class="my-3">##VEH_VEHICLES##</h3>
 <div class="row">
 	<div class="col-sm-12">
 		<table class="table table-sm table-hover display table-bordered table-striped" id="vehicles">
 			<thead>
 				<tr>
-					<th class="text-center">##VNAME##</th>
-					<th class="text-center">##VCATEGORY##</th>
-					<th class="text-center">##VAGE##</th>
-					<th class="text-center">##VWEAR##</th>
-					<th class="text-center">##VOTIME##</th>
-					<th class="text-center">##VRESALE##</th>
-					<th class="text-center">##VLPDAY##</th>
-					<th class="text-center">##VLPHOUR##</th>
-					<th class="text-center">##VLCOST##</th>
+					<!-- <th class="text-center">##VEH_BRAND##</th> -->
+					<th class="text-center">##VEH_NAME##</th>
+					<th class="text-center">##VEH_CATEGORY##</th>
+					<th class="text-center">##VEH_AGE##</th>
+					<th class="text-center">##VEH_WEAR##</th>
+					<th class="text-center">##VEH_OTIME##</th>
+					<th class="text-center">##VEH_RESALE##</th>
+					<th class="text-center">##VEH_LPDAY##</th>
+					<th class="text-center">##VEH_LPHOUR##</th>
+					<th class="text-center">##VEH_LCOST##</th>
 				</tr>
 			</thead>
 			<tbody>
 				{foreach $vehicles as $vehicleId => $vehicle}
 				<tr>
-					<td>{$vehicle.name}</td>
+					<!-- <td>{$vehicle.brand}</td> -->
+					<td>{$vehicle.brand} {$vehicle.name}</td>
 					<td>{$vehicle.category}</td>
 					<td class="text-right pr-3">{$vehicle.age}</td>
 					<td class="text-right pr-3">{$vehicle.wear|number_format:0} %</td>
@@ -56,16 +58,16 @@
 	</div>
 </div>
 {elseif $subPage == 'buildings'}
-<h3 class="my-3">##H3BUILDINGS##</h3>
+<h3 class="my-3">##VEH_BUILDINGS##</h3>
 <div class="row">
 	<div class="col-sm-12">
 		<table class="table table-sm table-hover display table-bordered table-striped" id="buildings">
 			<thead>
 				<tr>
-					<th class="text-center">##BNAME##</th>
-					<th class="text-center">##VAGE##</th>
-					<th class="text-center">##VPRICE##</th>
-					<th class="text-center">##VRESALE##</th>
+					<th class="text-center">##VEH_BNAME##</th>
+					<th class="text-center">##VEH_AGE##</th>
+					<th class="text-center">##VEH_PRICE##</th>
+					<th class="text-center">##VEH_RESALE##</th>
 				</tr>
 			</thead>
 			<tbody>

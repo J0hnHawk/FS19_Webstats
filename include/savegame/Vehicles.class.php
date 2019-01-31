@@ -29,6 +29,7 @@ class Vehicle {
 	const MAX_DAILYUPKEEP_MULTIPLIER = 4;
 	const DIRECT_SELL_MULTIPLIER = 1.2;
 	private $name;
+	private $brand;
 	private $category = '';
 	private $age;
 	private $lifetime = 600;
@@ -56,11 +57,11 @@ class Vehicle {
 			foreach ( $dataFromStore->vehicle as $storeData ) {
 				if (basename ( $vehicleInXML ['filename'] ) == $storeData ['basename']) {
 					$name = $storeData ['name'];
-					$brand = strval ( $storeData ['brand'] );
 					if (substr ( $name, 0, 5 ) == '$l10n') {
 						$name = translate ( $name );
 					}
-					$vehicle->name = "$brand $name";
+					$vehicle->name = $name;
+					$vehicle->brand = strval ( $storeData ['brand'] );
 					$vehicle->lifetime = intval ( $storeData ['lifetime'] );
 					$vehicle->category = sprintf ( '##%s##', strtoupper ( $storeData ['category'] ) );
 					break;
