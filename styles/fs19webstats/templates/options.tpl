@@ -159,8 +159,8 @@
 			</div>
 		</div>
 	</div>
-	<h3 class="my-3">##SETTINGS## - ##PLANTS##</h3>
-	<div class="row">
+	<h3 class="my-3 d-none">##SETTINGS## - ##PLANTS##</h3>
+	<div class="row d-none">
 		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##SORT_ORDER##</label>
 			<div class="input-group mb-3">
