@@ -165,10 +165,10 @@ class Animals {
 						case 'pallets' :
 							$fillLevel = floatval ( $module ['palletFillDelta'] );
 							self::$stables [$stable] ['product'] ['wool'] = array (
-									'name' => translate ( 'WOOL' ),
+									'name' => translate ( 'WOOL' ), // If they're eggs, it'll be changed below
 									'value' => floor ( $fillLevel ),
 									'unit' => 'l',
-									'factor' => $factor 
+									'factor' => 100 
 							);
 							break;
 						case 'food' :
@@ -196,6 +196,9 @@ class Animals {
 				} elseif (in_array ( 'GRASS_WINDROW', $food )) {
 					self::calculateTrougs ( $stable, 'sheep' );
 				} else {
+					self::$stables [$stable] ['product'] ['egg'] = self::$stables [$stable] ['product'] ['wool'];
+					self::$stables [$stable] ['product'] ['egg'] ['name'] = translate ( 'EGG' );
+					unset ( self::$stables [$stable] ['product'] ['wool'] );
 					self::calculateTrougs ( $stable, 'chicken' );
 				}
 			}
