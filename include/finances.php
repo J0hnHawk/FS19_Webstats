@@ -34,7 +34,7 @@ switch ($mode) {
 		include ('./include/savegame/Commodities.class.php');
 		Commodity::loadCommodities ( $savegame::$xml );
 		include ('./include/savegame/Vehicles.class.php');
-		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig ['pallets'] );
+		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig  );
 		include ('./include/savegame/Animals.class.php');
 		Animals::loadStables ( $savegame::$xml );
 		
