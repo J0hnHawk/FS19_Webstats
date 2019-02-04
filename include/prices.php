@@ -24,11 +24,22 @@ if (! defined ( 'IN_FS19WS' )) {
 
 include ('./include/savegame/Prices.class.php');
 Price::extractXML ( $savegame::$xml );
+$prices = Price::getAllPrices ();
 
 include ('./include/savegame/Commodities.class.php');
 Commodity::loadCommodities ( $savegame::$xml );
+$commodities = Commodity::getAllCommodities ();
+
+// Hide prices with no stock
+if (!$options ['storage'] ['showZero']) {
+	foreach ( $prices as $fillType => $price ) {
+		if (! isset ( $commodities [$fillType] ) || $commodities [$fillType] ['overall'] == 0) {
+			unset ( $prices [$fillType] );
+		}
+	}
+}
 
 $smarty->assign ( 'options', $options ['general'] );
-$smarty->assign ( 'prices', Price::getAllPrices () );
-$smarty->assign ( 'commodities', Commodity::getAllCommodities () );
+$smarty->assign ( 'prices', $prices );
+$smarty->assign ( 'commodities', $commodities );
 $smarty->assign ( 'sellingPoints', Price::getSellStations () );

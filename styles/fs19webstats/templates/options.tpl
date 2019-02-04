@@ -115,16 +115,16 @@
 		</div>
 		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##SHOW_ZERO_STOCK##</label>
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 hoverhelp" data-helptext="##SHOWZERO_HELP##">
 				<div class="input-group-prepend">
-					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_hideZero">&#11207;</button>
+					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_showZero">&#11207;</button>
 				</div>
-				<select class="custom-select text-center" name="s_hideZero" id="s_hideZero">
-					<option value="1"{if $options.storage.hideZero}selected{/if}>##YES##</option>
-					<option value="0"{if !$options.storage.hideZero}selected{/if}>##NO##</option>
+				<select class="custom-select text-center" name="s_showZero" id="s_showZero">
+					<option value="1"{if $options.storage.showZero}selected{/if}>##YES##</option>
+					<option value="0"{if !$options.storage.showZero}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
-					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_hideZero">&#11208;</button>
+					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_showZero">&#11208;</button>
 				</div>
 			</div>
 		</div>

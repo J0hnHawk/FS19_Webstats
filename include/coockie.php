@@ -22,7 +22,7 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 
-$cookieVersion = 1;
+$cookieVersion = 2;
 $options = array ();
 if (isset ( $_COOKIE ['fs19webstats'] )) {
 	$options = json_decode ( $_COOKIE ['fs19webstats'], true );
@@ -41,7 +41,7 @@ if (! isset ( $options ['general'] )) {
 
 if (! isset ( $options ['storage'] )) {
 	$options ['storage'] ['sortByName'] = true;
-	$options ['storage'] ['hideZero'] = true;
+	$options ['storage'] ['showZero'] = true;
 	$options ['storage'] ['showVehicles'] = true;
 	$options ['storage'] ['onlyPallets'] = false;
 	$options ['storage'] ['3column'] = true;
