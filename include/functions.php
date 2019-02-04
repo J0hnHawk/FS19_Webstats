@@ -149,6 +149,19 @@ function loadXMLMapConfig($directory, $language) {
 				}
 			}
 		}
+		if (isset ( $object->vehicles )) {
+			$objects = array_merge ( $objects, array (
+					'vehicles' => array ()
+			) );
+			foreach ( $object->vehicles->vehicle as $vehicle ) {
+				$name = strval ( $vehicle ['basename'] );
+				foreach ( $vehicle->attributes () as $attribute => $value ) {
+					if ($attribute != 'basename') {
+						$objects ['vehicles'] [$name] [$attribute] = get_bool ( $value );
+					}
+				}
+			}
+		}
 	}
 	return array (
 			$objects,

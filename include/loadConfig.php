@@ -63,16 +63,19 @@ $lang = $loadedConfig [1];
 // load installed mods
 $loadedConfig = loadXMLMapConfig ( '_mods', $userLang );
 $pallets = $mapconfig ['pallets'];
+$vehicles = $mapconfig ['vehicles'];
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
 $mapconfig ['pallets'] = array_merge ( $pallets, $mapconfig ['pallets'] );
+$mapconfig ['vehicles'] = array_merge ( $vehicles, $mapconfig ['vehicles'] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
 // Kartenkonfiguration aus XML Dateien laden
 $loadedConfig = loadXMLMapConfig ( $config ['map'], $userLang );
 $pallets = $mapconfig ['pallets'];
+$vehicles = $mapconfig ['vehicles'];
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
 $mapconfig ['pallets'] = array_merge ( $pallets, $mapconfig ['pallets'] );
+$mapconfig ['vehicles'] = array_merge ( $vehicles, $mapconfig ['vehicles'] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
-
 // count active user
 $userFile = './config/onlineUser.conf';
 $onlineUser = array ();

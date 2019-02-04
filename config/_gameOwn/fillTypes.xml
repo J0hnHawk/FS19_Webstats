@@ -15,8 +15,7 @@
 		<fillType name="CHICKEN_TYPE_WHITE" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
 		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
 		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
-		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
-		
+		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />		
 	</fillTypes>
 	<l10n>
 		<!-- Square bales -->

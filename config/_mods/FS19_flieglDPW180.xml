@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<vehicles>
+		<vehicle basename="flieglDPW180.xml" type="trailer" name="DPW 180" brand="FLIEGL" lifetime="600" category="baling" wearable="480" />
+	</vehicles>
+</mapconfig>

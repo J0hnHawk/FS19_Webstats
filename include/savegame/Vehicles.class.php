@@ -45,8 +45,9 @@ class Vehicle {
 	private static $vehiclesResaleSum = 0;
 	private static $buildingsResaleSum = 0;
 	// private static $pallets = array ();
-	public static function extractXML($xml, $farmId, $pallets) {
-		$dataFromStore = simplexml_load_file ( './config/_gameOwn/vehicles.xml' );
+	public static function extractXML($xml, $farmId, $mapconfig) {
+		$pallets = $mapconfig['pallets'];		
+		$dataFromStore = $mapconfig['vehicles'];
 		foreach ( $xml ['vehicles'] as $vehicleInXML ) {
 			if ($vehicleInXML ['farmId'] != $farmId) {
 				continue;
@@ -54,8 +55,8 @@ class Vehicle {
 			$filename = cleanFileName ( $vehicleInXML ['filename'] );
 			$vehicle = new Vehicle ();
 			$vehicle->name = translate ( $filename );
-			foreach ( $dataFromStore->vehicle as $storeData ) {
-				if (basename ( $vehicleInXML ['filename'] ) == $storeData ['basename']) {
+			foreach ( $dataFromStore as $basename => $storeData ) {
+				if (basename ( $vehicleInXML ['filename'] ) == $basename) {
 					$name = $storeData ['name'];
 					if (substr ( $name, 0, 5 ) == '$l10n') {
 						$name = translate ( $name );
@@ -63,7 +64,7 @@ class Vehicle {
 					$vehicle->name = $name;
 					$vehicle->brand = strval ( $storeData ['brand'] );
 					$vehicle->lifetime = intval ( $storeData ['lifetime'] );
-					$vehicle->category = sprintf ( '##%s##', strtoupper ( $storeData ['category'] ) );
+					$vehicle->category = translate ( $storeData ['category'] );
 					break;
 				}
 			}

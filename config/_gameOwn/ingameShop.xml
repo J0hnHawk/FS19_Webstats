@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ingameShop>
+	<l10n>
+		<!-- Some items sharing their names -->
+		<text name="$l10n_shopItem_frontloaderLogFork">
+			<en>$l10n_shopItem_frontloaderLogFork</en>
+			<de>Poltergabel</de>
+		</text>
+		<text name="$l10n_shopItem_skidSteerHighDumpBucket">
+			<en>$l10n_shopItem_skidSteerHighDumpBucketk</en>
+			<de>Hochkippschaufel</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderPalletFork">
+			<en>$l10n_shopItem_frontloaderPalletFork</en>
+			<de>Palettengabel</de>
+		</text>
+		<text name="$l10n_shopItem_wheelLoaderSilageFork">
+			<en>$l10n_shopItem_wheelLoaderSilageFork</en>
+			<de>Silagegabel</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderBaleFork">
+			<en>$l10n_shopItem_frontloaderBaleFork</en>
+			<de>Ballengabel</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderShovel">
+			<en>$l10n_shopItem_frontloaderShovel</en>
+			<de>Universalschaufel</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderBaleGrab">
+			<en>$l10n_shopItem_frontloaderBaleGrab</en>
+			<de>Ballenzange</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderManureFork">
+			<en>$l10n_shopItem_frontloaderManureFork</en>
+			<de>Mistgabel</de>
+		</text>
+		<!-- Vehicles categories -->
+		<text name="tractorsS">
+			<en></en>
+			<de>Kompakttraktoren</de>
+		</text>
+		<text name="tractorsM">
+			<en></en>
+			<de>Mittelgroße Traktoren</de>
+		</text>
+		<text name="tractorsL">
+			<en></en>
+			<de>Großtraktoren</de>
+		</text>
+		<text name="trucks">
+			<en></en>
+			<de>LKW</de>
+		</text>
+		<text name="harvesters">
+			<en></en>
+			<de>Mähdrescher</de>
+		</text>
+		<text name="forageHarvesters">
+			<en></en>
+			<de>Feldhäcksler</de>
+		</text>
+		<text name="potatoVehicles">
+			<en></en>
+			<de>Kartoffeltechnik</de>
+		</text>
+		<text name="beetVehicles">
+			<en></en>
+			<de>Rübentechnik</de>
+		</text>
+		<text name="sugarcaneVehicles">
+			<en></en>
+			<de>Zuckerrohrtechnik</de>
+		</text>
+		<text name="cottonVehicles">
+			<en></en>
+			<de>Baumwolltechnik</de>
+		</text>
+		<text name="woodHarvesting">
+			<en></en>
+			<de>Forstmaschinen</de>
+		</text>
+		<text name="animalsVehicles">
+			<en></en>
+			<de>Tierhaltung</de>
+		</text>
+		<text name="sprayerVehicles">
+			<en></en>
+			<de>Pflanzenschutz</de>
+		</text>
+		<text name="mowerVehicles">
+			<en></en>
+			<de>Mähtechnik</de>
+		</text>
+		<text name="frontLoaderVehicles">
+			<en></en>
+			<de>Frontlader</de>
+		</text>
+		<text name="wheelLoaderVehicles">
+			<en></en>
+			<de>Radlader</de>
+		</text>
+		<text name="teleLoaderVehicles">
+			<en></en>
+			<de>Teleskoplader</de>
+		</text>
+		<text name="skidSteerVehicles">
+			<en></en>
+			<de>Kompaktlader</de>
+		</text>
+		<text name="cars">
+			<en></en>
+			<de>Autos</de>
+		</text>
+		<text name="miscVehicles">
+			<en></en>
+			<de>Diverses</de>
+		</text>
+		<!-- Tools categories -->
+		<text name="trailers">
+			<en></en>
+			<de>Anhänger</de>
+		</text>
+		<text name="augerWagons">
+			<en></en>
+			<de>Überladewagen</de>
+		</text>
+		<text name="cutters">
+			<en></en>
+			<de>Schneidwerke</de>
+		</text>
+		<text name="cornHeaders">
+			<en></en>
+			<de>Maispflücker</de>
+		</text>
+		<text name="forageHarvesterCutters">
+			<en></en>
+			<de>Feldhäcksler Schneidwerke</de>
+		</text>
+		<text name="potatoHarvesting">
+			<en></en>
+			<de>Kartoffeltechnik</de>
+		</text>
+		<text name="beetHarvesting">
+			<en></en>
+			<de>Rübentechnik</de>
+		</text>
+		<text name="sugarCaneHarvesting">
+			<en></en>
+			<de>Zuckerrohrtechnik</de>
+		</text>
+		<text name="cottonHarvesting">
+			<en></en>
+			<de>Baumwolltechnik</de>
+		</text>
+		<text name="plows">
+			<en></en>
+			<de>Pflüge</de>
+		</text>
+		<text name="cultivators">
+			<en></en>
+			<de>Grubber</de>
+		</text>
+		<text name="discHarrows">
+			<en></en>
+			<de>Scheibeneggen</de>
+		</text>
+		<text name="powerHarrows">
+			<en></en>
+			<de>Kreiseleggen</de>
+		</text>
+		<text name="subsoilers">
+			<en></en>
+			<de>Tiefenlockerer</de>
+		</text>
+		<text name="seeders">
+			<en></en>
+			<de>Sätechnik</de>
+		</text>
+		<text name="planters">
+			<en></en>
+			<de>Einzelkorn Sätechnik</de>
+		</text>
+		<text name="sprayers">
+			<en></en>
+			<de>Pflanzenschutz</de>
+		</text>
+		<text name="fertilizerSpreaders">
+			<en></en>
+			<de>Düngetechnik</de>
+		</text>
+		<text name="manureSpreaders">
+			<en></en>
+			<de>Miststreuer</de>
+		</text>
+		<text name="slurryTanks">
+			<en></en>
+			<de>Güllefässer</de>
+		</text>
+		<text name="weeders">
+			<en></en>
+			<de>Striegel</de>
+		</text>
+		<text name="mowers">
+			<en></en>
+			<de>Mähtechnik</de>
+		</text>
+		<text name="tedders">
+			<en></en>
+			<de>Wender</de>
+		</text>
+		<text name="windrowers">
+			<en></en>
+			<de>Schwader</de>
+		</text>
+		<text name="loaderWagons">
+			<en></en>
+			<de>Ladewagen</de>
+		</text>
+		<text name="baling">
+			<en></en>
+			<de>Ballentechnik</de>
+		</text>
+		<text name="chainsaws">
+			<en></en>
+			<de>Kettensägen</de>
+		</text>
+		<text name="wood">
+			<en></en>
+			<de>Forstmaschinen</de>
+		</text>
+		<text name="animals">
+			<en></en>
+			<de>Tierhaltung</de>
+		</text>
+		<text name="animalTransport">
+			<en></en>
+			<de>Tiertransport</de>
+		</text>
+		<text name="leveler">
+			<en></en>
+			<de>Schiebeschilder</de>
+		</text>
+		<text name="frontLoaders">
+			<en></en>
+			<de>Frontlader</de>
+		</text>
+		<text name="wheelLoaders">
+			<en></en>
+			<de>Radlader</de>
+		</text>
+		<text name="teleLoaders">
+			<en></en>
+			<de>Teleskoplader</de>
+		</text>
+		<text name="skidSteers">
+			<en></en>
+			<de>Kompaktlader</de>
+		</text>
+		<text name="dollys">
+			<en></en>
+			<de>Dollys</de>
+		</text>
+		<text name="lowloaders">
+			<en></en>
+			<de>Tieflader</de>
+		</text>
+		<text name="cutterTrailers">
+			<en></en>
+			<de>Transportanhänger Schneidwerke</de>
+		</text>
+		<text name="weights">
+			<en></en>
+			<de>Gewichte</de>
+		</text>
+		<text name="belts">
+			<en></en>
+			<de>Förderbandsystem</de>
+		</text>
+		<text name="misc">
+			<en></en>
+			<de>Diverses</de>
+		</text>
+	</l10n>
+</ingameShop>
