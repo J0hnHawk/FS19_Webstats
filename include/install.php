@@ -161,11 +161,11 @@ function checkConnectionAPI($serverIp, $serverPort, $serverCode) {
 function ftp_directory_exists($ftp, $dir) {
 	// Function by swiftyexpress http://php.net/manual/de/function.ftp-chdir.php#87256
 	// Get the current working directory
-	//$origin = ftp_pwd ( $ftp );
+	@$origin = ftp_pwd ( $ftp );
 	// Attempt to change directory, suppress errors
 	if (@ftp_chdir ( $ftp, $dir )) {
 		// If the directory exists, set back to origin
-		//ftp_chdir ( $ftp, $origin );
+		@ftp_chdir ( $ftp, $origin );
 		return true;
 	}
 	// Directory does not exist
