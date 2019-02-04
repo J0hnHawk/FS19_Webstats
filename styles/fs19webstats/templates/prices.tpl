@@ -18,7 +18,7 @@
 					</td> 
 					{foreach $prices as $fillType => $fillTypeData}
 						{if isset($fillTypeData.locations.$location)}
-							{math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice current=$fillTypeData.locations.$location.price-$fillTypeData.locations.$location.minPrice assign="percent"}
+							{math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice+0.0001 current=$fillTypeData.locations.$location.price-$fillTypeData.locations.$location.minPrice+0.0001 assign="percent"}
 							{$dataorder="data-order='{$fillTypeData.locations.$location.price}'"}
 							{if $fillTypeData.locations.$location.greatDemand}
 								{$class="text-info"}
@@ -51,13 +51,14 @@
 				</tr>
 			</tfoot>
 		</table>
-		<script>
+		<script>{foreach $prices as $price}{if $price@first}{$cols = '['|cat:$price@iteration}{else}{$cols = $cols|cat:','|cat:$price@iteration}{/if}{/foreach}{$cols = $cols|cat:']'}
+		var cols = {$cols};
 		var h = window.innerHeight; //Height of the HTML document
-		{if $options.hideFooter}
+{if $options.hideFooter}
 		var c = 320; // Sum of the heights of navbar, footer, headings, etc.
-		{else}
+{else}
 		var c = 400; // Sum of the heights of navbar, footer, headings, etc.
-		{/if} 
+{/if} 
 		var th = parseInt((h-c)/h*100) + 'vh'; // Height for table 
 		var rw = parseInt((h - c) / 30); // Rows when paging is activated
 		$(document).ready(function() {
@@ -65,7 +66,7 @@
 				"fixedColumns": true,
 				columnDefs: [
 			        { "width": "150px", "targets": [0] },       
-			        { "width": "45px", "targets": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22] }
+			        { "width": "45px", "targets": cols }
 			      ],
 				"bFilter": false,
 		    	"paging": false,		    	
@@ -100,7 +101,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{foreach $prices as $fillType => $fillTypeData} {math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice current=$fillTypeData.bestPrice-$fillTypeData.minPrice assign="percent"}
+				{foreach $prices as $fillType => $fillTypeData} {math equation="round(100 / max * current)" max=$fillTypeData.maxPrice-$fillTypeData.minPrice+0.0001 current=$fillTypeData.bestPrice-$fillTypeData.minPrice+0.0001 assign="percent"}
 				<tr>
 					<td>{$fillType}</td>
 					<td>{$fillTypeData.bestLocation}</td>
