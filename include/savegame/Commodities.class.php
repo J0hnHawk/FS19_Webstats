@@ -158,6 +158,7 @@ class Commodity {
 	}
 	private static function loadVehicles() {
 		global $mapconfig;
+		$dataFromStore = $mapconfig ['vehicles'];
 		foreach ( self::$xml ['vehicles'] as $vehicle ) {
 			if ($vehicle ['farmId'] != self::$farmId) {
 				continue;
@@ -169,7 +170,18 @@ class Commodity {
 				$className = 'FillablePallet';
 			} else {
 				// Fahrzeug
-				$location = $vehicleName;
+				$location = translate ( $vehicleName );
+				foreach ( $dataFromStore as $basename => $storeData ) {
+					if (basename ( $vehicle ['filename'] ) == $basename) {
+						$name = $storeData ['name'];
+						if (substr ( $name, 0, 5 ) == '$l10n') {
+							$name = translate ( $name );
+						}
+						// $brand = strval ( $storeData ['brand'] );
+						$location = $name;
+						break;
+					}
+				}
 				$className = 'isVehicle';
 				$vehicleId = intval ( $vehicle ['id'] );
 			}
@@ -195,7 +207,11 @@ class Commodity {
 			return false;
 		}
 		$l_fillType = translate ( $fillType );
-		$l_location = translate ( $location );
+		if ($className == 'isVehicle') {
+			$l_location = $location;
+		} else {
+			$l_location = translate ( $location );
+		}
 		if (! isset ( self::$commodities [$l_fillType] )) {
 			$commodity = new Commodity ();
 			$commodity->overall = $fillLevel;
