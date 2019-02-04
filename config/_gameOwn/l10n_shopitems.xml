@@ -13,5 +13,9 @@
 			<en>$l10n_shopItem_frontloaderPalletFork</en>
 			<de>Palettengabel</de>
 		</text>
+		<text name="$l10n_shopItem_wheelLoaderSilageFork">
+			<en>$l10n_shopItem_wheelLoaderSilageFork</en>
+			<de>Silagegabel</de>
+		</text>
 	</l10n>
 </mapconfig>
