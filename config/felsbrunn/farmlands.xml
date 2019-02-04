@@ -1,68 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
 	<Farmlands>
-		<Farmland id="1" price="1" x="0" z="0"/>
-		<Farmland id="2" price="1" x="0" z="0"/>
-		<Farmland id="3" price="1" x="0" z="0"/>
-		<Farmland id="4" price="1" x="0" z="0"/>
-		<Farmland id="5" price="1" x="0" z="0"/>
-		<Farmland id="6" price="1" x="0" z="0"/>
-		<Farmland id="7" price="1" x="0" z="0"/>
-		<Farmland id="8" price="1" x="0" z="0"/>
-		<Farmland id="9" price="1" x="0" z="0"/>
-		<Farmland id="10" price="1" x="0" z="0"/>
-		<Farmland id="11" price="1" x="0" z="0"/>
-		<Farmland id="12" price="1" x="0" z="0"/>
-		<Farmland id="13" price="1" x="0" z="0"/>
-		<Farmland id="14" price="1" x="0" z="0"/>
-		<Farmland id="15" price="1" x="0" z="0"/>
-		<Farmland id="16" price="1" x="0" z="0"/>
-		<Farmland id="17" price="1" x="0" z="0"/>
-		<Farmland id="18" price="1" x="0" z="0"/>
-		<Farmland id="19" price="1" x="0" z="0"/>
-		<Farmland id="20" price="1" x="0" z="0"/>
-		<Farmland id="21" price="1" x="0" z="0"/>
-		<Farmland id="22" price="1" x="0" z="0"/>
-		<Farmland id="23" price="1" x="0" z="0"/>
-		<Farmland id="24" price="1" x="0" z="0"/>
-		<Farmland id="25" price="1" x="0" z="0"/>
-		<Farmland id="26" price="1" x="0" z="0"/>
-		<Farmland id="27" price="1" x="0" z="0"/>
-		<Farmland id="28" price="1" x="0" z="0"/>
-		<Farmland id="29" price="1" x="0" z="0"/>
-		<Farmland id="30" price="1" x="0" z="0"/>
-		<Farmland id="31" price="1" x="0" z="0"/>
-		<Farmland id="32" price="1" x="0" z="0"/>
-		<Farmland id="33" price="1" x="0" z="0"/>
-		<Farmland id="34" price="1" x="0" z="0"/>
-		<Farmland id="35" price="1" x="0" z="0"/>
-		<Farmland id="36" price="1" x="0" z="0"/>
-		<Farmland id="37" price="1" x="0" z="0"/>
-		<Farmland id="38" price="1" x="0" z="0"/>
-		<Farmland id="39" price="1" x="0" z="0"/>
-		<Farmland id="40" price="1" x="0" z="0"/>
-		<Farmland id="41" price="1" x="0" z="0"/>
-		<Farmland id="42" price="1" x="0" z="0"/>
-		<Farmland id="43" price="1" x="0" z="0"/>
-		<Farmland id="44" price="1" x="0" z="0"/>
-		<Farmland id="45" price="1" x="0" z="0"/>
-		<Farmland id="46" price="1" x="0" z="0"/>
-		<Farmland id="47" price="1" x="0" z="0"/>
-		<Farmland id="48" price="1" x="0" z="0"/>
-		<Farmland id="49" price="1" x="0" z="0"/>
-		<Farmland id="50" price="1" x="0" z="0"/>
-		<Farmland id="51" price="1" x="0" z="0"/>
-		<Farmland id="52" price="1" x="0" z="0"/>
-		<Farmland id="53" price="1" x="0" z="0"/>
-		<Farmland id="54" price="1" x="0" z="0"/>
-		<Farmland id="55" price="1" x="0" z="0"/>
-		<Farmland id="56" price="1" x="0" z="0"/>
-		<Farmland id="57" price="1" x="0" z="0"/>
-		<Farmland id="58" price="1" x="0" z="0"/>
-		<Farmland id="59" price="1" x="0" z="0"/>
-		<Farmland id="60" price="1" x="0" z="0"/>
-		<Farmland id="61" price="1" x="0" z="0"/>
-		<Farmland id="62" price="1" x="0" z="0"/>
-		<Farmland id="63" price="1" x="0" z="0"/>
+		<Farmland id="1" price="110592" x="-826.435303" z="-842.099365" />
+		<Farmland id="2" price="383784" x="-640.590027" z="-863.613220" />
+		<Farmland id="3" price="564384" x="-734.350586" z="-650.776123" />
+		<Farmland id="4" price="245039" x="-661.160461" z="-604.325745" />
+		<Farmland id="5" price="265161" x="-403.916382" z="-836.596741" />
+		<Farmland id="6" price="551580" x="-57.385902" z="-690.603760" />
+		<Farmland id="7" price="378912" x="254.124023" z="-916.182007" />
+		<Farmland id="8" price="287280" x="272.152557" z="-764.510132" />
+		<Farmland id="9" price="303816" x="544.393005" z="-861.528625" />
+		<Farmland id="10" price="472440" x="841.314148" z="-875.486694" />
+		<Farmland id="11" price="277848" x="832.990662" z="-676.326233" />
+		<Farmland id="12" price="77208" x="-800.240295" z="-223.611755" />
+		<Farmland id="13" price="331752" x="-681.469238" z="-136.551178" />
+		<Farmland id="14" price="853680" x="-521.874023" z="-416.273315" />
+		<Farmland id="15" price="503928" x="-224.468597" z="-501.611145" />
+		<Farmland id="16" price="613776" x="414.513306" z="-525.587708" />
+		<Farmland id="17" price="338256" x="866.140320" z="-349.090027" />
+		<Farmland id="18" price="291864" x="-414.624878" z="-148.972702" />
+		<Farmland id="19" price="530064" x="-155.099518" z="-188.076706" />
+		<Farmland id="20" price="192648" x="63.934845" z="-115.672981" />
+		<Farmland id="21" price="453984" x="244.706284" z="-273.977478" />
+		<Farmland id="22" price="304704" x="254.000000" z="-50.000000" />
+		<Farmland id="23" price="403656" x="485.856995" z="-132.101379" />
+		<Farmland id="24" price="390072" x="741.471313" z="-165.938293" />
+		<Farmland id="25" price="225000" x="-826.570557" z="219.395309" />
+		<Farmland id="26" price="157224" x="-431.277527" z="215.782776" />
+		<Farmland id="27" price="604872" x="-644.742554" z="172.956039" />
+		<Farmland id="28" price="261840" x="-401.970673" z="60.121357" />
+		<Farmland id="29" price="180192" x="-230.883331" z="71.266113" />
+		<Farmland id="30" price="174648" x="-121.103340" z="95.179741" />
+		<Farmland id="31" price="181968" x="-29.590609" z="118.357162" />
+		<Farmland id="32" price="281592" x="98.679367" z="187.994293" />
+		<Farmland id="33" price="403824" x="292.347321" z="178.642334" />
+		<Farmland id="34" price="446832" x="600.874634" z="95.571381" />
+		<Farmland id="35" price="292512" x="763.879211" z="214.403519" />
+		<Farmland id="36" price="190944" x="930.782776" z="212.921570" />
+		<Farmland id="37" price="158808" x="-459.200378" z="383.793396" />
+		<Farmland id="38" price="125520" x="-335.861176" z="313.830597" />
+		<Farmland id="39" price="204696" x="-188.215149" z="314.079376" />
+		<Farmland id="40" price="107496" x="-32.391380" z="351.144226" />
+		<Farmland id="41" price="128448" x="140.105759" z="405.877441" />
+		<Farmland id="42" price="181008" x="473.271271" z="286.836121" />
+		<Farmland id="43" price="223704" x="439.868347" z="408.320892" />
+		<Farmland id="44" price="201192" x="729.007385" z="376.566498" />
+		<Farmland id="45" price="290880" x="-733.427368" z="566.721313" />
+		<Farmland id="46" price="238176" x="-563.403870" z="516.445190" />
+		<Farmland id="47" price="271728" x="-560.665405" z="635.218323" />
+		<Farmland id="48" price="115999" x="-225.823914" z="722.910217" />
+		<Farmland id="49" price="103989" x="79.441048" z="716.987427" />
+		<Farmland id="50" price="120103" x="430.585388" z="702.207092" />
+		<Farmland id="51" price="388296" x="867.419067" z="675.649231" />
+		<Farmland id="52" price="3128256" x="-109.245872" z="519.524475" />
+		<Farmland id="53" price="176520" x="413.531616" z="582.355835" />
+		<Farmland id="54" price="324216" x="619.168945" z="532.872803" />
 	</Farmlands>
 </mapconfig>
