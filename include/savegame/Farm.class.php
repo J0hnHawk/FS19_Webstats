@@ -130,7 +130,8 @@ class Farm {
 				'fieldJobMissionByNPC',
 				'treeTypesCut',
 				'revenue',
-				'expenses' 
+				'expenses',
+				'woodTonsSold'
 		);
 		if (in_array ( $key, $ignore )) {
 			return false;
