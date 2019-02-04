@@ -17,5 +17,21 @@
 			<en>$l10n_shopItem_wheelLoaderSilageFork</en>
 			<de>Silagegabel</de>
 		</text>
+		<text name="$l10n_shopItem_frontloaderBaleFork">
+			<en>$l10n_shopItem_frontloaderBaleFork</en>
+			<de>Ballengabel</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderShovel">
+			<en>$l10n_shopItem_frontloaderShovel</en>
+			<de>Universalschaufel</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderBaleGrab">
+			<en>$l10n_shopItem_frontloaderBaleGrab</en>
+			<de>Ballenzange</de>
+		</text>
+		<text name="$l10n_shopItem_frontloaderManureFork">
+			<en>$l10n_shopItem_frontloaderManureFork</en>
+			<de>Mistgabel</de>
+		</text>
 	</l10n>
 </mapconfig>

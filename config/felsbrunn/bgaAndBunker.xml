@@ -13,4 +13,10 @@
 	<item name="BunkerSilo_silo003" locationType="bunker" position="-25 0 -548" />
 	<item name="BunkerSilo_silo004" locationType="bunker" position="-55 0 -548" />
 	<item name="BunkerSilo_silo005" locationType="bunker" position="-65 0 -548" />
+	<l10n>
+		<text name="bga">
+			<en>bga</en>
+			<de>BGA</de>
+		</text>
+	</l10n>
 </mapconfig>

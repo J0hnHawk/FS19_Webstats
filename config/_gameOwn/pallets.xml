@@ -8,5 +8,6 @@
 		<pallet name="herbicideTank" />
 		<pallet name="woolPallet" />
 		<pallet name="eggBox" />
+		<pallet name="treeSaplingPallet" />
 	</pallets>
 </mapconfig>
