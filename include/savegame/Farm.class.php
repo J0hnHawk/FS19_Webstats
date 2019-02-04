@@ -76,8 +76,13 @@ class Farm {
 		}
 		foreach ( self::$farms as $farmId1 => $farm ) {
 			foreach ( $farm->contractFrom as $farmId2 => $bool ) {
-				self::$farms [$farmId2]->contractWith [$farmId1] = true;
-				self::$farmsArray [$farmId2] ['contractWith'] [$farmId1] = true;
+				if (isset ( self::$farms [$farmId2] )) {
+					self::$farms [$farmId2]->contractWith [$farmId1] = true;
+					self::$farmsArray [$farmId2] ['contractWith'] [$farmId1] = true;
+				} else {
+					unset ( self::$farms [$farmId1]->contractFrom [$farmId2] );
+					unset ( self::$farmsArray [$farmId1] ['contractFrom'] [$farmId2] );
+				}
 			}
 		}
 	}
@@ -166,7 +171,7 @@ class Farm {
 	}
 	private static function getFarmColor($color) {
 		/*
-		 * rgb = srgb ^ (1 / 2.2) * 255 
+		 * rgb = srgb ^ (1 / 2.2) * 255
 		 */
 		$farmColors = array (
 				'1' => '#89ff89',
