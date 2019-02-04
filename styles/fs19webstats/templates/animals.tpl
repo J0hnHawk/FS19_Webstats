@@ -1,4 +1,5 @@
 <h3 class="my-3">##ANIMALS##</h3>
+{if $stables|@count}
 <div class="row">
 	<div class="col-3">
 		<div class="list-group">
@@ -6,12 +7,9 @@
 			<button type="button" class="list-group-item list-group-item-dark">
 				<strong>{$stable.name}</strong>
 			</button>
-			{foreach $stable.animals as $animalI3dName => $animal}
-			<a href="index.php?page={$page}&stable={$stableI3dName}&animal={$animalI3dName}" class="list-group-item list-group-item-action">
-				{$animal.name}{if $animal.isHorse}<br> <small>Tägliches Reiten<span class="float-right">{$animal.ridingTimer|number_format:0:",":"."} %</span></small>{else}<span
-					class="float-right">{$animal.count}</span><br> <small>Produktivität<span class="float-right">{$stable.productivity|number_format:0:",":"."} %</span></small>{/if}
-			</a>
-			{/foreach} {/foreach}
+			{foreach $stable.animals as $animalI3dName => $animal} <a href="index.php?page={$page}&stable={$stableI3dName}&animal={$animalI3dName}" class="list-group-item list-group-item-action"> {$animal.name}{if $animal.isHorse}<br> <small>Tägliches Reiten<span class="float-right">{$animal.ridingTimer|number_format:0:",":"."}
+						%</span></small>{else}<span class="float-right">{$animal.count}</span><br> <small>Produktivität<span class="float-right">{$stable.productivity|number_format:0:",":"."} %</span></small>{/if}
+			</a> {/foreach} {/foreach}
 		</div>
 	</div>
 	<div class="col-9">
@@ -21,15 +19,13 @@
 					{$stables.$currentStable.animals.$currentAnimal.name}<span class="float-right">{if $stables.$currentStable.animals.$currentAnimal.isHorse}€
 						{$stables.$currentStable.animals.$currentAnimal.value|number_format:0:",":"."}{else}{$stables.$currentStable.animals.$currentAnimal.count|number_format:0:",":"."}{/if}</span>
 				</h4>
-				<img src="{#IMAGES#}/{$stables.$currentStable.animals.$currentAnimal.image}.png" class="img-fluid h-50 mx-auto d-block"> {if
-				$stables.$currentStable.forHorses}
+				<img src="{#IMAGES#}/{$stables.$currentStable.animals.$currentAnimal.image}.png" class="img-fluid h-50 mx-auto d-block"> {if $stables.$currentStable.forHorses}
 				<div class="row">
 					<div class="col-4">##FITNESS##</div>
 					<div class="col-4">
 						<div class="progress">
 							{$style='style="width: '|cat:$stables.$currentStable.animals.$currentAnimal.fitnessScale|cat:'%"'}
-							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.animals.$currentAnimal.fitnessScale}"
-								aria-valuemin="0" aria-valuemax="100"></div>
+							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.animals.$currentAnimal.fitnessScale}" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 					</div>
 					<div class="col-4">{$stables.$currentStable.animals.$currentAnimal.fitnessScale} %</div>
@@ -39,8 +35,7 @@
 					<div class="col-4">
 						<div class="progress">
 							{$style='style="width: '|cat:$stables.$currentStable.animals.$currentAnimal.healthScale|cat:'%"'}
-							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.animals.$currentAnimal.healthScale}"
-								aria-valuemin="0" aria-valuemax="100"></div>
+							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.animals.$currentAnimal.healthScale}" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 					</div>
 					<div class="col-4">{$stables.$currentStable.animals.$currentAnimal.healthScale} %</div>
@@ -50,8 +45,7 @@
 					<div class="col-4">
 						<div class="progress mt-0">
 							{$style='style="width: '|cat:$stables.$currentStable.animals.$currentAnimal.dirtScale|cat:'%"'}
-							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.animals.$currentAnimal.dirtScale}"
-								aria-valuemin="0" aria-valuemax="100"></div>
+							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.animals.$currentAnimal.dirtScale}" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 					</div>
 					<div class="col-4">{$stables.$currentStable.animals.$currentAnimal.dirtScale} %</div>
@@ -65,8 +59,7 @@
 					<div class="col-3">
 						<div class="progress">
 							{$style='style="width: '|cat:$stables.$currentStable.productivity|cat:'%"'}
-							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.productivity}" aria-valuemin="0"
-								aria-valuemax="100"></div>
+							<div class="progress-bar" role="progressbar" {$style} aria-valuenow="{$stables.$currentStable.productivity}" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 					</div>
 				</div>
@@ -120,3 +113,8 @@
 		</div>
 	</div>
 </div>
+{else}
+<div class="jumbotron my-3 py-3">
+	<p class="lead">##NOSTABLES##</p>
+</div>
+{/if}

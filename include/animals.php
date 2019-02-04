@@ -25,8 +25,13 @@ include ('./include/savegame/Animals.class.php');
 Animals::loadStables ( $savegame::$xml );
 $stables = Animals::getStables ();
 $smarty->assign ( 'stables', $stables );
-$firstStable = array_keys ( $stables ) [0];
-$firstAnimal = array_keys ( $stables [$firstStable] ['animals'] ) [0];
+if (sizeof ( $stables ) > 0) {
+	$firstStable = array_keys ( $stables ) [0];
+	$firstAnimal = array_keys ( $stables [$firstStable] ['animals'] ) [0];
+} else {
+	$firstStable = null;
+	$firstAnimal = null;
+}
 $currentStable = GetParam ( 'stable', 'G', $firstStable );
 $currentAnimal = GetParam ( 'animal', 'G', $firstAnimal );
 if (! isset ( $stables [$currentStable] ) || ! isset ( $stables [$currentStable] ['animals'] [$currentAnimal] )) {
