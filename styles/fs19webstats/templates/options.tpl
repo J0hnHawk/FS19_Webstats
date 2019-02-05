@@ -4,7 +4,7 @@
 }
 </style>
 {if $error} {$error} {/if}
-<h3 class="my-3">##SETTINGS## - ##GENERAL##</h3>
+<h3 class="my-3">##SETTINGS##</h3>
 <form class="form" action="index.php?page=options" method="post">
 	<div class="row">
 		<div class="col-md-6 col-lg-4">
@@ -37,7 +37,7 @@
 		</div>
 		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##AUTO_RELOAD##</label>
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 hoverhelp" data-helptext="##AUTO_RELOAD_HELP##">
 				<div class="input-group-prepend">
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_reload">&#11207;</button>
 				</div>
@@ -57,8 +57,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_hideFooter">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="g_hideFooter" id="g_hideFooter">
-					<option value="1"{if $options.general.hideFooter}selected{/if}>##HIDE##</option>
 					<option value="0"{if !$options.general.hideFooter}selected{/if}>##SHOW##</option>
+					<option value="1"{if $options.general.hideFooter}selected{/if}>##HIDE##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_hideFooter">&#11208;</button>
@@ -66,7 +66,6 @@
 			</div>
 		</div>
 	</div>
-	<h3 class="my-3">##SETTINGS## - ##STOCKS##</h3>
 	<div class="row">
 		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##SORT_ORDER##</label>
@@ -85,7 +84,7 @@
 		</div>
 		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##VEHICLE_LOAD##</label>
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 hoverhelp" data-helptext="##VEHICLE_LOAD_HELP##">
 				<div class="input-group-prepend">
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_showVehicles">&#11207;</button>
 				</div>
@@ -130,13 +129,13 @@
 		</div>
 		<div class="col-md-6 col-lg-4">
 			<label for="basic-url">##HIDE_ANIMALS##</label>
-			<div class="input-group mb-3">
+			<div class="input-group mb-3 hoverhelp" data-helptext="##HIDE_ANIMALS_HELP##">
 				<div class="input-group-prepend">
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_hideAnimalsInStorage">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="s_hideAnimalsInStorage" id="s_hideAnimalsInStorage">
-					<option value="1"{if $options.storage.hideAnimalsInStorage}selected{/if}>##YES##</option>
-					<option value="0"{if !$options.storage.hideAnimalsInStorage}selected{/if}>##NO##</option>
+					<option value="0"{if !$options.storage.hideAnimalsInStorage}selected{/if}>##YES##</option>
+					<option value="1"{if $options.storage.hideAnimalsInStorage}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_hideAnimalsInStorage">&#11208;</button>

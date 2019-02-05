@@ -72,7 +72,7 @@ class Commodity {
 								case 'animals' :
 									foreach ( $module->animal as $animal ) {
 										$fillType = strval ( $animal ['fillType'] );
-										self::addCommodity ( $fillType, 1, $location );
+										self::addCommodity ( $fillType, 1, $location, 'animal' );
 										/*
 										 * Tested horse sell prices:
 										 * 49000 * (fitnessScale * healthScale) + 500 * dirtScale

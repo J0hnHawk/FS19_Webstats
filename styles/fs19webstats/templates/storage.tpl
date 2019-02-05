@@ -84,8 +84,8 @@
 					<div class="form-group">
 						<label for="sortType" class="col-sm-5 control-label">##SHOW_ZERO_STOCK##</label>
 						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio" name="hideZero" value="0"{if !$options.hideZero}checked{/if}> ##YES##
-							</label> <label class="radio-inline"> <input type="radio" name="hideZero" value="1"{if $options.hideZero}checked{/if}> ##NO##
+							<label class="radio-inline"> <input type="radio" name="showZero" value="0"{if !$options.showZero}checked{/if}> ##YES##
+							</label> <label class="radio-inline"> <input type="radio" name="showZero" value="1"{if $options.showZero}checked{/if}> ##NO##
 							</label>
 						</div>
 					</div>
