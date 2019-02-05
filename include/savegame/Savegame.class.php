@@ -115,7 +115,7 @@ class Savegame {
 	private function getFileByFTP($file) {
 		if ($this->ftp ['isgportal']) {
 			$URL = "ftp://" . $this->ftp ['user'] . ":" . $this->ftp ['pass'] . "@" . $this->ftp ['server'] . ":" . $this->ftp ['port'] . $this->ftp ['path'];
-			$fp = fopen ( $this->cache . $file, "w" );
+			$fp = fopen ( $this->cache . $file . '.temp', "w" );
 			$url = $URL . $file;
 			$curl = curl_init ();
 			curl_setopt ( $curl, CURLOPT_URL, $url );
@@ -126,7 +126,7 @@ class Savegame {
 			curl_close ( $curl );
 			fclose ( $fp );
 		} else {
-			$local_file = $this->cache . $file;
+			$local_file = $this->cache . $file . '.temp';
 			$server_file = $this->ftp ['path'] . $file;
 			if ($this->ftp ['ssl']) {
 				$ftp_conn = ftp_ssl_connect ( $this->ftp ['server'], $this->ftp ['port'], 10 );
@@ -150,5 +150,13 @@ class Savegame {
 				ftp_close ( $ftp_conn );
 			}
 		}
+		libxml_use_internal_errors ( true );
+		$stat = simplexml_load_file ( $this->cache . $file . '.temp' );
+		if ($stat !== false) {
+			rename ( $this->cache . $file . '.temp', $this->cache . $file );
+		} else {
+			// The XML file propably could not be loaded correctly.
+		}
+		libxml_use_internal_errors ( false );
 	}
 }
