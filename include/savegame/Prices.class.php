@@ -35,10 +35,10 @@ class Price {
 	public static $sellStations = array ();
 	public static $greatDemands = array ();
 	public static $greatDemandIsRunning = false;
-	public static function extractXML($xml) {
+	public static function extractXML($savegame) {
 		global $mapconfig;
-		self::loadGreatDemands ( $xml ['economy'] );
-		foreach ( $xml ['items'] as $item ) {
+		self::loadGreatDemands ( $savegame->economy );
+		foreach ( $savegame->items as $item ) {
 			$location = cleanFileName ( $item ['filename'] );
 			$stationId = intval ( $item ['id'] );
 			// Lager, Fabriken usw. analysieren
@@ -50,7 +50,7 @@ class Price {
 					self::$sellStations [translate ( $location )] = $location;
 					if ($mapconfig [$location] ['locationType'] == 'bga') {
 						foreach ( $mapconfig [$location] ['input'] as $fillType => $inputTrigger ) {
-							$currentPrice = $inputTrigger ['price'];
+							$currentPrice = $inputTrigger ['price'] * $savegame->getPriceMultiplier();
 							self::addNewPrice ( $fillType, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
 						}
 					} else {

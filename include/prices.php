@@ -23,7 +23,7 @@ if (! defined ( 'IN_FS19WS' )) {
 }
 
 include ('./include/savegame/Prices.class.php');
-Price::extractXML ( $savegame::$xml );
+Price::extractXML ( $savegame );
 $prices = Price::getAllPrices ();
 
 include ('./include/savegame/Commodities.class.php');

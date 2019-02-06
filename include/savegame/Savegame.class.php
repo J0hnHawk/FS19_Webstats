@@ -36,6 +36,10 @@ class Savegame {
 			2 => 1.8,
 			3 => 1 
 	);
+	public $currentDay;
+	public $dayTime;
+	public $difficulty;
+	public $economicDifficulty;
 	public static $xml = array ();
 	protected $xmlFiles = array (
 			'environment.xml',
@@ -44,11 +48,13 @@ class Savegame {
 			'farmland.xml',
 			'items.xml',
 			'missions.xml',
-			'vehicles.xml' 
+			'vehicles.xml',
+			'careerSavegame.xml' 
 	);
 	private $ftp = array ();
 	private $cache = './cache/';
 	public function __construct($farmId = 0) {
+		$this->test = new stdClass ();
 		$config = file ( './config/server.conf' );
 		$config = unserialize ( $config [0] );
 		if (! file_exists ( $this->cache )) {
@@ -82,7 +88,10 @@ class Savegame {
 					if ($updateFiles) {
 						$this->getFileByFTP ( $this->xmlFiles [$s1] );
 					}
-					self::$xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+					$basename = basename ( $this->xmlFiles [$s1], '.xml' );
+					self::$xml [$basename] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+					$this->$basename = new stdClass ();
+					$this->$basename = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
 				break;
 			case 'local' :
@@ -94,9 +103,19 @@ class Savegame {
 			case 'api' :
 				break;
 		}
+		$this->currentDay = intval ( self::$xml ['environment']->currentDay );
+		$this->dayTime = gmdate ( "H:i", floatval ( self::$xml ['environment']->dayTime ) * 60 );
+		$this->difficulty = intval ( self::$xml ['careerSavegame']->settings->difficulty );
+		$this->economicDifficulty = intval ( self::$xml ['careerSavegame']->settings->economicDifficulty );
 	}
 	public function getCurrentDay() {
 		return intval ( self::$xml ['environment']->currentDay );
+	}
+	public function getPriceMultiplier() {
+		return self::PRICE_MULTIPLIER [$this->economicDifficulty];
+	}
+	public function getCostMultiplier() {
+		return self::COST_MULTIPLIER [$this->economicDifficulty];
 	}
 	public function getDayTime() {
 		return gmdate ( "H:i", floatval ( self::$xml ['environment']->dayTime ) * 60 );
@@ -156,6 +175,7 @@ class Savegame {
 			rename ( $this->cache . $file . '.temp', $this->cache . $file );
 		} else {
 			// The XML file propably could not be loaded correctly.
+			echo ("Fehler beim Laden der Datei: $file<br>");
 		}
 		libxml_use_internal_errors ( false );
 	}
