@@ -30,7 +30,7 @@ switch ($mode) {
 	case 'ratios' :
 	case 'balance' :
 		include ('./include/savegame/Prices.class.php');
-		Price::extractXML ( $savegame::$xml );
+		Price::extractXML ( $savegame );
 		include ('./include/savegame/Commodities.class.php');
 		Commodity::loadCommodities ( $savegame::$xml );
 		include ('./include/savegame/Vehicles.class.php');

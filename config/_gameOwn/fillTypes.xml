@@ -190,9 +190,37 @@
 			<de>Schaf (Schwarz &amp; Weiß)</de>
 			<fr>Mouton</fr>
 		</text>
+		<text name="HORSE_TYPE_GREY">
+			<en>HORSE_TYPE_GREY</en>
+			<de>Pferd (Schimmel)</de>
+		</text>
+		<text name="HORSE_TYPE_BROWN_WHITE">
+			<en>HORSE_TYPE_BROWN_WHITE</en>
+			<de>Pferd (Schecke)</de>
+		</text>
+		<text name="HORSE_TYPE_BEIGE">
+			<en>HORSE_TYPE_BEIGE</en>
+			<de>Pferd (Isabell)</de>
+		</text>
+		<text name="HORSE_TYPE_BROWN">
+			<en>HORSE_TYPE_BROWN</en>
+			<de>Pferd (Fuchs)</de>
+		</text>
 		<text name="HORSE_TYPE_RED_BROWN">
 			<en>HORSE_TYPE_RED_BROWN</en>
-			<de>Pferd (Fuchs)</de>
+			<de>Pferd (Brauner)</de>
+		</text>
+		<text name="HORSE_TYPE_BLACK">
+			<en>HORSE_TYPE_BLACK</en>
+			<de>Pferd (Rappe)</de>
+		</text>
+		<text name="HORSE_TYPE_DARK_BROWN">
+			<en>HORSE_TYPE_DARK_BROWN</en>
+			<de>Pferd (Schwarzbrauner)</de>
+		</text>
+		<text name="HORSE_TYPE_LIGHT_BROWN">
+			<en>HORSE_TYPE_LIGHT_BROWN</en>
+			<de>Pferd (Falble)</de>
 		</text>
 		<!-- Fruits -->
 		<text name="WHEAT">
