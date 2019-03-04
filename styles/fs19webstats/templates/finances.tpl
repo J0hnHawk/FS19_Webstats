@@ -213,7 +213,7 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			Liquidität <a href="#BWLL" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
+			##BWL_L## <a href="#BWLL" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLl">
 			<p class="text-justify">##BWL_L_P1##</p>
