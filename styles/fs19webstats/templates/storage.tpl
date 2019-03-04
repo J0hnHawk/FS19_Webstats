@@ -22,7 +22,7 @@
 						<table class="table" style="margin-bottom: 0px;">
 							<thead>
 								<tr>
-									<th>##PLACE##<a class="float-right" href="index.php?page=commodity&object={$commodity.i3dName}">##DETAILS##</a></th>
+									<th>##PLACE##</th>
 									<th class="text-right">##QUANTITY##</th>
 								</tr>
 							</thead>
