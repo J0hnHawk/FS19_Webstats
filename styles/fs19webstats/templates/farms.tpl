@@ -12,7 +12,7 @@
 				<tbody>
 					<tr class="d-flex">
 						{foreach $farms as $farmId => $farm}
-						<td class="col-3"><strong>Kontostand: <span class="float-right">{$farm.money|number_format:0:",":"."}</span></strong></td> {/foreach}
+						<td class="col-3"><strong>##FINANCES##: <span class="float-right">{$farm.money|number_format:0:",":"."}</span></strong></td> {/foreach}
 					</tr>
 					<tr class="d-flex">
 						{foreach $farms as $farmId => $farm}
