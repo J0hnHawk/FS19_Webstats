@@ -296,7 +296,7 @@
 		        scrollY:        "55vh",
 		        "ordering": false,
 		        "dom":"<'row'<'col-sm-12'tr>>",
-		        scrollX:        false,
+		        scrollX:        true,
 		        scrollCollapse: true,
 		        paging:         false,
 		        fixedColumns:   true
