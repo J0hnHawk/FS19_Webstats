@@ -37,6 +37,7 @@
 		    	//"pageLength": rw,
 		    	order: 			[[ 3, "desc" ]],
 		    	scrollY:        th,
+		    	scrollX:        true,				
         		scrollCollapse: true,
        			paging:         false,
 		    	stateSave:		true,
