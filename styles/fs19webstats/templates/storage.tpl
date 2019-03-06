@@ -60,59 +60,58 @@
 					<div class="form-group">
 						<label class="col-sm-5 control-label">##SORT_ORDER##</label>
 						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio" name="sortByName" value="1"{if $options.sortByName}checked{/if}> ##ALPHABETICALLY##
-							</label> <label class="radio-inline"> <input type="radio" name="sortByName" value="0"{if !$options.sortByName}checked{/if}> ##FILL_LEVEL##
+							<label class="radio-inline"> <input type="radio" name="sortByName" value="1" {if $options.sortByName}checked{/if}> ##ALPHABETICALLY##
+							</label> <label class="radio-inline"> <input type="radio" name="sortByName" value="0" {if !$options.sortByName}checked{/if}> ##FILL_LEVEL##
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="sortType" class="col-sm-5 control-label">##VEHICLE_LOAD##</label>
 						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio" name="showVehicles" value="1"{if $options.showVehicles}checked{/if}> ##SHOW##
-							</label> <label class="radio-inline"> <input type="radio" name="showVehicles" value="0"{if !$options.showVehicles}checked{/if}> ##HIDE##
+							<label class="radio-inline"> <input type="radio" name="showVehicles" value="1" {if $options.showVehicles}checked{/if}> ##SHOW##
+							</label> <label class="radio-inline"> <input type="radio" name="showVehicles" value="0" {if !$options.showVehicles}checked{/if}> ##HIDE##
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="sortType" class="col-sm-5 control-label">##ONLY_PALETTS##</label>
 						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio" name="onlyPallets" value="1"{if $options.onlyPallets}checked{/if}> ##YES##
-							</label> <label class="radio-inline"> <input type="radio" name="onlyPallets" value="0"{if !$options.onlyPallets}checked{/if}> ##NO##
+							<label class="radio-inline"> <input type="radio" name="onlyPallets" value="1" {if $options.onlyPallets}checked{/if}> ##YES##
+							</label> <label class="radio-inline"> <input type="radio" name="onlyPallets" value="0" {if !$options.onlyPallets}checked{/if}> ##NO##
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="sortType" class="col-sm-5 control-label">##SHOW_ZERO_STOCK##</label>
 						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio" name="showZero" value="0"{if !$options.showZero}checked{/if}> ##YES##
-							</label> <label class="radio-inline"> <input type="radio" name="showZero" value="1"{if $options.showZero}checked{/if}> ##NO##
+							<label class="radio-inline"> <input type="radio" name="showZero" value="0" {if !$options.showZero}checked{/if}> ##YES##
+							</label> <label class="radio-inline"> <input type="radio" name="showZero" value="1" {if $options.showZero}checked{/if}> ##NO##
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="sortType" class="col-sm-5 control-label">##HIDE_ANIMALS##</label>
 						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio" name="hideAnimalsInStorage" value="1"{if $options.hideAnimalsInStorage}checked{/if}> ##YES##
-							</label> <label class="radio-inline"> <input type="radio" name="hideAnimalsInStorage" value="0"{if !$options.hideAnimalsInStorage}checked{/if}> ##NO##
+							<label class="radio-inline"> <input type="radio" name="hideAnimalsInStorage" value="1" {if $options.hideAnimalsInStorage}checked{/if}> ##YES##
+							</label> <label class="radio-inline"> <input type="radio" name="hideAnimalsInStorage" value="0" {if !$options.hideAnimalsInStorage}checked{/if}> ##NO##
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="3column" class="col-sm-5 control-label">##LAYOUT##</label>
 						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio" name="3column" value="1"{if $options.3column}checked{/if}> ##3COLUMN##
-							</label> <label class="radio-inline"> <input type="radio" name="3column" value="0"{if !$options.3column}checked{/if}> ##4COLUMN##
+							<label class="radio-inline"> <input type="radio" name="3column" value="1" {if $options.3column}checked{/if}> ##3COLUMN##
+							</label> <label class="radio-inline"> <input type="radio" name="3column" value="0" {if !$options.3column}checked{/if}> ##4COLUMN##
 							</label>
 						</div>
 					</div>
-			
+				</form>				
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">##CLOSE##</button>
 				<button type="submit" class="btn btn-success">##SAVE##</button>
 			</div>
 		</div>
-		</form>
 	</div>
 </div>
 <div class="modal fade" id="outOfMapAlert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
