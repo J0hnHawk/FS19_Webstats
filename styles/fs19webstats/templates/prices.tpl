@@ -131,7 +131,8 @@
 			$(document).ready(function() { 
 				var table = $('#bestPrices').DataTable( { 
 					//"pageLength": rw, 
-					scrollY: th, 
+					scrollY: th,
+					scrollX: "98%",					
 					scrollCollapse: true, 
 					paging:	false, 
 					stateSave: true, 
