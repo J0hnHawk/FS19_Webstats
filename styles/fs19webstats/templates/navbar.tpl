@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark justify-content-lg-center py-0">
-	<a class="navbar-brand d-lg-none d-xl-block" href="#">{$map.Short} {$map.Version} Web Stats</a>
+	<a class="navbar-brand d-lg-none d-xl-block" href="index.php">{$map.Short} {$map.Version} Web Stats</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
