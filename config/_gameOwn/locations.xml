@@ -2,7 +2,7 @@
 <mapconfig>
 	<l10n>
 		<text name="onMap">
-			<cz>Terén</cz>
+			<cz>na zemi</cz>
 			<en>Landscape</en>
 			<de>Landschaft</de>
 			<fr>Campagne</fr>
