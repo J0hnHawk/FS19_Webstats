@@ -2,17 +2,38 @@
 <mapconfig>
 	<l10n>
 		<text name="husbandryChickenLarge">
+			<cz>Velká slepičárna</cz>		
 			<en>husbandryChickenLarge</en>
 			<de>Großer Hühnerstall</de>
 		</text>
 		<text name="husbandrySheepLarge">
+			<cz>Velká ovčírna</cz>				
 			<en>husbandrySheepLarge</en>
 			<de>Großer Schafweide</de>
 		</text>
 		<text name="husbandryHorseLarge">
+			<cz>Velká konírna</cz>				
 			<en>husbandryHorseLarge</en>
 			<de>Großer Pferdestall</de>
 		</text>
+		<text name="husbandryCowLarge">
+			<cz>Velký kravín</cz>			
+		</text>	
+		<text name="husbandryPigLarge">
+			<cz>Velký prasečák</cz>			
+		</text>	
+		<text name="farmSiloLarge">
+			<cz>Silo na farmě</cz>			
+		</text>			
+		<text name="siloExtension">
+			<cz>Silo na farmě</cz>			
+		</text>		
+		<text name="hayLoft">
+			<cz>Seník na farmě</cz>			
+		</text>		
+		<text name="bunkerSiloMediumDouble">
+			<cz>Senážní silo</cz>			
+		</text>				
 	</l10n>
 </mapconfig>
 
