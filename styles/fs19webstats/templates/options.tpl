@@ -42,8 +42,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_reload">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="g_reload" id="g_reload">
-					<option value="1"{if $options.general.reload}selected{/if}>##YES##</option>
-					<option value="0"{if !$options.general.reload}selected{/if}>##NO##</option>
+					<option value="1" {if $options.general.reload}selected{/if}>##YES##</option>
+					<option value="0" {if !$options.general.reload}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_reload">&#11208;</button>
@@ -57,8 +57,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="g_hideFooter">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="g_hideFooter" id="g_hideFooter">
-					<option value="0"{if !$options.general.hideFooter}selected{/if}>##SHOW##</option>
-					<option value="1"{if $options.general.hideFooter}selected{/if}>##HIDE##</option>
+					<option value="0" {if !$options.general.hideFooter}selected{/if}>##SHOW##</option>
+					<option value="1" {if $options.general.hideFooter}selected{/if}>##HIDE##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="g_hideFooter">&#11208;</button>
@@ -74,8 +74,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_sortByName">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="s_sortByName" id="s_sortByName">
-					<option value="1"{if $options.storage.sortByName}selected{/if}>##ALPHABETICALLY##</option>
-					<option value="0"{if !$options.storage.sortByName}selected{/if}>##FILL_LEVEL##</option>
+					<option value="1" {if $options.storage.sortByName}selected{/if}>##ALPHABETICALLY##</option>
+					<option value="0" {if !$options.storage.sortByName}selected{/if}>##FILL_LEVEL##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_sortByName">&#11208;</button>
@@ -89,8 +89,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_showVehicles">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="s_showVehicles" id="s_showVehicles">
-					<option value="1"{if $options.storage.showVehicles}selected{/if}>##SHOW##</option>
-					<option value="0"{if !$options.storage.showVehicles}selected{/if}>##HIDE##</option>
+					<option value="1" {if $options.storage.showVehicles}selected{/if}>##SHOW##</option>
+					<option value="0" {if !$options.storage.showVehicles}selected{/if}>##HIDE##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_showVehicles">&#11208;</button>
@@ -104,8 +104,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_onlyPallets">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="s_onlyPallets" id="s_onlyPallets">
-					<option value="1"{if $options.storage.onlyPallets}selected{/if}>##YES##</option>
-					<option value="0"{if !$options.storage.onlyPallets}selected{/if}>##NO##</option>
+					<option value="1" {if $options.storage.onlyPallets}selected{/if}>##YES##</option>
+					<option value="0" {if !$options.storage.onlyPallets}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_onlyPallets">&#11208;</button>
@@ -119,8 +119,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_showZero">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="s_showZero" id="s_showZero">
-					<option value="1"{if $options.storage.showZero}selected{/if}>##YES##</option>
-					<option value="0"{if !$options.storage.showZero}selected{/if}>##NO##</option>
+					<option value="1" {if $options.storage.showZero}selected{/if}>##YES##</option>
+					<option value="0" {if !$options.storage.showZero}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_showZero">&#11208;</button>
@@ -134,8 +134,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_hideAnimalsInStorage">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="s_hideAnimalsInStorage" id="s_hideAnimalsInStorage">
-					<option value="0"{if !$options.storage.hideAnimalsInStorage}selected{/if}>##YES##</option>
-					<option value="1"{if $options.storage.hideAnimalsInStorage}selected{/if}>##NO##</option>
+					<option value="0" {if !$options.storage.hideAnimalsInStorage}selected{/if}>##YES##</option>
+					<option value="1" {if $options.storage.hideAnimalsInStorage}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_hideAnimalsInStorage">&#11208;</button>
@@ -149,8 +149,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="s_3column">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="s_3column" id="s_3column">
-					<option value="1"{if $options.storage.3column}selected{/if}>##3COLUMN##</option>
-					<option value="0"{if !$options.storage.3column}selected{/if}>##4COLUMN##</option>
+					<option value="1" {if $options.storage.3column}selected{/if}>##3COLUMN##</option>
+					<option value="0" {if !$options.storage.3column}selected{/if}>##4COLUMN##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="s_3column">&#11208;</button>
@@ -167,8 +167,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_sortByName">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="p_sortByName" id="p_sortByName">
-					<option value="1"{if $options.production.sortByName}selected{/if}>##ALPHABETICALLY##</option>
-					<option value="0"{if !$options.production.sortByName}selected{/if}>##FILL_LEVEL##</option>
+					<option value="1" {if $options.production.sortByName}selected{/if}>##ALPHABETICALLY##</option>
+					<option value="0" {if !$options.production.sortByName}selected{/if}>##FILL_LEVEL##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_sortByName">&#11208;</button>
@@ -182,8 +182,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_sortFullProducts">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="p_sortFullProducts" id="p_sortFullProducts">
-					<option value="1"{if $options.production.sortFullProducts}selected{/if}>##SORT_FULL_PRODUCTS##</option>
-					<option value="0"{if !$options.production.sortFullProducts}selected{/if}>##IGNORE_FULL_PRODUCTS##</option>
+					<option value="1" {if $options.production.sortFullProducts}selected{/if}>##SORT_FULL_PRODUCTS##</option>
+					<option value="0" {if !$options.production.sortFullProducts}selected{/if}>##IGNORE_FULL_PRODUCTS##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_sortFullProducts">&#11208;</button>
@@ -197,8 +197,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_showTooltip">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="p_showTooltip" id="p_showTooltip">
-					<option value="1"{if $options.production.showTooltip}selected{/if}>##YES##</option>
-					<option value="0"{if !$options.production.showTooltip}selected{/if}>##NO##</option>
+					<option value="1" {if $options.production.showTooltip}selected{/if}>##YES##</option>
+					<option value="0" {if !$options.production.showTooltip}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_showTooltip">&#11208;</button>
@@ -212,8 +212,8 @@
 					<button class="btn btn-outline-secondary back-button" type="button" data-id="p_hideNotUsed">&#11207;</button>
 				</div>
 				<select class="custom-select text-center" name="p_hideNotUsed" id="p_hideNotUsed">
-					<option value="1"{if $options.production.hideNotUsed}selected{/if}>##YES##</option>
-					<option value="0"{if !$options.production.hideNotUsed}selected{/if}>##NO##</option>
+					<option value="1" {if $options.production.hideNotUsed}selected{/if}>##YES##</option>
+					<option value="0" {if !$options.production.hideNotUsed}selected{/if}>##NO##</option>
 				</select>
 				<div class="input-group-append">
 					<button class="btn btn-outline-secondary next-button" type="button" data-id="p_hideNotUsed">&#11208;</button>
@@ -240,8 +240,6 @@
 		</div>
 	</div>
 </form>
-</div>
-</div>
 <div class="modal fade" id="password_check" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<form action="index.php?page=options" method="post">
