@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<item name="bga" locationType="bga" ProdPerHour="1000" position="-111.3 111.65 113" showInProduction="true" isSellingPoint="true">
+		<input name="SILAGE" price="200" capacity="50000" factor="360" fillTypes="SILAGE" showInStorage="false" />
+		<input name="GRASS_WINDROW" price="44" capacity="&#8734;" factor="180" fillTypes="GRASS_WINDROW" showInStorage="false" />
+		<input name="DRYGRASS_WINDROW" price="44" capacity="&#8734;" factor="180" fillTypes="DRYGRASS_WINDROW" showInStorage="false" />
+		<input name="MANURE" price="200" capacity="&#8734;" factor="180" fillTypes="LIQUIDMANURE" showInStorage="false" />
+		<input name="LIQUIDMANURE" price="160" capacity="&#8734;" factor="180" fillTypes="MANURE" showInStorage="false" />
+		<output name="DIGESTATE" capacity="800000" factor="87" fillTypes="digestateSiloFillLevel" showInStorage="true" />
+	</item>
+	<item name="BunkerSilo_silo001" locationType="bunker" position="-45 0 -548" />
+	<item name="BunkerSilo_silo002" locationType="bunker" position="-35 0 -548" />
+	<item name="BunkerSilo_silo003" locationType="bunker" position="-25 0 -548" />
+	<item name="BunkerSilo_silo004" locationType="bunker" position="-55 0 -548" />
+	<item name="BunkerSilo_silo005" locationType="bunker" position="-65 0 -548" />
+	<l10n>
+		<text name="bga">
+			<cz>Bioplynka</cz>				
+			<en>bga</en>
+			<de>BGA</de>
+		</text>
+	</l10n>
+</mapconfig>
