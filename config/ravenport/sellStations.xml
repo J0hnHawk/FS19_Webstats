@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<item name="sellingStationRestaurant" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
+	<item name="sellingStationRanch" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
+	<item name="grainSiloCentral" locationType="TipTrigger" position="-949 0 571" isSellingPoint="true" />
+	<item name="sellingStationWool" locationType="TipTrigger" position="-946 0 -26" isSellingPoint="true" />
+	<item name="grainSiloPort" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
+	<item name="sellingStationBales" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
+	<item name="sellingStationWoodChips" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
+	<l10n>
+		<text name="sellingStationRestaurant">
+			<cz>Restaurace</cz>		
+			<en>Restaurace</en>			
+			<de>Restaurace</de>				
+		</text>
+		<text name="sellingStationRanch">
+			<cz>Ranč</cz>	
+			<en>Ranč</en>			
+			<de>Ranč</de>				
+		</text>
+		<text name="grainSiloCentral">
+			<cz>Centrální sýpka</cz>	
+			<en>Centrální sýpka</en>			
+			<de>Centrální sýpka</de>				
+		</text>
+		<text name="sellingStationWool">
+			<cz>Přádelna</cz>	
+			<en>Přádelna</en>			
+			<de>Přádelna</de>				
+		</text>
+		<text name="grainSiloPort">
+			<cz>Přístavní sýpka</cz>
+			<en>Přístavní</en>			
+			<de>Přístavní</de>				
+		</text>
+		<text name="sellingStationBales">
+			<cz>Seník</cz>	
+			<en>Seník</en>			
+			<de>Seník</de>				
+		</text>
+		<text name="sellingStationWoodChips">
+			<cz>Pila</cz>
+			<en>Pila</en>			
+			<de>Pila</de>				
+		</text>	
+	</l10n>
+</mapconfig>
