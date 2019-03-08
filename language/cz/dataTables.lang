@@ -1,0 +1,41 @@
+{
+	"sEmptyTable":   	"V tabulce nejsou žádné údaje",
+	"sInfo":         	"_START_ na _END_ z celkem _TOTAL_ položek",
+	"sInfoEmpty":    	"Žádné údaje nejsou k dispozici",
+	"sInfoFiltered": 	"(filtrován _MAX_ zápisy)",
+	"sInfoPostFix":  	"",
+	"sInfoThousands":  	".",
+	"sLengthMenu":   	"_MENU_ Zobrazit záznamy",
+	"sLoadingRecords": 	"Načítání ..",
+	"sProcessing":   	"Čekejte prosím ..",
+	"sSearch":       	"vyhledávání",
+	"sZeroRecords":  	"Žádné záznamy nejsou k dispozici",
+	"oPaginate": {
+		"sFirst":    	"První",
+		"sPrevious": 	"Zpět",
+		"sNext":     	"Další",
+		"sLast":     	"Poslední"
+	},
+	"oAria": {
+		"sSortAscending":  ": povolit řazení sloupce ve vzestupném pořadí",
+		"sSortDescending": ": povolit řazení sloupce v sestupném pořadí"
+	},
+	"select": {
+    	"rows": {
+			"_": "%d Vybrané řádky",
+			"0": "",
+			"1": "1 Vybrána linka"
+	    }
+	},
+	"buttons": {
+		"print":	"Vytisknout",
+		"colvis":	"Dělit",
+		"copy":		"Kopie",
+		"copyTitle":	"Kopírovat do schránky",
+		"copyKeys":	"Klávesa <i>ctrl</i> nebo <i>\u2318</i> + <i>C</i> u přehledu<br>kopírovat do mezipaměti.<br><br>Pro zrušení klikněte na zprávu nebo stiskněte klávesu Escape.",
+		"copySuccess": {
+			"_": "%d Zkopírovaly sloupce",
+			"1": "1 Sloupec byl zkopírován"
+		}
+	}
+}
