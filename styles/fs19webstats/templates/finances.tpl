@@ -45,7 +45,6 @@
 					<li class="text-right pr-3">{$assets.A3|number_format:0:",":"."}</li>
 					<li class="text-right pr-3 border-top">{$assets.A1+$assets.A2+$assets.A3|number_format:0:",":"."}</li>
 					<li><span class="h5">&nbsp;</span></li>
-					</li>
 					<li class="text-right pr-3">{$assets.B1|number_format:0:",":"."}</li>
 					<li class="text-right pr-3">{$assets.B2|number_format:0:",":"."}</li>
 					<li class="text-right pr-3">{$assets.B3|number_format:0:",":"."}</li>
@@ -53,7 +52,6 @@
 					<li class="text-right pr-3">{$assets.B5|number_format:0:",":"."}</li>
 					<li class="text-right pr-3 border-top">{$assets.B1+$assets.B2+$assets.B3+$assets.B4+$assets.B5|number_format:0:",":"."}</li>
 					<li><span class="h5">&nbsp;</span></li>
-					</li>
 					<li>&nbsp;</li>
 					<li class="text-right pr-3">{$assets.CI1|number_format:0:",":"."}</li>
 					<!-- <li class="text-right pr-3">{if isset($assets.CI2)}{$assets.CI2|number_format:0:",":"."}{/if}</li> -->
@@ -76,25 +74,21 @@
 						<li>##BS_PROFIT##</li>
 						<li class="nostyle border-top text-bold">##BS_SUM_SHAREHOLDERS_EQUITY##</li>
 					</ol>
-					</li>
 					<li><span class="h5">##BS_LIABILITIES##</span></li>
 					<ol>
 						<li>##BS_BANKDEBT##</li>
 						<li>##BS_BANKOPCREDIT##</li>
 						<li class="nostyle border-top text-bold">##BS_SUM_LIABILITIES##</li>
 					</ol>
-					</li>
 				</ul>
 			</div>
 			<div class="col-3">
 				<ul class="list-unstyled">
 					<li><span class="h5">&nbsp;</span></li>
-					</li>
 					<li class="text-right pr-3">{$liabilities.A1|number_format:0:",":"."}</li>
 					<li class="text-right pr-3">{$liabilities.A2|number_format:0:",":"."}</li>
 					<li class="text-right pr-3 border-top">{$liabilities.A1+$liabilities.A2|number_format:0:",":"."}</li>
 					<li><span class="h5">&nbsp;</span></li>
-					</li>
 					<li class="text-right pr-3">{$liabilities.B1|number_format:0:",":"."}</li>
 					<li class="text-right pr-3">{$liabilities.B2|number_format:0:",":"."}</li>
 					<li class="text-right pr-3 border-top">{$liabilities.B1+$liabilities.B2|number_format:0:",":"."}</li>
@@ -213,7 +207,7 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			Liquidität <a href="#BWLL" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
+			##BWL_L## <a href="#BWLL" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLl">
 			<p class="text-justify">##BWL_L_P1##</p>
@@ -296,7 +290,7 @@
 		        scrollY:        "55vh",
 		        "ordering": false,
 		        "dom":"<'row'<'col-sm-12'tr>>",
-		        scrollX:        false,
+		        scrollX:        true,
 		        scrollCollapse: true,
 		        paging:         false,
 		        fixedColumns:   true
