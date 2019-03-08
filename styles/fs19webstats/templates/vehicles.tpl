@@ -43,6 +43,7 @@
 		    var table = $('#vehicles').DataTable( {
 		    	//"pageLength": rw,
 		    	scrollY:        th,
+			scrollX:        true, 				
         		scrollCollapse: true,
        			paging:         false,
 		    	stateSave:		true,
