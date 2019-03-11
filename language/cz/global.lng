@@ -123,7 +123,7 @@ COPYRIGHT=Copyright
 
 //overview.tpl
 VERSION=Verze
-PLAYER=Hráč
+PLAYER=Hráči:
 UPTIME=Čas online
 ISADMIN=Admin
 POSITION=Pozice
@@ -207,7 +207,7 @@ FILL_LEVEL=podle úrovně plnění
 SHOW=zobrazit
 HIDE=nezobrazovat
 VEHICLE_LOAD=Náplň vozidla
-VEHICLE_LOAD_HELP=Zatížení vozidel může být zobrazeno v přehledu skladů a cen.
+VEHICLE_LOAD_HELP=Naplnění vozidel může být zobrazeno v přehledu skladů a cen.
 ONLY_PALETTS=Zobrazit pouze palety
 TOOLTIP=Nápověda
 TOOLTIP_HELP=Zobrazit stav skladu
