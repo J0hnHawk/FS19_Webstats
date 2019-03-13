@@ -375,6 +375,7 @@ MIS_PLOW=Orba
 MIS_MOW_BALE=Lisování balíků
 MIS_CULTIVATE=Kultivace
 MIS_SPRAY=Stříkání
+ABGESCHLOSSEN=Dokončené
 
 //farm.tpl
 FARMMANAGER=Manažér farmy
