@@ -22,7 +22,8 @@
 					<td class="text-right pr-3">{$mission.reward|number_format:0:",":"."}</td>
 					<td class="text-right pr-3">{if isset($mission.field)}{$mission.vehicleUseCost|number_format:0:",":"."}{/if}</td>
 					<td class="col-2">{if isset($mission.farmId)}{$farms[$mission.farmId].name}{/if}</td>
- 					<td>{if $mission.success}##ABGESCHLOSSEN##{elseif $mission.status}##ACTIVE##{/if}</td>				</tr>
+ 					<td>{if $mission.success}##ABGESCHLOSSEN##{elseif $mission.status}##ACTIVE##{/if}</td>	
+				</tr>
 				{/foreach}
 			</tbody>
 		</table>
