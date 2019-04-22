@@ -357,7 +357,7 @@ BWL_GKR_P2=Návratnost celkového kapitálu poskytuje informace o tom, jak vysok
 BWL_COPYRIGHT=Vzorce a popisy
 
 //missions.tpl
-MISSIONS=Mise
+MISSIONS=Zakázky
 TYPE=Typ
 REWARD=Odměna
 FIELD=Pole
