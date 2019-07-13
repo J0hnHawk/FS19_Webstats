@@ -100,6 +100,45 @@ class Savegame {
 					self::$xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
 				break;
+			case 'curl' :
+				$username = $config ['user']; 
+				$password = $config ['pass']; 
+				$url = $config ['server']; 
+				$loginUrl = $url . 'index.html?lang=de';
+				$savegameUrl = $url . 'savegame1';
+				$logoutUrl = $url . 'index.html?logout=true&lang=de';
+				$zipFile = $this->cache . 'savegame.zip';
+				$cacheTimeout = 60;
+				if (file_exists ( $zipFile ) && filemtime ( $zipFile ) > (time () - ($cacheTimeout) + rand ( 0, 10 ))) {
+				} else {
+					$ch = curl_init ();
+					curl_setopt ( $ch, CURLOPT_URL, $loginUrl );
+					curl_setopt ( $ch, CURLOPT_POST, 1 );
+					curl_setopt ( $ch, CURLOPT_POSTFIELDS, "username=$username&password=$password&login=Anmelden" );
+					curl_setopt ( $ch, CURLOPT_COOKIEJAR, 'cookie.txt' );
+					curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+					$store = curl_exec ( $ch );
+					curl_setopt ( $ch, CURLOPT_URL, $savegameUrl );
+					$content = curl_exec ( $ch );
+					file_put_contents ( $zipFile, $content );
+					curl_setopt ( $ch, CURLOPT_URL, $logoutUrl );
+					$store = curl_exec ( $ch );
+					// curl_close ( $ch );
+					$zip = new ZipArchive ();
+					$extractPath = "./cache";
+					if ($zip->open ( $zipFile ) != "true") {
+						echo "Error :- Unable to open the Zip File";
+					}
+					$zip->extractTo ( $extractPath );
+					$zip->close ();
+				}
+				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
+					$basename = basename ( $this->xmlFiles [$s1], '.xml' );
+					self::$xml [$basename] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+					$this->$basename = new stdClass ();
+					$this->$basename = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+				}
+				break;
 			case 'api' :
 				break;
 		}
