@@ -43,6 +43,12 @@
 			<de>Stroh</de>
 			<fr>Paille</fr>
 		</text>
+		<text name="cottonModule488">
+			<cz>cottonModule488</cz>
+			<en>cottonModule488</en>
+			<de>Baumwolle</de>
+			<fr>cottonModule488</fr>
+		</text>
 		<!-- Round bales -->
 		<text name="roundbaleGrass_w112_d130">
 			<cz>Tráva</cz>
