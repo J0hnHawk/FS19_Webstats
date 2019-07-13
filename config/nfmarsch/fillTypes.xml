@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="TRITICALE">
+			<cz>TRITICALE</cz>
+			<en>TRITICALE</en>
+			<de>Triticale</de>
+			<fr>TRITICALE</fr>
+		</text>
+		<text name="POPPY">
+			<cz>POPPY</cz>
+			<en>POPPY</en>
+			<de>Mohn</de>
+			<fr>POPPY</fr>
+		</text>
+		<text name="MILLET">
+			<cz>MILLET</cz>
+			<en>MILLET</en>
+			<de>Hirse</de>
+			<fr>MILLET</fr>
+		</text>
+	</l10n>
+</mapconfig>
