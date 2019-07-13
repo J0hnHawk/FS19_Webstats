@@ -123,7 +123,9 @@
 <div class="row mt-3">
 	<div class="col-6">
 		<h5>
-			##BWL_ADG## <a href="#BWLADG" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.adg|number_format:0:",":"."} %</span>
+			##BWL_ADG##
+			<a href="#BWLADG" data-toggle="collapse" class="small">Details</a>
+			<span class="float-right">{$ratios.adg|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLADG">
 			<p class="text-justify">##BWL_ADG_P1##</p>
@@ -139,7 +141,9 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			##BWL_EKQ## <a href="#BWLEKQ" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekq|number_format:0:",":"."} %</span>
+			##BWL_EKQ##
+			<a href="#BWLEKQ" data-toggle="collapse" class="small">Details</a>
+			<span class="float-right">{$ratios.ekq|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLEKQ">
 			<p class="text-justify">##BWL_EKQ_P1##</p>
@@ -155,7 +159,9 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			##BWL_EKR## <a href="#BWLEKR" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.ekr|number_format:0:",":"."} %</span>
+			##BWL_EKR##
+			<a href="#BWLEKR" data-toggle="collapse" class="small">Details</a>
+			<span class="float-right">{$ratios.ekr|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLEKR">
 			<p class="text-justify">##BWL_EKR_P1##</p>
@@ -171,7 +177,9 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			##BWL_FKQ## <a href="#BWLFKQ" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkq|number_format:0:",":"."} %</span>
+			##BWL_FKQ##
+			<a href="#BWLFKQ" data-toggle="collapse" class="small">Details</a>
+			<span class="float-right">{$ratios.fkq|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLFKQ">
 			<p class="text-justify">##BWL_FKQ_P1##</p>
@@ -187,7 +195,9 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			##BWL_FKD## <a href="#BWLFK" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.fkd|number_format:0:",":"."} %</span>
+			##BWL_FKD##
+			<a href="#BWLFK" data-toggle="collapse" class="small">Details</a>
+			<span class="float-right">{$ratios.fkd|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLFK">
 			<p class="text-justify">##BWL_FKD_P1##</p>
@@ -207,7 +217,9 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			##BWL_L## <a href="#BWLL" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
+			##BWL_L##
+			<a href="#BWLL" data-toggle="collapse" class="small">Details</a>
+			<span class="float-right">{$ratios.l3g|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLl">
 			<p class="text-justify">##BWL_L_P1##</p>
@@ -223,7 +235,9 @@
 	</div>
 	<div class="col-6">
 		<h5>
-			##BWL_GKR## <a href="#BWLGKR" data-toggle="collapse" class="small">Details</a><span class="float-right">{$ratios.gkr|number_format:0:",":"."} %</span>
+			##BWL_GKR##
+			<a href="#BWLGKR" data-toggle="collapse" class="small">Details</a>
+			<span class="float-right">{$ratios.gkr|number_format:0:",":"."} %</span>
 		</h5>
 		<div class="collapse" id="BWLGKR">
 			<p class="text-justify">##BWL_GKR_P1##</p>
@@ -241,7 +255,8 @@
 	</div>
 	<div class="col-12">
 		<p class="text-center">
-			##BWL_COPYRIGHT## <a href="https://debitoor.de/lexikon">debitor</a>
+			##BWL_COPYRIGHT##
+			<a href="https://debitoor.de/lexikon">debitor</a>
 		</p>
 	</div>
 </div>
@@ -253,6 +268,7 @@
 			<thead>
 				<tr>
 					<th>##INCOME_EXPENDITURE##</th>
+					{if $currentDay < 4}{$currentDay=$currentDay+7}{/if}
 					<th class="text-right">##{$weekdays[($currentDay-4)%7]}##</th>
 					<th class="text-right">##{$weekdays[($currentDay-3)%7]}##</th>
 					<th class="text-right">##{$weekdays[($currentDay-2)%7]}##</th>
@@ -264,14 +280,15 @@
 				{foreach $financeElements as $element => $category}
 				<tr>
 					<td>##{$element|strtoupper}##</td> {for $day = 4 to 0 step -1}
-					<td class="text-right" style="width: 13%">{$financeHistory.$day.$element|number_format:0:",":"."}</td> {/for}
+					<td class="text-right" style="width: 13%">{if isset($financeHistory.$day)}{$financeHistory.$day.$element|number_format:0:",":"."}{/if}</td>
+					{/for}
 				</tr>
 				{/foreach}
 			</tbody>
 			<tfoot>
 				<tr>
 					<th>##TOTAL##</th> {for $day = 4 to 0 step -1}
-					<th class="text-right" style="width: 13%">{$financeHistory.$day.total|number_format:0:",":"."}</th> {/for}
+					<th class="text-right" style="width: 13%">{if isset($financeHistory.$day)}{$financeHistory.$day.total|number_format:0:",":"."}{/if}</th> {/for}
 				</tr>
 				<tr>
 					<td colspan="4"><strong>##BALANCE1##</strong></td>
@@ -279,7 +296,8 @@
 				</tr>
 				<tr>
 					<td colspan="4"><strong>##BALANCE2##</strong></td>
-					<td class="text-right {if $money-$loan < 0}text-danger{else}text-success{/if}" colspan="2"><strong>(##LOAN##: {{$loan|number_format:0:",":"."}}) {($money-$loan)|number_format:0:",":"."}</strong></td>
+					<td class="text-right {if $money-$loan < 0}text-danger{else}text-success{/if}" colspan="2"><strong>(##LOAN##: {{$loan|number_format:0:",":"."}})
+							{($money-$loan)|number_format:0:",":"."}</strong></td>
 				</tr>
 			</tfoot>
 		</table>
