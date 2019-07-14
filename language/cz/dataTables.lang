@@ -1,30 +1,30 @@
 {
-	"sEmptyTable":   	"V tabulce nejsou žádné údaje",
-	"sInfo":         	"_START_ na _END_ z celkem _TOTAL_ položek",
-	"sInfoEmpty":    	"Žádné údaje nejsou k dispozici",
-	"sInfoFiltered": 	"(filtrován _MAX_ zápisy)",
+	"sEmptyTable":   	"Tabulka neobsahuje žádná data",
+	"sInfo":         	"Zobrazuji _START_ až _END_ z celkem _TOTAL_ záznamů",
+	"sInfoEmpty":    	"Zobrazuji 0 až 0 z 0 záznamů",
+	"sInfoFiltered": 	"(filtrováno z celkem _MAX_ záznamů)",
 	"sInfoPostFix":  	"",
 	"sInfoThousands":  	".",
-	"sLengthMenu":   	"_MENU_ Zobrazit záznamy",
-	"sLoadingRecords": 	"Načítání ..",
-	"sProcessing":   	"Čekejte prosím ..",
-	"sSearch":       	"vyhledávání",
-	"sZeroRecords":  	"Žádné záznamy nejsou k dispozici",
+	"sLengthMenu":   	"Zobraz záznamů _MENU_",
+	"sLoadingRecords": 	"Načítám...",
+	"sProcessing":   	"Provádím...",
+	"sSearch":       	"Hledat:",
+	"sZeroRecords":  	"Žádné záznamy nebyly nalezeny",
 	"oPaginate": {
 		"sFirst":    	"První",
-		"sPrevious": 	"Zpět",
+		"sPrevious": 	"Poslední",
 		"sNext":     	"Další",
-		"sLast":     	"Poslední"
+		"sLast":     	"Předchozí"
 	},
 	"oAria": {
-		"sSortAscending":  ": povolit řazení sloupce ve vzestupném pořadí",
-		"sSortDescending": ": povolit řazení sloupce v sestupném pořadí"
+		"sSortAscending":  ": aktivujte pro řazení sloupce vzestupně",
+		"sSortDescending": ": aktivujte pro řazení sloupce sestupně"
 	},
 	"select": {
     	"rows": {
-			"_": "%d Vybrané řádky",
+			"_": "%d vybraný řádek",
 			"0": "",
-			"1": "1 Vybrána linka"
+			"1": "1 vybraný řádek"
 	    }
 	},
 	"buttons": {
@@ -34,7 +34,7 @@
 		"copyTitle":	"Kopírovat do schránky",
 		"copyKeys":	"Klávesa <i>ctrl</i> nebo <i>\u2318</i> + <i>C</i> u přehledu<br>kopírovat do mezipaměti.<br><br>Pro zrušení klikněte na zprávu nebo stiskněte klávesu Escape.",
 		"copySuccess": {
-			"_": "%d Zkopírovaly sloupce",
+			"_": "%d sloupce zkopírovány",
 			"1": "1 Sloupec byl zkopírován"
 		}
 	}
