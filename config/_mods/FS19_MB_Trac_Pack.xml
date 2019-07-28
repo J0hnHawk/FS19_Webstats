@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<vehicles>
+		<vehicle basename="MBTrac.xml" type="tractor" name="MB trac" brand="MERCEDES" lifetime="600" category="tractorsM" wearable="480">
+			<motor id="1" name="1400" />
+			<motor id="2" name="1500" />
+			<motor id="3" name="1600" />
+			<motor id="4" name="1800" />
+			<motor id="5" name="2400" />
+			<motor id="6" name="1800 BB" />
+		</vehicle>
+	</vehicles>
+</mapconfig>
