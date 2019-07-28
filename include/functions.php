@@ -124,9 +124,11 @@ function loadXMLMapConfig($directory, $language) {
 			}
 		}
 		if (isset ( $object->Farmlands )) {
-			$objects = array_merge ( $objects, array (
-					'Farmlands' => array () 
-			) );
+			if (! isset ( $objects ['Farmlands'] )) {
+				$objects = array_merge ( $objects, array (
+						'Farmlands' => array () 
+				) );
+			}
 			foreach ( $object->Farmlands->Farmland as $Farmland ) {
 				$name = strval ( $Farmland ['id'] );
 				foreach ( $Farmland->attributes () as $attribute => $value ) {
@@ -137,9 +139,11 @@ function loadXMLMapConfig($directory, $language) {
 			}
 		}
 		if (isset ( $object->fillTypes )) {
-			$objects = array_merge ( $objects, array (
-					'fillTypes' => array () 
-			) );
+			if (! isset ( $objects ['fillTypes'] )) {
+				$objects = array_merge ( $objects, array (
+						'fillTypes' => array () 
+				) );
+			}
 			foreach ( $object->fillTypes->fillType as $fillType ) {
 				$name = strval ( $fillType ['name'] );
 				foreach ( $fillType->attributes () as $attribute => $value ) {
@@ -150,9 +154,11 @@ function loadXMLMapConfig($directory, $language) {
 			}
 		}
 		if (isset ( $object->vehicles )) {
-			$objects = array_merge ( $objects, array (
-					'vehicles' => array ()
-			) );
+			if (! isset ( $objects ['vehicles'] )) {
+				$objects = array_merge ( $objects, array (
+						'vehicles' => array () 
+				) );
+			}
 			foreach ( $object->vehicles->vehicle as $vehicle ) {
 				$name = strval ( $vehicle ['basename'] );
 				foreach ( $vehicle->attributes () as $attribute => $value ) {
