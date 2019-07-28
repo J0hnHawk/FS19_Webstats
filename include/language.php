@@ -22,13 +22,13 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 
-$languageFromBrowser = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+$languageFromBrowser = substr ( $_SERVER ['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
 if (file_exists ( './language/' . $languageFromBrowser . '/global.lng' )) {
 	$defaultLanguage = $languageFromBrowser;
 } else {
 	$defaultLanguage = 'en'; // if you change the default language make sure the language file exists
 }
-//setlocale ( LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge' );
+// setlocale ( LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge' );
 
 if (! isset ( $_SESSION ['language'] )) {
 	$_SESSION ['language'] = $defaultLanguage;
@@ -61,7 +61,8 @@ function getLanguages() {
 				$languages [$entry] = array (
 						'path' => $entry,
 						'englishName' => trim ( $langFile [0] ),
-						'localName' => trim ( $langFile [1] ) 
+						'localName' => trim ( $langFile [1] ),
+						'fileInfo' => trim ( $langFile [2] ) 
 				);
 			}
 		}
