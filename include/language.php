@@ -28,10 +28,15 @@ if (file_exists ( './language/' . $languageFromBrowser . '/global.lng' )) {
 } else {
 	$defaultLanguage = 'en'; // if you change the default language make sure the language file exists
 }
-// setlocale ( LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge' );
 
 if (! isset ( $_SESSION ['language'] )) {
 	$_SESSION ['language'] = $defaultLanguage;
+}
+
+$creatorLanguageFile = getLanguageFileCreator ( $_SESSION ['language'] );
+function getLanguageFileCreator($language) {
+	$languages = getLanguages ();
+	return $languages [$language] ['fileInfo'];
 }
 function getLangFile($language) {
 	$langArray = array ();

@@ -7,6 +7,7 @@
 	<p>
 		Download FS19 Web Stats at <a href="https://github.com/J0hnHawk/FS19_WebStats" target="_blank">GitHub</a>. It is released under the terms of the <a href="http://www.gnu.org/licenses/">GNU General Public License</a>
 	</p>
+	<p>##LANGUAGE_FILE_CREATOR##: {$creatorLanguageFile}<br>##MAP_CONFIG_CREATOR##: {$map.configBy}<p>
 	<p class="text-right">{$onlineUser} ##USER_ONLINE##</p>
 </div>
 <div class="row">

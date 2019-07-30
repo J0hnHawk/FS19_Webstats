@@ -72,6 +72,7 @@ if ($serverOnline) {
 $smarty->assign ( 'navItems', $nav->items );
 $smarty->assign ( 'reloadPage', $options ['general'] ['reload'] );
 $smarty->assign ( 'serverOnline', $serverOnline );
+$smarty->assign ( 'creatorLanguageFile', $creatorLanguageFile );
 $smarty->setTemplateDir ( "./styles/$style/templates" );
 $smarty->assign ( 'style', $style );
 $tpl_source = $smarty->fetch ( 'index.tpl', $style, $style );

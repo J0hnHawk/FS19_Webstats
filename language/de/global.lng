@@ -105,8 +105,8 @@ CON_ERROR_2=Es konnten keine Daten vom Dedicated Server abgerufen werden.<br>Bit
 USER_ONLINE=Benutzer online
 INFO_1=Webseite zur Anzeige des Serverstatus sowie Überwachung der Produktionsanlagen und Lagerbestände.
 INFO_2=Anregungen, Hilfe und Verbesserungsvorschläge von
-INFO_3=Programmierung
-INFO_4=Kartenkonfiguration
+MAP_CONFIG_CREATOR=Kartenkonfiguration erstellt von
+LANGUAGE_FILE_CREATOR=Web Stats Sprachdatei erstellt von
 LICENSE=Informationen zur Lizenzierung
 
 //navbar.tpl
