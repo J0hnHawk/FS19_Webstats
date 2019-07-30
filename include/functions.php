@@ -643,3 +643,42 @@ function getVehicleClass($category, $type) {
 		return 'tool';
 	}
 }
+function writeConfig2XML($configFile, $config) {
+	$webStatsConfig = new SimpleXMLElement ( '<?xml version="1.0" encoding="UTF-8"?><config></config>' );
+	$element = $webStatsConfig->addChild ( 'adminPass', $config ['adminPass'] );
+	$element = $webStatsConfig->addChild ( 'map', $config ['map'] );
+	$element = $webStatsConfig->addChild ( 'savegame' );
+	$savegame = $element->addChild ( 'type', $config ['type'] );
+	switch ($config ['type']) {
+		case 'api' :
+			$savegame = $element->addChild ( 'server', $config ['serverIp'] );
+			$savegame = $element->addChild ( 'port', $config ['serverPort'] );
+			$savegame = $element->addChild ( 'code', $config ['serverCode'] );
+			break;
+		case 'web' :
+			$savegame = $element->addChild ( 'url', $config ['url'] );
+			$savegame = $element->addChild ( 'slot', $config ['slot'] );
+			$savegame = $element->addChild ( 'user', $config ['user'] );
+			$savegame = $element->addChild ( 'pass', $config ['pass'] );
+			break;
+		case 'ftp' :
+			$savegame = $element->addChild ( 'server', $config ['server'] );
+			$savegame = $element->addChild ( 'port', $config ['port'] );
+			$savegame = $element->addChild ( 'ssl', ($config ['ssl']) ? 'true' : 'false' );
+			$savegame = $element->addChild ( 'path', $config ['path'] );
+			$savegame = $element->addChild ( 'user', $config ['user'] );
+			$savegame = $element->addChild ( 'pass', $config ['pass'] );
+			$savegame = $element->addChild ( 'gportal', ($config ['isgportal']) ? 'true' : 'false' );
+			break;
+		case 'local' :
+			$savegame = $element->addChild ( 'path', $config ['path'] );
+			break;
+	}
+	// Format XML to save indented tree rather than one line and save
+	// https://stackoverflow.com/questions/798967/php-simplexml-how-to-save-the-file-in-a-formatted-way
+	$dom = new DOMDocument ( '1.0' );
+	$dom->preserveWhiteSpace = false;
+	$dom->formatOutput = true;
+	$dom->loadXML ( $webStatsConfig->asXML () );
+	$dom->save ( $configFile );
+}

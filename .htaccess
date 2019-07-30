@@ -7,18 +7,25 @@
 			Order Allow,Deny
 			Deny from All
 		</Files>
+		<Files "webStatsConfig.xml">
+			Order Allow,Deny
+			Deny from All
+		</Files>
 		<Files "onlineUser.conf">
 			Order Allow,Deny
 			Deny from All
-		</Files>		
+		</Files>
 	</IfVersion>
 	<IfVersion >= 2.4>
 		<Files "server.conf">
 			Require all denied
 		</Files>
+		<Files "webStatsConfig.xml">
+			Require all denied
+		</Files>
 		<Files "onlineUser.conf">
 			Require all denied
-		</Files>		
+		</Files>
 	</IfVersion>
 </IfModule>
 <IfModule !mod_version.c>
@@ -27,18 +34,25 @@
 			Order Allow,Deny
 			Deny from All
 		</Files>
+		<Files "webStatsConfig.xml">
+			Order Allow,Deny
+			Deny from All
+		</Files>
 		<Files "onlineUser.conf">
 			Order Allow,Deny
 			Deny from All
-		</Files>		
+		</Files>
 	</IfModule>
 	<IfModule mod_authz_core.c>
 		<Files "server.conf">
 			Require all denied
 		</Files>
+		<Files "webStatsConfig.xml">
+			Require all denied
+		</Files>
 		<Files "onlineUser.conf">
 			Require all denied
-		</Files>			
+		</Files>
 	</IfModule>
 </IfModule>
 # Prevent directory listing

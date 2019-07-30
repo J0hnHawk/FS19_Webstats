@@ -53,23 +53,21 @@ class Savegame {
 	);
 	private $ftp = array ();
 	private $cache = './cache/';
-	public function __construct($farmId = 0) {
+	public function __construct($webStatsConfig, $farmId = 0) {
 		$this->test = new stdClass ();
-		$config = file ( './config/server.conf' );
-		$config = unserialize ( $config [0] );
 		if (! file_exists ( $this->cache )) {
 			mkdir ( $this->cache );
 		}
 		$this->farmId = $farmId;
-		switch ($config ['type']) {
+		switch ($webStatsConfig->savegame->type) {
 			case 'ftp' :
-				$this->ftp ['server'] = $config ['server'];
-				$this->ftp ['port'] = $config ['port'];
-				$this->ftp ['ssl'] = $config ['ssl'];
-				$this->ftp ['path'] = $config ['path'];
-				$this->ftp ['user'] = $config ['user'];
-				$this->ftp ['pass'] = $config ['pass'];
-				$this->ftp ['isgportal'] = $config ['isgportal'];
+				$this->ftp ['server'] = $webStatsConfig->savegame->server;
+				$this->ftp ['port'] = $webStatsConfig->savegame->port;
+				$this->ftp ['ssl'] = get_bool ( $webStatsConfig->savegame->ssl );
+				$this->ftp ['path'] = $webStatsConfig->savegame->path;
+				$this->ftp ['user'] = $webStatsConfig->savegame->user;
+				$this->ftp ['pass'] = $webStatsConfig->savegame->pass;
+				$this->ftp ['isgportal'] = get_bool ( $webStatsConfig->savegame->gportal );
 				$updateFiles = true;
 				if (file_exists ( $this->cache . $this->xmlFiles [0] )) {
 					self::$xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
@@ -95,20 +93,20 @@ class Savegame {
 				}
 				break;
 			case 'local' :
-				$this->cache = $config ['path'];
+				$this->cache = $webStatsConfig->savegame->path;
 				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
 					self::$xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
 				break;
-			case 'curl' :
-				$username = $config ['user']; 
-				$password = $config ['pass']; 
-				$url = $config ['server']; 
+			case 'web' :
+				$username = $webStatsConfig->savegame->user;
+				$password = $webStatsConfig->savegame->pass;
+				$url = $webStatsConfig->savegame->url;
 				$loginUrl = $url . 'index.html?lang=de';
-				$savegameUrl = $url . 'savegame1';
+				$savegameUrl = $url . $webStatsConfig->savegame->slot;
 				$logoutUrl = $url . 'index.html?logout=true&lang=de';
 				$zipFile = $this->cache . 'savegame.zip';
-				$cacheTimeout = 60;
+				$cacheTimeout = 6000;
 				if (file_exists ( $zipFile ) && filemtime ( $zipFile ) > (time () - ($cacheTimeout) + rand ( 0, 10 ))) {
 				} else {
 					$ch = curl_init ();
@@ -124,13 +122,15 @@ class Savegame {
 					curl_setopt ( $ch, CURLOPT_URL, $logoutUrl );
 					$store = curl_exec ( $ch );
 					// curl_close ( $ch );
-					$zip = new ZipArchive ();
-					$extractPath = "./cache";
-					if ($zip->open ( $zipFile ) != "true") {
-						echo "Error :- Unable to open the Zip File";
+					if (class_exists ( 'ZipArchive' )) {
+						$zip = new ZipArchive ();
+						$extractPath = "./cache";
+						if ($zip->open ( $zipFile ) != "true") {
+							echo "Error :- Unable to open the Zip File";
+						}
+						$zip->extractTo ( $extractPath );
+						$zip->close ();
 					}
-					$zip->extractTo ( $extractPath );
-					$zip->close ();
 				}
 				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
 					$basename = basename ( $this->xmlFiles [$s1], '.xml' );

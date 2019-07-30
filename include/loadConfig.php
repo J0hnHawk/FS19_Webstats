@@ -40,11 +40,14 @@ while ( ($entry = $stylesDir->read ()) != false ) {
 $stylesDir->close ();
 
 // Load server configuration - start install if it does not exists
-$configFile = './config/server.conf';
+$configFile = './config/webStatsConfig.xml';
+$oldConfigFile = './config/server.conf';
 if (file_exists ( $configFile )) {
-	$config = file ( $configFile );
-	$config = unserialize ( $config [0] );
-	$smarty->assign ( 'configType', $config ['type'] );
+	$webStatsConfig = simplexml_load_file ( $configFile );
+} elseif (file_exists ( $oldConfigFile )) {
+	$config = file ( $oldConfigFile );
+	writeConfig2XML ( $configFile, unserialize ( $config [0] ) );
+	unlink ( $oldConfigFile );
 } else {
 	define ( 'IN_INSTALL', true );
 	include ('./include/install.php');
@@ -52,7 +55,7 @@ if (file_exists ( $configFile )) {
 }
 
 // Load map infomations
-$map = loadMapCFGfile ( $config ['map'] );
+$map = loadMapCFGfile ( $webStatsConfig->map );
 $smarty->assign ( 'map', $map );
 
 $userLang = $_SESSION ['language'];
@@ -69,7 +72,7 @@ $mapconfig ['pallets'] = array_merge ( $pallets, $mapconfig ['pallets'] );
 $mapconfig ['vehicles'] = array_merge ( $vehicles, $mapconfig ['vehicles'] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
 // Kartenkonfiguration aus XML Dateien laden
-$loadedConfig = loadXMLMapConfig ( $config ['map'], $userLang );
+$loadedConfig = loadXMLMapConfig ( $webStatsConfig->map, $userLang );
 $pallets = $mapconfig ['pallets'];
 $vehicles = $mapconfig ['vehicles'];
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );

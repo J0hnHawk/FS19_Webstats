@@ -67,11 +67,6 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 				}
 				break;
 			case 'ftp' :
-				/*
-				 * FTP does not work properly on G-Portal Server! 
-				 * It is possible to connect, login an check if a folder exists. 
-				 * But I had no luck to get the directory list or to download a file.
-				 */
 				$config += array (
 						'type' => 'ftp',
 						'server' => GetParam ( 'ftpserver', 'P' ),
@@ -101,6 +96,16 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 					$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_FTPSERVER##</div>';
 				}
 				break;
+			case 'web' :
+				$weburl = pathinfo ( GetParam ( 'weburl', 'P' ) );
+				$config += array (
+						'type' => 'web',
+						'url' => $weburl ['dirname'] . '/',
+						'slot' => GetParam ( 'webslot', 'P' ),
+						'user' => GetParam ( 'webuser', 'P' ),
+						'pass' => GetParam ( 'webpass', 'P' ) 
+				);
+				break;
 			case 'local' :
 				$config += array (
 						'type' => 'local',
@@ -122,9 +127,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 		}
 		if (! $error) {
 			$config ['adminPass'] = password_hash ( $config ['adminPass'], PASSWORD_DEFAULT );
-			$fp = fopen ( './config/server.conf', 'w' );
-			fwrite ( $fp, serialize ( $config ) );
-			fclose ( $fp );
+			writeConfig2XML ( './config/webStatsConfig.xml', $config );
 			$success = true;
 		}
 	}

@@ -55,11 +55,18 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
+			<!-- <div class="col-md-4">
 				<h2>##HEAD_API##</h2>
 				<p>##DESCR_API##</p>
 				<p>
 					<a class="btn btn-secondary" href="index.php?mode=api" role="button">##START_INSTALL## &raquo;</a>
+				</p>
+			</div> -->
+			<div class="col-md-4">
+				<h2>##HEAD_WEB##</h2>
+				<p>##DESCR_WEB##</p>
+				<p>
+					<a class="btn btn-secondary" href="index.php?mode=web" role="button">##START_INSTALL## &raquo;</a>
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -78,157 +85,11 @@
 			</div>
 		</div>
 	</div>
-	{else if $mode=='api'}
-	<div class="container">
-		<h3 class="mt-3">##INSTALL_TITLE## ##HEAD_API##</h3>
-		<form class="form-horizontal" action="index.php?mode={$mode}" method="post">
-			{if $fsockopen} {if $error}{$error}{/if}
-			<div class="form-group">
-				<label for="Server-IP" class="col-sm-3 control-label">##DS_LABEL1##</label>
-				<div class="col-sm-7">
-					<input type="ip" name="serverip" class="form-control" id="Server-IP" placeholder="##DS_PLACEHOLDE1##" {if isset($postdata.serverIp)}value="{$postdata.serverIp}"{/if}> <span id="helpBlock" class="help-block">##DS_HELP_BLOCK1##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="Server-Port" class="col-sm-3 control-label">##DS_LABEL2##</label>
-				<div class="col-sm-7">
-					<input type="text" name="serverport" class="form-control" id="Server-Port" placeholder="##DS_PLACEHOLDE2##" {if isset($postdata.serverPort)}value="{$postdata.serverPort}"{/if}> <span id="helpBlock" class="help-block">##DS_HELP_BLOCK2##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="Server-Code" class="col-sm-3 control-label">##DS_LABEL3##</label>
-				<div class="col-sm-7">
-					<input type="text" name="servercode" class="form-control" id="Server-Code" placeholder="##DS_PLACEHOLDE3##" {if isset($postdata.serverCode)}value="{$postdata.serverCode}"{/if}> <span id="helpBlock" class="help-block">##DS_HELP_BLOCK3##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">##DS_LABEL4##</label>
-				<div class="col-sm-7">
-					<select class="form-control" id="map" name="map"> {foreach $maps as $mapDir => $mapData}
-						<option value="{$mapDir}">{$mapData.Name} {$mapData.Version}</option> {/foreach}
-					</select><span id="helpBlock" class="help-block">##DS_HELP_BLOCK4##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="password" class="col-sm-3 control-label">##DS_LABEL5##</label>
-				<div class="col-sm-7 form-inline">
-					<input type="password" name="adminpass1" class="form-control" id="password" placeholder="##DS_PLACEHOLDE5##">&nbsp;<input type="password" name="adminpass2" class="form-control" id="password" placeholder="##DS_PLACEHOLDE6##"> <span id="helpBlock" class="help-block">##DS_HELP_BLOCK5##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-7 col-sm-3">
-					<button type="submit" name="submit" value="gameSettings" class="pull-right btn btn-primary btn-block">##SAVE_CONFIG##</button>
-				</div>
-			</div>
-			{else}
-			<p class="lead">##NO_INSTALL_1##</p>
-			<p class="lead">##NO_INSTALL_2##</p>
-			{/if}
-		</form>
-	</div>
-	{else if $mode=='ftp'}
-	<div class="container">
-		<h3 class="mt-3">##INSTALL_TITLE## ##HEAD_FTP##</h3>
-		<form class="form-horizontal" action="index.php?mode={$mode}" method="post">
-			{if $error}{$error}{/if}
-			<div class="form-group row">
-				<label for="ftpserver" class="col-sm-3 col-form-label">##FTPADRESS##</label>
-				<div class="col-sm-7">
-					<input type="ip" class="form-control" id="ftpserver" name="ftpserver" placeholder="0.0.0.0">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="ftpport" class="col-sm-3 col-form-label">##FTPPORT##</label>
-				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftpport" name="ftpport" placeholder="21">
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-sm-3">##FTPOPTIONS##</div>
-				<div class="col-sm-7">
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="ftpssl" name="ftpssl"> <label class="form-check-label pl-1" for="ftpssl">##FTPSSLCON##</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="checkbox" id="ftpgportal" name="ftpgportal"> <label class="form-check-label pl-1" for="ftpgportal">G-Portal Game Server</label>
-					</div>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="ftppath" class="col-sm-3 col-form-label">##FTPPATH##</label>
-				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftppath" name="ftppath" placeholder="/folder/subfolder/">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="ftpuser" class="col-sm-3 col-form-label">##FTPUSER##</label>
-				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftpuser" name="ftpuser">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="ftppass" class="col-sm-3 col-form-label">##FTPPASSWORD##</label>
-				<div class="col-sm-7">
-					<input type="text" class="form-control" id="ftppass" name="ftppass">
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-3 control-label">##DS_LABEL4##</label>
-				<div class="col-sm-7">
-					<select class="form-control" id="map" name="map"> {foreach $maps as $mapDir => $mapData}
-						<option value="{$mapDir}">{$mapData.Name} {$mapData.Version}</option> {/foreach}
-					</select><span id="helpBlock" class="help-block">##DS_HELP_BLOCK4##</span>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="password" class="col-sm-3 control-label">##DS_LABEL5##</label>
-				<div class="col-sm-7 form-inline">
-					<input type="password" name="adminpass1" class="form-control" id="password" placeholder="##DS_PLACEHOLDE5##">&nbsp;<input type="password" name="adminpass2" class="form-control" id="password" placeholder="##DS_PLACEHOLDE6##"> <span id="helpBlock" class="help-block">##DS_HELP_BLOCK5##</span>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-sm-offset-7 col-sm-3">
-					<button type="submit" name="submit" value="gameSettings" class="pull-right btn btn-primary btn-block">##SAVE_CONFIG##</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	{else if $mode=='local'}
-	<div class="container">
-		<h3 class="mt-3">##INSTALL_TITLE## ##HEAD_LOCAL##</h3>
-		<form class="form-horizontal" action="index.php?mode={$mode}" method="post">
-			{if $error}{$error}{/if}
-			<p>
-				##INTRO1## <a href="https://www.farming-simulator.com/mod.php?lang=de&country=de&mod_id=50533&title=fs2017">##LINK_TEXT##</a>##INTRO2##
-			</p>
-			<input type="file" name="file" style="visibility: hidden;" id="path2savegame" />
-			<div class="form-group">
-				<label for="savepath" class="col-sm-3 control-label">##LS_LABEL1##</label>
-				<div class="col-sm-7">
-					<input type="text" name="savepath" class="form-control" id="savepath" placeholder="##LS_PLACEHOLDE1##" {if isset($postdata.path)> 0}value="{$postdata.path}"{/if}> <span id="helpBlock" class="help-block">##LS_HELP_BLOCK1##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">##LS_LABEL2##</label>
-				<div class="col-sm-7">
-					<select class="form-control" id="map" name="map"> {foreach $maps as $mapDir => $mapData}
-						<option value="{$mapDir}">{$mapData.Name} {$mapData.Version}</option> {/foreach}
-					</select><span id="helpBlock" class="help-block">##LS_HELP_BLOCK2##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="password" class="col-sm-3 control-label">##DS_LABEL5##</label>
-				<div class="col-sm-7 form-inline">
-					<input type="password" name="adminpass1" class="form-control" id="password" placeholder="##DS_PLACEHOLDE5##">&nbsp;<input type="password" name="adminpass2" class="form-control" id="password" placeholder="##DS_PLACEHOLDE6##"> <span id="helpBlock" class="help-block">##DS_HELP_BLOCK5##</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-7 col-sm-3">
-					<button type="submit" name="submit" value="gameSettings" class="pull-right btn btn-primary btn-block">##SAVE_CONFIG##</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	{/if} </main>
+	{else if $mode=='api'} {include file="install_api.tpl"} {else if $mode=='web'} {include file="install_web.tpl"} {else if $mode=='ftp'} {include file="install_ftp.tpl"} {else if $mode=='local'} {include file="install_local.tpl"} {/if} <br>
+	<script>
+	$(function () {
+		  $('[data-toggle="popover"]').popover()
+	})
+	</script></main>
 </body>
 </html>

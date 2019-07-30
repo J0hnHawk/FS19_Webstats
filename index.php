@@ -50,7 +50,7 @@ $smarty->assign ( 'onlineUser', sizeof ( $onlineUser ) );
 $smarty->assign ( 'hideFooter', $options ['general'] ['hideFooter'] );
 
 include ('./include/savegame/Savegame.class.php');
-$savegame = new Savegame ( $_SESSION ['farmId'] );
+$savegame = new Savegame ( $webStatsConfig, $_SESSION ['farmId'] );
 $smarty->assign ( 'currentDay', $savegame->currentDay );
 $smarty->assign ( 'dayTime', $savegame->dayTime );
 $smarty->assign ( 'money', $savegame->getFarmMoney ( $_SESSION ['farmId'] ) );
