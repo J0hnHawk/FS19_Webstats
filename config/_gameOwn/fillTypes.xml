@@ -45,7 +45,7 @@
 		</text>
 		<text name="cottonModule488">
 			<cz>cottonModule488</cz>
-			<en>cottonModule488</en>
+			<en>Cotton</en>
 			<de>Baumwolle</de>
 			<fr>cottonModule488</fr>
 		</text>
@@ -102,25 +102,25 @@
 		</text>
 		<text name="LIQUIDFERTILIZER">
 			<cz>Kapalné hnojivo</cz>
-			<en>LIQUIDFERTILIZER</en>
+			<en>Liquid Fertilizer</en>
 			<de>Flüssigdünger</de>
 			<fr>LIQUIDFERTILIZER</fr>
 		</text>
 		<text name="fertilizerTank">
 			<cz>Tekuté hnojivo</cz>
-			<en>Liquid fertilizer</en>
+			<en>Liquid fertilizer tank</en>
 			<de>Flüssigdünger</de>
 			<fr>Engrais liquide</fr>
 		</text>
 		<text name="HERBICIDE">
 			<cz>Herbicid</cz>
-			<en>HERBICIDE</en>
+			<en>Herbicide</en>
 			<de>Pflanzenschutzmittel</de>
 			<fr>HERBICIDE</fr>
 		</text>
 		<text name="herbicideTank">
 			<cz>Nádrž s postřikem</cz>
-			<en>herbicideTank</en>
+			<en>herbicide Tank</en>
 			<de>Pflanzenschutzmittel</de>
 			<fr>herbicideTank</fr>
 		</text>
@@ -157,82 +157,82 @@
 		<!-- Animals -->
 		<text name="COW_TYPE_BLACK_WHITE">
 			<cz>Černobílé krávy</cz>
-			<en>Cows</en>
+			<en>Cows (Black &amp; White)</en>
 			<de>Kuh (Schwarz &amp; Weiß)</de>
 			<fr>Vache</fr>
 		</text>
 		<text name="PIG_TYPE_RED">
 			<cz>Růžová prasata</cz>
-			<en>PIG_TYPE_RED</en>
+			<en>PIG (Pink)</en>
 			<de>Schwein (Rosa)</de>
 			<fr>PIG_TYPE_RED</fr>
 		</text>
 		<text name="CHICKEN_TYPE_ROOSTER">
 			<cz>Slepice</cz>
-			<en>Chicken</en>
+			<en>Rooster</en>
 			<de>Hahn</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="CHICKEN_TYPE_WHITE">
 			<cz>Bílá slepice</cz>
-			<en>Chicken</en>
+			<en>Chicken (White)</en>
 			<de>Huhn (Weiß)</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="CHICKEN_TYPE_BROWN">
 			<cz>Hnědá slepice</cz>
-			<en>Chicken</en>
+			<en>Chicken (Brown)</en>
 			<de>Huhn (Braun)</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="CHICKEN_TYPE_BLACK">
 			<cz>Černá slepice</cz>
-			<en>Chicken</en>
+			<en>Chicken (Black)</en>
 			<de>Huhn (Schwarz)</de>
 			<fr>CHICKEN_TYPE_ROOSTER</fr>
 		</text>
 		<text name="SHEEP_TYPE_BLACK_WHITE">
 			<cz>Ovce</cz>
-			<en>Sheep</en>
+			<en>Sheep (Black &amp; White)</en>
 			<de>Schaf (Schwarz &amp; Weiß)</de>
 			<fr>Mouton</fr>
 		</text>
 		<text name="SHEEP_TYPE_BROWN">
 			<cz>Hnědé ovce</cz>
-			<en>Sheep</en>
+			<en>Sheep (Brown)</en>
 			<de>Schaf (Schwarz &amp; Weiß)</de>
 			<fr>Mouton</fr>
 		</text>		
 		<text name="HORSE_TYPE_GREY">
-			<en>HORSE_TYPE_GREY</en>
+			<en>Horse (Grey)</en>
 			<de>Pferd (Schimmel)</de>
 		</text>
 		<text name="HORSE_TYPE_BROWN_WHITE">
-			<en>HORSE_TYPE_BROWN_WHITE</en>
+			<en>Horse (White-brown)</en>
 			<de>Pferd (Schecke)</de>
 		</text>
 		<text name="HORSE_TYPE_BEIGE">
-			<en>HORSE_TYPE_BEIGE</en>
+			<en>Horse (Beige)</en>
 			<de>Pferd (Isabell)</de>
 		</text>
 		<text name="HORSE_TYPE_BROWN">
-			<en>HORSE_TYPE_BROWN</en>
+			<en>Horse (Brown)</en>
 			<de>Pferd (Fuchs)</de>
 		</text>
 		<text name="HORSE_TYPE_RED_BROWN">
-			<en>HORSE_TYPE_RED_BROWN</en>
+			<en>Horse (Red Brown)</en>
 			<de>Pferd (Brauner)</de>
 		</text>
 		<text name="HORSE_TYPE_BLACK">
-			<en>HORSE_TYPE_BLACK</en>
+			<en>Horse (Black)</en>
 			<de>Pferd (Rappe)</de>
 		</text>
 		<text name="HORSE_TYPE_DARK_BROWN">
-			<en>HORSE_TYPE_DARK_BROWN</en>
+			<en>Horse (Darkbrown)</en>
 			<de>Pferd (Schwarzbrauner)</de>
 		</text>
 		<text name="HORSE_TYPE_LIGHT_BROWN">
-			<en>HORSE_TYPE_LIGHT_BROWN</en>
+			<en>Horse (Light Brown)</en>
 			<de>Pferd (Falble)</de>
 		</text>
 		<!-- Fruits -->
