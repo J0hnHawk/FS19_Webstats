@@ -53,7 +53,7 @@ class Savegame {
 	);
 	private $ftp = array ();
 	private $cache = './cache/';
-	public function __construct($webStatsConfig, $farmId = 0) {
+	public function __construct($webStatsConfig, $farmId = 1) {
 		$this->test = new stdClass ();
 		if (! file_exists ( $this->cache )) {
 			mkdir ( $this->cache );

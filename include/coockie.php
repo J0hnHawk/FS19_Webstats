@@ -22,7 +22,7 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 
-$cookieVersion = 2;
+$cookieVersion = 3;
 $options = array ();
 if (isset ( $_COOKIE ['fs19webstats'] )) {
 	$options = json_decode ( $_COOKIE ['fs19webstats'], true );
@@ -36,7 +36,7 @@ if (! isset ( $options ['general'] )) {
 	$options ['general'] ['language'] = $defaultLanguage;
 	$options ['general'] ['style'] = $defaultStyle;
 	$options ['general'] ['hideFooter'] = 0;
-	$options ['general'] ['farmId'] = 0;
+	$options ['general'] ['farmId'] = 1;
 }
 
 if (! isset ( $options ['storage'] )) {
