@@ -68,7 +68,6 @@ $smarty->assign ( 'page', $page );
 if ($serverOnline) {
 	include ("./include/$page.php");
 }
-// var_dump ( $savegame->commodities );
 $smarty->assign ( 'navItems', $nav->items );
 $smarty->assign ( 'reloadPage', $options ['general'] ['reload'] );
 $smarty->assign ( 'serverOnline', $serverOnline );

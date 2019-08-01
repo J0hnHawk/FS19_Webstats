@@ -31,6 +31,7 @@ class Price {
 	private $bestLocation;
 	private $greatDemand = false;
 	private $locations = array ();
+	private static $priceMultiplier;
 	public static $prices = array ();
 	public static $sellStations = array ();
 	public static $greatDemands = array ();
@@ -38,6 +39,7 @@ class Price {
 	public static function extractXML($savegame) {
 		global $mapconfig;
 		self::loadGreatDemands ( $savegame->economy );
+		self::$priceMultiplier = $savegame->getPriceMultiplier ();
 		foreach ( $savegame->items as $item ) {
 			$location = cleanFileName ( $item ['filename'] );
 			$stationId = intval ( $item ['id'] );
@@ -50,7 +52,7 @@ class Price {
 					self::$sellStations [translate ( $location )] = $location;
 					if ($mapconfig [$location] ['locationType'] == 'bga') {
 						foreach ( $mapconfig [$location] ['input'] as $fillType => $inputTrigger ) {
-							$currentPrice = $inputTrigger ['price'] * $savegame->getPriceMultiplier();
+							$currentPrice = $inputTrigger ['price'] * $savegame->getPriceMultiplier ();
 							self::addNewPrice ( $fillType, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
 						}
 					} else {
@@ -161,7 +163,7 @@ class Price {
 	private static function getPrice($amplitude0, $amplitude1, $period0, $period1, $time0, $time1, $nominalAmplitude1) {
 		$sin1 = $amplitude0 * sin ( (2 * pi () / $period0) * $time0 );
 		$sin2 = $amplitude1 * sin ( (2 * pi () / $period1) * $time1 ) + $nominalAmplitude1 * 10;
-		return ($sin1 + $sin2) * 1000;
+		return ($sin1 + $sin2) * 1000 * self::$priceMultiplier;
 	}
 	private static function getPrices($curve0, $curve1) {
 		$curve0 = self::objects2float ( $curve0 );
@@ -169,8 +171,8 @@ class Price {
 		$offset = 1000;
 		$currentPrice = self::getPrice ( $curve0 ['amplitude'], $curve1 ['amplitude'], $curve0 ['period'], $curve1 ['period'], $curve0 ['time'], $curve1 ['time'], $curve1 ['nominalAmplitude'] );
 		$nextPrice = self::getPrice ( $curve0 ['amplitude'], $curve1 ['amplitude'], $curve0 ['period'], $curve1 ['period'], $curve0 ['time'] + $offset, $curve1 ['time'] + $offset, $curve1 ['nominalAmplitude'] );
-		$maxPrice = ($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] * 10) * 1000;
-		$minPrice = (($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation']) * - 1 + $curve1 ['nominalAmplitude'] * 10) * 1000;
+		$maxPrice = ($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] * 10) * 1000 * self::$priceMultiplier;
+		$minPrice = (($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation']) * - 1 + $curve1 ['nominalAmplitude'] * 10) * 1000 * self::$priceMultiplier;
 		return array (
 				'currentPrice' => $currentPrice,
 				'minPrice' => $minPrice,
