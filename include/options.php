@@ -50,10 +50,11 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 			break;
 		case 'password' :
 			$adminpass1 = GetParam ( 'adminpass1', 'P' );
-			if (! password_verify ( $adminpass1, $config ['adminPass'] )) {
+			if (! password_verify ( $adminpass1, $webStatsConfig->adminPass )) {
 				$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##PASSWORD_ERROR##</div>';
 			} else {
-				@unlink('./config/server.conf');
+				@unlink ( './config/webStatsConfig.xml' );
+				@unlink ( './config/server.conf' );
 				header ( "Refresh:0" );
 			}
 			break;
