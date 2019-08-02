@@ -106,7 +106,7 @@ class Savegame {
 				$savegameUrl = $url . $webStatsConfig->savegame->slot;
 				$logoutUrl = $url . 'index.html?logout=true&lang=de';
 				$zipFile = $this->cache . 'savegame.zip';
-				$cacheTimeout = 6000;
+				$cacheTimeout = 60;
 				if (file_exists ( $zipFile ) && filemtime ( $zipFile ) > (time () - ($cacheTimeout) + rand ( 0, 10 ))) {
 				} else {
 					$ch = curl_init ();
