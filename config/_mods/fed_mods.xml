@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<item name="XL_NF_Silo" locationType="storage" />
+	<l10n>
+		<text name="XL_NF_Silo">
+			<en>XL_NF_Silo</en>
+			<de>Hofsilo XL</de>
+		</text>
+		<text name="NF_Silo">
+			<en>NF_Silo</en>
+			<de>Hofsilo</de>
+		</text>
+		<text name="FS19_Mischfutterherstellung">
+			<en>FS19_Mischfutterherstellung</en>
+			<de>Mischfutterherstellung</de>
+		</text>
+		<text name="FS19_Mehlfabrik">
+			<en>FS19_Mehlfabrik</en>
+			<de>Mehlfabrik</de>
+		</text>
+		<text name="FS19_Fermenter">
+			<en>FS19_Fermenter</en>
+			<de>Fermeter</de>
+		</text>
+		<text name="FS19_Duengerherstellung">
+			<en>FS19_Duengerherstellung</en>
+			<de>Düngerherstellung</de>
+		</text>
+		
+		<text name="FS19_Dieselherstellung">
+			<en>FS19_Dieselherstellung</en>
+			<de>Dieselherstellung</de>
+		</text>
+		
+		<text name="FS19_Erde">
+			<en>FS19_Erde</en>
+			<de>Erdhaufen</de>
+		</text>
+		
+		<text name="FS19_FluessigDuengerherstellung">
+			<en>FS19_FluessigDuengerherstellung</en>
+			<de>Flüssigdüngerherstellung</de>
+		</text>
+		
+		<text name="FS19_Heutrocknung">
+			<en>FS19_Heutrocknung</en>
+			<de>Heutrocknung</de>
+		</text>
+		
+		<text name="FS19_Hoftanke">
+			<en>FS19_Hoftanke</en>
+			<de>Hoftanke</de>
+		</text>
+		
+		<text name="FS19_Kalkwerk">
+			<en>FS19_Kalkwerk</en>
+			<de>Kalkwerk</de>
+		</text>
+		
+		<text name="FS19_Kiesgrube">
+			<en>FS19_Kiesgrube</en>
+			<de>Kieswerk</de>
+		</text>
+		
+		<text name="FS19_Klaerwerk">
+			<en>FS19_Klaerwerk</en>
+			<de>Klärwerk</de>
+		</text>
+		
+		<text name="FS19_Komposter">
+			<en>FS19_Komposter</en>
+			<de>Komposter</de>
+		</text>
+		
+		<text name="FS19_Obst_Apfel">
+			<en>FS19_Obst_Apfel</en>
+			<de>Apfel</de>
+		</text>
+		
+		<text name="FS19_Obst_Birne">
+			<en>FS19_Obst_Birne</en>
+			<de>Birne</de>
+		</text>
+		
+		<text name="FS19_Obst_Kirsche">
+			<en>FS19_Obst_Kirsche</en>
+			<de>Kirsche</de>
+		</text>
+		
+		<text name="FS19_Obst_Pflaume">
+			<en>FS19_Obst_Pflaume</en>
+			<de>Pflaume</de>
+		</text>
+		
+		<text name="FS19_Pellets">
+			<en>FS19_Pellets</en>
+			<de>Pellets</de>
+		</text>
+		
+		<text name="FS19_Pflanzenschutz">
+			<en>FS19_Pflanzenschutz</en>
+			<de>Pflanzenschutz</de>
+		</text>
+		
+		<text name="FS19_Schweinefutterherstellung">
+			<en>FS19_Schweinefutterherstellung</en>
+			<de>Schweinefutterherstellung</de>
+		</text>
+		
+		<text name="FS19_Zucker">
+			<en>FS19_Zucker</en>
+			<de>Zucker</de>
+		</text>
+		
+		<text name="NF_FluessigLager_Erweiterung">
+			<en>NF_FluessigLager_Erweiterung</en>
+			<de>Flüssiglager Erweiterung</de>
+		</text>
+		
+		<text name="NF_FluessigLager">
+			<en>NF_FluessigLager</en>
+			<de>Flüssiglager</de>
+		</text>
+		
+		<text name="SiloErweiterung_klein">
+			<en>SiloErweiterung_klein</en>
+			<de>Siloerweiterung klein</de>
+		</text>
+		
+		<text name="SiloErweiterung">
+			<en>SiloErweiterung</en>
+			<de>Siloerweiterung</de>
+		</text>
+		
+				<text name="FS19_Ruebenschnitzel">
+			<en>FS19_Ruebenschnitzel</en>
+			<de>Rübenschnitzel</de>
+		</text>
+		
+		<text name="FS19_Saatgutherstellung">
+			<en>FS19_Saatgutherstellung</en>
+			<de>Saatgutherstellung</de>
+		</text>
+
+	</l10n>
+</mapconfig>
