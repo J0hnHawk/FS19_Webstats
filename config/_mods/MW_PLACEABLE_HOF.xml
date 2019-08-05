@@ -34,5 +34,9 @@
 			<en>SCS_KUHSTALL_BIG_MIT_WEIDE</en>
 			<de>Großer Kuhstall mit Weide</de>
 		</text>
+		<text name="SCS_KUHWEIDE_OHNE_STALL">
+			<en>SCS_KUHWEIDE_OHNE_STALL</en>
+			<de>Kuhweide ohne Stall</de>
+		</text>
 	</l10n>
 </mapconfig>

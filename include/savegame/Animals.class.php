@@ -32,11 +32,13 @@ class Animals {
 	}
 	private static function analyzeItems() {
 		foreach ( self::$xml ['items'] as $item ) {
-			$stable = cleanFileName ( $item ['filename'] );
+			$id = strval($item['id']); 
+			$stable = cleanFileName ( $item ['filename'] ) ;
 			$l_stable = translate ( $stable );
+						
 			if ($item ['className'] == 'AnimalHusbandry' && $item ['farmId'] == self::$farmId) {
 				$productivity = floatval ( $item ['globalProductionFactor'] ) * 100;
-				self::$stables [$stable] = array (
+				self::$stables [$id] = array (
 						'forHorses' => false,
 						'name' => $l_stable,
 						'productivity' => floor ( $productivity ),
@@ -44,6 +46,7 @@ class Animals {
 						'state' => array () 
 				
 				);
+				
 				foreach ( $item->module as $module ) {
 					switch ($module ['name']) {
 						case 'animals' :
@@ -56,7 +59,7 @@ class Animals {
 									$fitnessScale = floatval ( $animal ['fitnessScale'] );
 									$healthScale = floatval ( $animal ['healthScale'] );
 									$dirtScale = floatval ( $animal ['dirtScale'] );
-									self::$stables [$stable] ['animals'] [$horseNameURL] = array (
+									self::$stables [$id] ['animals'] [$horseNameURL] = array (
 											'name' => $horseName,
 											'fitnessScale' => floor ( $fitnessScale * 100 ),
 											'healthScale' => floor ( $healthScale * 100 ),
@@ -69,10 +72,10 @@ class Animals {
 								} else {
 									// Animal is not a Horse
 									$l_animal = translate ( $animalType );
-									if (isset ( self::$stables [$stable] ['animals'] [$animalType] )) {
-										self::$stables [$stable] ['animals'] [$animalType] ['count'] ++;
+									if (isset ( self::$stables [$id] ['animals'] [$animalType] )) {
+										self::$stables [$id] ['animals'] [$animalType] ['count'] ++;
 									} else {
-										self::$stables [$stable] ['animals'] [$animalType] = array (
+										self::$stables [$id] ['animals'] [$animalType] = array (
 												'name' => $l_animal,
 												'count' => 1,
 												'breeding' => 0,
@@ -86,20 +89,20 @@ class Animals {
 							}
 							foreach ( $module->breeding as $breeding ) {
 								$animal = strval ( $breeding ['fillType'] );
-								$count = self::$stables [$stable] ['animals'] [$animal] ['count'];
+								$count = self::$stables [$id] ['animals'] [$animal] ['count'];
 								if ($count > 1 && $productivity != 0) {
 									$l_animal = translate ( $animal );
 									$breeding = floatval ( $breeding ['percentage'] );
 									$reproRate = ceil ( (self::getReproRate ( $animal ) / $count * 3600 * 100 / $productivity) / 900 ) * 900;
 									$nextAnimal = ceil ( ($reproRate * (1 - $breeding)) / 900 ) * 900;
-									self::$stables [$stable] ['animals'] [$animal] ['reproRate'] = self::getTimeString ( $reproRate );
-									self::$stables [$stable] ['animals'] [$animal] ['nextAnimal'] = self::getTimeString ( $nextAnimal );
+									self::$stables [$id] ['animals'] [$animal] ['reproRate'] = self::getTimeString ( $reproRate );
+									self::$stables [$id] ['animals'] [$animal] ['nextAnimal'] = self::getTimeString ( $nextAnimal );
 								}
 							}
 							break;
 						case 'foodSpillage' :
 							$cleanlinessFactor = floatval ( $module ['cleanlinessFactor'] );
-							self::$stables [$stable] ['state'] ['foodSpillage'] = array (
+							self::$stables [$id] ['state'] ['foodSpillage'] = array (
 									'name' => '##CLEANLINESS##',
 									'value' => floor ( $cleanlinessFactor * 100 ),
 									'unit' => '%',
@@ -110,8 +113,10 @@ class Animals {
 							$fillType = strtoupper ( $module ['name'] );
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
-							$factor = floor ( $fillLevel / $fillCapacity * 100 );
-							self::$stables [$stable] ['state'] [strval ( $module ['name'] )] = array (
+							
+							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							
+							self::$stables [$id] ['state'] [strval ( $module ['name'] )] = array (
 									'name' => translate ( 'STRAW' ),
 									'value' => floor ( $fillLevel ),
 									'unit' => 'l',
@@ -121,8 +126,10 @@ class Animals {
 						case 'water' :
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
-							$factor = floor ( $fillLevel / $fillCapacity * 100 );
-							self::$stables [$stable] ['state'] ['water'] = array (
+							
+							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							
+							self::$stables [$id] ['state'] ['water'] = array (
 									'name' => translate ( 'WATER' ),
 									'value' => floor ( $fillLevel ),
 									'unit' => 'l',
@@ -132,8 +139,10 @@ class Animals {
 						case 'manure' :
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module ['manureToDrop'] );
-							$factor = floor ( $fillLevel / $fillCapacity * 100 );
-							self::$stables [$stable] ['product'] ['manure'] = array (
+							
+							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							
+							self::$stables [$id] ['product'] ['manure'] = array (
 									'name' => translate ( 'MANURE' ),
 									'value' => floor ( $fillLevel ),
 									'unit' => 'l',
@@ -143,8 +152,10 @@ class Animals {
 						case 'liquidManure' :
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
-							$factor = floor ( $fillLevel / $fillCapacity * 100 );
-							self::$stables [$stable] ['product'] ['liquidManure'] = array (
+							
+							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							
+							self::$stables [$id] ['product'] ['liquidManure'] = array (
 									'name' => translate ( 'LIQUIDMANURE' ),
 									'value' => floor ( $fillLevel ),
 									'unit' => 'l',
@@ -154,8 +165,10 @@ class Animals {
 						case 'milk' :
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
-							$factor = floor ( $fillLevel / $fillCapacity * 100 );
-							self::$stables [$stable] ['product'] ['milk'] = array (
+							
+							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							
+							self::$stables [$id] ['product'] ['milk'] = array (
 									'name' => translate ( 'MILK' ),
 									'value' => floor ( $fillLevel ),
 									'unit' => 'l',
@@ -164,7 +177,7 @@ class Animals {
 							break;
 						case 'pallets' :
 							$fillLevel = floatval ( $module ['palletFillDelta'] );
-							self::$stables [$stable] ['product'] ['wool'] = array (
+							self::$stables [$id] ['product'] ['wool'] = array (
 									'name' => translate ( 'WOOL' ), // If they're eggs, it'll be changed below
 									'value' => floor ( $fillLevel ),
 									'unit' => 'l',
@@ -175,7 +188,7 @@ class Animals {
 							foreach ( $module->fillLevel as $trough ) {
 								$fillType = strval ( $trough ['fillType'] );
 								$fillLevel = $trough ['fillLevel'];
-								self::$stables [$stable] ['food'] [$fillType] = array (
+								self::$stables [$id] ['food'] [$fillType] = array (
 										'name' => translate ( $fillType ),
 										'value' => floor ( $fillLevel ),
 										'unit' => 'l',
@@ -185,24 +198,26 @@ class Animals {
 							break;
 					}
 				}
-				$food = array_keys ( self::$stables [$stable] ['food'] ); // troughs
+				$food = array_keys ( self::$stables [$id] ['food'] ); // troughs
 				if (in_array ( 'MAIZE', $food )) {
-					self::calculateTrougs ( $stable, 'pig' );
+					self::calculateTrougs ( $id, 'pig' );
 				} elseif (in_array ( 'FORAGE', $food )) {
-					self::calculateTrougs ( $stable, 'cow' );
+					self::calculateTrougs ( $id, 'cow' );
 				} elseif (in_array ( 'OAT', $food )) {
-					self::$stables [$stable] ['forHorses'] = true;
-					self::calculateTrougs ( $stable, 'horse' );
+					self::$stables [$id] ['forHorses'] = true;
+					self::calculateTrougs ( $id, 'horse' );
 				} elseif (in_array ( 'GRASS_WINDROW', $food )) {
-					self::calculateTrougs ( $stable, 'sheep' );
+					self::calculateTrougs ( $id, 'sheep' );
 				} else {
-					self::$stables [$stable] ['product'] ['egg'] = self::$stables [$stable] ['product'] ['wool'];
-					self::$stables [$stable] ['product'] ['egg'] ['name'] = translate ( 'EGG' );
-					unset ( self::$stables [$stable] ['product'] ['wool'] );
-					self::calculateTrougs ( $stable, 'chicken' );
+					self::$stables [$id] ['product'] ['egg'] = self::$stables [$id] ['product'] ['wool'];
+					self::$stables [$id] ['product'] ['egg'] ['name'] = translate ( 'EGG' );
+					unset ( self::$stables [$id] ['product'] ['wool'] );
+					self::calculateTrougs ( $id, 'chicken' );
 				}
 			}
 		}
+		
+		//print_r(array_values(self::$stables));
 	}
 	public static function getHorseValues() {
 		$ret = array (
@@ -219,6 +234,17 @@ class Animals {
 		}
 		return $ret;
 	}
+	
+	public static function calculateFactor($fillLevel, $fillCapacity) {
+		if ($fillCapacity > 0) {
+			$factor = floor ( $fillLevel / $fillCapacity * 100 );
+		} else {
+			$factor = 0;
+		}
+		
+		return $factor;
+	}					
+	
 	public static function getStables() {
 		return self::$stables;
 	}

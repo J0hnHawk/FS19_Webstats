@@ -6,6 +6,11 @@
 			<en>husbandryChickenLarge</en>
 			<de>Großer Hühnerstall</de>
 		</text>
+		<text name="husbandryChicken">
+			<cz></cz>		
+			<en>husbandryChicken</en>
+			<de>Hühnerstall</de>
+		</text>
 		<text name="husbandrySheepLarge">
 			<cz>Velká ovčírna</cz>				
 			<en>husbandrySheepLarge</en>
@@ -18,6 +23,11 @@
 		</text>
 		<text name="husbandryCowLarge">
 			<cz>Velký kravín</cz>			
+			<de>Große Kuhweide</de>
+		</text>	
+		<text name="husbandryCow">
+			<cz>Velký kravín</cz>	
+			<de>Kuhweide</de>
 		</text>	
 		<text name="husbandryPigLarge">
 			<cz>Velký prasečák</cz>			
