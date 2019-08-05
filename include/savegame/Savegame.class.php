@@ -95,7 +95,10 @@ class Savegame {
 			case 'local' :
 				$this->cache = $webStatsConfig->savegame->path;
 				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
-					self::$xml [basename ( $this->xmlFiles [$s1], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+					$basename = basename ( $this->xmlFiles [$s1], '.xml' );
+					self::$xml [$basename] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
+					$this->$basename = new stdClass ();
+					$this->$basename = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
 				break;
 			case 'web' :
