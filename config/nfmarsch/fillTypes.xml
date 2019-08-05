@@ -19,5 +19,24 @@
 			<de>Hirse</de>
 			<fr>MILLET</fr>
 		</text>
+		<text name="MEHL">
+			<cz>MEHL</cz>
+			<en>MEHL</en>
+			<de>Mehl</de>
+			<fr>MEHL</fr>
+		</text>
+		<text name="TOBACCO">
+			<cz>TOBACCO</cz>
+			<en>TOBACCO</en>
+			<de>Tabak</de>
+			<fr>TOBACCO</fr>
+		</text>
+		<text name="RYE">
+			<cz>RYE</cz>
+			<en>RYE</en>
+			<de>Roggen</de>
+			<fr>RYE</fr>
+		</text>
+		
 	</l10n>
 </mapconfig>
