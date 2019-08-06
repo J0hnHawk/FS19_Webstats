@@ -27,7 +27,11 @@ $stables = Animals::getStables ();
 $smarty->assign ( 'stables', $stables );
 if (sizeof ( $stables ) > 0) {
 	$firstStable = array_keys ( $stables ) [0];
-	$firstAnimal = array_keys ( $stables [$firstStable] ['animals'] ) [0];
+	if (sizeof ( $stables [$firstStable] ['animals'] ) > 0) {
+		$firstAnimal = array_keys ( $stables [$firstStable] ['animals'] ) [0];
+	} else {
+		$firstAnimal = null;
+	}
 } else {
 	$firstStable = null;
 	$firstAnimal = null;

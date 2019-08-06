@@ -20,6 +20,7 @@
 	</div>
 	<div class="col-9">
 		<div class="row">
+		{if $currentAnimal}
 			<div class="col-lg-6">
 				<h4>
 					{$stables.$currentStable.animals.$currentAnimal.name}<span class="float-right">{if $stables.$currentStable.animals.$currentAnimal.isHorse}€
@@ -117,6 +118,11 @@
 		<div class="row">
 			<div class="col">{if isset($stables.$currentStable.product.manure)}##MANURE_HELP##{/if}</div>
 		</div>
+		{else}
+		<div class="jumbotron my-3 py-3 w-100">
+	<p class="lead">##NO_ANIMALS_IN_STABLE##</p>
+</div>
+		{/if}
 	</div>
 </div>
 {else}
