@@ -161,12 +161,75 @@
 			<de>Kuh (Schwarz &amp; Weiß)</de>
 			<fr>Vache</fr>
 		</text>
+		
+		<text name="COW_TYPE_BROWN">
+			<cz>COW_TYPE_BROWN</cz>
+			<en>COW_TYPE_BROWN</en>
+			<de>Kuh (Braun)</de>
+			<fr>COW_TYPE_BROWN</fr>
+		</text>
+		<text name="COW_TYPE_BROWN_WHITE">
+			<cz>COW_TYPE_BROWN_WHITE</cz>
+			<en>COW_TYPE_BROWN_WHITE</en>
+			<de>Kuh (Braun &amp; Weiß)</de>
+			<fr>COW_TYPE_BROWN_WHITE</fr>
+		</text>
+		<text name="COW_TYPE_BLACK">
+			<cz>COW_TYPE_BLACK</cz>
+			<en>COW_TYPE_BLACK</en>
+			<de>Kuh (Schwarz)</de>
+			<fr>COW_TYPE_BLACK</fr>
+		</text>
+		<text name="COW_TYPE_BRAHMAN_BROWN">
+			<cz>COW_TYPE_BRAHMAN_BROWN</cz>
+			<en>COW_TYPE_BRAHMAN_BROWN</en>
+			<de>Brahma (Braun)</de>
+			<fr>COW_TYPE_BRAHMAN_BROWN</fr>
+		</text>
+		<text name="COW_TYPE_BRAHMAN_WHITE">
+			<cz>COW_TYPE_BRAHMAN_WHITE</cz>
+			<en>COW_TYPE_BRAHMAN_WHITE</en>
+			<de>Brahma (Weiß)</de>
+			<fr>COW_TYPE_BRAHMAN_WHITE</fr>
+		</text>
+		<text name="COW_TYPE_BRAHMAN_LIGHT_BROWN">
+			<cz>COW_TYPE_BRAHMAN_LIGHT_BROWN</cz>
+			<en>COW_TYPE_BRAHMAN_LIGHT_BROWN</en>
+			<de>Brahma (Hellbraun)</de>
+			<fr>COW_TYPE_BRAHMAN_LIGHT_BROWN</fr>
+		</text>
+		<text name="COW_TYPE_BRAHMAN_GREY">
+			<cz>COW_TYPE_BRAHMAN_LIGHT_BROWN</cz>
+			<en>COW_TYPE_BRAHMAN_LIGHT_BROWN</en>
+			<de>Brahma (Grau)</de>
+			<fr>COW_TYPE_BRAHMAN_LIGHT_BROWN</fr>
+		</text>
+	
 		<text name="PIG_TYPE_RED">
 			<cz>Růžová prasata</cz>
 			<en>PIG (Pink)</en>
 			<de>Schwein (Rosa)</de>
 			<fr>PIG_TYPE_RED</fr>
 		</text>
+		<text name="PIG_TYPE_BLACK">
+			<cz>PIG_TYPE_BLACK</cz>
+			<en>PIG_TYPE_BLACK</en>
+			<de>Schwein (Schwarz)</de>
+			<fr>PIG_TYPE_BLACK</fr>
+		</text>
+		<text name="PIG_TYPE_BLACK_WHITE">
+			<cz>PIG_TYPE_BLACK_WHITE</cz>
+			<en>PIG_TYPE_BLACK_WHITE</en>
+			<de>Schwein (Schwarz &amp; weiß)</de>
+			<fr>PIG_TYPE_BLACK_WHITE</fr>
+		</text>
+		<text name="PIG_TYPE_WHITE">
+			<cz>PIG_TYPE_WHITE</cz>
+			<en>PIG_TYPE_WHITE</en>
+			<de>Schwein (Weiß)</de>
+			<fr>PIG_TYPE_WHITE</fr>
+		</text>
+		
 		<text name="CHICKEN_TYPE_ROOSTER">
 			<cz>Slepice</cz>
 			<en>Rooster</en>
