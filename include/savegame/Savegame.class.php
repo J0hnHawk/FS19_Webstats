@@ -114,17 +114,19 @@ class Savegame {
 				} else {
 					$ch = curl_init ();
 					curl_setopt ( $ch, CURLOPT_URL, $loginUrl );
-					curl_setopt ( $ch, CURLOPT_POST, 1 );
+					curl_setopt ( $ch, CURLOPT_POST, true );
 					curl_setopt ( $ch, CURLOPT_POSTFIELDS, "username=$username&password=$password&login=Anmelden" );
 					curl_setopt ( $ch, CURLOPT_COOKIEJAR, 'cookie.txt' );
 					curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
 					$store = curl_exec ( $ch );
+					curl_setopt ( $ch, CURLOPT_POST, false );
+					curl_setopt ( $ch, CURLOPT_POSTFIELDS, '' );
 					curl_setopt ( $ch, CURLOPT_URL, $savegameUrl );
 					$content = curl_exec ( $ch );
 					file_put_contents ( $zipFile, $content );
 					curl_setopt ( $ch, CURLOPT_URL, $logoutUrl );
 					$store = curl_exec ( $ch );
-					// curl_close ( $ch );
+					curl_close ( $ch );
 					if (class_exists ( 'ZipArchive' )) {
 						$zip = new ZipArchive ();
 						$extractPath = "./cache";
