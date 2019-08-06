@@ -51,9 +51,13 @@ class Price {
 				if (isset ( $mapconfig [$location] ['isSellingPoint'] ) && $mapconfig [$location] ['isSellingPoint']) {
 					self::$sellStations [translate ( $location )] = $location;
 					if ($mapconfig [$location] ['locationType'] == 'bga') {
-						foreach ( $mapconfig [$location] ['input'] as $fillType => $inputTrigger ) {
-							$currentPrice = $inputTrigger ['price'] * $savegame->getPriceMultiplier ();
-							self::addNewPrice ( $fillType, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
+						if ($item ['farmId'] == $savegame->farmId) {
+							foreach ( $mapconfig [$location] ['input'] as $fillType => $inputTrigger ) {
+								$currentPrice = $inputTrigger ['price'] * $savegame->getPriceMultiplier ();
+								self::addNewPrice ( $fillType, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
+							}
+						} else {
+							unset ( self::$sellStations [translate ( $location )] );
 						}
 					} else {
 						foreach ( $item->sellingStation->stats as $triggerStats ) {
