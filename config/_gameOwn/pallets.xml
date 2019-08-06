@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
 	<pallets>
+		<pallet name="bigBagContainerChickenFood" />
 		<pallet name="bigBagContainerFertilizer" />
+		<pallet name="bigBagContainerHorseFood" />
 		<pallet name="bigBagContainerLime" />
+		<pallet name="bigBagContainerPigFood" />
 		<pallet name="bigBagContainerSeeds" />
-		<pallet name="fertilizerTank" />
-		<pallet name="herbicideTank" />
-		<pallet name="woolPallet" />
 		<pallet name="eggBox" />
+		<pallet name="fertilizerTank" />
+		<pallet name="fillablePallet" />
+		<pallet name="herbicideTank" />
+		<pallet name="palletPoplar" />
+		<pallet name="palletSugarCane" />
+		<pallet name="pioneerPallet" />
 		<pallet name="treeSaplingPallet" />
+		<pallet name="woolPallet" />
 	</pallets>
 </mapconfig>

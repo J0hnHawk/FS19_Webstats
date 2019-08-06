@@ -1,50 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
 	<l10n>
-		<text name="husbandryChickenLarge">
-			<cz>Velká slepičárna</cz>		
-			<en>husbandryChickenLarge</en>
-			<de>Großer Hühnerstall</de>
+		<!-- Tierhaltung ************************************************* -->
+		<text name="doghouse">
+			<de>Hundehütte</de>
 		</text>
 		<text name="husbandryChicken">
-			<cz></cz>		
+			<cz></cz>
 			<en>husbandryChicken</en>
 			<de>Hühnerstall</de>
 		</text>
-		<text name="husbandrySheepLarge">
-			<cz>Velká ovčírna</cz>				
-			<en>husbandrySheepLarge</en>
-			<de>Große Schafweide</de>
+		<text name="husbandryChickenLarge">
+			<cz>Velká slepičárna</cz>
+			<en>husbandryChickenLarge</en>
+			<de>Großer Hühnerstall</de>
+		</text>
+		<text name="husbandryCow">
+			<cz>Velký kravín</cz>
+			<de>Kuhweide</de>
+		</text>
+		<text name="husbandryCowLarge">
+			<cz>Velký kravín</cz>
+			<de>Große Kuhweide</de>
+		</text>
+		<text name="husbandryHorse">
+			<cz>Velká konírna</cz>
+			<en>husbandryHorseLarge</en>
+			<de>Pferdestall</de>
 		</text>
 		<text name="husbandryHorseLarge">
-			<cz>Velká konírna</cz>				
+			<cz>Velká konírna</cz>
 			<en>husbandryHorseLarge</en>
 			<de>Großer Pferdestall</de>
 		</text>
-		<text name="husbandryCowLarge">
-			<cz>Velký kravín</cz>			
-			<de>Große Kuhweide</de>
-		</text>	
-		<text name="husbandryCow">
-			<cz>Velký kravín</cz>	
-			<de>Kuhweide</de>
-		</text>	
+		<text name="husbandryPig">
+			<cz>Velký prasečák</cz>
+			<de>Schweinestall</de>
+		</text>
 		<text name="husbandryPigLarge">
-			<cz>Velký prasečák</cz>	
-			<de>Großer Schweinestall</de>	
-		</text>	
+			<cz>Velký prasečák</cz>
+			<de>Großer Schweinestall</de>
+		</text>
+		<text name="husbandrySheep">
+			<cz>Velká ovčírna</cz>
+			<en>husbandrySheepLarge</en>
+			<de>Schafweide</de>
+		</text>
+		<text name="husbandrySheepLarge">
+			<cz>Velká ovčírna</cz>
+			<en>husbandrySheepLarge</en>
+			<de>Große Schafweide</de>
+		</text>
+		<!-- Diverses **************************************************** -->
+		<text name="kaercherHDS918-4M">
+			<de>HDS 9/18-4 M</de>
+		</text>
+		<text name="workshop">
+			<de>Werkstatt</de>
+		</text>
+		<text name="jenzHE700">
+			<de>HE 700 StA</de>
+		</text>
+		<text name="waterTank">
+			<de>Wassertank</de>
+		</text>
+		<!-- Silos ******************************************************* -->
+		<text name="farmSiloSmall">
+			<de>Getreidesilo</de>
+		</text>
 		<text name="farmSiloLarge">
-			<cz>Silo na farmě</cz>			
-		</text>			
+			<cz>Silo na farmě</cz>
+			<de>Großes Silo</de>
+		</text>
 		<text name="siloExtension">
-			<cz>Silo na farmě</cz>			
-		</text>		
+			<cz>Silo na farmě</cz>
+			<de>Große Siloerweiterung</de>
+		</text>
 		<text name="hayLoft">
-			<cz>Seník na farmě</cz>			
-		</text>		
+			<cz>Seník na farmě</cz>
+			<de>Heulager</de>
+		</text>
+		<text name="bunkerSiloSmall">
+			<de>Kleines Fahrsilo</de>
+		</text>
+		<text name="bunkerSiloMedium">
+			<de>Mittleres Fahrsilo</de>
+		</text>
+		<text name="bunkerSiloLarge">
+			<de>Großes Fahrsilo</de>
+		</text>
+		<text name="bunkerSiloSmallDouble">
+			<de>Kleines Doppelfahrsilo</de>
+		</text>
 		<text name="bunkerSiloMediumDouble">
-			<cz>Senážní silo</cz>			
-		</text>				
+			<cz>Senážní silo</cz>
+			<de>Mittleres Doppelfahrsilo</de>
+		</text>
+		<text name="bunkerSiloLargeDouble">
+			<de>Großes Doppelfahrsilo</de>
+		</text>
+		<!-- Dekorationen ************************************************ -->
+		<text name="sandCastle">
+			<de>Sandburg</de>
+		</text>
+		<text name="farmBarn">
+			<de>Hof Scheune</de>
+		</text>
+		<text name="farmGarage">
+			<de>Hof Garage</de>
+		</text>
+		<text name="farmStorageBarn">
+			<de>Hof Unterstand</de>
+		</text>
+		<text name="farmStable">
+			<de>Hof Stall</de>
+		</text>
+		<text name="farmStorage">
+			<de>Hof Speicher</de>
+		</text>
+		<text name="farmHut">
+			<de>Hof Hüte</de>
+		</text>
+		<text name="farmShack">
+			<de>Hof Schuppen 1</de>
+		</text>
+		<text name="farmShed">
+			<de>Hof Schuppen 2</de>
+		</text>
+		<text name="farmStable">
+			<de>Hof Stall</de>
+		</text>
+		<text name="farmStorage">
+			<de>Hof Speicher</de>
+		</text>
+		<text name="farmTrailer">
+			<de>Hof Baracke</de>
+		</text>
+		<text name="farmOldBarn">
+			<de>Hof Scheune (alt)</de>
+		</text>
+		<!-- Hallen ****************************************************** -->
+		<text name="easyShed01">
+			<de>Easy Shed 1</de>
+		</text>
+		<text name="easyShed02">
+			<de>Easy Shed 2</de>
+		</text>
+		<text name="easyShed03">
+			<de>Easy Shed 3</de>
+		</text>
+		<!-- Farmhaus **************************************************** -->
+		<text name="farmHouse">
+			<de>Farmhaus</de>
+		</text>
 	</l10n>
 </mapconfig>
 

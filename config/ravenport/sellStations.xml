@@ -11,37 +11,37 @@
 		<text name="sellingStationRestaurant">
 			<cz>Restaurace</cz>		
 			<en>Restaurace</en>			
-			<de>Restaurace</de>				
+			<de>Restaurant</de>				
 		</text>
 		<text name="sellingStationRanch">
 			<cz>Ranč</cz>	
 			<en>Ranč</en>			
-			<de>Ranč</de>				
+			<de>Ranch</de>				
 		</text>
 		<text name="grainSiloCentral">
 			<cz>Centrální sýpka</cz>	
 			<en>Centrální sýpka</en>			
-			<de>Centrální sýpka</de>				
+			<de>Getreidespeicher (Zentrum)</de>				
 		</text>
 		<text name="sellingStationWool">
 			<cz>Přádelna</cz>	
 			<en>Přádelna</en>			
-			<de>Přádelna</de>				
+			<de>Spinnerei</de>				
 		</text>
 		<text name="grainSiloPort">
 			<cz>Přístavní sýpka</cz>
 			<en>Přístavní</en>			
-			<de>Přístavní</de>				
+			<de>Hafenspeicher</de>				
 		</text>
 		<text name="sellingStationBales">
 			<cz>Seník</cz>	
 			<en>Seník</en>			
-			<de>Seník</de>				
+			<de>Scheune</de>				
 		</text>
 		<text name="sellingStationWoodChips">
 			<cz>Pila</cz>
 			<en>Pila</en>			
-			<de>Pila</de>				
+			<de>Sägewerg</de>				
 		</text>	
 	</l10n>
 </mapconfig>

@@ -13,23 +13,5 @@
 			<de>Außerhalb der Karte</de>
 			<fr>En dehors de la carte</fr>
 		</text>
-		<text name="Animals_cow">
-			<cz>Krávy</cz>
-			<en>Cows</en>
-			<de>Kuhstall</de>
-			<fr>Vaches</fr>
-		</text>
-		<text name="Animals_sheep">
-			<cz>Ovce</cz>
-			<en>Sheep</en>
-			<de>Schafstall</de>
-			<fr>Moutons</fr>
-		</text>
-		<text name="Animals_pig">
-			<cz>Prasata</cz>
-			<en>Pig</en>
-			<de>Schweinestall</de>
-			<fr>Cochons</fr>
-		</text>
 	</l10n>
 </mapconfig>
