@@ -2,15 +2,20 @@
 {if $stables|@count}
 <div class="row">
 	<div class="col-3">
-		<div class="list-group">
-			{foreach $stables as $stableI3dName => $stable}
-			<button type="button" class="list-group-item list-group-item-dark">
-				<strong>{$stable.name}</strong>
-			</button>
-			{foreach $stable.animals as $animalI3dName => $animal} <a href="index.php?page={$page}&stable={$stableI3dName}&animal={$animalI3dName}" class="list-group-item list-group-item-action"> {$animal.name}{if $animal.isHorse}<br> <small>Tägliches Reiten<span class="float-right">{$animal.ridingTimer|number_format:0:",":"."}
-						%</span></small>{else}<span class="float-right">{$animal.count}</span><br> <small>##PRODUCTIVITY##<span class="float-right">{$stable.productivity|number_format:0:",":"."} %</span></small>{/if}
-			</a> {foreachelse} <a href="#" class="list-group-item list-group-item-action"> ##NO_ANIMALS_IN_STABLE##<br>&nbsp;
-			</a>{/foreach} {/foreach}
+		<div id="accordion">
+			<div class="list-group">
+				{foreach $stables as $stableI3dName => $stable}
+				<button type="button" class="list-group-item d-flex justify-content-between align-items-center list-group-item-dark" data-toggle="collapse" data-target="#collapse{$stableI3dName}">
+					<strong>{$stable.name}</strong><span class="badge badge-secondary badge-pill">{$stable.animals|@count}</span>
+				</button>
+				<div id="collapse{$stableI3dName}" class="collapse {if $currentStable == $stableI3dName}show{/if}" data-parent="#accordion">
+					{foreach $stable.animals as $animalI3dName => $animal} <a href="index.php?page={$page}&stable={$stableI3dName}&animal={$animalI3dName}" class="list-group-item list-group-item-action"> {$animal.name}{if $animal.isHorse}<br> <small>Tägliches Reiten<span class="float-right">{$animal.ridingTimer|number_format:0:",":"."}
+								%</span></small>{else}<span class="float-right">{$animal.count}</span><br> <small>##PRODUCTIVITY##<span class="float-right">{$stable.productivity|number_format:0:",":"."} %</span></small>{/if}
+					</a> {foreachelse} <a href="#" class="list-group-item list-group-item-action"> ##NO_ANIMALS_IN_STABLE##<br>&nbsp;
+					</a>{/foreach}
+				</div>
+				{/foreach}
+			</div>
 		</div>
 	</div>
 	<div class="col-9">
