@@ -244,6 +244,7 @@ PASSWORD_ERROR=Das eingegebene Passwort ist falsch.
 //animals.tpl
 ANIMALS=Tiere
 NOSTABLES=Keine Ställe vorhanden.
+NO_ANIMALS_IN_STABLE=Keine Tiere im Stall
 FITNESS=Fitness
 HEALTH=Gesundheit
 STABLE_INFO=Stall Informationen

@@ -9,7 +9,8 @@
 			</button>
 			{foreach $stable.animals as $animalI3dName => $animal} <a href="index.php?page={$page}&stable={$stableI3dName}&animal={$animalI3dName}" class="list-group-item list-group-item-action"> {$animal.name}{if $animal.isHorse}<br> <small>Tägliches Reiten<span class="float-right">{$animal.ridingTimer|number_format:0:",":"."}
 						%</span></small>{else}<span class="float-right">{$animal.count}</span><br> <small>##PRODUCTIVITY##<span class="float-right">{$stable.productivity|number_format:0:",":"."} %</span></small>{/if}
-			</a> {/foreach} {/foreach}
+			</a> {foreachelse} <a href="#" class="list-group-item list-group-item-action"> ##NO_ANIMALS_IN_STABLE##<br>&nbsp;
+			</a>{/foreach} {/foreach}
 		</div>
 	</div>
 	<div class="col-9">
