@@ -14,7 +14,7 @@
 		<text name="husbandrySheepLarge">
 			<cz>Velká ovčírna</cz>				
 			<en>husbandrySheepLarge</en>
-			<de>Großer Schafweide</de>
+			<de>Große Schafweide</de>
 		</text>
 		<text name="husbandryHorseLarge">
 			<cz>Velká konírna</cz>				
@@ -30,7 +30,8 @@
 			<de>Kuhweide</de>
 		</text>	
 		<text name="husbandryPigLarge">
-			<cz>Velký prasečák</cz>			
+			<cz>Velký prasečák</cz>	
+			<de>Großer Schweinestall</de>	
 		</text>	
 		<text name="farmSiloLarge">
 			<cz>Silo na farmě</cz>			
