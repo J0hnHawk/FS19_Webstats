@@ -116,7 +116,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 				}
 				break;
 		}
-		if (! file_exists ( "./config/" . $config ['map'] )) {
+		if (! file_exists ( "./config/maps/" . $config ['map'] )) {
 			$error .= '<div class="alert alert-danger"><strong>##ERROR##</strong> ##ERROR_MAP##</div>';
 		}
 		if ($config ['adminPass'] != $repeatedPassword) {
