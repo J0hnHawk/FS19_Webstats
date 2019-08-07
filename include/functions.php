@@ -207,8 +207,8 @@ function loadMapCFGfile($mapPath) {
 			'configVersion' => '',
 			'configFormat' => 'xml' 
 	);
-	if (file_exists ( "./config/$mapPath/map.cfg" )) {
-		$entries = file ( "./config/$mapPath/map.cfg" );
+	if (file_exists ( "./config/maps/$mapPath/map.cfg" )) {
+		$entries = file ( "./config/maps/$mapPath/map.cfg" );
 		foreach ( $entries as $row ) {
 			if (substr ( ltrim ( $row ), 0, 2 ) == '//' || trim ( $row ) == '') { // ignore comments and emtpty rows
 				continue;
@@ -228,16 +228,16 @@ function loadMapCFGfile($mapPath) {
 // Karten laden
 function getMaps() {
 	$maps = array ();
-	if (is_dir ( './config' )) {
-		if ($dh = opendir ( './config/' )) {
+	if (is_dir ( './config/maps' )) {
+		if ($dh = opendir ( './config/maps/' )) {
 			while ( ($mapDir = readdir ( $dh )) !== false ) {
-				if ($mapDir != "." && $mapDir != ".." && is_dir ( "./config/$mapDir" )) {
-					if (file_exists ( "./config/$mapDir/map.cfg" )) {
-						if (! file_exists ( "./config/$mapDir/pda_map_H.jpg" )) {
+				if ($mapDir != "." && $mapDir != ".." && is_dir ( "./config/maps/$mapDir" )) {
+					if (file_exists ( "./config/maps/$mapDir/map.cfg" )) {
+						if (! file_exists ( "./config/maps/$mapDir/pda_map_H.jpg" )) {
 							continue;
 						}
 						$map = loadMapCFGfile ( $mapDir );
-						if ($map ['configFormat'] == 'xml' && ! glob ( "./config/$mapDir/*.xml" )) {
+						if ($map ['configFormat'] == 'xml' && ! glob ( "./config/maps/$mapDir/*.xml" )) {
 							continue;
 						}
 						$maps [$mapDir] = array (
@@ -257,6 +257,7 @@ function getMaps() {
 			closedir ( $dh );
 		}
 	}
+	var_dump($maps);
 	return $maps;
 }
 
