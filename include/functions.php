@@ -354,13 +354,13 @@ function addCommodity($fillType, $fillLevel, $location, $className = 'none', $is
 // Positionen von Paletten ermitteln
 function getLocation($position) {
 	if (! $position) {
-		return 'outOfMap';
+		return '##OUTOFMAP##';
 	}
 	list ( $posx, $posy, $posz ) = explode ( ' ', $position );
 	global $map, $mapconfig;
 	$mapSize = intval ( $map ['Size'] ) / 2;
 	if ($posx < (0 - $mapSize) || $posx > $mapSize || $posy < 0 || $posy > 255 || $posz < (0 - $mapSize) || $posz > $mapSize) {
-		return 'outOfMap';
+		return '##OUTOFMAP##';
 	}
 	foreach ( $mapconfig as $plant => $plantData ) {
 		if (isset ( $plantData ['output'] )) {
@@ -374,7 +374,7 @@ function getLocation($position) {
 			}
 		}
 	}
-	return 'onMap';
+	return '##ONMAP##';
 }
 
 // Futtertroggröße und Produktivität der Tiere ermitteln

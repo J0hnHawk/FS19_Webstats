@@ -22,6 +22,8 @@ SATURDAY=Samstag
 SUNDAY=Sonntag
 ON=An
 OFF=Aus
+ONMAP=Landschaft
+OUTOFMAP=Außerhalb der Karte
 
 //install.tpl
 CHANGE_BUTTON=Ändern

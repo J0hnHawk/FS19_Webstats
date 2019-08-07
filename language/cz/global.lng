@@ -22,6 +22,8 @@ SATURDAY=Sobota
 SUNDAY=Neděle
 ON=Zapnuto
 OFF=Vypnuto
+ONMAP=na zemi
+OUTOFMAP=Mimo mapu
 
 //install.tpl
 CHANGE_BUTTON=Změna
