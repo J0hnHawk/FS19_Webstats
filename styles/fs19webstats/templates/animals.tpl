@@ -6,7 +6,7 @@
 			<div class="list-group">
 				{foreach $stables as $stableI3dName => $stable}
 				<button type="button" class="list-group-item d-flex justify-content-between align-items-center list-group-item-dark" data-toggle="collapse" data-target="#collapse{$stableI3dName}">
-					<strong>{$stable.name}</strong><span class="badge badge-secondary badge-pill">{$stable.animals|@count}</span>
+					<strong>{$stable.name}</strong><span class="badge badge-secondary badge-pill">{$stable.numberOfAnimals}</span>
 				</button>
 				<div id="collapse{$stableI3dName}" class="collapse {if $currentStable == $stableI3dName}show{/if}" data-parent="#accordion">
 					{foreach $stable.animals as $animalI3dName => $animal} <a href="index.php?page={$page}&stable={$stableI3dName}&animal={$animalI3dName}" class="list-group-item list-group-item-action"> {$animal.name}{if $animal.isHorse}<br> <small>Tägliches Reiten<span class="float-right">{$animal.ridingTimer|number_format:0:",":"."}
@@ -20,7 +20,7 @@
 	</div>
 	<div class="col-9">
 		<div class="row">
-		{if $currentAnimal}
+			{if $currentAnimal}
 			<div class="col-lg-6">
 				<h4>
 					{$stables.$currentStable.animals.$currentAnimal.name}<span class="float-right">{if $stables.$currentStable.animals.$currentAnimal.isHorse}€
@@ -120,8 +120,8 @@
 		</div>
 		{else}
 		<div class="jumbotron my-3 py-3 w-100">
-	<p class="lead">##NO_ANIMALS_IN_STABLE##</p>
-</div>
+			<p class="lead">##NO_ANIMALS_IN_STABLE##</p>
+		</div>
 		{/if}
 	</div>
 </div>

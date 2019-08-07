@@ -32,16 +32,17 @@ class Animals {
 	}
 	private static function analyzeItems() {
 		foreach ( self::$xml ['items'] as $item ) {
-			$id = strval($item['id']); 
-			$stable = cleanFileName ( $item ['filename'] ) ;
+			$id = strval ( $item ['id'] );
+			$stable = cleanFileName ( $item ['filename'] );
 			$l_stable = translate ( $stable );
-						
+			
 			if ($item ['className'] == 'AnimalHusbandry' && $item ['farmId'] == self::$farmId) {
 				$productivity = floatval ( $item ['globalProductionFactor'] ) * 100;
 				self::$stables [$id] = array (
 						'forHorses' => false,
 						'name' => $l_stable,
 						'productivity' => floor ( $productivity ),
+						'numberOfAnimals' => 0,
 						'animals' => array (),
 						'state' => array () 
 				
@@ -52,6 +53,7 @@ class Animals {
 						case 'animals' :
 							foreach ( $module->animal as $animal ) {
 								$animalType = strval ( $animal ['fillType'] );
+								self::$stables [$id] ['numberOfAnimals'] ++;
 								if (stristr ( $animalType, 'HORSE' ) !== false) {
 									// Animal is a horse
 									$horseName = strval ( $animal ['name'] );
@@ -114,7 +116,7 @@ class Animals {
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
 							
-							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							$factor = self::calculateFactor ( $fillLevel, $fillCapacity );
 							
 							self::$stables [$id] ['state'] [strval ( $module ['name'] )] = array (
 									'name' => translate ( 'STRAW' ),
@@ -127,7 +129,7 @@ class Animals {
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
 							
-							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							$factor = self::calculateFactor ( $fillLevel, $fillCapacity );
 							
 							self::$stables [$id] ['state'] ['water'] = array (
 									'name' => translate ( 'WATER' ),
@@ -140,7 +142,7 @@ class Animals {
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module ['manureToDrop'] );
 							
-							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							$factor = self::calculateFactor ( $fillLevel, $fillCapacity );
 							
 							self::$stables [$id] ['product'] ['manure'] = array (
 									'name' => translate ( 'MANURE' ),
@@ -153,7 +155,7 @@ class Animals {
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
 							
-							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							$factor = self::calculateFactor ( $fillLevel, $fillCapacity );
 							
 							self::$stables [$id] ['product'] ['liquidManure'] = array (
 									'name' => translate ( 'LIQUIDMANURE' ),
@@ -166,7 +168,7 @@ class Animals {
 							$fillCapacity = floatval ( $module ['fillCapacity'] );
 							$fillLevel = floatval ( $module->fillLevel ['fillLevel'] );
 							
-							$factor = self::calculateFactor($fillLevel, $fillCapacity);
+							$factor = self::calculateFactor ( $fillLevel, $fillCapacity );
 							
 							self::$stables [$id] ['product'] ['milk'] = array (
 									'name' => translate ( 'MILK' ),
@@ -217,7 +219,7 @@ class Animals {
 			}
 		}
 		
-		//print_r(array_values(self::$stables));
+		// print_r(array_values(self::$stables));
 	}
 	public static function getHorseValues() {
 		$ret = array (
@@ -234,7 +236,6 @@ class Animals {
 		}
 		return $ret;
 	}
-	
 	public static function calculateFactor($fillLevel, $fillCapacity) {
 		if ($fillCapacity > 0) {
 			$factor = floor ( $fillLevel / $fillCapacity * 100 );
@@ -243,8 +244,7 @@ class Animals {
 		}
 		
 		return $factor;
-	}					
-	
+	}
 	public static function getStables() {
 		return self::$stables;
 	}
@@ -303,19 +303,38 @@ class Animals {
 		);
 		foreach ( $troughs [$animal] as $trough => $troughFoods ) {
 			foreach ( $troughFoods as $food ) {
+				$consumptionPerWeek = self::getConsumptionPerWeekAndAnimal ( $animal ) * self::$stables [$stable] ['numberOfAnimals'];
 				if (! isset ( self::$stables [$stable] ['trough'] [$trough] )) {
+					$foodValue = self::$stables [$stable] ['food'] [$food] ['value'];
+					$factor = self::calculateFactor ( $foodValue, $consumptionPerWeek );
 					self::$stables [$stable] ['trough'] [$trough] = array (
 							'name' => translate ( $food ),
-							'value' => self::$stables [$stable] ['food'] [$food] ['value'],
+							'value' => $foodValue,
 							'unit' => 'l',
-							'factor' => 100 
+							'factor' => $factor 
 					);
 				} else {
 					self::$stables [$stable] ['trough'] [$trough] ['name'] .= ' / ' . translate ( $food );
-					self::$stables [$stable] ['trough'] [$trough] ['value'] += self::$stables [$stable] ['food'] [$food] ['value'];
+					$foodValue = self::$stables [$stable] ['trough'] [$trough] ['value'] + self::$stables [$stable] ['food'] [$food] ['value'];
+					$factor = self::calculateFactor ( $foodValue, $consumptionPerWeek );
+					self::$stables [$stable] ['trough'] [$trough] ['value'] = $foodValue;
+					self::$stables [$stable] ['trough'] [$trough] ['factor'] = $factor;
 				}
 			}
 		}
+	}
+	private static function getConsumptionPerWeekAndAnimal($animal) {
+		$consumptionPerWeek = array (
+				'chicken' => 50,
+				'cow' => 3500,
+				'horse' => 4000,
+				'pig' => 900,
+				'sheep' => 500 
+		);
+		if (isset ( $consumptionPerWeek [$animal] )) {
+			return $consumptionPerWeek [$animal];
+		}
+		return 0;
 	}
 	private static function getReproRate($animalName) {
 		if (stristr ( $animalName, 'COW' ) !== false) {
