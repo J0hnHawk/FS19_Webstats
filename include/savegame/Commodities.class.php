@@ -209,8 +209,10 @@ class Commodity {
 		$l_fillType = translate ( $fillType );
 		if ($className == 'isVehicle') {
 			$l_location = $location;
-		} else {
+		} elseif (substr ( $location, 0, 2 ) != '##') {
 			$l_location = translate ( $location );
+		} else {
+			$l_location = $location;
 		}
 		if (! isset ( self::$commodities [$l_fillType] )) {
 			$commodity = new Commodity ();
