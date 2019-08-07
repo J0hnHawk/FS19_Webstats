@@ -66,7 +66,7 @@ class Animals {
 											'fitnessScale' => floor ( $fitnessScale * 100 ),
 											'healthScale' => floor ( $healthScale * 100 ),
 											'dirtScale' => floor ( (1 - $dirtScale) * 100 ),
-											'ridingTimer' => floor ( floatval ( $animal ['ridingTimer'] ) * 100 ),
+											'ridingTimer' => floor ( floatval ( $animal ['ridingTimer'] / 300000 ) * 100 ),
 											'value' => 49500 * $fitnessScale * $healthScale + 500 * (1 - $dirtScale),
 											'isHorse' => true,
 											'image' => $animalType 
