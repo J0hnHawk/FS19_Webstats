@@ -257,7 +257,6 @@ function getMaps() {
 			closedir ( $dh );
 		}
 	}
-	var_dump($maps);
 	return $maps;
 }
 
