@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="baleGrass240">
+			<cz>Tráva</cz>
+			<en>Grass</en>
+			<de>Gras</de>
+			<fr>Herbe</fr>
+		</text>
+		<text name="baleHay240">
+			<cz>Seno</cz>
+			<en>Dry grass</en>
+			<de>Heu</de>
+			<fr>Foin</fr>
+		</text>
+		<text name="baleSilage240">
+			<cz>Siláž</cz>
+			<en>Silage</en>
+			<de>Silage</de>
+			<fr>Ensilage</fr>
+		</text>
+		<text name="baleStraw240">
+			<cz>Sláma</cz>
+			<en>Straw</en>
+			<de>Stroh</de>
+			<fr>Paille</fr>
+		</text>
+		<text name="cottonModule488">
+			<cz>Bavlna</cz>
+			<en>Cotton</en>
+			<de>Baumwolle</de>
+			<fr>cottonModule488</fr>
+		</text>
+		<text name="roundbaleGrass_w112_d130">
+			<cz>Tráva</cz>
+			<en>Grass</en>
+			<de>Gras</de>
+			<fr>Herbe</fr>
+		</text>
+		<text name="roundbaleHay_w112_d130">
+			<cz>Seno</cz>
+			<en>Dry grass</en>
+			<de>Heu</de>
+			<fr>Foin</fr>
+		</text>
+		<text name="roundbaleSilage_w112_d130">
+			<cz>Siláž</cz>
+			<en>Silage</en>
+			<de>Silage</de>
+			<fr>Ensilage</fr>
+		</text>
+		<text name="roundbaleStraw_w112_d130">
+			<cz>Sláma</cz>
+			<en>Straw</en>
+			<de>Stroh</de>
+			<fr>Paille</fr>
+		</text>
+	</l10n>
+</mapconfig>

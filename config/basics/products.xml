@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="WATER">
+			<cz>Voda</cz>
+			<en>Water</en>
+			<de>Wasser</de>
+			<fr>Eau</fr>
+		</text>
+		<text name="DIESEL">
+			<cz>Nafta</cz>
+			<en>Fuel</en>
+			<de>Diesel</de>
+			<fr>Carburant</fr>
+		</text>
+		<text name="LIQUIDMANURE">
+			<cz>Močůvka</cz>
+			<en>Liquid manure</en>
+			<de>Gülle</de>
+			<fr>Lisier</fr>
+		</text>
+		<text name="MANURE">
+			<cz>Mrva</cz>
+			<en>Manure</en>
+			<de>Mist</de>
+			<fr>Fumier</fr>
+		</text>
+		<text name="MILK">
+			<cz>Mléko</cz>
+			<en>Milk</en>
+			<de>Milch</de>
+			<fr>Lait</fr>
+		</text>
+		<text name="EGG">
+			<cz>Vejce</cz>
+			<en>Egg</en>
+			<de>Eier</de>
+			<fr></fr>
+		</text>
+		<text name="WOOL">
+			<cz>Vlna</cz>
+			<en>Wool</en>
+			<de>Wolle</de>
+			<fr>Laine</fr>
+		</text>
+		<text name="COTTON">
+			<cz>Bavlna</cz>
+			<en>Cotton</en>
+			<de>Baumwolle</de>
+			<fr></fr>
+		</text>
+		<text name="STRAW">
+			<cz>Sláma</cz>
+			<en>Straw</en>
+			<de>Stroh</de>
+			<fr>Paille</fr>
+		</text>
+		<text name="GRASS_WINDROW">
+			<cz>Tráva</cz>
+			<en>Grass</en>
+			<de>Gras</de>
+			<fr>Herbe</fr>
+		</text>
+		<text name="CHAFF">
+			<cz>Řezanka</cz>
+			<en>Chaff</en>
+			<de>Häckselgut</de>
+			<fr>Haché</fr>
+		</text>
+		<text name="DIGESTATE">
+			<cz>Digestát</cz>
+			<en>Digestate</en>
+			<de>Gärreste</de>
+			<fr>Digestat</fr>
+		</text>
+		<text name="DRYGRASS_WINDROW">
+			<cz>Seno</cz>
+			<en>dry Grass</en>
+			<de>Heu</de>
+			<fr>Foin</fr>
+		</text>
+		<text name="SILAGE">
+			<cz>Siláž</cz>
+			<en>Silage</en>
+			<de>Silage</de>
+			<fr>Ensilage</fr>
+		</text>
+		<text name="FORAGE">
+			<cz>Energetické krmivo</cz>
+			<en>Forage</en>
+			<de>Mischration</de>
+			<fr>Aliments composés</fr>
+		</text>
+		<text name="WOODCHIPS">
+			<cz>Štěpka</cz>
+			<en>Wood chips</en>
+			<de>Hackschnitzel</de>
+			<fr>Copeaux de bois</fr>
+		</text>
+	</l10n>
+</mapconfig>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapconfig>
+	<l10n>
+		<text name="WHEAT">
+			<cz>Pšenice</cz>
+			<en>Wheat</en>
+			<de>Weizen</de>
+			<fr>Blé</fr>
+		</text>
+		<text name="BARLEY">
+			<cz>Ječmen</cz>
+			<en>Barley</en>
+			<de>Gerste</de>
+			<fr>Orge</fr>
+		</text>
+		<text name="OAT">
+			<cz>Oves</cz>
+			<en>Oat</en>
+			<de>Hafer</de>
+			<fr></fr>
+		</text>
+		<text name="CANOLA">
+			<cz>Řepka</cz>
+			<en>Canola</en>
+			<de>Raps</de>
+			<fr>Colza</fr>
+		</text>
+		<text name="SUNFLOWER">
+			<cz>Slunečnice</cz>
+			<en>Sunflower</en>
+			<de>Sonnenblumen</de>
+			<fr>Tournesol</fr>
+		</text>
+		<text name="SOYBEAN">
+			<cz>Sójové boby</cz>
+			<en>Soybean</en>
+			<de>Sojabohnen</de>
+			<fr>Soja</fr>
+		</text>
+		<text name="MAIZE">
+			<cz>Kukuřice</cz>
+			<en>Maize</en>
+			<de>Körnermais</de>
+			<fr>Maïs</fr>
+		</text>
+		<text name="POTATO">
+			<cz>Brambory</cz>
+			<en>Potatoes</en>
+			<de>Kartoffeln</de>
+			<fr>Pommes de terre</fr>
+		</text>
+		<text name="SUGARBEET">
+			<cz>Cukrová řepa</cz>
+			<en>Sugar beet</en>
+			<de>Zuckerrüben</de>
+			<fr>Betterave à sucre</fr>
+		</text>
+		<text name="SUGARCANE">
+			<cz>Cukrová třtina</cz>
+			<en>Sugar cane</en>
+			<de>Zuckerrohr</de>
+			<fr>Canne à sucre</fr>
+		</text>
+	</l10n>
+</mapconfig>

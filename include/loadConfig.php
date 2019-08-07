@@ -55,16 +55,16 @@ if (file_exists ( $configFile )) {
 }
 
 // Load map infomations
-$map = loadMapCFGfile ( $webStatsConfig->map );
+$map = loadMapCFGfile ( 'maps' . DIRECTORY_SEPARATOR . $webStatsConfig->map );
 $smarty->assign ( 'map', $map );
 
 $userLang = $_SESSION ['language'];
 // Kartenkonfiguration aus XML Dateien laden
-$loadedConfig = loadXMLMapConfig ( '_gameOwn', $userLang );
+$loadedConfig = loadXMLMapConfig ( 'basics', $userLang );
 $mapconfig = $loadedConfig [0];
 $lang = $loadedConfig [1];
 // load installed mods
-$loadedConfig = loadXMLMapConfig ( '_mods', $userLang );
+$loadedConfig = loadXMLMapConfig ( 'mods', $userLang );
 $pallets = $mapconfig ['pallets'];
 $vehicles = $mapconfig ['vehicles'];
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
@@ -72,7 +72,7 @@ $mapconfig ['pallets'] = array_merge ( $pallets, $mapconfig ['pallets'] );
 $mapconfig ['vehicles'] = array_merge ( $vehicles, $mapconfig ['vehicles'] );
 $lang = array_merge ( $lang, $loadedConfig [1] );
 // Kartenkonfiguration aus XML Dateien laden
-$loadedConfig = loadXMLMapConfig ( $webStatsConfig->map, $userLang );
+$loadedConfig = loadXMLMapConfig ( 'maps' . DIRECTORY_SEPARATOR . $webStatsConfig->map, $userLang );
 $pallets = $mapconfig ['pallets'];
 $vehicles = $mapconfig ['vehicles'];
 $mapconfig = array_merge ( $mapconfig, $loadedConfig [0] );
