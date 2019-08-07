@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mapconfig>
-	<l10n>
-		<text name="farmTrailer">
-			<en>Caravan</en>
-			<de>Caravan</de>
-		</text>
-	</l10n>
-</mapconfig>
