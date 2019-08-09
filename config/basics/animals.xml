@@ -2,74 +2,74 @@
 <mapconfig>
 	<l10n>
 		<text name="COW_TYPE_BLACK_WHITE">
-			<cz>Kráva (černo bílá)</cz>
+			<cz>Kráva (černobílá)</cz>
 			<en>Cows (Black &amp; White)</en>
 			<de>Kuh (Schwarz &amp; Weiß)</de>
 			<fr>Vache</fr>
 		</text>
 		<text name="COW_TYPE_BROWN">
 			<cz>Kráva (hnědá)</cz>
-			<en>COW_TYPE_BROWN</en>
+			<en>Cows (brown)</en>
 			<de>Kuh (Braun)</de>
 			<fr>COW_TYPE_BROWN</fr>
 		</text>
 		<text name="COW_TYPE_BROWN_WHITE">
 			<cz>Kráva (hnědo bílá)</cz>
-			<en>COW_TYPE_BROWN_WHITE</en>
+			<en>Cows (brown &amp; white)</en>
 			<de>Kuh (Braun &amp; Weiß)</de>
 			<fr>COW_TYPE_BROWN_WHITE</fr>
 		</text>
 		<text name="COW_TYPE_BLACK">
 			<cz>Kráva (černá)</cz>
-			<en>COW_TYPE_BLACK</en>
+			<en>Cows (black)</en>
 			<de>Kuh (Schwarz)</de>
 			<fr>COW_TYPE_BLACK</fr>
 		</text>
 		<text name="COW_TYPE_BRAHMAN_BROWN">
 			<cz>Brahman (hnědý)</cz>
-			<en>COW_TYPE_BRAHMAN_BROWN</en>
+			<en>Brahman (brown)</en>
 			<de>Brahma (Braun)</de>
 			<fr>COW_TYPE_BRAHMAN_BROWN</fr>
 		</text>
 		<text name="COW_TYPE_BRAHMAN_WHITE">
 			<cz>Brahman (bílý)</cz>
-			<en>COW_TYPE_BRAHMAN_WHITE</en>
+			<en>Brahman (white)</en>
 			<de>Brahma (Weiß)</de>
 			<fr>COW_TYPE_BRAHMAN_WHITE</fr>
 		</text>
 		<text name="COW_TYPE_BRAHMAN_LIGHT_BROWN">
 			<cz>Brahman (světle hnědý)</cz>
-			<en>COW_TYPE_BRAHMAN_LIGHT_BROWN</en>
+			<en>Brahman (light brown)</en>
 			<de>Brahma (Hellbraun)</de>
 			<fr>COW_TYPE_BRAHMAN_LIGHT_BROWN</fr>
 		</text>
 		<text name="COW_TYPE_BRAHMAN_GREY">
 			<cz>Brahman (šedý)</cz>
-			<en>COW_TYPE_BRAHMAN_GREY</en>
+			<en>Brahman (grey)</en>
 			<de>Brahma (Grau)</de>
 			<fr>COW_TYPE_BRAHMAN_GREY</fr>
 		</text>
 		<text name="PIG_TYPE_RED">
 			<cz>Prase (růžové)</cz>
-			<en>PIG (Pink)</en>
+			<en>Pig (pink)</en>
 			<de>Schwein (Rosa)</de>
 			<fr>PIG_TYPE_RED</fr>
 		</text>
 		<text name="PIG_TYPE_BLACK">
 			<cz>Prase (černé)</cz>
-			<en>PIG_TYPE_BLACK</en>
+			<en>Pig (black)</en>
 			<de>Schwein (Schwarz)</de>
 			<fr>PIG_TYPE_BLACK</fr>
 		</text>
 		<text name="PIG_TYPE_BLACK_WHITE">
 			<cz>Prase (černobílé)</cz>
-			<en>PIG_TYPE_BLACK_WHITE</en>
+			<en>Pig (black &amp; white)</en>
 			<de>Schwein (Schwarz &amp; weiß)</de>
 			<fr>PIG_TYPE_BLACK_WHITE</fr>
 		</text>
 		<text name="PIG_TYPE_WHITE">
 			<cz>Prase (bílé)</cz>
-			<en>PIG_TYPE_WHITE</en>
+			<en>Pig (white)</en>
 			<de>Schwein (Weiß)</de>
 			<fr>PIG_TYPE_WHITE</fr>
 		</text>
