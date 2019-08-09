@@ -10,37 +10,37 @@
 	<l10n>
 		<text name="sellingStationRestaurant">
 			<cz>Restaurace</cz>		
-			<en>Restaurace</en>			
+			<en>Restaurant</en>			
 			<de>Restaurant</de>				
 		</text>
 		<text name="sellingStationRanch">
 			<cz>Ranč</cz>	
-			<en>Ranč</en>			
+			<en>Ranch</en>			
 			<de>Ranch</de>				
 		</text>
 		<text name="grainSiloCentral">
 			<cz>Centrální sýpka</cz>	
-			<en>Centrální sýpka</en>			
+			<en>Central Silo</en>			
 			<de>Getreidespeicher (Zentrum)</de>				
 		</text>
 		<text name="sellingStationWool">
 			<cz>Přádelna</cz>	
-			<en>Přádelna</en>			
+			<en>Wool station</en>			
 			<de>Spinnerei</de>				
 		</text>
 		<text name="grainSiloPort">
 			<cz>Přístavní sýpka</cz>
-			<en>Přístavní</en>			
+			<en>Port silo</en>			
 			<de>Hafenspeicher</de>				
 		</text>
 		<text name="sellingStationBales">
 			<cz>Seník</cz>	
-			<en>Seník</en>			
+			<en>Bales station</en>			
 			<de>Scheune</de>				
 		</text>
 		<text name="sellingStationWoodChips">
 			<cz>Pila</cz>
-			<en>Pila</en>			
+			<en>WoodChips station</en>			
 			<de>Sägewerg</de>				
 		</text>	
 	</l10n>
