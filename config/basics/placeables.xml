@@ -3,9 +3,12 @@
 	<l10n>
 		<!-- Tierhaltung ************************************************* -->
 		<text name="doghouse">
+			<cz>Psí bouda</cz>
+			<en>Dog house</en>
 			<de>Hundehütte</de>
 		</text>
 		<text name="husbandryChicken">
+			<cz>Slepičárna</cz>
 			<en>husbandryChicken</en>
 			<de>Hühnerstall</de>
 		</text>
@@ -16,38 +19,42 @@
 		</text>
 		<text name="husbandryCow">
 			<cz>Velký kravín</cz>
+			<en>Cow husbandry</en>
 			<de>Kuhweide</de>
 		</text>
 		<text name="husbandryCowLarge">
 			<cz>Velký kravín</cz>
+			<en>Big cow husbandry</en>
 			<de>Große Kuhweide</de>
 		</text>
 		<text name="husbandryHorse">
-			<cz>Velká konírna</cz>
-			<en>husbandryHorseLarge</en>
+			<cz>Konírna</cz>
+			<en>Horse husbandry</en>
 			<de>Pferdestall</de>
 		</text>
 		<text name="husbandryHorseLarge">
 			<cz>Velká konírna</cz>
-			<en>husbandryHorseLarge</en>
+			<en>Large horse husbandry</en>
 			<de>Großer Pferdestall</de>
 		</text>
 		<text name="husbandryPig">
 			<cz>Velký prasečák</cz>
+			<en>Pig husbandry</en>
 			<de>Schweinestall</de>
 		</text>
 		<text name="husbandryPigLarge">
 			<cz>Velký prasečák</cz>
+			<en>Big pig husbandry</en>
 			<de>Großer Schweinestall</de>
 		</text>
 		<text name="husbandrySheep">
-			<cz>Velká ovčírna</cz>
-			<en>husbandrySheepLarge</en>
+			<cz>Ovčírna</cz>
+			<en>Sheep husbandry</en>
 			<de>Schafweide</de>
 		</text>
 		<text name="husbandrySheepLarge">
 			<cz>Velká ovčírna</cz>
-			<en>husbandrySheepLarge</en>
+			<en>Big sheep husbandry</en>
 			<de>Große Schafweide</de>
 		</text>
 		<!-- Diverses **************************************************** -->
@@ -55,47 +62,67 @@
 			<de>HDS 9/18-4 M</de>
 		</text>
 		<text name="workshop">
+			<cz>Dílna</cz>
+			<en>Workshop</en>
 			<de>Werkstatt</de>
 		</text>
 		<text name="jenzHE700">
 			<de>HE 700 StA</de>
 		</text>
 		<text name="waterTank">
+			<cz>Vodní nádrž</cz>
+			<en>Water tank</en>
 			<de>Wassertank</de>
 		</text>
 		<!-- Silos ******************************************************* -->
 		<text name="farmSiloSmall">
+			<cz>Malé silo</cz>
+			<en>Small farm silo</en>
 			<de>Getreidesilo</de>
 		</text>
 		<text name="farmSiloLarge">
-			<cz>Silo na farmě</cz>
+			<cz>Velké silo</cz>
+			<en>Big farm silo</en>
 			<de>Großes Silo</de>
 		</text>
 		<text name="siloExtension">
-			<cz>Silo na farmě</cz>
+			<cz>Rozšíření sila</cz>
+			<en>Silo extension</en>
 			<de>Große Siloerweiterung</de>
 		</text>
 		<text name="hayLoft">
-			<cz>Seník na farmě</cz>
+			<cz>Seník</cz>
+			<en>hayLoft</en>
 			<de>Heulager</de>
 		</text>
 		<text name="bunkerSiloSmall">
+			<cz>Malá silážní jáma</cz>
+			<en>Small bunker silo</en>
 			<de>Kleines Fahrsilo</de>
 		</text>
 		<text name="bunkerSiloMedium">
+			<cz>Střední silážní jáma</cz>
+			<en>Medium bunker silo</en>
 			<de>Mittleres Fahrsilo</de>
 		</text>
 		<text name="bunkerSiloLarge">
+			<cz>Velká silážní jáma</cz>
+			<en>Big bunker silo</en>
 			<de>Großes Fahrsilo</de>
 		</text>
 		<text name="bunkerSiloSmallDouble">
+			<cz>Malá dvojitá silážní jáma</cz>
+			<en>Small bunker silo (double)</en>
 			<de>Kleines Doppelfahrsilo</de>
 		</text>
 		<text name="bunkerSiloMediumDouble">
-			<cz>Senážní silo</cz>
+			<cz>Střední dvojitá silážní jáma</cz>
+			<en>Medium bunker silo (double)</en>
 			<de>Mittleres Doppelfahrsilo</de>
 		</text>
 		<text name="bunkerSiloLargeDouble">
+			<cz>Velká dvojitá silážní jáma</cz>
+			<en>Big bunker silo (double)</en>
 			<de>Großes Doppelfahrsilo</de>
 		</text>
 		<!-- Dekorationen ************************************************ -->
@@ -136,20 +163,30 @@
 			<de>Hof Baracke</de>
 		</text>
 		<text name="farmOldBarn">
+			<cz>Stará stodola</cz>
+			<en>Farm old barn</en>
 			<de>Hof Scheune (alt)</de>
 		</text>
 		<!-- Hallen ****************************************************** -->
 		<text name="easyShed01">
+			<cz>Easy Shed 1</cz>
+			<en>Easy Shed 1</en>
 			<de>Easy Shed 1</de>
 		</text>
 		<text name="easyShed02">
+			<cz>Easy Shed 2</cz>
+			<en>Easy Shed 2</en>
 			<de>Easy Shed 2</de>
 		</text>
 		<text name="easyShed03">
+			<cz>Easy Shed 3</cz>
+			<en>Easy Shed 3</en>
 			<de>Easy Shed 3</de>
 		</text>
 		<!-- Farmhaus **************************************************** -->
 		<text name="farmHouse">
+			<cz>Statek</cz>
+			<en>Farm house</en>
 			<de>Farmhaus</de>
 		</text>
 	</l10n>
