@@ -55,7 +55,7 @@ if (file_exists ( $configFile )) {
 }
 
 // Load map infomations
-$map = loadMapCFGfile ( 'maps' . DIRECTORY_SEPARATOR . $webStatsConfig->map );
+$map = loadMapCFGfile ( $webStatsConfig->map );
 $smarty->assign ( 'map', $map );
 
 $userLang = $_SESSION ['language'];
