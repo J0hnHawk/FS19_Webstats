@@ -167,7 +167,7 @@ class Price {
 	private static function getPrice($amplitude0, $amplitude1, $period0, $period1, $time0, $time1, $nominalAmplitude1) {
 		$sin1 = $amplitude0 * sin ( (2 * pi () / $period0) * $time0 );
 		$sin2 = $amplitude1 * sin ( (2 * pi () / $period1) * $time1 ) + $nominalAmplitude1 * 10;
-		return ($sin1 + $sin2) * 1000 * self::$priceMultiplier;
+		return floor(($sin1 + $sin2) * 1000 * self::$priceMultiplier);
 	}
 	private static function getPrices($curve0, $curve1) {
 		$curve0 = self::objects2float ( $curve0 );
@@ -175,8 +175,8 @@ class Price {
 		$offset = 1000;
 		$currentPrice = self::getPrice ( $curve0 ['amplitude'], $curve1 ['amplitude'], $curve0 ['period'], $curve1 ['period'], $curve0 ['time'], $curve1 ['time'], $curve1 ['nominalAmplitude'] );
 		$nextPrice = self::getPrice ( $curve0 ['amplitude'], $curve1 ['amplitude'], $curve0 ['period'], $curve1 ['period'], $curve0 ['time'] + $offset, $curve1 ['time'] + $offset, $curve1 ['nominalAmplitude'] );
-		$maxPrice = ($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] * 10) * 1000 * self::$priceMultiplier;
-		$minPrice = (($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation']) * - 1 + $curve1 ['nominalAmplitude'] * 10) * 1000 * self::$priceMultiplier;
+		$maxPrice = floor(($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] * 10) * 1000 * self::$priceMultiplier);
+		$minPrice = floor((($curve0 ['nominalAmplitude'] + $curve0 ['nominalAmplitudeVariation'] + $curve1 ['nominalAmplitude'] + $curve1 ['nominalAmplitudeVariation']) * - 1 + $curve1 ['nominalAmplitude'] * 10) * 1000 * self::$priceMultiplier);
 		return array (
 				'currentPrice' => $currentPrice,
 				'minPrice' => $minPrice,

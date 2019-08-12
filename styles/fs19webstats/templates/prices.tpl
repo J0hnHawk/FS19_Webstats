@@ -26,6 +26,8 @@
 								{$class="text-success"}
 							{elseif $percent<=40}
 								{$class="text-danger"}
+							{else}
+								{$class=""}
 							{/if}
 							{if $fillTypeData.locations.$location.priceTrend == 1}
 								{$trend='<i class="fas fa-caret-up text-success"></i>'}
