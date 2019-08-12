@@ -40,17 +40,26 @@ while ( ($entry = $stylesDir->read ()) != false ) {
 $stylesDir->close ();
 
 // Load server configuration - start install if it does not exists
+$startSetup = true;
 $configFile = './config/webStatsConfig.xml';
-$oldConfigFile = './config/server.conf';
 if (file_exists ( $configFile )) {
 	$webStatsConfig = simplexml_load_file ( $configFile );
-} elseif (file_exists ( $oldConfigFile )) {
-	$config = file ( $oldConfigFile );
-	writeConfig2XML ( $configFile, unserialize ( $config [0] ) );
+	if (! isset ( $webStatsConfig->webStatsVersion )) {
+		// Changed config file again
+		unlink ( $configFile );
+	} else {
+		$startSetup = false;
+	}
+} 
+// Delete of configuration
+$oldConfigFile = './config/server.conf';
+if (file_exists ( $oldConfigFile )) {
 	unlink ( $oldConfigFile );
-} else {
+}
+// End of delete old configuration
+if($startSetup) {
 	define ( 'IN_INSTALL', true );
-	include ('./include/install.php');
+	include ('./include/setup.php');
 	exit ();
 }
 

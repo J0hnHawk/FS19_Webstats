@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+$webStatsVersion = '0.9.0';
 ini_set ( 'error_reporting', E_ALL );
 ini_set ( 'display_errors', 1 );
 ini_set ( 'log_errors', 1 );
@@ -43,7 +44,7 @@ $style = $options ['general'] ['style'];
 $smarty = new Smarty ();
 $smarty->debugging = false;
 $smarty->caching = false;
-$smarty->assign ( 'webStatsVersion', sprintf ( '0.8.0-%s (%s)', intval ( file_get_contents ( 'build' ) ), date ( 'd.m.Y', filectime ( 'build' ) ) ) );
+$smarty->assign ( 'webStatsVersion', $webStatsVersion );
 
 include ('./include/loadConfig.php');
 $smarty->assign ( 'onlineUser', sizeof ( $onlineUser ) );
@@ -54,7 +55,6 @@ $savegame = new Savegame ( $webStatsConfig, $_SESSION ['farmId'] );
 $smarty->assign ( 'currentDay', $savegame->currentDay );
 $smarty->assign ( 'dayTime', $savegame->dayTime );
 $smarty->assign ( 'money', $savegame->getFarmMoney ( $_SESSION ['farmId'] ) );
-$serverOnline = true;
 
 // Existing pages and nav items
 $showInNav = ($_SESSION ['farmId'] > 0) ? true : false;
@@ -65,12 +65,12 @@ if (! isset ( $nav->items [$page] )) {
 }
 $nav->setActiveItem ( $page );
 $smarty->assign ( 'page', $page );
-if ($serverOnline) {
+if ($savegame->serverOnline) {
 	include ("./include/$page.php");
 }
 $smarty->assign ( 'navItems', $nav->items );
 $smarty->assign ( 'reloadPage', $options ['general'] ['reload'] );
-$smarty->assign ( 'serverOnline', $serverOnline );
+$smarty->assign ( 'serverOnline', $savegame->serverOnline );
 $smarty->assign ( 'creatorLanguageFile', $creatorLanguageFile );
 $smarty->setTemplateDir ( "./styles/$style/templates" );
 $smarty->assign ( 'style', $style );

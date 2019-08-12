@@ -73,6 +73,7 @@ function getLanguages() {
 		}
 	}
 	$langDir->close ();
+	ksort ( $languages );
 	return $languages;
 }
 function prefilter_i18n($key) {

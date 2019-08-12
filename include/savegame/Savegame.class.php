@@ -36,6 +36,7 @@ class Savegame {
 			2 => 1.8,
 			3 => 1 
 	);
+	public $serverOnline = 0; // 0 = offline; 1 = online; 2 = offline but cache
 	public $currentDay;
 	public $dayTime;
 	public $difficulty;
@@ -59,41 +60,10 @@ class Savegame {
 			mkdir ( $this->cache );
 		}
 		$this->farmId = $farmId;
-		switch ($webStatsConfig->savegame->type) {
-			case 'ftp' :
-				$this->ftp ['server'] = $webStatsConfig->savegame->server;
-				$this->ftp ['port'] = $webStatsConfig->savegame->port;
-				$this->ftp ['ssl'] = get_bool ( $webStatsConfig->savegame->ssl );
-				$this->ftp ['path'] = $webStatsConfig->savegame->path;
-				$this->ftp ['user'] = $webStatsConfig->savegame->user;
-				$this->ftp ['pass'] = $webStatsConfig->savegame->pass;
-				$this->ftp ['isgportal'] = get_bool ( $webStatsConfig->savegame->gportal );
-				$updateFiles = true;
-				if (file_exists ( $this->cache . $this->xmlFiles [0] )) {
-					self::$xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
-					$lastDayTime = intval ( self::$xml ['environment']->currentDay ) * 86400 + intval ( self::$xml ['environment']->dayTime * 60 );
-					$this->getFileByFTP ( $this->xmlFiles [0] );
-					$careerEnvironment = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
-					$newDayTime = intval ( $careerEnvironment->currentDay ) * 86400 + intval ( $careerEnvironment->dayTime * 60 );
-					if ($newDayTime == $lastDayTime) {
-						$updateFiles = false;
-					}
-				} else {
-					$this->getFileByFTP ( $this->xmlFiles [0] );
-				}
-				self::$xml [basename ( $this->xmlFiles [0], '.xml' )] = simplexml_load_file ( $this->cache . $this->xmlFiles [0] );
-				for($s1 = 1; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
-					if ($updateFiles) {
-						$this->getFileByFTP ( $this->xmlFiles [$s1] );
-					}
-					$basename = basename ( $this->xmlFiles [$s1], '.xml' );
-					self::$xml [$basename] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
-					$this->$basename = new stdClass ();
-					$this->$basename = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
-				}
-				break;
+		switch ($webStatsConfig->savegame_type) {
 			case 'local' :
-				$this->cache = $webStatsConfig->savegame->path;
+				$this->serverOnline = 1;
+				$this->cache = $webStatsConfig->fs19path . $webStatsConfig->savegame_slot . DIRECTORY_SEPARATOR;
 				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
 					$basename = basename ( $this->xmlFiles [$s1], '.xml' );
 					self::$xml [$basename] = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
@@ -101,41 +71,56 @@ class Savegame {
 					$this->$basename = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
 				break;
-			case 'web' :
-				$username = $webStatsConfig->savegame->user;
-				$password = $webStatsConfig->savegame->pass;
-				$url = $webStatsConfig->savegame->url;
-				$loginUrl = $url . 'index.html?lang=de';
-				$savegameUrl = $url . $webStatsConfig->savegame->slot;
-				$logoutUrl = $url . 'index.html?logout=true&lang=de';
+			case 'server' :
 				$zipFile = $this->cache . 'savegame.zip';
-				$cacheTimeout = 60;
+				$cacheTimeout = $webStatsConfig->cacheTimeout;
 				if (file_exists ( $zipFile ) && filemtime ( $zipFile ) > (time () - ($cacheTimeout) + rand ( 0, 10 ))) {
+					$this->serverOnline = 1;
 				} else {
 					$ch = curl_init ();
-					curl_setopt ( $ch, CURLOPT_URL, $loginUrl );
-					curl_setopt ( $ch, CURLOPT_POST, true );
-					curl_setopt ( $ch, CURLOPT_POSTFIELDS, "username=$username&password=$password&login=Anmelden" );
-					curl_setopt ( $ch, CURLOPT_COOKIEJAR, 'cookie.txt' );
-					curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
-					$store = curl_exec ( $ch );
-					curl_setopt ( $ch, CURLOPT_POST, false );
-					curl_setopt ( $ch, CURLOPT_POSTFIELDS, '' );
-					curl_setopt ( $ch, CURLOPT_URL, $savegameUrl );
-					$content = curl_exec ( $ch );
-					file_put_contents ( $zipFile, $content );
-					curl_setopt ( $ch, CURLOPT_URL, $logoutUrl );
-					$store = curl_exec ( $ch );
-					curl_close ( $ch );
-					if (class_exists ( 'ZipArchive' )) {
-						$zip = new ZipArchive ();
-						$extractPath = "./cache";
-						if ($zip->open ( $zipFile ) != "true") {
-							echo "Error :- Unable to open the Zip File";
+					$postData = array (
+							'username' => $webStatsConfig->webinterface_username,
+							'password' => $webStatsConfig->webinterface_password,
+							'login' => 'Anmelden' 
+					);
+					// Login in the web interface
+					curl_setopt_array ( $ch, array (
+							CURLOPT_URL => $webStatsConfig->webinterface_url . 'index.html',
+							CURLOPT_POST => true,
+							CURLOPT_POSTFIELDS => $postData,
+							CURLOPT_COOKIEJAR => $this->cache . 'cookie.txt',
+							CURLOPT_RETURNTRANSFER => true,
+							CURLOPT_CONNECTTIMEOUT => 10 
+					) );
+					$response = curl_exec ( $ch );
+					if (curl_getinfo ( $ch, CURLINFO_HTTP_CODE ) != 200 || strpos ( $response, 'Username or password incorrect' ) !== false) {
+						// Server offline or username / password changed
+					} else {
+						// Download savegame
+						curl_setopt_array ( $ch, array (
+								CURLOPT_URL => $webStatsConfig->webinterface_url . $webStatsConfig->savegame_slot,
+								CURLOPT_POST => false 
+						) );
+						$savegame = curl_exec ( $ch );
+						file_put_contents ( $zipFile, $savegame );
+						// Logoff in the web interface
+						curl_setopt ( $ch, CURLOPT_URL, $webStatsConfig->webinterface_url . 'index.html?logout=true' );
+						$store = curl_exec ( $ch );
+						curl_close ( $ch );
+						if (strlen ( $savegame ) > 100 && class_exists ( 'ZipArchive' )) {
+							$this->serverOnline = 1;
+							$zip = new ZipArchive ();
+							$extractPath = "./cache";
+							if ($zip->open ( $zipFile ) != "true") {
+								echo "Error :- Unable to open the Zip File";
+							}
+							$zip->extractTo ( $extractPath );
+							$zip->close ();
 						}
-						$zip->extractTo ( $extractPath );
-						$zip->close ();
 					}
+				}
+				if ($this->serverOnline == 0 && file_exists ( $zipFile )) {
+					$this->serverOnline = 2;
 				}
 				for($s1 = 0; $s1 < sizeof ( $this->xmlFiles ); $s1 ++) {
 					$basename = basename ( $this->xmlFiles [$s1], '.xml' );
@@ -143,8 +128,6 @@ class Savegame {
 					$this->$basename = new stdClass ();
 					$this->$basename = simplexml_load_file ( $this->cache . $this->xmlFiles [$s1] );
 				}
-				break;
-			case 'api' :
 				break;
 		}
 		$this->currentDay = intval ( self::$xml ['environment']->currentDay );
