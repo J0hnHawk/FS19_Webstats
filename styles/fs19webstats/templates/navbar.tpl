@@ -14,7 +14,7 @@
 				{/if}
 				{if $navItem.hasSubmenu}
 					<li class="{$class|cat:' dropdown'}">
-						<a class="nav-link dropdown-toggle py-0" href="index.php?page={$link}" id="navbarDropdown" data-toggle="dropdown"><img src="{#IMAGES#}/{$link}.png" class="img-fluid d-none d-lg-block"><span class="d-lg-none d-md-block">{$navItem.text}</span></a>
+						<a class="nav-link dropdown-toggle py-0" href="index.php?page={$link}" id="navbarDropdown" data-toggle="dropdown"><img src="{#IMAGES#}/icons/{$link}.png" class="img-fluid d-none d-lg-block"><span class="d-lg-none d-md-block">{$navItem.text}</span></a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						{foreach $navItem.submenu as $subLink => $subItem}
 							{if $subItem.showInNav}
@@ -25,7 +25,7 @@
 					</li>
 				{else}
 					<li class="{$class}">
-						<a class="nav-link py-0" href="index.php?page={$link}"><img src="{#IMAGES#}/{$link}.png" class="img-fluid d-none d-lg-block"><span class="d-lg-none d-md-block">{$navItem.text}</span></a>
+						<a class="nav-link py-0" href="index.php?page={$link}"><img src="{#IMAGES#}/icons/{$link}.png" class="img-fluid d-none d-lg-block"><span class="d-lg-none d-md-block">{$navItem.text}</span></a>
 					</li>
 				{/if}
 			{/if}

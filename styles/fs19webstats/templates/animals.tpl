@@ -26,7 +26,7 @@
 					{$stables.$currentStable.animals.$currentAnimal.name}<span class="float-right">{if $stables.$currentStable.animals.$currentAnimal.isHorse}€
 						{$stables.$currentStable.animals.$currentAnimal.value|number_format:0:",":"."}{else}{$stables.$currentStable.animals.$currentAnimal.count|number_format:0:",":"."}{/if}</span>
 				</h4>
-				<img src="{#IMAGES#}/{$stables.$currentStable.animals.$currentAnimal.image}.png" class="img-fluid h-50 mx-auto d-block"> {if $stables.$currentStable.forHorses}
+				<img src="{#IMAGES#}/animals/{$stables.$currentStable.animals.$currentAnimal.image}.png" class="img-fluid h-50 mx-auto d-block"> {if $stables.$currentStable.forHorses}
 				<div class="row">
 					<div class="col-4">##FITNESS##</div>
 					<div class="col-4">
