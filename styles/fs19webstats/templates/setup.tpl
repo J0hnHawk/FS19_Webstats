@@ -186,7 +186,7 @@
 			$('#helpImageModal').on('show.bs.modal', function (event) {
   				var button = $(event.relatedTarget) // Button that triggered the modal
   				var image = button.data('image') // Extract info from data-* attributes
-				$('#helpImage').attr("src", "{#IMAGES#}/" + image )
+				$('#helpImage').attr("src", "{#IMAGES#}/install/" + image )
 			})
 		</script>
 		{else if $mode=="local"}
