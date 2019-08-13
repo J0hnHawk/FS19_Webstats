@@ -22,6 +22,8 @@ SATURDAY=Sobota
 SUNDAY=Neděle
 ON=Zapnuto
 OFF=Vypnuto
+ONMAP=na zemi
+OUTOFMAP=Mimo mapu
 
 //install.tpl
 WEBSTATS_DESCRIPTON=Tato webová stránka umí zozbrazovat statistiky ze hry Farming Simulátor 19 a to jak z dedikovaného serveru nebo místního uložení. Zobrazují se vozidla, zásoby a výrobní zařízení. Jsou identifikovány chybějící suroviny a kompletní sklady produktů. 
