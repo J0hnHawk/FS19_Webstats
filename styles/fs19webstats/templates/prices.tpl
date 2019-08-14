@@ -36,7 +36,7 @@
 							{else}
 								{$trend='<i class="fas fa-caret-down" style="visibility: hidden"></i>'}
 							{/if}
-							{$value=$fillTypeData.locations.$location.price|number_format:0:",":"."}
+							{$value=$fillTypeData.locations.$location.price|floor|number_format:0:",":"."}
 							
 						{else}
 							{$dataorder=""}{$class=""}{$value=""}{$trend=""}
@@ -109,7 +109,7 @@
 					<td>{$fillTypeData.bestLocation}</td>
 					<td class="text-right col-1 pr-3">{$fillTypeData.minPrice|number_format:0:",":"."}</td>
 					<td class="text-right col-1 pr-3">{$fillTypeData.maxPrice|number_format:0:",":"."}</td>
-					<td class="text-right col-1 pr-3 {if $fillTypeData.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}">{$fillTypeData.bestPrice|number_format:0:",":"."} {if $fillTypeData.priceTrend == 1} <i class="fas fa-caret-up text-success"></i> {elseif
+					<td class="text-right col-1 pr-3 {if $fillTypeData.greatDemand}text-info{elseif $percent>=60}text-success{elseif $percent<=40}text-danger{/if}">{$fillTypeData.bestPrice|floor|number_format:0:",":"."} {if $fillTypeData.priceTrend == 1} <i class="fas fa-caret-up text-success"></i> {elseif
 						$fillTypeData.priceTrend == -1} <i class="fas fa-caret-down text-danger"></i> {else} <i class="fas fa-caret-down" style="visibility: hidden"></i> {/if}
 					</td>
 					<td class="text-center text-nowrap">{$percent|number_format:0:",":"."} %</td> {if $options['farmId']>0}{if isset($commodities.$fillType) && $commodities.$fillType.overall > 0}
