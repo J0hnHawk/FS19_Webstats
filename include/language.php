@@ -22,7 +22,11 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 
-$languageFromBrowser = substr ( $_SERVER ['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
+if (isset ( $_SERVER ['HTTP_ACCEPT_LANGUAGE'] )) {
+	$languageFromBrowser = substr ( $_SERVER ['HTTP_ACCEPT_LANGUAGE'], 0, 2 );
+} else {
+	$languageFromBrowser = 'en';
+}
 if (file_exists ( './language/' . $languageFromBrowser . '/global.lng' )) {
 	$defaultLanguage = $languageFromBrowser;
 } else {
