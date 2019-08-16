@@ -57,6 +57,16 @@ class Commodity {
 		foreach ( self::$xml ['items'] as $item ) {
 			$location = cleanFileName ( $item ['filename'] );
 			switch ($item ['className']) {
+				case 'FS19_GlobalCompany.GC_ProductionFactoryPlaceable' :
+					if (isset ( $item->productionFactory->outputProducts )) {
+						$location = $item ['modName'];
+						foreach ( $item->productionFactory->outputProducts->outputProduct as $product ) {
+							$fillType = $product ['name'];
+							$fillLevel = intval ( $product ['fillLevel'] );
+							self::addCommodity ( $fillType, $fillLevel, $location );
+						}
+					}
+					break;
 				case 'Bale' :
 					if ($item ['farmId'] == $_SESSION ['farmId']) {
 						$location = getLocation ( $item ['position'] );
