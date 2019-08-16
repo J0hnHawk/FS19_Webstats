@@ -210,6 +210,13 @@ class Commodity {
 					}
 				}
 			}
+			if (isset ( $vehicle->baleLoader )) {
+				foreach ( $vehicle->baleLoader->bale as $bale ) {
+					$fillType = cleanFileName ( $bale ['filename'] );
+					$fillLevel = intval ( $bale ['fillLevel'] );
+					self::addCommodity ( $fillType, $fillLevel, $location, $className );
+				}
+			}
 		}
 	}
 	private static function addCommodity($fillType, $fillLevel, $location, $className = 'none', $isCombine = false) {
