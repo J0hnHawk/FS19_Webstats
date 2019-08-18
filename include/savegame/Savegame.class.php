@@ -138,6 +138,9 @@ class Savegame {
 	public function getCurrentDay() {
 		return intval ( self::$xml ['environment']->currentDay );
 	}
+	public function getCareerMode() {
+		return intval ( $this->difficulty );
+	}
 	public function getPriceMultiplier() {
 		return self::PRICE_MULTIPLIER [$this->economicDifficulty];
 	}

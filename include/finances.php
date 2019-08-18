@@ -34,7 +34,7 @@ switch ($mode) {
 		include ('./include/savegame/Commodities.class.php');
 		Commodity::loadCommodities ( $savegame::$xml );
 		include ('./include/savegame/Vehicles.class.php');
-		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig  );
+		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig );
 		include ('./include/savegame/Animals.class.php');
 		Animals::loadStables ( $savegame::$xml );
 		
@@ -64,7 +64,7 @@ switch ($mode) {
 		}
 		$prices = Price::getAllPrices ();
 		foreach ( Commodity::getAllCommodities () as $l_fillType => $commodity ) {
-			$fillType = $commodity ['i3dName'];
+			$fillType = strval ( $commodity ['i3dName'] );
 			if ($fillType == 'CHAFF') {
 				// Chaff will be silage after some time in a silo
 				$l_fillType = translate ( 'SILAGE' );
@@ -87,8 +87,13 @@ switch ($mode) {
 		/*
 		 * LIABILITIES
 		 */
+		$startingCapital = array (
+				1 => 100000,
+				2 => 1250000,
+				3 => 500000 
+		);
 		$liabilities = array (
-				'A1' => 500000,
+				'A1' => $startingCapital [$savegame->getCareerMode ()],
 				'B1' => Farm::getLoan ( $_SESSION ['farmId'] ),
 				'B2' => (($money < 0) ? $money : 0) * - 1 
 		);
@@ -170,7 +175,7 @@ switch ($mode) {
 				'HARVEST', // 6/ soldWood, soldBales, harvestIncome, incomeBga
 				'MISSION', // 7/ missionIncome
 				'OTHER', // 8/ purchaseSeeds, purchaseFertilizer, purchaseSaplings, purchaseWater, other
-				'LOANINTEREST' // 9/ loanInterest
+				'LOANINTEREST'  // 9/ loanInterest
 		);
 		$weekdays = array (
 				'SUNDAY',
