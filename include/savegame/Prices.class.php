@@ -128,30 +128,32 @@ class Price {
 		ksort ( self::$sellingPoints );
 	}
 	private static function loadGreatDemands($xml) {
-		foreach ( $xml->greatDemands->greatDemand as $greatDemand ) {
-			$stationId = strval ( $greatDemand ['itemId'] );
-			$fillTypeName = strval ( $greatDemand ['fillTypeName'] );
-			$demandMultiplier = floatval ( $greatDemand ['demandMultiplier'] );
-			$isRunning = get_bool ( $greatDemand ['isRunning'] );
-			self::$greatDemandIsRunning = self::$greatDemandIsRunning || $isRunning;
-			$l_fillType = translate ( $fillTypeName );
-			if (isset ( self::$greatDemands [$l_fillType] )) {
-				self::$greatDemands [$l_fillType] ['locations'] += array (
-						$stationId => array (
-								'demandMultiplier' => $demandMultiplier,
-								'isRunning' => $isRunning 
-						) 
-				);
-			} else {
-				self::$greatDemands [$l_fillType] = array (
-						'i3dName' => $fillTypeName,
-						'locations' => array (
-								$stationId => array (
-										'demandMultiplier' => $demandMultiplier,
-										'isRunning' => $isRunning 
-								) 
-						) 
-				);
+		if (isset ( $xml->greatDemands->greatDemand )) {
+			foreach ( $xml->greatDemands->greatDemand as $greatDemand ) {
+				$stationId = strval ( $greatDemand ['itemId'] );
+				$fillTypeName = strval ( $greatDemand ['fillTypeName'] );
+				$demandMultiplier = floatval ( $greatDemand ['demandMultiplier'] );
+				$isRunning = get_bool ( $greatDemand ['isRunning'] );
+				self::$greatDemandIsRunning = self::$greatDemandIsRunning || $isRunning;
+				$l_fillType = translate ( $fillTypeName );
+				if (isset ( self::$greatDemands [$l_fillType] )) {
+					self::$greatDemands [$l_fillType] ['locations'] += array (
+							$stationId => array (
+									'demandMultiplier' => $demandMultiplier,
+									'isRunning' => $isRunning 
+							) 
+					);
+				} else {
+					self::$greatDemands [$l_fillType] = array (
+							'i3dName' => $fillTypeName,
+							'locations' => array (
+									$stationId => array (
+											'demandMultiplier' => $demandMultiplier,
+											'isRunning' => $isRunning 
+									) 
+							) 
+					);
+				}
 			}
 		}
 	}
