@@ -29,5 +29,14 @@
 		<fillType name="CHICKEN_TYPE_BLACK" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
 		<fillType name="CHICKEN_TYPE_BROWN" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
 		<fillType name="CHICKEN_TYPE_ROOSTER" pricePerLiter="25.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_BEIGE" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_BLACK" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_BROWN" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_BROWN_WHITE" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_DARK_BROWN" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_GREY" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_LIGHT_BROWN" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+		<fillType name="HORSE_TYPE_RED_BROWN" pricePerLiter="0.000" isAnimal="true" balanceSheet="B5" />
+
 	</fillTypes>
 </mapconfig>

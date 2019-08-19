@@ -82,6 +82,7 @@ switch ($mode) {
 			} else {
 				$assetPosition = $mapconfig ['fillTypes'] [$fillType] ['balanceSheet'];
 			}
+			//echo (sprintf ( "%s\t%s\t%s\t%s\t%s\r\n", $fillType, $assetPosition, $commodity ['overall'], floor ( $pricePerLiter ), floor ( $commodity ['overall'] * $pricePerLiter ) ));
 			$assets = addValue ( $assets, $assetPosition, floor ( $commodity ['overall'] * $pricePerLiter ) );
 		}
 		/*
