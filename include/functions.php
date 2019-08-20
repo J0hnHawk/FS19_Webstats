@@ -67,8 +67,14 @@ function addFillType($i3dName, $fillLevel, $fillMax, $prodPerHour, $factor, $sta
 			'fillMax' => $fillMax,
 			'prodPerHour' => $prodPerHour * $factor,
 			'prodPerDay' => $prodPerHour * $factor * 24,
-			'state' => $state 
+			'state' => $state
 	);
+}
+function xml2array($xmlObject, $out = array()) {
+	foreach ( ( array ) $xmlObject as $index => $node ) {
+		$out [$index] = (is_object ( $node )) ? xml2array ( $node ) : $node;
+	}
+	return $out;
 }
 
 // Load XML configurations files
@@ -80,23 +86,25 @@ function loadXMLMapConfig($directory, $language) {
 		if (isset ( $object->item )) {
 			foreach ( $object->item as $item ) {
 				$className = strval ( $item ['name'] );
-				$objects = array_merge ( $objects, array (
-						$className => array () 
-				) );
+				if (! isset ( $objects ['objects'] )) {
+					$objects = array_merge ( $objects, array (
+							'objects' => array ()
+					) );
+				}
 				foreach ( $item->attributes () as $attribute => $value ) {
 					if ($attribute != 'name') {
-						$objects [$className] [$attribute] = get_bool ( $value );
+						$objects ['objects'] [$className] [$attribute] = get_bool ( $value );
 					}
 				}
 				foreach ( $item->children () as $childName => $childData ) {
-					if (empty ( $objects [$className] [$childName] ) || ! is_array ( $objects [$className] [$childName] )) {
-						$objects [$className] [$childName] = array ();
+					if (empty ( $objects ['objects'] [$className] [$childName] ) || ! is_array ( $objects ['objects'] [$className] [$childName] )) {
+						$objects ['objects'] [$className] [$childName] = array ();
 					}
 					$fillType = strval ( $childData ['name'] );
-					$objects [$className] [$childName] [$fillType] = array ();
+					$objects ['objects'] [$className] [$childName] [$fillType] = array ();
 					foreach ( $childData->attributes () as $attribute => $value ) {
 						if ($attribute != 'name') {
-							$objects [$className] [$childName] [$fillType] [$attribute] = get_bool ( $value );
+							$objects ['objects'] [$className] [$childName] [$fillType] [$attribute] = get_bool ( $value );
 						}
 					}
 				}
@@ -113,7 +121,7 @@ function loadXMLMapConfig($directory, $language) {
 					$value = strval ( $text->$defaultLanguage );
 				}
 				$translations = array_merge ( $translations, array (
-						$key => $value 
+						$key => $value
 				) );
 			}
 		}
@@ -126,7 +134,7 @@ function loadXMLMapConfig($directory, $language) {
 		if (isset ( $object->Farmlands )) {
 			if (! isset ( $objects ['Farmlands'] )) {
 				$objects = array_merge ( $objects, array (
-						'Farmlands' => array () 
+						'Farmlands' => array ()
 				) );
 			}
 			foreach ( $object->Farmlands->Farmland as $Farmland ) {
@@ -141,7 +149,7 @@ function loadXMLMapConfig($directory, $language) {
 		if (isset ( $object->fillTypes )) {
 			if (! isset ( $objects ['fillTypes'] )) {
 				$objects = array_merge ( $objects, array (
-						'fillTypes' => array () 
+						'fillTypes' => array ()
 				) );
 			}
 			foreach ( $object->fillTypes->fillType as $fillType ) {
@@ -156,7 +164,7 @@ function loadXMLMapConfig($directory, $language) {
 		if (isset ( $object->vehicles )) {
 			if (! isset ( $objects ['vehicles'] )) {
 				$objects = array_merge ( $objects, array (
-						'vehicles' => array () 
+						'vehicles' => array ()
 				) );
 			}
 			foreach ( $object->vehicles->vehicle as $vehicle ) {
@@ -171,7 +179,7 @@ function loadXMLMapConfig($directory, $language) {
 	}
 	return array (
 			$objects,
-			$translations 
+			$translations
 	);
 }
 
@@ -205,7 +213,7 @@ function loadMapCFGfile($mapPath) {
 			'Size' => 2048,
 			'configBy' => '',
 			'configVersion' => '',
-			'configFormat' => 'xml' 
+			'configFormat' => 'xml'
 	);
 	if (file_exists ( "./config/maps/$mapPath/map.cfg" )) {
 		$entries = file ( "./config/maps/$mapPath/map.cfg" );
@@ -249,7 +257,7 @@ function getMaps() {
 								'Size' => $map ['Size'],
 								'configBy' => $map ['configBy'],
 								'configVersion' => $map ['configVersion'],
-								'configFormat' => $map ['configFormat'] 
+								'configFormat' => $map ['configFormat']
 						);
 					}
 				}
@@ -278,7 +286,7 @@ function translate($text) {
 function strposa($haystack, $needle, $offset = 0) {
 	if (! is_array ( $needle ))
 		$needle = array (
-				$needle 
+				$needle
 		);
 	foreach ( $needle as $query ) {
 		if (strpos ( $haystack, $query, $offset ) !== false)
@@ -324,7 +332,7 @@ function addCommodity($fillType, $fillLevel, $location, $className = 'none', $is
 				'overall' => $fillLevel,
 				'i3dName' => $fillType,
 				'isCombine' => $isCombine,
-				'locations' => array () 
+				'locations' => array ()
 		);
 	} else {
 		$commodities [$l_fillType] ['overall'] += $fillLevel;
@@ -336,8 +344,8 @@ function addCommodity($fillType, $fillLevel, $location, $className = 'none', $is
 					$l_location => array (
 							'i3dName' => $location,
 							$className => 1,
-							'fillLevel' => $fillLevel 
-					) 
+							'fillLevel' => $fillLevel
+					)
 			);
 		} else {
 			if (! isset ( $commodities [$l_fillType] ['locations'] [$l_location] [$className] )) {

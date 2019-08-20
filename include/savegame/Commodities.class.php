@@ -27,7 +27,7 @@ class Commodity {
 			'DEF',
 			'ROUNDBALE',
 			'SQUAREBALE',
-			'UNKNOWN' 
+			'UNKNOWN'
 	);
 	private $overall;
 	private $i3dName;
@@ -60,7 +60,6 @@ class Commodity {
 				case 'FS19_GlobalCompany.GC_ProductionFactoryPlaceable' :
 					if ($item ['farmId'] == $_SESSION ['farmId']) {
 						if (isset ( $item->productionFactory->outputProducts )) {
-							$location = strval ( $item ['modName'] );
 							foreach ( $item->productionFactory->outputProducts->outputProduct as $product ) {
 								$fillType = strval ( $product ['name'] );
 								$fillLevel = intval ( $product ['fillLevel'] );
@@ -85,16 +84,6 @@ class Commodity {
 									foreach ( $module->animal as $animal ) {
 										$fillType = strval ( $animal ['fillType'] );
 										self::addCommodity ( $fillType, 1, $location, 'animal' );
-										/*
-										 * Tested horse sell prices:
-										 * 49000 * (fitnessScale * healthScale) + 500 * dirtScale
-										 *
-										 * Giants LUA Doc:
-										 * function Horse:getValueScale()
-										 * -- dirt scale should only count 10%
-										 * return 0.90 * (self.fitnessScale * self.healthScale) + 0.10 * (1-self.dirtScale)
-										 * end
-										 */
 									}
 									break;
 								case 'liquidManure' :
@@ -248,8 +237,8 @@ class Commodity {
 					$l_location => array (
 							'i3dname' => $location,
 							$className => 1,
-							'fillLevel' => $fillLevel 
-					) 
+							'fillLevel' => $fillLevel
+					)
 			);
 		} else {
 			if (! isset ( $commodity->locations [$l_location] [$className] )) {
@@ -282,12 +271,12 @@ class Commodity {
 							$className,
 							$fillType,
 							strval ( $item ['position'] ),
-							'-870 100 ' . (- 560 + sizeof ( $outOfMap ) * 2) 
+							'-870 100 ' . (- 560 + sizeof ( $outOfMap ) * 2)
 					);
 				} else {
 					self::$positions [$className] [translate ( $fillType )] [] = array (
 							'name' => $className,
-							'position' => explode ( ' ', $item ['position'] ) 
+							'position' => explode ( ' ', $item ['position'] )
 					);
 				}
 			}

@@ -44,15 +44,15 @@ class Price {
 			$location = cleanFileName ( $item ['filename'] );
 			$stationId = intval ( $item ['id'] );
 			// Lager, Fabriken usw. analysieren
-			if (! isset ( $mapconfig [$location] ['locationType'] )) {
+			if (! isset ( $mapconfig ['objects'][$location] ['locationType'] )) {
 				// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
 				continue;
 			} else {
-				if (isset ( $mapconfig [$location] ['isSellingPoint'] ) && $mapconfig [$location] ['isSellingPoint']) {
+				if (isset ( $mapconfig ['objects'][$location] ['isSellingPoint'] ) && $mapconfig ['objects'][$location] ['isSellingPoint']) {
 					self::$sellStations [translate ( $location )] = $location;
-					if ($mapconfig [$location] ['locationType'] == 'bga') {
+					if ($mapconfig ['objects'][$location] ['locationType'] == 'bga') {
 						if ($item ['farmId'] == $savegame->farmId) {
-							foreach ( $mapconfig [$location] ['input'] as $fillType => $inputTrigger ) {
+							foreach ( $mapconfig ['objects'][$location] ['input'] as $fillType => $inputTrigger ) {
 								$currentPrice = $inputTrigger ['price'] * $savegame->getPriceMultiplier ();
 								self::addNewPrice ( $fillType, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
 							}
