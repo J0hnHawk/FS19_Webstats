@@ -45,9 +45,9 @@ class Vehicle {
 	private static $vehiclesResaleSum = 0;
 	private static $buildingsResaleSum = 0;
 	// private static $pallets = array ();
-	public static function extractXML($xml, $farmId, $mapconfig) {
-		$pallets = $mapconfig['pallets'];		
-		$dataFromStore = $mapconfig['vehicles'];
+	public static function extractXML($xml, $farmId, $gameData) {
+		$pallets = $gameData['pallets'];		
+		$dataFromStore = $gameData['vehicles'];
 		foreach ( $xml ['vehicles'] as $vehicleInXML ) {
 			if ($vehicleInXML ['farmId'] != $farmId) {
 				continue;

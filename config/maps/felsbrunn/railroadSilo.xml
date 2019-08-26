@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
-	<item name="railroadSilo01" locationType="storage" position="189 0 109" />
-	<item name="railroadSilo02" locationType="storage" position="329 0 -576" />
+	<objects>
+		<object name="railroadSilo01" locationType="storage" position="189 0 109" />
+		<object name="railroadSilo02" locationType="storage" position="329 0 -576" />
+	</objects>
 	<l10n>
 		<text name="railroadSilo01">
 			<en>railroadSilo01</en>

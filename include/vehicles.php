@@ -22,7 +22,7 @@ if (! defined ( 'IN_FS19WS' )) {
 	exit ();
 }
 include ('./include/savegame/Vehicles.class.php');
-Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig  );
+Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $gameData  );
 $subPage = GetParam ( 'subPage', 'G', 'vehicles' );
 if ($subPage == 'vehicles') {
 	$vehicles = Vehicle::getAllVehicles ();

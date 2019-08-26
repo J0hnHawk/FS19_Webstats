@@ -1,45 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
-	<item name="sellingStationMill02" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
-	<item name="sellingStationPort02" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
-	<item name="trainStationMill" locationType="TipTrigger" position="-949 0 571" isSellingPoint="true" />
-	<item name="sellingStationWool" locationType="TipTrigger" position="-946 0 -26" isSellingPoint="true" />
-	<item name="sellingStationPort01" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
-	<item name="sellingStationBales" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
-	<item name="grainElevatorEast" locationType="TipTrigger" position="-157 0 503" isSellingPoint="true" />
-	<item name="sellingStationWoodChips" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
-	<l10n>
-		<text name="sellingStationMill02">
-			<en>sellingStationMill02</en>
-			<de>Getreidemühle</de>
-		</text>
-		<text name="sellingStationPort02">
-			<en>sellingStationPort02</en>
-			<de>Hafen (Nord)</de>
-		</text>
-		<text name="trainStationMill">
-			<en>trainStationMill</en>
-			<de>Bahnstation Mühle</de>
-		</text>
-		<text name="sellingStationWool">
-			<en>sellingStationWool</en>
-			<de>Spinnerei</de>
-		</text>
-		<text name="sellingStationPort01">
-			<en>sellingStationPort01</en>
-			<de>Hafen (Süd)</de>
-		</text>
-		<text name="sellingStationBales">
-			<en>sellingStationBales</en>
-			<de>Scheune</de>
-		</text>
-		<text name="grainElevatorEast">
-			<en>grainElevatorEast</en>
-			<de>Getreidespeicher Ost</de>
-		</text>
-		<text name="sellingStationWoodChips">
-			<en>sellingStationWoodChips</en>
-			<de>Sägewerk</de>
-		</text>
-	</l10n>
+  <objects>
+    <object name="sellingStationMill02" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationPort02" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="trainStationMill" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationWool" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationPort01" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationBales" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="grainElevatorEast" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationWoodChips" locationType="TipTrigger" isSellingPoint="true"/>
+  </objects>
+  <l10n>
+    <text name="sellingStationMill02">
+      <en>sellingStationMill02</en>
+      <de>Getreidemühle</de>
+    </text>
+    <text name="sellingStationPort02">
+      <en>sellingStationPort02</en>
+      <de>Hafen (Nord)</de>
+    </text>
+    <text name="trainStationMill">
+      <en>trainStationMill</en>
+      <de>Bahnstation Mühle</de>
+    </text>
+    <text name="sellingStationWool">
+      <en>sellingStationWool</en>
+      <de>Spinnerei</de>
+    </text>
+    <text name="sellingStationPort01">
+      <en>sellingStationPort01</en>
+      <de>Hafen (Süd)</de>
+    </text>
+    <text name="sellingStationBales">
+      <en>sellingStationBales</en>
+      <de>Scheune</de>
+    </text>
+    <text name="grainElevatorEast">
+      <en>grainElevatorEast</en>
+      <de>Getreidespeicher Ost</de>
+    </text>
+    <text name="sellingStationWoodChips">
+      <en>sellingStationWoodChips</en>
+      <de>Sägewerk</de>
+    </text>
+  </l10n>
 </mapconfig>

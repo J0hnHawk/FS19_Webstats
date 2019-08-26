@@ -1,88 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
-	<pallets>
-		<pallet name="bigBagContainerChickenFood" />
-		<pallet name="bigBagContainerFertilizer" />
-		<pallet name="bigBagContainerHorseFood" />
-		<pallet name="bigBagContainerLime" />
-		<pallet name="bigBagContainerPigFood" />
-		<pallet name="bigBagContainerSeeds" />
-		<pallet name="eggBox" />
-		<pallet name="fertilizerTank" />
-		<pallet name="fillablePallet" />
-		<pallet name="herbicideTank" />
-		<pallet name="palletPoplar" />
-		<pallet name="palletSugarCane" />
-		<pallet name="pioneerPallet" />
-		<pallet name="treeSaplingPallet" />
-		<pallet name="woolPallet" />
-	</pallets>
-	<l10n>
-		<text name="bigBagContainerFertilizer">
-			<cz>Pevné hnojivo</cz>
-			<en>Fertilizer</en>
-			<de>Dünger</de>
-			<fr>Engrais</fr>
-		</text>
-		<text name="bigBagContainerPigFood">
-			<cz>Prasečí krmivo</cz>
-			<en>Pig food</en>
-			<de>Schweinefutter</de>
-			<fr>Aliment pour les cochons</fr>
-		</text>
-		<text name="bigBagContainerSeeds">
-			<cz>Osivo</cz>
-			<en>Seeds</en>
-			<de>Saatgut</de>
-			<fr>Semence</fr>
-		</text>
-		<text name="FERTILIZER">
-			<cz>Pevné hnojivo</cz>
-			<en>Fertilizer</en>
-			<de>Dünger</de>
-			<fr>Engrais</fr>
-		</text>
-		<text name="SEEDS">
-			<cz>Osivo</cz>
-			<en>Seeds</en>
-			<de>Saatgut</de>
-			<fr>Semence</fr>
-		</text>
-		<text name="LIME">
-			<cz>Vápno</cz>
-			<en>LIME</en>
-			<de>Kalk</de>
-			<fr>LIME</fr>
-		</text>
-		<text name="LIQUIDFERTILIZER">
-			<cz>Kapalné hnojivo</cz>
-			<en>Liquid Fertilizer</en>
-			<de>Flüssigdünger</de>
-			<fr>LIQUIDFERTILIZER</fr>
-		</text>
-		<text name="HERBICIDE">
-			<cz>Postřik</cz>
-			<en>Herbicide</en>
-			<de>Pflanzenschutzmittel</de>
-			<fr>HERBICIDE</fr>
-		</text>
-		<text name="POPLAR">
-			<cz>Paleta se sazenicemi</cz>
-			<en>Poplar sapling</en>
-			<de>Papplsetzlinge</de>
-			<fr>Plants de peuplier</fr>
-		</text>
-		<text name="TREESAPLINGS">
-			<cz>Sazenice</cz>
-			<en>Saplings</en>
-			<de>Setzlinge</de>
-			<fr>Semence</fr>
-		</text>
-		<text name="PIGFOOD">
-			<cz>Prasečí krmivo</cz>
-			<en>Pig food</en>
-			<de>Schweinefutter</de>
-			<fr>Aliment pour les cochons</fr>
-		</text>
-	</l10n>
+  <pallets>
+    <pallet>bigBagContainerChickenFood</pallet>
+    <pallet>bigBagContainerFertilizer</pallet>
+    <pallet>bigBagContainerHorseFood</pallet>
+    <pallet>bigBagContainerLime></pallet>
+    <pallet>bigBagContainerPigFood</pallet>
+    <pallet>bigBagContainerSeeds</pallet>
+    <pallet>eggBox</pallet>
+    <pallet>fertilizerTank</pallet>
+    <pallet>fillablePallet</pallet>
+    <pallet>herbicideTank</pallet>
+    <pallet>palletPoplar</pallet>
+    <pallet>palletSugarCane</pallet>
+    <pallet>pioneerPallet</pallet>
+    <pallet>treeSaplingPallet</pallet>
+    <pallet>woolPallet</pallet>
+  </pallets>
+  <l10n>
+    <text name="FERTILIZER">
+      <cz>Pevné hnojivo</cz>
+      <en>Fertilizer</en>
+      <de>Dünger</de>
+      <fr>Engrais</fr>
+    </text>
+    <text name="SEEDS">
+      <cz>Osivo</cz>
+      <en>Seeds</en>
+      <de>Saatgut</de>
+      <fr>Semence</fr>
+    </text>
+    <text name="LIME">
+      <cz>Vápno</cz>
+      <en>LIME</en>
+      <de>Kalk</de>
+      <fr>LIME</fr>
+    </text>
+    <text name="LIQUIDFERTILIZER">
+      <cz>Kapalné hnojivo</cz>
+      <en>Liquid Fertilizer</en>
+      <de>Flüssigdünger</de>
+      <fr>LIQUIDFERTILIZER</fr>
+    </text>
+    <text name="HERBICIDE">
+      <cz>Postřik</cz>
+      <en>Herbicide</en>
+      <de>Pflanzenschutzmittel</de>
+      <fr>HERBICIDE</fr>
+    </text>
+    <text name="POPLAR">
+      <cz>Paleta se sazenicemi</cz>
+      <en>Poplar sapling</en>
+      <de>Papplsetzlinge</de>
+      <fr>Plants de peuplier</fr>
+    </text>
+    <text name="TREESAPLINGS">
+      <cz>Sazenice</cz>
+      <en>Saplings</en>
+      <de>Setzlinge</de>
+      <fr>Semence</fr>
+    </text>
+    <text name="PIGFOOD">
+      <cz>Prasečí krmivo</cz>
+      <en>Pig food</en>
+      <de>Schweinefutter</de>
+      <fr>Aliment pour les cochons</fr>
+    </text>
+  </l10n>
 </mapconfig>

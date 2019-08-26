@@ -70,117 +70,101 @@ function addFillType($i3dName, $fillLevel, $fillMax, $prodPerHour, $factor, $sta
 			'state' => $state
 	);
 }
-function xml2array($xmlObject, $out = array()) {
-	foreach ( ( array ) $xmlObject as $index => $node ) {
-		$out [$index] = (is_object ( $node )) ? xml2array ( $node ) : $node;
-	}
-	return $out;
-}
-
-// Load XML configurations files
-function loadXMLMapConfig($directory, $language) {
+function loadSavegameSpefics($directory, $language, $savegameSpefics = array()) {
 	global $defaultLanguage;
-	$objects = $translations = array ();
 	foreach ( glob ( "./config/$directory/*.xml" ) as $filename ) {
-		$object = simplexml_load_file ( $filename );
-		if (isset ( $object->item )) {
-			foreach ( $object->item as $item ) {
-				$className = strval ( $item ['name'] );
-				if (! isset ( $objects ['objects'] )) {
-					$objects = array_merge ( $objects, array (
-							'objects' => array ()
-					) );
-				}
-				foreach ( $item->attributes () as $attribute => $value ) {
-					if ($attribute != 'name') {
-						$objects ['objects'] [$className] [$attribute] = get_bool ( $value );
-					}
-				}
-				foreach ( $item->children () as $childName => $childData ) {
-					if (empty ( $objects ['objects'] [$className] [$childName] ) || ! is_array ( $objects ['objects'] [$className] [$childName] )) {
-						$objects ['objects'] [$className] [$childName] = array ();
-					}
-					$fillType = strval ( $childData ['name'] );
-					$objects ['objects'] [$className] [$childName] [$fillType] = array ();
-					foreach ( $childData->attributes () as $attribute => $value ) {
-						if ($attribute != 'name') {
-							$objects ['objects'] [$className] [$childName] [$fillType] [$attribute] = get_bool ( $value );
+		$xmlFile = simplexml_load_file ( $filename );
+		foreach ( $xmlFile as $object ) {
+			$objectName = $object->getName ();
+			if (! isset ( $savegameSpefics [$objectName] )) {
+				$savegameSpefics [$objectName] = array ();
+			}
+			switch ($objectName) {
+				case 'Farmlands' :
+					foreach ( $xmlFile->Farmlands->Farmland as $Farmland ) {
+						$name = strval ( $Farmland ['id'] );
+						foreach ( $Farmland->attributes () as $attribute => $value ) {
+							$savegameSpefics ['Farmlands'] [$name] [$attribute] = get_bool ( $value );
 						}
 					}
-				}
-			}
-		}
-		if (isset ( $object->l10n )) {
-			foreach ( $object->l10n->text as $text ) {
-				$key = strval ( $text ['name'] );
-				if (isset ( $text->all )) {
-					$value = strval ( $text->all );
-				} elseif (isset ( $text->$language )) {
-					$value = strval ( $text->$language );
-				} else {
-					$value = strval ( $text->$defaultLanguage );
-				}
-				$translations = array_merge ( $translations, array (
-						$key => $value
-				) );
-			}
-		}
-		if (isset ( $object->pallets )) {
-			foreach ( $object->pallets->pallet as $pallet ) {
-				$name = strval ( $pallet ['name'] );
-				$objects ['pallets'] [$name] = $name;
-			}
-		}
-		if (isset ( $object->Farmlands )) {
-			if (! isset ( $objects ['Farmlands'] )) {
-				$objects = array_merge ( $objects, array (
-						'Farmlands' => array ()
-				) );
-			}
-			foreach ( $object->Farmlands->Farmland as $Farmland ) {
-				$name = strval ( $Farmland ['id'] );
-				foreach ( $Farmland->attributes () as $attribute => $value ) {
-					if ($attribute != 'id') {
-						$objects ['Farmlands'] [$name] [$attribute] = get_bool ( $value );
+					break;
+				case 'fillTypes' :
+					foreach ( $xmlFile->fillTypes->fillType as $fillType ) {
+						$name = strval ( $fillType ['name'] );
+						foreach ( $fillType->attributes () as $attribute => $value ) {
+							$savegameSpefics ['fillTypes'] [$name] [$attribute] = get_bool ( $value );
+						}
 					}
-				}
-			}
-		}
-		if (isset ( $object->fillTypes )) {
-			if (! isset ( $objects ['fillTypes'] )) {
-				$objects = array_merge ( $objects, array (
-						'fillTypes' => array ()
-				) );
-			}
-			foreach ( $object->fillTypes->fillType as $fillType ) {
-				$name = strval ( $fillType ['name'] );
-				foreach ( $fillType->attributes () as $attribute => $value ) {
-					if ($attribute != 'name') {
-						$objects ['fillTypes'] [$name] [$attribute] = get_bool ( $value );
+					break;
+				case 'objects' :
+					foreach ( $xmlFile->objects->object as $object ) {
+						$objectName = strval ( $object ['name'] );
+						foreach ( $object->attributes () as $attribute => $value ) {
+							$savegameSpefics ['objects'] [$objectName] [$attribute] = get_bool ( $value );
+						}
+						if ($savegameSpefics ['objects'] [$objectName] ['locationType'] == 'bga') {
+							$savegameSpefics ['objects'] [$objectName] ['prices'] = array ();
+							foreach ( $object->slot as $slot ) {
+								foreach ( $slot->fillType as $fillTypes ) {
+									$price = floatval ( $fillTypes ['pricePerLiter'] );
+									$fillTypes = explode ( ' ', $fillTypes ['fillTypes'] );
+									foreach ( $fillTypes as $fillType ) {
+										$savegameSpefics ['objects'] [$objectName] ['prices'] [$fillType] = $price;
+									}
+								}
+							}
+						} elseif ($savegameSpefics ['objects'] [$objectName] ['locationType'] == 'GlobalCompany') {
+							/*
+							 * Old code
+							 * foreach ( $object->children () as $childName => $childData ) {
+							 * if (empty ( $savegameSpefics ['objects'] [$objectName] [$childName] ) || ! is_array ( $savegameSpefics ['objects'] [$objectName] [$childName] )) {
+							 * $savegameSpefics ['objects'] [$objectName] [$childName] = array ();
+							 * }
+							 * if ($childData->attributes ()) {
+							 * $fillType = strval ( $childData ['name'] );
+							 * $savegameSpefics ['objects'] [$objectName] [$childName] [$fillType] = array ();
+							 * foreach ( $childData->attributes () as $attribute => $value ) {
+							 * if ($attribute != 'name') {
+							 * $savegameSpefics ['objects'] [$objectName] [$childName] [$fillType] [$attribute] = get_bool ( $value );
+							 * }
+							 * }
+							 * }
+							 * }
+							 */
+						}
 					}
-				}
-			}
-		}
-		if (isset ( $object->vehicles )) {
-			if (! isset ( $objects ['vehicles'] )) {
-				$objects = array_merge ( $objects, array (
-						'vehicles' => array ()
-				) );
-			}
-			foreach ( $object->vehicles->vehicle as $vehicle ) {
-				$name = strval ( $vehicle ['basename'] );
-				foreach ( $vehicle->attributes () as $attribute => $value ) {
-					if ($attribute != 'basename') {
-						$objects ['vehicles'] [$name] [$attribute] = get_bool ( $value );
+					break;
+				case 'l10n' :
+					foreach ( $xmlFile->l10n->text as $text ) {
+						$key = strval ( $text ['name'] );
+						if (isset ( $text->all )) {
+							$value = strval ( $text->all );
+						} elseif (isset ( $text->$language )) {
+							$value = strval ( $text->$language );
+						} else {
+							$value = strval ( $text->$defaultLanguage );
+						}
+						$savegameSpefics ['l10n'] [$key] = $value;
 					}
-				}
+					break;
+				case 'pallets' :
+					foreach ( $xmlFile->pallets->pallet as $pallet ) {
+						$pallet = strval ( $pallet );
+						$savegameSpefics ['pallets'] [$pallet] = $pallet;
+					}
+					break;
+				case 'vehicles' :
+					foreach ( $xmlFile->vehicles->vehicle as $vehicle ) {
+						$name = strval ( $vehicle ['basename'] );
+						foreach ( $vehicle->attributes () as $attribute => $value ) {
+							$savegameSpefics ['vehicles'] [$name] [$attribute] = get_bool ( $value );
+						}
+					}
+					break;
 			}
 		}
 	}
-	return array (
-			$objects,
-			$translations
-	);
+	return $savegameSpefics;
 }
 
 // convert values while reading xml files
@@ -270,12 +254,10 @@ function getMaps() {
 
 // Übersetzung
 function translate($text) {
-	global $lang, $placeablesLang;
+	global $gameData;
 	$text = strval ( $text );
-	if (isset ( $lang [$text] )) {
-		return $lang [$text];
-	} elseif (isset ( $placeablesLang [$text] )) {
-		return $placeablesLang [$text];
+	if (isset ( $gameData ['l10n'] [$text] )) {
+		return $gameData ['l10n'] [$text];
 	} else {
 		return '{' . $text . '}';
 		return $text;
@@ -365,12 +347,12 @@ function getLocation($position) {
 		return '##OUTOFMAP##';
 	}
 	list ( $posx, $posy, $posz ) = explode ( ' ', $position );
-	global $map, $mapconfig;
+	global $map, $gameData;
 	$mapSize = intval ( $map ['Size'] ) / 2;
 	if ($posx < (0 - $mapSize) || $posx > $mapSize || $posy < 0 || $posy > 255 || $posz < (0 - $mapSize) || $posz > $mapSize) {
 		return '##OUTOFMAP##';
 	}
-	foreach ( $mapconfig as $plant => $plantData ) {
+	foreach ( $gameData as $plant => $plantData ) {
 		if (isset ( $plantData ['output'] )) {
 			foreach ( $plantData ['output'] as $fillType => $fillTypeData ) {
 				if (isset ( $fillTypeData ['palettArea'] )) {
@@ -393,12 +375,12 @@ function getAnimalProductivity($location, $tipTriggers) {
 	if (strpos ( $tipTriggers, 'water' ) === false) {
 		return 0;
 	}
-	global $mapconfig, $map;
+	global $gameData, $map;
 	$productivity = 0;
 	if ($location == 'Animals_sheep') {
 		$productivity = 10;
 	}
-	foreach ( $mapconfig [$location] ['productivity'] as $trigger => $value ) {
+	foreach ( $gameData [$location] ['productivity'] as $trigger => $value ) {
 		if (strpos ( $tipTriggers, $trigger ) !== false) {
 			if (trim ( $map ['configFormat'] ) == 'xml') {
 				$productivity += floatval ( $value ['factor'] );

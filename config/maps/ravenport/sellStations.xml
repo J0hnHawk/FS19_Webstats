@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mapconfig>
-	<item name="sellingStationRestaurant" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
-	<item name="sellingStationRanch" locationType="TipTrigger" position="751 0 -299" isSellingPoint="true" />
-	<item name="grainSiloCentral" locationType="TipTrigger" position="-949 0 571" isSellingPoint="true" />
-	<item name="sellingStationWool" locationType="TipTrigger" position="-946 0 -26" isSellingPoint="true" />
-	<item name="grainSiloPort" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
-	<item name="sellingStationBales" locationType="TipTrigger" position="-727 0 -820" isSellingPoint="true" />
-	<item name="sellingStationWoodChips" locationType="TipTrigger" position="834 0 820" isSellingPoint="true" />
-	<l10n>
-		<text name="sellingStationRestaurant">
-			<cz>Restaurace</cz>		
-			<en>Restaurant</en>			
-			<de>Restaurant</de>				
-		</text>
-		<text name="sellingStationRanch">
-			<cz>Ranč</cz>	
-			<en>Ranch</en>			
-			<de>Ranch</de>				
-		</text>
-		<text name="grainSiloCentral">
-			<cz>Centrální sýpka</cz>	
-			<en>Central Silo</en>			
-			<de>Getreidespeicher (Zentrum)</de>				
-		</text>
-		<text name="sellingStationWool">
-			<cz>Přádelna</cz>	
-			<en>Wool station</en>			
-			<de>Spinnerei</de>				
-		</text>
-		<text name="grainSiloPort">
-			<cz>Přístavní sýpka</cz>
-			<en>Port silo</en>			
-			<de>Hafenspeicher</de>				
-		</text>
-		<text name="sellingStationBales">
-			<cz>Seník</cz>	
-			<en>Bales station</en>			
-			<de>Scheune</de>				
-		</text>
-		<text name="sellingStationWoodChips">
-			<cz>Pila</cz>
-			<en>WoodChips station</en>			
-			<de>Sägewerg</de>				
-		</text>	
-	</l10n>
+  <objects>
+    <object name="sellingStationRestaurant" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationRanch" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="grainSiloCentral" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationWool" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="grainSiloPort" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationBales" locationType="TipTrigger" isSellingPoint="true"/>
+    <object name="sellingStationWoodChips" locationType="TipTrigger" isSellingPoint="true"/>
+  </objects>
+  <l10n>
+    <text name="sellingStationRestaurant">
+      <cz>Restaurace</cz>
+      <en>Restaurant</en>
+      <de>Restaurant</de>
+    </text>
+    <text name="sellingStationRanch">
+      <cz>Ranč</cz>
+      <en>Ranch</en>
+      <de>Ranch</de>
+    </text>
+    <text name="grainSiloCentral">
+      <cz>Centrální sýpka</cz>
+      <en>Central Silo</en>
+      <de>Getreidespeicher (Zentrum)</de>
+    </text>
+    <text name="sellingStationWool">
+      <cz>Přádelna</cz>
+      <en>Wool station</en>
+      <de>Spinnerei</de>
+    </text>
+    <text name="grainSiloPort">
+      <cz>Přístavní sýpka</cz>
+      <en>Port silo</en>
+      <de>Hafenspeicher</de>
+    </text>
+    <text name="sellingStationBales">
+      <cz>Seník</cz>
+      <en>Bales station</en>
+      <de>Scheune</de>
+    </text>
+    <text name="sellingStationWoodChips">
+      <cz>Pila</cz>
+      <en>WoodChips station</en>
+      <de>Sägewerg</de>
+    </text>
+  </l10n>
 </mapconfig>

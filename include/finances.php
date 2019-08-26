@@ -34,7 +34,7 @@ switch ($mode) {
 		include ('./include/savegame/Commodities.class.php');
 		Commodity::loadCommodities ( $savegame::$xml );
 		include ('./include/savegame/Vehicles.class.php');
-		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $mapconfig );
+		Vehicle::extractXML ( $savegame::$xml, $options ['general'] ['farmId'], $gameData );
 		include ('./include/savegame/Animals.class.php');
 		Animals::loadStables ( $savegame::$xml );
 		
@@ -59,7 +59,7 @@ switch ($mode) {
 		);
 		foreach ( $savegame::$xml ['farmland'] as $farmland ) {
 			if ($farmland ['farmId'] == $_SESSION ['farmId']) {
-				$assets ['A1'] += $mapconfig ['Farmlands'] [intval ( $farmland ['id'] )] ['price'];
+				$assets ['A1'] += $gameData ['Farmlands'] [intval ( $farmland ['id'] )] ['price'];
 			}
 		}
 		$prices = Price::getAllPrices ();
@@ -71,16 +71,16 @@ switch ($mode) {
 			}
 			if (isset ( $prices [$l_fillType] )) {
 				$pricePerLiter = $prices [$l_fillType] ['bestPrice'] / 1000;
-			} elseif (isset ( $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'] )) {
-				$pricePerLiter = $mapconfig ['fillTypes'] [$fillType] ['pricePerLiter'];
+			} elseif (isset ( $gameData ['fillTypes'] [$fillType] ['pricePerLiter'] )) {
+				$pricePerLiter = $gameData ['fillTypes'] [$fillType] ['pricePerLiter'];
 			} else {
 				$pricePerLiter = 0;
 				// echo ("Kein Preis für $l_fillType ($fillType)<br>");
 			}
-			if (! isset ( $mapconfig ['fillTypes'] [$fillType] ['balanceSheet'] )) {
+			if (! isset ( $gameData ['fillTypes'] [$fillType] ['balanceSheet'] )) {
 				$assetPosition = 'CI3';
 			} else {
-				$assetPosition = $mapconfig ['fillTypes'] [$fillType] ['balanceSheet'];
+				$assetPosition = $gameData ['fillTypes'] [$fillType] ['balanceSheet'];
 			}
 			//echo (sprintf ( "%s\t%s\t%s\t%s\t%s\r\n", $fillType, $assetPosition, $commodity ['overall'], floor ( $pricePerLiter ), floor ( $commodity ['overall'] * $pricePerLiter ) ));
 			$assets = addValue ( $assets, $assetPosition, floor ( $commodity ['overall'] * $pricePerLiter ) );

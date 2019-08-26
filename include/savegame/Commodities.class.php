@@ -54,6 +54,7 @@ class Commodity {
 		return self::$outOfMapArray;
 	}
 	private static function analyzeItems() {
+		global $gameData;
 		foreach ( self::$xml ['items'] as $item ) {
 			$location = cleanFileName ( $item ['filename'] );
 			switch ($item ['className']) {
@@ -61,6 +62,8 @@ class Commodity {
 					if ($item ['farmId'] == $_SESSION ['farmId']) {
 						if (isset ( $item->productionFactory->outputProducts )) {
 							foreach ( $item->productionFactory->outputProducts->outputProduct as $product ) {
+								$trigger = strval ( $product ['name'] );
+								// if(isset($gameData['objects'][$location]))
 								$fillType = strval ( $product ['name'] );
 								$fillLevel = intval ( $product ['fillLevel'] );
 								self::addCommodity ( $fillType, $fillLevel, $location );
@@ -158,14 +161,14 @@ class Commodity {
 		}
 	}
 	private static function loadVehicles() {
-		global $mapconfig;
-		$dataFromStore = $mapconfig ['vehicles'];
+		global $gameData;
+		$dataFromStore = $gameData ['vehicles'];
 		foreach ( self::$xml ['vehicles'] as $vehicle ) {
 			if ($vehicle ['farmId'] != self::$farmId) {
 				continue;
 			}
 			$vehicleName = cleanFileName ( $vehicle ['filename'] );
-			if (in_array ( $vehicleName, $mapconfig ['pallets'] )) {
+			if (in_array ( $vehicleName, $gameData ['pallets'] )) {
 				// Palette
 				$location = getLocation ( $vehicle->component1 ['position'] );
 				$className = 'FillablePallet';

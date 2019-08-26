@@ -37,24 +37,24 @@ class Price {
 	public static $greatDemands = array ();
 	public static $greatDemandIsRunning = false;
 	public static function extractXML($savegame) {
-		global $mapconfig;
+		global $gameData;
 		self::loadGreatDemands ( $savegame->economy );
 		self::$priceMultiplier = $savegame->getPriceMultiplier ();
 		foreach ( $savegame->items as $item ) {
 			$location = cleanFileName ( $item ['filename'] );
 			$stationId = intval ( $item ['id'] );
 			// Lager, Fabriken usw. analysieren
-			if (! isset ( $mapconfig ['objects'][$location] ['locationType'] )) {
+			if (! isset ( $gameData ['objects'] [$location] ['locationType'] )) {
 				// Objekte, die nicht in der Kartenkonfiguration aufgeführt sind, werden ignoriert
 				continue;
 			} else {
-				if (isset ( $mapconfig ['objects'][$location] ['isSellingPoint'] ) && $mapconfig ['objects'][$location] ['isSellingPoint']) {
+				if (isset ( $gameData ['objects'] [$location] ['isSellingPoint'] ) && $gameData ['objects'] [$location] ['isSellingPoint']) {
 					self::$sellStations [translate ( $location )] = $location;
-					if ($mapconfig ['objects'][$location] ['locationType'] == 'bga') {
+					if ($gameData ['objects'] [$location] ['locationType'] == 'bga') {
 						if ($item ['farmId'] == $savegame->farmId) {
-							foreach ( $mapconfig ['objects'][$location] ['input'] as $fillType => $inputTrigger ) {
-								$currentPrice = $inputTrigger ['price'] * $savegame->getPriceMultiplier ();
-								self::addNewPrice ( $fillType, $currentPrice, $location, $currentPrice, $currentPrice, 1, 0 );
+							foreach ( $gameData ['objects'] [$location] ['prices'] as $fillType => $price ) {
+								$price = floatval ( $price * $savegame->getPriceMultiplier () * 1000 );
+								self::addNewPrice ( $fillType, $price, $location, $price, $price, 1, 0 );
 							}
 						} else {
 							unset ( self::$sellStations [translate ( $location )] );
@@ -87,7 +87,7 @@ class Price {
 					'priceTrend' => 0,
 					'bestLocation' => '',
 					'greatDemand' => false,
-					'locations' => array () 
+					'locations' => array ()
 			);
 		}
 		self::$prices [$l_fillType] ['locations'] [$l_location] = array (
@@ -96,7 +96,7 @@ class Price {
 				'greatDemand' => ($greatDemand > 1) ? true : false,
 				'maxPrice' => $maxPrice,
 				'minPrice' => $minPrice,
-				'priceTrend' => $priceTrend 
+				'priceTrend' => $priceTrend
 		);
 		if ($currentPrice * $greatDemand > self::$prices [$l_fillType] ['bestPrice']) {
 			self::$prices [$l_fillType] ['bestPrice'] = $currentPrice * $greatDemand;
@@ -140,8 +140,8 @@ class Price {
 					self::$greatDemands [$l_fillType] ['locations'] += array (
 							$stationId => array (
 									'demandMultiplier' => $demandMultiplier,
-									'isRunning' => $isRunning 
-							) 
+									'isRunning' => $isRunning
+							)
 					);
 				} else {
 					self::$greatDemands [$l_fillType] = array (
@@ -149,9 +149,9 @@ class Price {
 							'locations' => array (
 									$stationId => array (
 											'demandMultiplier' => $demandMultiplier,
-											'isRunning' => $isRunning 
-									) 
-							) 
+											'isRunning' => $isRunning
+									)
+							)
 					);
 				}
 			}
@@ -183,7 +183,7 @@ class Price {
 				'currentPrice' => $currentPrice,
 				'minPrice' => $minPrice,
 				'maxPrice' => $maxPrice,
-				'priceTrend' => $nextPrice > $currentPrice ? 1 : ($currentPrice > $nextPrice ? - 1 : 0) 
+				'priceTrend' => $nextPrice > $currentPrice ? 1 : ($currentPrice > $nextPrice ? - 1 : 0)
 		);
 	}
 	private static function objects2float($objectArray) {
