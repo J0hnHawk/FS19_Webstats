@@ -41,7 +41,7 @@
 		<div class="container">
 			<p class="navbar-text text-center">{$onlineUser} ##USER_ONLINE##</p>
 			<p class="navbar-text pull-right">
-				&copy; 2018-2019 FS19 Web Stats by John Hawk
+				&copy; 2018-2020 FS19 Web Stats by John Hawk
 			</p>
 		</div>
 	</div>
