@@ -1,5 +1,8 @@
 # FS19 Web Stats - BETA VERSION
 
+## Entwicklung meinerseits eingestellt
+Ich spiele kein FS19 mehr. Keine Ahnung ob ich irgendwann man einen Nachfolger spielen werde. Aber im Moment bin ich durch mit dem Spiel. :-) Daher werde ich hier auch nicht weiter entwickeln, erteile aber jedem der möchte hiermit meine Erlaubnis, das Programm weiterzuentwickeln.
+
 English below
 
 ## Update 30.01.2019 - was bisher funktioniert:
@@ -23,6 +26,8 @@ Nachdem eine Farm ausgewählt wurde.
 - Anzeige der Grundstücke und Felder
 - Anzeige der Positionen von Fahrzeugen, Ballen, Paletten, Silos, Verkaufsstellen usw. auf der Karte
    
+## Development stopped on my part
+I don't play FS19 anymore. I don't know if I'll ever play a successor. But for now I'm through with the game. :-) Therefore I won't develop further here, but I give my permission to anyone who wants to, to develop the program further.
 
 ## Update 30.01.2019 - what is working so far:
 - **Also with patch 1.2.0.1 the Farming Simulator Web API has not been extended yet. The only way to get all required data from the dedicated server is FTP access.**
